@@ -1,0 +1,54 @@
+site_name: xenium-code-atlas · Xenium 文献公开代码整合提炼库
+site_description: 91 篇文献 72 仓公开代码的档案、精读、范式蒸馏与可迭代整合 pipeline
+repo_url: https://github.com/zerogue11/xenium-code-atlas
+repo_name: zerogue11/xenium-code-atlas
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: indigo
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - 首页: index.md
+  - 学习手册:
+      - 开始这里: 00-开始这里.md
+      - 基础范式主干: 01-基础范式主干.md
+      - 高级模块地图: 02-高级模块地图.md
+      - 精读方法论: 03-精读方法论.md
+      - 实操测试计划: 04-实操测试计划.md
+  - 核心报告:
+      - 分类分析报告（一期）: 01_资料库/分类分析报告_一期.md
+      - 分类体系: 01_资料库/分类体系.md
+      - 生态与官方资源: 01_资料库/生态与官方资源.md
+      - 迭代入库 SOP: 01_资料库/迭代入库SOP.md
+  - 工作流开发:
+      - 候选流程池: 02_工作流开发/候选流程池/README.md
+      - 范式登记册: 02_工作流开发/范式登记册/README.md
+      - 高级模块骨架: 02_工作流开发/高级模块/README.md
+      - 场景路线: 02_工作流开发/场景路线/README.md
+      - 整合 pipeline: 02_工作流开发/整合pipeline/README.md
+  - 关于: 05-项目治理.md

@@ -1,0 +1,24 @@
+# 本地镜像的第三方代码仓库 —— 绝不入公开仓（红线）
+03_开源项目/
+
+# 运行环境与缓存
+05_运行环境/envs/
+05_运行环境/download_cache/
+.venv/
+__pycache__/
+*.pyc
+
+# 测试结果大文件（md 报告保留）
+04_测试记录/**/results/
+04_测试记录/**/cache/
+
+# 站点构建产物
+site/
+
+# mkdocs 联接（指向仓库根同名目录，内容零重复；fresh clone 后跑 scripts/setup_docs_links.cmd 重建）
+docs/01_资料库/
+docs/02_工作流开发/
+
+# 会话与系统
+.zcode/
+Thumbs.db
