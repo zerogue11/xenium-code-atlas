@@ -1,0 +1,1894 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="91 篇文献 72 仓公开代码的档案、精读、范式蒸馏与可迭代整合 pipeline">
+      
+      
+      
+      
+        <link rel="prev" href="../../04-%E5%AE%9E%E6%93%8D%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/">
+      
+      
+        <link rel="next" href="../%E5%88%86%E7%B1%BB%E4%BD%93%E7%B3%BB/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>分类分析报告（一期） - xenium-code-atlas · Xenium 文献公开代码整合提炼库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2026-09-04" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="xenium-code-atlas · Xenium 文献公开代码整合提炼库" class="md-header__button md-logo" aria-label="xenium-code-atlas · Xenium 文献公开代码整合提炼库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            xenium-code-atlas · Xenium 文献公开代码整合提炼库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              分类分析报告（一期）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zerogue11/xenium-code-atlas" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zerogue11/xenium-code-atlas
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../00-%E5%BC%80%E5%A7%8B%E8%BF%99%E9%87%8C/" class="md-tabs__link">
+          
+  
+  
+  学习手册
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  核心报告
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%80%99%E9%80%89%E6%B5%81%E7%A8%8B%E6%B1%A0/" class="md-tabs__link">
+          
+  
+  
+  工作流开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../05-%E9%A1%B9%E7%9B%AE%E6%B2%BB%E7%90%86/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="xenium-code-atlas · Xenium 文献公开代码整合提炼库" class="md-nav__button md-logo" aria-label="xenium-code-atlas · Xenium 文献公开代码整合提炼库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    xenium-code-atlas · Xenium 文献公开代码整合提炼库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zerogue11/xenium-code-atlas" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zerogue11/xenium-code-atlas
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习手册
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习手册
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-%E5%BC%80%E5%A7%8B%E8%BF%99%E9%87%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开始这里
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-%E5%9F%BA%E7%A1%80%E8%8C%83%E5%BC%8F%E4%B8%BB%E5%B9%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础范式主干
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9D%97%E5%9C%B0%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级模块地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-%E7%B2%BE%E8%AF%BB%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精读方法论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-%E5%AE%9E%E6%93%8D%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实操测试计划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心报告
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    核心报告
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类分析报告（一期）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类分析报告（一期）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 一句话结论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据与方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 技术路线总图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 共性骨架与差异矩阵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 共性骨架与差异矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-27-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 步骤频次（27 个 S 仓精读路线还原，近似口径）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 分叉点（按场景/平台裂变的步骤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 集体缺位（= 迭代机会，二期重点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 工程质量审计总结论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 工程质量审计总结论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-27-7-0-214" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 分数分布（27 仓，7 维×0-2=14 满分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-top5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 共性硬伤 TOP5（搬运前必须清创）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-superpowers-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 superpowers / SOLID 式成分：结论=普遍缺失，但亮点可数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-p0-p8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 分类工具对比（P0-P8 主推与备选）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-72-ov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 72 仓 × 官方线 × OV 线：互补关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 避坑清单汇总（一期新增部分，沿用 ov工作流测试既有坑位）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 二期整合 pipeline 组装建议（草案，待用户终审）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 待人工核验清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%88%86%E7%B1%BB%E4%BD%93%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%9F%E6%80%81%E4%B8%8E%E5%AE%98%E6%96%B9%E8%B5%84%E6%BA%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生态与官方资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%AD%E4%BB%A3%E5%85%A5%E5%BA%93SOP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    迭代入库 SOP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工作流开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工作流开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%80%99%E9%80%89%E6%B5%81%E7%A8%8B%E6%B1%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    候选流程池
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E8%8C%83%E5%BC%8F%E7%99%BB%E8%AE%B0%E5%86%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    范式登记册
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级模块骨架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%9C%BA%E6%99%AF%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    场景路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E6%95%B4%E5%90%88pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整合 pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-%E9%A1%B9%E7%9B%AE%E6%B2%BB%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 一句话结论
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 数据与方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 技术路线总图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 共性骨架与差异矩阵
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 共性骨架与差异矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-27-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 步骤频次（27 个 S 仓精读路线还原，近似口径）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 分叉点（按场景/平台裂变的步骤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 集体缺位（= 迭代机会，二期重点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 工程质量审计总结论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 工程质量审计总结论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-27-7-0-214" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 分数分布（27 仓，7 维×0-2=14 满分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-top5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 共性硬伤 TOP5（搬运前必须清创）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-superpowers-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 superpowers / SOLID 式成分：结论=普遍缺失，但亮点可数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-p0-p8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 分类工具对比（P0-P8 主推与备选）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-72-ov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 72 仓 × 官方线 × OV 线：互补关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ov" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 避坑清单汇总（一期新增部分，沿用 ov工作流测试既有坑位）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 二期整合 pipeline 组装建议（草案，待用户终审）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 待人工核验清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="2026-09-04">分类分析报告（一期）· 2026-09-04<a class="headerlink" href="#2026-09-04" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>对象：91 篇文献核验出的 <strong>72 个 GitHub 仓库</strong>（全部浅克隆锁定 SHA）+ 官方/OV 两条既有已验证线。
+方法：72 仓全量档案卡（实测 README+代码结构）+ <strong>S 级 27 仓深度精读</strong>（7 维工程审计，逐条 文件:行号 证据）+ 46 张可搬运范式卡。
+纪律：所有结论均有实读证据；不确定处标【待补充】。数字口径见各节说明。</p>
+</blockquote>
+<hr />
+<h2 id="0">0. 一句话结论<a class="headerlink" href="#0" title="Permanent link">&para;</a></h2>
+<p><strong>文献伴随代码的共性骨架高度收敛（读取→QC→注释→空间统计是绝对主干），但工程质量普遍不及格（均值 8.3/14，仅 11% 达工业级）</strong>——"范式主干有据可依、工程外壳必须自研"就是二期的组装依据：主干从文献蒸馏，外壳用我们自己已验证的纪律（run_metadata、seed 冻结、readiness→smoke→递进）。</p>
+<h2 id="1">1. 数据与方法<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>数量</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>资源核验（上游种子，2026-09-04 冻结）</td>
+<td>634 条资源</td>
+<td>其中代码类 114 条 = GitHub 76 行→<strong>72 仓去重</strong> + Zenodo 17 + 网页 21</td>
+</tr>
+<tr>
+<td>全量浅克隆</td>
+<td>72/72 成功（1 仓部分 checkout）</td>
+<td>总量约 5.8GB，SHA 全锁定</td>
+</tr>
+<tr>
+<td>档案卡</td>
+<td>72 张</td>
+<td><code>01_资料库/档案卡/</code>（分类复核+license+复现难度）</td>
+</tr>
+<tr>
+<td>S 级精读</td>
+<td>27 仓</td>
+<td><code>01_资料库/精读笔记/</code> 27 份 + <code>01_资料库/精读汇总.csv</code></td>
+</tr>
+<tr>
+<td>工程审计</td>
+<td>7 维×0-2 分</td>
+<td>均分 <strong>8.3/14</strong></td>
+</tr>
+<tr>
+<td>范式登记册</td>
+<td>46 张 PATTERN 卡</td>
+<td><code>02_工作流开发/范式登记册/</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>License 红线实测</strong>：72 仓中 <strong>33 仓无 LICENSE</strong>（仅可学习、不可转载）；另有 Stanford 非商业（SpatialEcoTyper）、GRL 非商业（drug2cell）、CC BY-NC（HoVer-Net PanNuke 权重）、UT Southwestern 学术专用（ImagePseudo）等限制性许可——这是"第三方代码只做本地镜像、公开仓以链接+SHA 引用"策略的直接依据。</p>
+<h2 id="2">2. 技术路线总图<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph 原始层
+        A[Xenium outs / ISS 图像 / 其他平台]
+    end
+    subgraph 装载层[装载层：平台差异止步于此]
+        B1[spatialdata/ov.io 读入]
+        B2[ISS: ASHLAR拼接→解码→分割]
+        B3[官方 onboard 结果复用]
+    end
+    subgraph 核心层[核心层：人人都在做]
+        C1[质控QC] --&gt; C2[归一化/HVG/PCA] --&gt; C3[聚类] --&gt; C4[注释/去卷积]
+    end
+    subgraph 模块层[高级模块 A1-A9]
+        D1[A1 分割重分割]
+        D2[A2 注释图谱]
+        D3[A3 空间域/生态位]
+        D4[A4 细胞通讯]
+        D5[A5 亚细胞]
+        D6[A6 空间统计]
+        D7[A7 配准/3D/多样本]
+        D8[A8 图像组学]
+        D9[A9 场景应用]
+    end
+    subgraph 输出层[输出层：三件套纪律]
+        E1[figures/ tables/]
+        E2[run_metadata + 快照]
+    end
+    A --&gt; B1 &amp; B2 &amp; B3 --&gt; C1
+    C4 --&gt; D1 &amp; D2 &amp; D3 &amp; D4 &amp; D5 &amp; D6 &amp; D7 &amp; D8 &amp; D9
+    D1--分割产物回灌--&gt;B1
+    D9 --&gt; E1 &amp; E2</code></pre>
+<p>三条装配路线（二期整合 pipeline 的三个来源支点）：
+1. <strong>官方线</strong>（CPU 可复现基线）：SpatialData/Scanpy 全量重算 或 复用 onboard 结果（大样本稳妥路线）。
+2. <strong>OV 线</strong>（GPU 规模化）：readiness→smoke→递进扩样 + strict GPU 校验，百万级已验证。
+3. <strong>文献线</strong>（本库 72 仓）：提供装载层协议（ISS 工具链）、注释迁移链、niche 方法选型、配准链路等模块级参考。</p>
+<h2 id="3">3. 共性骨架与差异矩阵<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31-27-s">3.1 步骤频次（27 个 S 仓精读路线还原，近似口径）<a class="headerlink" href="#31-27-s" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>出现仓数/27</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据读取</td>
+<td>27</td>
+<td><strong>绝对主干</strong></td>
+</tr>
+<tr>
+<td>注释</td>
+<td>27</td>
+<td><strong>绝对主干</strong>（含规则/迁移/去卷积）</td>
+</tr>
+<tr>
+<td>导出</td>
+<td>27</td>
+<td><strong>绝对主干</strong>（对象/表格落盘）</td>
+</tr>
+<tr>
+<td>绘图</td>
+<td>26</td>
+<td>主干</td>
+</tr>
+<tr>
+<td>聚类</td>
+<td>25</td>
+<td>主干</td>
+</tr>
+<tr>
+<td>质控QC</td>
+<td>24</td>
+<td>主干</td>
+</tr>
+<tr>
+<td>归一化</td>
+<td>24</td>
+<td>主干</td>
+</tr>
+<tr>
+<td>降维</td>
+<td>24</td>
+<td>主干</td>
+</tr>
+<tr>
+<td>空间统计</td>
+<td>24</td>
+<td>高频</td>
+</tr>
+<tr>
+<td>HVG</td>
+<td>22</td>
+<td>高频</td>
+</tr>
+<tr>
+<td>细胞通讯</td>
+<td>22</td>
+<td>高频（多为 CellChat/LIANA 调用）</td>
+</tr>
+<tr>
+<td>亚细胞</td>
+<td>21</td>
+<td>高频（bin 级/转录本级）</td>
+</tr>
+<tr>
+<td>多样本整合</td>
+<td>21</td>
+<td>高频（Harmony/scVI 为主）</td>
+</tr>
+<tr>
+<td>去卷积</td>
+<td>20</td>
+<td>高频</td>
+</tr>
+<tr>
+<td>空间邻域/域</td>
+<td>20</td>
+<td>高频</td>
+</tr>
+<tr>
+<td>配准/3D</td>
+<td>16</td>
+<td>中频（平台/问题依赖）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>口径说明：此表统计"技术路线还原小节中出现该步骤断言"的仓数，属近似（个别步骤可能在叙述中被提及而未真正执行）；用作主干/分叉判断足够，用作精确统计则需三期逐仓复核。</p>
+</blockquote>
+<p><strong>共性骨架（≥24/27）＝ 范式主干候选</strong>：<code>读取 → QC → 归一化(+HVG) → 降维 → 聚类 → 注释 → 绘图/导出</code>。这与官方线、OV 线完全同构——三线在此汇合，主干定版证据充分。</p>
+<h3 id="32">3.2 分叉点（按场景/平台裂变的步骤）<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>装载层三分</strong>：Xenium outs 直读（spatialdata/ov.io）｜ISS 图像链（ASHLAR→解码→分割，Moldia 三件套）｜官方结果复用（大样本）。</li>
+<li><strong>注释两条路线</strong>：百万细胞级 scVI→scANVI 半监督（crc-atlas）vs 少样本 scVI+celltypist 预训练直测+子集精修（crohns 三段式）——A2 模块建议以后者为主干、前者供大规模分支。</li>
+<li><strong>niche/生态型契约已定型</strong>：<code>adata.obs 标签列 + 邻接矩阵</code> 为通用契约；CellCharter 系（delaunay→aggregate→AutoK）与 NMF 系（SpatialEcoTyper）并立，多候选并存（与我们的多候选纪律天然契合）。</li>
+<li><strong>配准三种做法</strong>：官方 Explorer 人工配准+矩阵导出（janesick）、BigWarp/napari 3D 配准（mushroom）、HPC 管线托管（estorrs）——人工环节目前不可代码化，是明确断点。</li>
+</ul>
+<h3 id="33">3.3 集体缺位（= 迭代机会，二期重点）<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>A4 细胞通讯在 72 仓中无专门仓库</strong>（只有 SPACE 沾边、应用仓内 CellChat 调用）——生态工具（CellChat/LIANA+）补位，但空间特异的通讯验证方法缺位。</li>
+<li><strong>注释的人工环节 4/5 应用仓不可纯代码复现</strong>（TRM、UCSF、tnbc、Kidney 均断档）——需要显式的"注释计划-验证痕迹"协议（我们的注释列契约正好补位）。</li>
+<li><strong>QC 指标不统一</strong>：各仓自定义阈值/指标（唯一专门 QC 仓 SpatialQM 提供了可搬的指标定义层）。</li>
+<li><strong>错误处理普遍缺失/吞异常</strong>；编排层复制粘贴 bug 高发（基准组 5 仓中 4 仓实读出真 bug）。</li>
+<li><strong>无 seed / 无 CI 测试</strong>：27 仓中仅 snp2cell 有像样回归测试、SpatialQM 有 CI（33 行）。</li>
+</ol>
+<h2 id="4">4. 工程质量审计总结论<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-27-7-0-214">4.1 分数分布（27 仓，7 维×0-2=14 满分）<a class="headerlink" href="#41-27-7-0-214" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>档</th>
+<th>仓数</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥12 工业级</td>
+<td><strong>3（11%）</strong></td>
+<td>snp2cell 13、sharp 13、hover_net 12</td>
+</tr>
+<tr>
+<td>10-11 良好</td>
+<td>5</td>
+<td>spatialecotyper 11、drug2cell 10、multiplex 10、TRM 10、janesick 10</td>
+</tr>
+<tr>
+<td>8-9 及格</td>
+<td>8</td>
+<td>SpatialQM、ist_benchmarking、mushroom、crc-atlas、p53、SPACE、tnbc、UCSF</td>
+</tr>
+<tr>
+<td>6-7 欠佳</td>
+<td>8</td>
+<td>ST_Comparison、Xenium_benchmarking、SpatialBenchmarking、ISS_decoding、crohns、3d-analysis、Kidney</td>
+</tr>
+<tr>
+<td>≤5 不可直接用</td>
+<td>3</td>
+<td>ISS_postprocessing 4、ImagePseudo 5、SPATCH 5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>均值 8.3/14（59%）</strong>。与既有认知一致：<strong>方法可信、软件不可用</strong>（手稿仓派）与<strong>外壳成熟、内核粗糙</strong>（TRM 的 pixi 外壳 vs 裸 except 内核）两极并存。</p>
+<h3 id="42-top5">4.2 共性硬伤 TOP5（搬运前必须清创）<a class="headerlink" href="#42-top5" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>硬编码作者机路径</strong>（<code>/mnt/sata1</code>、<code>~/</code>、<code>/data/projects/robin/</code>、<code>/scratch</code>）——5 个精读批次全部报出，0 分维度集中地。</li>
+<li><strong>无 seed / 无版本锁</strong>（KFold 无 seed、torch 不设 seed、requirements 与实际漂移）。</li>
+<li><strong>import 副作用</strong>（ISS_postprocessing <code>segmentation.py:10,124</code> import 即实例化 Cellpose，无网环境卡死；Xenium_benchmarking <code>__init__.py</code> 语法非法）。</li>
+<li><strong>开箱即坏的依赖冲突</strong>（ImagePseudo <code>scipy.misc</code> vs <code>scipy==1.12.0</code> 实锤；torch1.6/CUDA10.2 老栈）。</li>
+<li><strong>编排层复制粘贴 bug</strong>（ST_Comparison 4 处语法/复制粘贴错误＝未运行过的论文附件；SpatialBenchmarking 路径漏"/"）。</li>
+</ol>
+<h3 id="43-superpowers-solid">4.3 superpowers / SOLID 式成分：<strong>结论=普遍缺失，但亮点可数</strong><a class="headerlink" href="#43-superpowers-solid" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有：snp2cell 的 seed 三表+置换检验+CI 回归；sharp 的配置-代码-容器-校验四分离；ist_benchmarking 的幂等检查点+常量中心；QuKunLab 的统一 CLI 契约+注册表分派；TRM 的产数/出图双层；tnbc 的 md 手册四段式验收（图号→脚本→步骤→预期输出）+<code>.winner</code> 终版命名。</li>
+<li><strong>没有</strong>任何一仓具备完整的"计划→实现→验证"工作流痕迹（superpowers 式）；SOLID 长期实践者仅 snp2cell/sharp 两例。</li>
+<li><strong>这正是二期自研标准的固化清单</strong>（见 §8）：文献界没给的工程外壳，用我们已验证的 zoro 纪律 + 登记册 46 卡补齐。</li>
+</ul>
+<h2 id="5-p0-p8">5. 分类工具对比（P0-P8 主推与备选）<a class="headerlink" href="#5-p0-p8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>主推参考</th>
+<th>备选/对照</th>
+<th>一期证据要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 基准质控</td>
+<td>ist_benchmarking（装载层最纯）+ QuKunLab（CLI 契约）</td>
+<td>SpatialQM（指标定义层）、Moldia/Xenium_benchmarking（任务号 notebook+xb 包）</td>
+<td>平台差异止步装载层；单指标单函数；manifest 快照</td>
+</tr>
+<tr>
+<td>P1 分割</td>
+<td><strong>hover_net（工业级蓝本）</strong></td>
+<td>mushroom（3D 配准架构最佳）、iss_patcher（补基因小工具）</td>
+<td>分割加载严禁 import 副作用（PATTERN-013）</td>
+</tr>
+<tr>
+<td>P2 注释图谱</td>
+<td><strong>crohns 三段式</strong>（celltypist+CellCharter Xenium 5K 链）</td>
+<td>crc-atlas（Nextflow 百万级）、spatialecotyper（NMF 生态型 R 包）</td>
+<td>注释列契约直接模板</td>
+</tr>
+<tr>
+<td>P3 空间域</td>
+<td>CellCharter 系契约（crohns/p53 实例）+ SPACE（最小 GAE 包）</td>
+<td>SpatialEcoTyper、CoCo-ST</td>
+<td><code>obs 标签+邻接矩阵</code>契约定型</td>
+</tr>
+<tr>
+<td>P4 通讯</td>
+<td>（生态工具 CellChat/LIANA，无文献专仓）</td>
+<td>COPD 仓 LocalMoran.R 小工具</td>
+<td><strong>缺位即机会</strong></td>
+</tr>
+<tr>
+<td>P5 亚细胞</td>
+<td>drug2cell（scanpy 挂件范本）</td>
+<td>snp2cell（GRN 传播，工程标杆）</td>
+<td>uns 存回约定可吸收</td>
+</tr>
+<tr>
+<td>P6 配准/3D</td>
+<td>janesick 官方配准链（凸包过滤+KDTree 插值）</td>
+<td>mushroom BigWarp、3d-analysis</td>
+<td>人工配准是断点</td>
+</tr>
+<tr>
+<td>P7 图像组学</td>
+<td>multiplex-imaging-pipeline（CLI+CWL+门控 JSON）</td>
+<td>ImagePseudo（思路可取工程粗糙）、sc_MTOP</td>
+<td>声明式门控+固定输出契约</td>
+</tr>
+<tr>
+<td>P8 应用范式</td>
+<td><strong>UCSF colitis（跨平台泛化 QC 层）+ TRM（双层结构）</strong></td>
+<td>tnbc（md 手册验收）、Kidney-Map（niche 全家桶）</td>
+<td>UC 课题第一参照=UCSF 仓</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-72-ov">6. 72 仓 × 官方线 × OV 线：互补关系<a class="headerlink" href="#6-72-ov" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>官方线</th>
+<th>OV 线</th>
+<th>72 仓</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定位</td>
+<td>可复现基线/教学</td>
+<td>规模化引擎</td>
+<td>模块级参考与场景叙事</td>
+</tr>
+<tr>
+<td>与官方结果可比</td>
+<td>★</td>
+<td>△</td>
+<td>✕</td>
+</tr>
+<tr>
+<td>百万级能力</td>
+<td>复用模式可行</td>
+<td>★ 已验证</td>
+<td>crc-atlas Nextflow 思路</td>
+</tr>
+<tr>
+<td>工程纪律</td>
+<td>中（config+metadata）</td>
+<td>★（三件套审计）</td>
+<td>低（均值 8.3/14）</td>
+</tr>
+<tr>
+<td>独有价值</td>
+<td>中文文档全</td>
+<td>GPU 固化参数/补丁</td>
+<td>ISS 链、注释链、配准链、手册范式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：三者不是竞争关系——二期整合 pipeline = 官方线的可比性 + OV 线的执行纪律 + 文献仓的模块精华。</p>
+<h2 id="7-ov">7. 避坑清单汇总（一期新增部分，沿用 ov工作流测试既有坑位）<a class="headerlink" href="#7-ov" title="Permanent link">&para;</a></h2>
+<p><strong>环境</strong>：torch1.6/CUDA10.2 与 torch==1.5.0 老栈难复现；scipy.misc 与 scipy≥1.10 冲突；annoy/javabridge Windows 编译失败（走 WSL）；cupy/cuml Windows 不可用（WSL2）；pybiomart/pybiomart 类需联网；presto 装机可能要 GITHUB_PAT。
+<strong>克隆</strong>：尾随空格目录名 Windows 无法 checkout（IN-DEPTH 案例，sparse-checkout 绕过）；submodule 仓需 <code>--recursive</code>（Xenium_benchmarking、mip）；Google Drive/Synapse/DUA 申请的数据不在仓内。
+<strong>代码</strong>：import 即实例化模型（无网卡死）；同名函数冲突（SPATCH）；"MLE 推断"名不副实（janesick 实为比例归一化）；论文附件代码可能从未运行过（ST_Comparison 4 处语法错误）。
+<strong>许可</strong>：33/72 无 LICENSE；限制性许可四例（Stanford/GRL/CC BY-NC/UTSW）——引用与搬运前逐仓核对档案卡。
+<strong>数据</strong>：<code>glob('output*')</code> 就地读目录（apoe 仓）；RData 散放 744MB；<code>rm(list=ls())</code>+相对路径（LungPCA）。</p>
+<h2 id="8-pipeline">8. 二期整合 pipeline 组装建议（草案，待用户终审）<a class="headerlink" href="#8-pipeline" title="Permanent link">&para;</a></h2>
+<p><strong>五层骨架</strong>（每层注来源）：
+1. <strong>装载层</strong>：spatialdata/ov.io 直读 + ISS 链协议（PATTERN-016/017/018）+ 官方结果复用模式（大样本分支）。
+2. <strong>质控层</strong>：统一 QC 核心 + 平台补丁层（PATTERN-047，UCSF）+ 指标定义层（SpatialQM PATTERN-001/002）。
+3. <strong>核心层</strong>：官方线主干（已跑通）+ seed 三表（PATTERN-023 crc-atlas）+ locked 冻结命名（PATTERN-028 p53）。
+4. <strong>模块层</strong>：A1 hover_net 蓝本；A2 crohns 三段式；A3 CellCharter 契约；A7 janesick 配准链；A8 mip 门控 JSON。
+5. <strong>外壳层（自研固化）</strong>：sharp 四分离配置 + TRM 产数/出图双层 + tnbc md 四段式验收 + run_metadata 三件套 + readiness→smoke→递进。</p>
+<p><strong>组装原则</strong>：每模块记录选型理由与落选者；基础流程（CPU）与规模化分支（WSL GPU）双轨；实质变更升版本。</p>
+<h2 id="9">9. 待人工核验清单<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<ol>
+<li>QuKunLab/SpatialBenchmarking 的 LIT-088 映射存疑（README 自引 Li et al. 2022 整合基准文）——核对文献 PDF。</li>
+<li>atlasxomics/ATX_epigenomics 与 LIT-039 的映射（仓内未见皮肤癌代码，疑平台管线）。</li>
+<li>natsuhiko/PHM 非空间仓（统计遗传方法）——终审去留。</li>
+<li>ding-lab/10Xmapping 归类矛盾（P6 vs 实际变异映射功能）。</li>
+<li>moldia/xenium_benchmarking 内 Banksy_py submodule 未递归克隆——如需可用 <code>git submodule update --init</code>。</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

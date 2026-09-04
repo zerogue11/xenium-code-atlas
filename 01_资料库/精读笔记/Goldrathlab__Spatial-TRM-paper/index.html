@@ -1,0 +1,1283 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="91 篇文献 72 仓公开代码的档案、精读、范式蒸馏与可迭代整合 pipeline">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>精读笔记 · Goldrathlab__Spatial-TRM-paper - xenium-code-atlas · Xenium 文献公开代码整合提炼库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#goldrathlab__spatial-trm-paper" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="xenium-code-atlas · Xenium 文献公开代码整合提炼库" class="md-header__button md-logo" aria-label="xenium-code-atlas · Xenium 文献公开代码整合提炼库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            xenium-code-atlas · Xenium 文献公开代码整合提炼库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              精读笔记 · Goldrathlab__Spatial-TRM-paper
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zerogue11/xenium-code-atlas" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zerogue11/xenium-code-atlas
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../00-%E5%BC%80%E5%A7%8B%E8%BF%99%E9%87%8C/" class="md-tabs__link">
+          
+  
+  
+  学习手册
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%88%86%E7%B1%BB%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A_%E4%B8%80%E6%9C%9F/" class="md-tabs__link">
+          
+  
+  
+  核心报告
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%80%99%E9%80%89%E6%B5%81%E7%A8%8B%E6%B1%A0/" class="md-tabs__link">
+          
+  
+  
+  工作流开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../05-%E9%A1%B9%E7%9B%AE%E6%B2%BB%E7%90%86/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="xenium-code-atlas · Xenium 文献公开代码整合提炼库" class="md-nav__button md-logo" aria-label="xenium-code-atlas · Xenium 文献公开代码整合提炼库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    xenium-code-atlas · Xenium 文献公开代码整合提炼库
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zerogue11/xenium-code-atlas" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zerogue11/xenium-code-atlas
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习手册
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习手册
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-%E5%BC%80%E5%A7%8B%E8%BF%99%E9%87%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开始这里
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-%E5%9F%BA%E7%A1%80%E8%8C%83%E5%BC%8F%E4%B8%BB%E5%B9%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础范式主干
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9D%97%E5%9C%B0%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级模块地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-%E7%B2%BE%E8%AF%BB%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    精读方法论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-%E5%AE%9E%E6%93%8D%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实操测试计划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    核心报告
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    核心报告
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%88%86%E7%B1%BB%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A_%E4%B8%80%E6%9C%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类分析报告（一期）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%88%86%E7%B1%BB%E4%BD%93%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分类体系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%94%9F%E6%80%81%E4%B8%8E%E5%AE%98%E6%96%B9%E8%B5%84%E6%BA%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生态与官方资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BF%AD%E4%BB%A3%E5%85%A5%E5%BA%93SOP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    迭代入库 SOP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工作流开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工作流开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%80%99%E9%80%89%E6%B5%81%E7%A8%8B%E6%B1%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    候选流程池
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E8%8C%83%E5%BC%8F%E7%99%BB%E8%AE%B0%E5%86%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    范式登记册
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级模块骨架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%9C%BA%E6%99%AF%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    场景路线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E6%95%B4%E5%90%88pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    整合 pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-%E9%A1%B9%E7%9B%AE%E6%B2%BB%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码结构走读
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键脚本清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术路线还原（管线主线，按 notebook 编号序）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-0-2-1014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工程审计表（7 维 0-2 分，总分 10/14）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可搬运模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑与限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一句总评
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="goldrathlab__spatial-trm-paper">精读笔记 · Goldrathlab__Spatial-TRM-paper<a class="headerlink" href="#goldrathlab__spatial-trm-paper" title="Permanent link">&para;</a></h1>
+<ul>
+<li>repo: Goldrathlab/Spatial-TRM-paper（LIT-035）</li>
+<li>来源文献: Heeg/Popescu et al. 2025 — "Tissue-resident memory CD8 T cell diversity is spatiotemporally imprinted"（Nature，TRM 时空印记）</li>
+<li>锁定SHA: ccd50e1cafb8ac86d3daa2a9b1194b81d04c0b56（2025-02-05）</li>
+<li>复核分类: 应用范式组 · S 级 · 论文级全复现仓（7 条 Xenium/MERSCOPE/VisiumHD 管线 + 逐图 notebook，devcontainer+pixi 工程标杆）</li>
+<li>精读日期: 2026-09-04（一期精读批次E）</li>
+</ul>
+<h2 id="_1">代码结构走读<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>实际读取: README 全文、pixi.toml、.devcontainer/devcontainer.json、.pre-commit-config.yaml、两条管线的 core_functions 全文、多个 notebook 首部 cell、图 notebook 抽样。</li>
+<li>顶层=「processing_pipelines（7 条产数据管线）+ Figure_1~5/Extended_Data_Figure_7（逐图复现层）+ data（download.ipynb+签名文件）」双区结构。</li>
+<li>每条管线 = 编号 notebook 链（00→14，Baysor 后处理→分割评估→QC→邻域→去坏组织→轴展开→整合→分型→空间分解→终对象）+ 私有 <code>core_functions/</code> python 包（6-7 个模块）。</li>
+<li>入口链：data/download.ipynb 下载数据 → 管线 notebook 顺序执行产出 <code>data/adata/*.h5ad</code> 冻结对象 → 图 notebook <code>sc.read_h5ad("../data/adata/timecourse.h5ad")</code> 只做浅归一化+绘图（Figure_2/2e.ipynb cell 2-3）。</li>
+<li>README 即导览：预处理参数（xenium-segmentation v0.1.2、baysor.prior_segmentation_confidence=0.95）、7 管线链接、逐图 notebook 链接表、人工注释 xlsx/csv/json 留痕说明（README Preprocessing 节）。</li>
+</ul>
+<h2 id="_2">关键脚本清单<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>一句话</th>
+<th>行数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>processing_pipelines/Xenium_human_processing/core_functions/processing_and_filtering.py</td>
+<td>QC 契约：plot_qc_feature 小提琴图 + qc_before_clustering 双阈值过滤（20-800 总转录本/8-600 核内）</td>
+<td>106</td>
+</tr>
+<tr>
+<td>processing_pipelines/Xenium_human_processing/core_functions/initial_neighborhoods.py</td>
+<td>网格 bin 化→bin 均值表达→NMF 邻域分解→top-words 条形图</td>
+<td>127</td>
+</tr>
+<tr>
+<td>processing_pipelines/Xenium_human_processing/core_functions/unrolling.py</td>
+<td>绒毛"展开"：kNN 距离去离群点→底膜点图→人工标注→轴建模</td>
+<td>398</td>
+</tr>
+<tr>
+<td>processing_pipelines/Xenium_human_processing/07_Integration.ipynb</td>
+<td>scVI 整合（n_layers=2, n_latent=30）→neighbors→leiden→MDE</td>
+<td>~200</td>
+</tr>
+<tr>
+<td>processing_pipelines/Xenium_human_processing/06_training_crypt_villi_axis_model.ipynb</td>
+<td>人工标注隐窝-绒毛轴参考点→训练轴回归模型</td>
+<td>~150</td>
+</tr>
+<tr>
+<td>Figure_4/figure_object_creation/{01_guide_assignment,02_cluster_filtering,03_celltyping}.ipynb</td>
+<td>perturb 对象构建：向导分配→过滤→分型</td>
+<td>3 篇</td>
+</tr>
+<tr>
+<td>pixi.toml + pixi.lock</td>
+<td>conda-forge/bioconda 双 channel 精确锁版（scanpy==1.9.5）+ 完整 lockfile</td>
+<td>66+</td>
+</tr>
+<tr>
+<td>.pre-commit-config.yaml</td>
+<td>black-jupyter + nbstripout（notebook 输出清洗后入库）</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notebook">技术路线还原（管线主线，按 notebook 编号序）<a class="headerlink" href="#notebook" title="Permanent link">&para;</a></h2>
+<p>[数据读取, 质控QC(分割评估+双阈值过滤), 降维(scVI latent), 聚类(leiden), 注释(人工+tokenize/classify 分型链), 空间邻域/域(网格bin+NMF 邻域), 空间统计(隐窝-绒毛轴模型+卷积热图+轴相关性), 细胞通讯(CellChat, R 侧 3g_part2/5h_part3), 多样本整合(scVI 合并 replicate), 绘图, 导出(冻结 h5ad)] —— 共 11 步。归一化（normalize_total/log1p）只在图级 notebook 做，管线内全程 raw counts；HVG 在管线中未做（grep 无 highly_variable）。MERSCOPE/VisiumHD/perturb 分支：VisiumHD 用 cellpose 核分割（00_train_cellpose.ipynb），perturb 用 PCA 代替邻域。</p>
+<h2 id="7-0-2-1014">工程审计表（7 维 0-2 分，总分 10/14）<a class="headerlink" href="#7-0-2-1014" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①职责单一/模块化</td>
+<td>2</td>
+<td>core_functions 每模块单一职责（initial_neighborhoods.py 仅邻域三函数）；notebook 单步一文件</td>
+</tr>
+<tr>
+<td>②命名规范</td>
+<td>2</td>
+<td>notebook 数字前缀严格递增（01_Postprocessing→14_Creating_Final_Object）；图号命名（2abc.ipynb）与 README 表一一对应</td>
+</tr>
+<tr>
+<td>③安全性(硬编码)</td>
+<td>0</td>
+<td>03_Processing_and_Filtering.ipynb cell2 <code>data_dir="/mnt/sata1/Analysis_Alex/human_r1"</code>；各 notebook 内嵌主机路径</td>
+</tr>
+<tr>
+<td>④最简化</td>
+<td>1</td>
+<td>core_functions 在 4 条管线近重复复制（processing_and_filtering.py 106/107/107 行三份）；unrolling.py:126 注释掉的 D:\Alex 路径残留</td>
+</tr>
+<tr>
+<td>⑤逻辑健壮性</td>
+<td>1</td>
+<td>initial_neighborhoods.py:45-48 网格越界 <code>except: None</code> 静默吞错；processing_and_filtering.py:53-56 裸 except；QC 阈值集中参数化是加分项</td>
+</tr>
+<tr>
+<td>⑥可复现性</td>
+<td>2</td>
+<td>pixi.toml:12 <code>scanpy=="1.9.5"</code> 精确 pin + pixi.lock 全锁 + devcontainer GPU runArgs + postCreateCommand pixi install；notebook 层无 seed【待补充：scVI 训练未设 seed 语句】</td>
+</tr>
+<tr>
+<td>⑦验证纪律</td>
+<td>2</td>
+<td>每管线内嵌 02_Evaluating_Baysor_Segmentation.ipynb 专评分割；人工标注 labels/ json + 注释 xlsx/csv 全留痕；pre-commit 强制格式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">可搬运模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>PATTERN-045 · 管线冻结对象+逐图 notebook 复现契约（本仓灵魂：产数层与出图层分离）</li>
+<li>PATTERN-046 · 网格 bin 化 NMF 空间邻域分解（initial_neighborhoods.py 三函数）</li>
+</ul>
+<h2 id="_4">坑与限制<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>core_functions 按管线复制而非抽公共包，改一处 QC 阈值需同步 4 处（正是我们 zoro 项目纪律要防的）。</li>
+<li>notebook 硬编码 /mnt/sata1 路径，非容器内相对路径，换机即断。</li>
+<li>裸 except 大量存在，网格 bin 空桶被静默置零（NaN 行事后过滤，逻辑成立但不可见）。</li>
+<li>scVI/leiden 未设 seed，整合聚类严格复现有随机性。</li>
+<li>人工环节（隐窝-绒毛轴标注、细胞分型）依赖 labels json + xlsx 补档，纯代码无法端到端重跑。</li>
+</ul>
+<h2 id="_5">一句总评<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>应用范式组里工程外壳最完整的"全复现仓"：pixi+devcontainer+pre-commit 三件套与"管线产数、逐图复现"的双层组织是可直接照抄的模板，但代码内核（裸 except、复制式共享层、主机路径）说明外壳与内核的成熟度是两回事。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.code.copy", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
