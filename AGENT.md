@@ -53,6 +53,13 @@
 - `scripts/`：build_master_table.py、clone_all.py、health_check.py
 - 根：AGENT.md、README.md、ITERATION_LOG.md、HANDOFF.md、mkdocs.yml、index.md、docs/
 
+## 8b. 产出清单（二期模块 1 · 决策剧场）
+
+- `docs/simulator/`：index.html（单文件 SPA 引擎）、data/（schema.json、events.json、scenarios/×5）、assets/（HCC/BRCA/CRC T1 + UC/CROHN 示意 + coords）
+- `docs/06-决策剧场指南.md` + mkdocs nav「决策剧场」tab
+- `scripts/`：precompute_simulator.py、precompute_simulator_zxm.py（本地关）、precompute_lit_redraw.py、validate_scenario.py
+- 红线：`assets/ZXM_local/` 课题数据不入公开仓；每图三行式标注（来源/性质/参考文献）；文献图一律重绘不搬运
+
 ## 9. 收尾审查清单
 
 - [ ] 主表 72 仓与实际克隆数一致，SHA 全锁定
@@ -61,3 +68,4 @@
 - [ ] 范式登记册每卡有来源仓与搬运条件
 - [ ] `git status` / 推送内容不含任何 `03_开源项目` 内容
 - [ ] GitHub 推送前 `git log --stat` 抽查确认无第三方代码
+- [ ] 决策剧场：`validate_scenario.py --strict` 全绿；assets/ZXM_local 未入 git；每张图三行式标注齐全

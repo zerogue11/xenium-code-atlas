@@ -1,0 +1,267 @@
+{
+  "id": "CRC",
+  "title": "结直肠癌 CRC · 10x V1 Addon FFPE",
+  "subtitle": "免疫微环境与迁移注释警示",
+  "mode": "T1",
+  "accent": "#63C78A",
+  "data": {
+    "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/ 直链下载）",
+    "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST",
+    "manifest": "./assets/CRC/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "第一刀切在哪：样本与 panel",
+      "brief": "CRC 空间研究两条主线：免疫微环境（本关 10x 官方 FFPE 数据，V1 panel + IO add-on）与宏/微转移（LIT-074，Cancer Cell 2026 线）。本关真实数据是 480 基因的 FFPE 人结直肠切片——免疫细胞亚型覆盖是它相对纯肿瘤 panel 的优势。",
+      "teach": {"links": [
+        {"kind": "card", "label": "LIT-072 crc-atlas · 档案卡（S 级/BSD/有精读）", "href": "01_资料库/档案卡/icbi-lab__crc-atlas.md"},
+        {"kind": "card", "label": "LIT-074 CRC 微转移 · 档案卡", "href": "01_资料库/档案卡/yliuup__CRC_micromets_ST.md"},
+        {"kind": "other", "label": "数据集页（Nat Genet 2025 配套核实记录见指南 §5）", "href": "https://www.10xgenomics.com/datasets/ffpe-human-colorectal-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard"}
+      ]},
+      "options": [
+        {
+          "label": "FFPE 结直肠切片 + V1/IO add-on panel（真实数据）",
+          "desc": "本关主线：免疫微环境教学。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "样本定型",
+          "result": "装载真实数据：{qc.standard.n_cells_in} 细胞 × 480 基因。CRC 的看点：上皮（EPCAM/CDX2+ 腺癌）、固有层免疫（T/B/浆/髓系）、基质与血管——正常黏膜与肿瘤区在同一张切片上共存，天然自带「对照区」。",
+          "consequence": "单切片教学关：以空间结构代替组间对照。",
+          "goto": "load",
+          "events": ["P-004"],
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        },
+        {
+          "label": "宏/微转移队列路线（LIT-074）",
+          "desc": "Cancer Cell 2026 线：49 肿瘤/19 患者。",
+          "result_title": "换数据集 = 换关卡",
+          "result": "教学判断：LIT-074 的原始数据 accession 未放出（档案卡登记【待补充】），但其仓内置病理注释元数据（Meta_data/）可作结论复盘素材。本关继续官方 FFPE 数据。",
+          "consequence": "参数账本记录：转移研究路线已了解。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：全量重算，还是复用官方结果？",
+      "brief": "同一道工程题第三遍。补充一个 CRC 特有的工程参照：crc-atlas（LIT-072）用 427 万细胞图谱示范了「大规模整合」该长什么样——以及它的复现陷阱（集群路径硬编码）。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §1 数据读取与装载", "href": "../01-基础范式主干/"},
+        {"kind": "audit", "label": "精读 · crc-atlas（路径硬编码案例）", "href": "01_资料库/精读笔记/icbi-lab__crc-atlas.md"}
+      ]},
+      "options": [
+        {
+          "label": "全量重算",
+          "desc": "教学主线。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "全量重算启动",
+          "result": "十万级细胞分钟级重算，参数全部可见。crc-atlas 的教训在此复用：人家的 427 万细胞管线把路径写死在 /data/scratch/marteau——复现第一步永远是改配置两处（params + 容器路径）。本关数据本地直读，无此坑。",
+          "consequence": "QC 三档 × 聚类三分辨率解锁。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        },
+        {
+          "label": "复用官方 onboard 结果",
+          "desc": "教学判断：本量级复用会锁死参数实验。",
+          "result_title": "复用官方结果",
+          "result": "可行但教学价值打折——主线仍走全量重算（HCC 关已详述取舍）。",
+          "consequence": "理解取舍，主线回到全量重算。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：三档阈值的真实后果",
+      "brief": "统一核心（PATTERN-047：50/10/1/10）为标准档。CRC FFPE 的 RNA 质量分布有自己的性格——看真实数字再选。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
+      ]},
+      "options": [
+        {
+          "label": "宽松档（min_counts 25 / min_genes 5）",
+          "desc": "留更多细胞换统计功效。",
+          "result_title": "宽松过滤执行",
+          "result": "真实后果：{qc.loose.n_cells_in} → 存活 {qc.loose.n_cells_out}（基因 {qc.loose.n_genes_out}）。",
+          "consequence": "QC 档位锁定 loose。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        },
+        {
+          "label": "标准档（PATTERN-047 统一核心）",
+          "desc": "库内默认口径。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "统一核心执行",
+          "result": "真实后果：{qc.standard.n_cells_in} → 存活 {qc.standard.n_cells_out}（基因 {qc.standard.n_genes_out}）。后续全部下游基于本档。",
+          "consequence": "QC 档位锁定 standard（PATTERN-047）。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        },
+        {
+          "label": "严格档（min_counts 100 / min_genes 20）",
+          "desc": "宁缺毋滥。",
+          "result_title": "严格过滤执行",
+          "result": "真实后果：{qc.strict.n_cells_in} → 存活 {qc.strict.n_cells_out}（基因 {qc.strict.n_genes_out}）。免疫细胞计数偏低——严格档优先牺牲它们，CRC 免疫微环境研究慎用。",
+          "consequence": "QC 档位锁定 strict。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化 + HVG + PCA：这里不是决策点",
+      "brief": "固定默认：normalize_total(1e4) → log1p → 全基因 PCA(20) → neighbors(15)。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "采用库内固定默认，继续", "desc": "唯一选项。",
+         "result_title": "固定默认执行",
+         "result": "归一化→log1p→PCA→neighbors 完成。",
+         "goto": "cluster", "media": [{"type": "svg3", "id": "norm_pipeline"}]}
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：多候选并行，你选主线",
+      "brief": "leiden 0.4 / 0.6 / 1.0 三候选并行（seed 冻结）。CRC 看点：上皮/免疫/基质三大区室是否分离，免疫亚群（T/B/浆/髓系）是否成形。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §4 聚类", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "res=0.4 · 宽聚类", "desc": "区室级。",
+         "result_title": "宽聚类主线",
+         "result": "实际簇数见图题。宽簇下四种免疫细胞可能合并——CRC 免疫研究通常需更细。",
+         "consequence": "res=0.4 冻结为候选。",
+         "goto": "annotate",
+         "media": [{"type": "asset", "asset": "umap_res04.png"}]},
+        {"label": "res=0.6 · 中间档", "desc": "推荐主线。",
+         "tag": "推荐主线", "tag_type": "good",
+         "result_title": "中间档主线",
+         "result": "实际簇数见图题。中间档通常能分离主要区室 + 主要免疫群。",
+         "consequence": "res=0.6 冻结为主线候选。",
+         "goto": "annotate",
+         "media": [{"type": "asset", "asset": "umap_res06.png"}]},
+        {"label": "res=1.0 · 细聚类", "desc": "亚型素材。",
+         "result_title": "细聚类主线",
+         "result": "实际簇数见图题。细簇适合亚型发现或三段式注释的第一段。",
+         "consequence": "res=1.0 冻结为候选。",
+         "goto": "annotate",
+         "media": [{"type": "asset", "asset": "umap_res10.png"}]}
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：三条路线 + 一条 CRC 特有警示",
+      "brief": "marker 人工 / celltypist 迁移 / 去卷积三选一。CRC 关的特别教学：crc-atlas 精读发现的「换硬件重跑标签可能变」——迁移注释的结果是参数化产物，不是真理。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-024 · scVI→scANVI 种子注释迁移链", "href": "02_工作流开发/范式登记册/PATTERN-024_scVI_scANVI种子注释迁移链.md"}
+      ]},
+      "options": [
+        {
+          "label": "marker 人工注释（本关真实计算）",
+          "desc": "7 组 CRC canonical marker（按 panel 实际清单核对）。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "marker 注释完成",
+          "result": "本关真实执行：Tumor_Epithelial（EPCAM/CDX2）、T/B/浆/髓系、成纤维（ACTA2/PDGFRA/RGS5）、内皮（PECAM1/CD34）。空间图看点：腺体结构（上皮包绕腔隙）与固有层免疫浸润的分层排布。",
+          "consequence": "注释列生成 → 下游可用。",
+          "goto": "downstream",
+          "media": [
+            {"type": "asset", "asset": "anno_marker_spatial.png"},
+            {"type": "asset", "asset": "anno_marker_umap.png"}
+          ]
+        },
+        {
+          "label": "celltypist / scVI→scANVI 迁移注释",
+          "desc": "crc-atlas 的工业级路线（427 万细胞图谱同款思想）。",
+          "result_title": "迁移注释执行",
+          "result": "迁移路线三前提（参考覆盖/基因交集/可复现性）+ crc-atlas 的硬件敏感教训见右侧坑事件。本关按可用性真实执行或诚实降级。",
+          "goto": "downstream",
+          "events": ["P-005", "P-006"],
+          "media": [
+            {"type": "asset", "asset": "anno_celltypist_spatial.png",
+             "fallback": "本关预计算时 celltypist 模型不可用（或基因交集不足）——该路线以教学说明呈现。crc-atlas 的工业级先例：种子注释（Get_seeds）→ scANVI 标签迁移（PATTERN-024）。"}
+          ],
+          "unlock": [{"kind": "pattern", "label": "PATTERN-024 · scVI→scANVI 迁移链", "href": "02_工作流开发/范式登记册/PATTERN-024_scVI_scANVI种子注释迁移链.md"}]
+        },
+        {
+          "label": "去卷积",
+          "desc": "bin/spot 数据必修课——Xenium 单细胞下通常不需要。",
+          "result_title": "去卷积：诚实地说不适用",
+          "result": "适用边界教学（HCC 关已详述）。注意 LIT-026 的 Visium HD CRC 数据才是它的主场。以示意呈现（T3）。",
+          "consequence": "注释仍需可执行路线 → 回主线。",
+          "goto": "annotate",
+          "media": [{"type": "svg3", "id": "deconv"}]
+        }
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：三个问题，三条路",
+      "brief": "A：区室/免疫组成比例；B：上皮-免疫-基质的 niche 空间组织（三级淋巴结构样聚集是 CRC 经典空间主题）；C：CDX2/EPCAM 空间定位 + T2 交互散点。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析 + 高级模块 A3/A6", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-049 · 邻居计数 KMeans niche", "href": "02_工作流开发/范式登记册/PATTERN-049_邻居计数矩阵KMeans生态位发现链.md"}
+      ]},
+      "options": [
+        {"label": "A · 细胞组成比例", "desc": "注释列汇总。",
+         "result_title": "组成完成",
+         "result": "真实重算比例图。单切片描述性结论，不做显著性话术。",
+         "consequence": "组成结论入结算。",
+         "goto": "settle",
+         "media": [{"type": "asset", "asset": "ds_a_proportions.png"}]},
+        {"label": "B · 空间域 niche 发现", "desc": "kNN 构成 + KMeans（教学实现）。",
+         "result_title": "niche 发现完成",
+         "result": "真实重算：上皮岛 niche、免疫富集 niche、基质 niche 的空间嵌套——「免疫聚集在腺体旁边还是基质深处」正是 CRC 空间研究的经典问题。",
+         "consequence": "niche 标签入 T2 交互。",
+         "goto": "settle",
+         "media": [{"type": "asset", "asset": "ds_b_niche_spatial.png"}]},
+        {"label": "C · 单基因空间图 + T2 交互散点", "desc": "CDX2/EPCAM 空间定位 + 交互散点。",
+         "result_title": "单基因空间图完成",
+         "result": "真实重算图 + T2 交互散点（3 万细胞抽样）：缩放、平移、多模式上色。",
+         "consequence": "T2 交互资产已验证。",
+         "goto": "settle",
+         "media": [
+           {"type": "asset", "asset": "ds_c_gene_CDX2.png", "fallback": "CDX2 不在本 panel 交集内。"},
+           {"type": "asset", "asset": "ds_c_gene_EPCAM.png", "fallback": "EPCAM 不在本 panel 交集内。"},
+           {"type": "coords", "src": "coords/coords_standard.json.gz"}
+         ]}
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 文献镜像复盘",
+      "brief": "你的路线对照本库 CRC 两仓（LIT-072 图谱 / LIT-074 转移）沉淀。",
+      "mirrors": [
+        {"step": 0, "lit": "10x 官方 FFPE CRC（IO add-on panel）；LIT-074 转移队列 accession 待放出", "note": "数据可得性决定场景模式"},
+        {"step": 1, "lit": "crc-atlas：427 万细胞 Nextflow 管线（路径硬编码教训）", "note": "本关本地直读无此坑"},
+        {"step": 2, "lit": "PATTERN-047 统一核心", "note": "免疫计数偏低 → 严格档慎用"},
+        {"step": 3, "lit": "固定默认", "note": "非决策点"},
+        {"step": 4, "lit": "多候选并行纪律", "note": "终审冻结"},
+        {"step": 5, "lit": "crc-atlas 种子注释→scANVI 迁移（PATTERN-024）；标签非硬件无关（P-006）", "note": "引用标签先问怎么来的"},
+        {"step": 6, "lit": "CRC 空间经典问题：免疫空间组织与 TLS 样聚集（LIT-072/074 叙事）", "note": "描述性结论"}
+      ],
+      "verdict": "本关 T1 真实重算全链完成 + CRC 两条文献线（图谱/转移）入账。数据可得性三级降级链的执行记录见指南 §5——Nat Genet 2025 配套核实为 Visium HD 主线后，采用 10x 官方 CRC 数据集保住了 T1。降级不是失败，是预案的胜利。"
+    }
+  }
+}

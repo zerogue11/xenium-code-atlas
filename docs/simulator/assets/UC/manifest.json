@@ -1,0 +1,24 @@
+{
+ "dataset": "UC",
+ "generated": "2026-09-05",
+ "seed": 0,
+ "source": "文献结论模式：UCSF DSCOLAB 结肠炎 Xenium 研究（LIT-053；bioRxiv 2024.11.11.623014，已发表 JCI 2026）",
+ "nature": "T1-lite：示意（文献定性结论可视化, 未使用论文数值）",
+ "ref": "Mennillo E, et al. doi:10.1101/2024.11.11.623014 → JCI 2026（jci.org/articles/view/202488）；方法参照本库 LIT-053 档案卡与 PATTERN-047",
+ "doc": "01_资料库/精读笔记/UCSF-DSCOLAB__spatial_transcriptomics_colitis_analysis_2024.md",
+ "assets": [
+  {
+   "file": "uc_route_map.png",
+   "kind": "T3",
+   "node": "6-downstream",
+   "title": "文献路线与结论总览（示意）",
+   "source": "LIT-053 UCSF-DSCOLAB（文献还原）",
+   "nature": "示意（文献定性结论可视化, 未使用论文数值）",
+   "ref": "Mennillo et al. doi:10.1101/2024.11.11.623014 → JCI 2026"
+  }
+ ],
+ "flags": {
+  "mode": "T1-lite",
+  "t2_upgrade": "数据放出后接入 precompute_simulator.py 同构管线"
+ }
+}

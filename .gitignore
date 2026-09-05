@@ -22,3 +22,6 @@ docs/02_工作流开发/
 # 会话与系统
 .zcode/
 Thumbs.db
+
+# 决策剧场 ZXM 本地专属关（课题数据资产，绝不入公开仓）
+docs/simulator/assets/ZXM_local/

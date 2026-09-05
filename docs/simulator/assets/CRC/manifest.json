@@ -1,0 +1,183 @@
+{
+ "dataset": "CRC",
+ "generated": "2026-09-05",
+ "seed": 0,
+ "doc": "01_资料库/精读笔记/icbi-lab__crc-atlas.md",
+ "assets": [
+  {
+   "file": "qc_tiers.png",
+   "kind": "T1",
+   "node": "2-qc",
+   "title": "QC 三档后果对比（细胞/基因存活数）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（预计算管线, seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "umap_res04.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=0.4（standard QC 档）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "umap_res06.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=0.6（standard QC 档）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "umap_res10.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=1.0（standard QC 档）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "anno_marker_spatial.png",
+   "kind": "T1",
+   "node": "5-annotate",
+   "title": "注释路线（marker）· 空间分布",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（score_genes argmax, seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "anno_marker_umap.png",
+   "kind": "T1",
+   "node": "5-annotate",
+   "title": "注释路线（marker）· UMAP",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "ds_a_proportions.png",
+   "kind": "T1",
+   "node": "6-downstream-a",
+   "title": "下游 A · 细胞类型比例",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（注释列汇总）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "ds_b_niche_spatial.png",
+   "kind": "T1",
+   "node": "6-downstream-b",
+   "title": "下游 B · 空间域 niche（PATTERN-049 教学实现）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算（KMeans seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "ds_c_gene_CDX2.png",
+   "kind": "T1",
+   "node": "6-downstream-c",
+   "title": "下游 C · 单基因空间图（CDX2）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "ds_c_gene_EPCAM.png",
+   "kind": "T1",
+   "node": "6-downstream-c",
+   "title": "下游 C · 单基因空间图（EPCAM）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  },
+  {
+   "file": "coords/coords_standard.json.gz",
+   "kind": "T2",
+   "node": "6-downstream",
+   "title": "T2 交互散点（空间/UMAP/表达切换）",
+   "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+   "nature": "真实重算抽样 30000 细胞（seed=0）",
+   "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST"
+  }
+ ],
+ "source": "10x Genomics 公开数据集 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（V1 panel + Immuno-Oncology add-on，共 480 基因，cf.10xgenomics.com/samples/xenium/2.0.0/）",
+ "nature": "T1 真实数据预计算",
+ "ref": "数据：https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE/（10x 官方数据集页）；结论参照本库 LIT-072 icbi-lab/crc-atlas 与 LIT-074 yliuup/CRC_micromets_ST",
+ "flags": {
+  "marker_sets": {
+   "Tumor_Epithelial": [
+    "EPCAM",
+    "CDX2"
+   ],
+   "T_cell": [
+    "CD3D",
+    "CD8A",
+    "CD4"
+   ],
+   "B_cell": [
+    "CD79A",
+    "MS4A1"
+   ],
+   "Plasma": [
+    "MZB1",
+    "XBP1"
+   ],
+   "Myeloid": [
+    "CD68",
+    "CD163"
+   ],
+   "Fibroblast": [
+    "ACTA2",
+    "PDGFRA",
+    "RGS5"
+   ],
+   "Endothelial": [
+    "PECAM1",
+    "CD34"
+   ]
+  },
+  "celltypist": "T3"
+ },
+ "qc_stats": {
+  "loose": {
+   "tier": "loose",
+   "n_cells_in": 388175,
+   "n_genes_in": 480,
+   "n_cells_out": 356236,
+   "n_genes_out": 480,
+   "min_counts": 25,
+   "min_genes": 5,
+   "gene_min_counts": 1,
+   "gene_min_cells": 5
+  },
+  "standard": {
+   "tier": "standard",
+   "n_cells_in": 388175,
+   "n_genes_in": 480,
+   "n_cells_out": 283028,
+   "n_genes_out": 480,
+   "min_counts": 50,
+   "min_genes": 10,
+   "gene_min_counts": 1,
+   "gene_min_cells": 10
+  },
+  "strict": {
+   "tier": "strict",
+   "n_cells_in": 388175,
+   "n_genes_in": 480,
+   "n_cells_out": 140845,
+   "n_genes_out": 480,
+   "min_counts": 100,
+   "min_genes": 20,
+   "gene_min_counts": 1,
+   "gene_min_cells": 20
+  }
+ },
+ "metrics_note": {
+  "Human_Colorectal_Cancer_With_Addon": "nan"
+ }
+}

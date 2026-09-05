@@ -38,3 +38,12 @@
 
 - 全程【待补充】优于编造；每条修改可追溯（谁/何时/为什么）；
 - 上游种子库（xenium-knowledge-tree）永远只读。
+
+## 互动模块（决策剧场 / 模拟器类新增）
+
+1. 新场景剧本：在 `docs/simulator/data/scenarios/` 落 JSON（过 `data/schema.json`），引用的资产先跑预计算再登记 manifest；
+2. 校验守门：`C:/xenium_envs/xenium-cn-py311/Scripts/python.exe scripts/validate_scenario.py --strict` 全绿才算收尾；
+3. 每张图必须带三行式标注（来源/性质/参考文献），登记进 `docs/simulator/assets/<场景>/manifest.json`；文献图一律重绘不搬运；
+4. 诚实性分级：T1 真实重算 / T2 文献结论参数化重绘（须有可溯源数值）/ T3 示意（右下角角标）；论文数值无可溯源来源时禁止伪造 T2，降级 T3 并在剧本内声明；
+5. 课题数据类资产一律放 `docs/simulator/assets/ZXM_local/`（.gitignore 排除），公开站入口只显示可用性提示。
+

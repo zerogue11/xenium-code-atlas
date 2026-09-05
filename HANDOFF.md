@@ -15,6 +15,7 @@
 | 中文学习手册站 | `docs/` + `mkdocs.yml` → GitHub Pages | ✅ 已发布 |
 | GitHub 公开仓 | `zerogue11/xenium-code-atlas` | ✅ main + gh-pages |
 | 迭代机制 | `01_资料库/迭代入库SOP.md`、根 `ITERATION_LOG.md` | ✅ |
+| 决策剧场模拟器（二期模块 1） | `docs/simulator/`、`docs/06-决策剧场指南.md`、`scripts/precompute_*.py`、`scripts/validate_scenario.py` | ✅ 五场景+ZXM 本地关；T1 预计算（HCC/BRCA/CRC）+ T1-lite（UC/CROHN）；ZXM_local 不入 git |
 | 二/三期路线 | `docs/04-实操测试计划.md`、整合 pipeline 占位 V0 | 待执行 |
 
 ## 怎么复跑（自助）
@@ -38,6 +39,12 @@ C:/xenium_envs/xenium-cn-py311/Scripts/python.exe scripts/health_check.py
 cmd /c scripts\setup_docs_links.cmd
 uvx --from mkdocs-material mkdocs serve        # 本地预览
 uvx --from mkdocs-material mkdocs gh-deploy    # 发布
+
+# 5. 决策剧场资产与校验（详情见 docs/06-决策剧场指南.md §七）
+#  预计算: python scripts/precompute_simulator.py --dataset hcc|brca|crc
+#          python scripts/precompute_lit_redraw.py        (UC/CROHN 示意)
+#          python scripts/precompute_simulator_zxm.py     (本地关, 课题数据)
+#  校验:   python scripts/validate_scenario.py --strict
 ```
 
 ## 关键决策记录（为什么是这样）
