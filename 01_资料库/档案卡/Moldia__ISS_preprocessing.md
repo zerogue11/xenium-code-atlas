@@ -16,7 +16,7 @@
 | 复现难度 | 中 — 有安装脚本与 yml，但依赖版本停在 2021 年代（ipykernel 5.3.4、ipython 7.18.1、jupyterlab 3.2.9），新机重建环境可能踩旧包兼容坑 |
 | 与范式的关系 | LIT-017 ISS 图像链前端：显微镜私有格式→OME-TIFF→ASHLAR 拼接→tile 的封装方式可借鉴到任何 cycle 图像配准场景；候选池 |
 | 坑提示 | ① 面向 Leica/Zeiss 显微镜私有格式的硬件语境强，无对应机型时多数函数用不上；② 无 LICENSE；③ pip 源码包（setup.py+dist）与 egg-info/__pycache__ 杂物入库 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `b44f242a84` |
+| 锁定 SHA | `b44f242a8425a78eb48f98642b8cc216ee716bf4`（主表锁定值；建卡时实测前缀 `b44f242a84` 一致） |
 
 ## 结构速览
 

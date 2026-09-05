@@ -16,7 +16,7 @@
 | 复现难度 | 中-高 — 锁 torch==1.6.0 + CUDA 10.2；WSI 推理要求 ≥100GB SSD 缓存目录；checkpoint 与 model_mode 必须严格匹配（Kumar/CPM17/CoNSeP=original，PanNuke/MoNuSAC=fast） |
 | 与范式的关系 | 核分割标杆基线：LIT-081 的分割即由它承担；预训练权重可直接用于 HE/IF 预处理，为形态学特征与空间映射供核级输入；候选池（P1 骨干工具） |
 | 坑提示 | ① torch 1.6/CUDA 10.2 老栈在新显卡上装不上风险高【待验证】；② 全部预训练权重托管在 Google Drive，国内下载需代理；③ PanNuke 权重的 NC 许可对商业/发表用途有约束；④ type_info.json 需按数据集改 overlay 颜色映射 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `67e2ce5e3f` |
+| 锁定 SHA | `67e2ce5e3f1a64a2ece77ad1c24233653a9e0901`（主表锁定值；建卡时实测前缀 `67e2ce5e3f` 一致） |
 
 ## 结构速览
 

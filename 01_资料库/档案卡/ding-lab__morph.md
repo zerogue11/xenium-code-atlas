@@ -16,7 +16,7 @@
 | 复现难度 | 低-中 — 纯 Python 小模块、无重依赖、输入为标准 transcripts.csv.gz/cells.csv.gz；但除 README 片段外无 notebook 教程【待补充】 |
 | 与范式的关系 | 肿瘤/基质自动分区+距离层特征，可接在 zoro-spatial 注释之后做 TME 分区、肿瘤-基质界面分析；与 mushroom 同作者（LIT-019 栈）；观察池→低成本可试 |
 | 坑提示 | ① pip 包名 Morph（import Morph）与仓库名 morph 大小写不一致；② 功能描述主要来自 README，模块内部（backbone/features/operators）未逐行核验；③ 无 conda 锁环境文件 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `ba1db03976` |
+| 锁定 SHA | `ba1db03976a72f0da0558e87207054ef9404309b`（主表锁定值；建卡时实测前缀 `ba1db03976` 一致） |
 
 ## 结构速览
 

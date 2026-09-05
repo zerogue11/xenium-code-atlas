@@ -16,7 +16,7 @@
 | 复现难度 | 高 — 原始数据在 GEO（GSE299786/GSE299886/GSE300007）需自行下载，脚本内数据路径为占位符需手改，且无 renv/yml 锁版本 |
 | 与范式的关系 | P0 平台对比范式的实测样例：LoadNanostring 读 CosMx、nCount>30 过滤、"面积<全体几何均值×5"去大细胞等 QC 细节可直接借鉴；候选池 |
 | 坑提示 | ① 脚本硬编码占位路径（如 `data.dir = "/path to Cosmx data/"`）需逐个替换；② 无环境/版本锁，依赖全靠脚本内 library() 推断（dplyr/ggplot2/patchwork/Seurat）；③ 图脚本间无统一 pipeline 入口，按图号手工顺序执行 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `e3a3256875` |
+| 锁定 SHA | `e3a3256875cbf210b2090051de73d3bcbc730723`（主表锁定值；建卡时实测前缀 `e3a3256875` 一致） |
 
 ## 结构速览
 

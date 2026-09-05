@@ -16,7 +16,7 @@
 | 复现难度 | 中 — 安装链含 GitHub 专有包（Voyager/SpatialFeatureExperiment/RCTD/InSituType，后者需 gcc+gfortran 本地编译），README 已给 Mac Makevars 配置 |
 | 与范式的关系 | LIT-028 的指标定义库：getGlobalFDR（阴性对照定特异度）、getMECR、getMorans 等可直接搬进自建 Xenium QC 段，是 P0 质控骨架的现成积木；候选池 |
 | 坑提示 | ① Merscope 平台支持 README 自述"under development"；② 实测 DESCRIPTION 的 Imports/Suggests 为空，依赖清单与 README 不一致，以 README 为准；③ InSituType 编译失败是常见卡点 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `36e1a59d4c` |
+| 锁定 SHA | `36e1a59d4ca3f8f360a1d826f5e999d9f40c6760`（主表锁定值；建卡时实测前缀 `36e1a59d4c` 一致） |
 
 ## 结构速览
 

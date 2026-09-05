@@ -16,7 +16,7 @@
 | 复现难度 | 高 — 硬依赖 starfish/slicedimage 全家桶（starfish 近年基本停止维护【待核】，版本兼容极敏感），且需 ISS 循环图像原始数据 |
 | 与范式的关系 | LIT-017 解码段：SpaceTx Codebook 像素解码 + 精确匹配 spot trace 的完整链路实例，对理解 ISS/CartaNA 类数据解码原理有价值；候选池（依赖风险高，借鉴思路优先于跑通） |
 | 坑提示 | ① decoding.py 顶层直接 import starfish 内部模块（starfish.core.spots.DecodeSpots.trace_builders.build_spot_traces_exact_match、starfish.core.expression_matrix 等），starfish 版本一变即崩；② 与 starfish 的版本组合以 decoding.yml 为准【待补充细读】；③ 无 LICENSE |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `10b318e1d8` |
+| 锁定 SHA | `10b318e1d84c2f8210860aa313c9d675167ccf7c`（主表锁定值；建卡时实测前缀 `10b318e1d8` 一致） |
 
 ## 结构速览
 

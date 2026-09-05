@@ -16,7 +16,7 @@
 | 复现难度 | 中 — 有 yml 与成套教程，但 cellpose 模型在模块导入时即实例化（需联网下权重），新机 cellpose 版本兼容【待补充】 |
 | 与范式的关系 | "分割→表达矩阵→scanpy/squidpy 空间对象"的衔接范式与 zoro-spatial 下游完全同构，annotated_objects 的注释回写思路可借鉴；候选池 |
 | 坑提示 | ① segmentation.py 顶层执行 `models.Cellpose(gpu=False, model_type='nuclei')`——import 即加载模型，无网/CI 环境直接卡死，且默认走 CPU；② 体积 40MB 主要为教程 html 与打包杂物；③ 教程基于 ISS 数据，平台参数不适用于 Xenium |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `3c779c6bc1` |
+| 锁定 SHA | `3c779c6bc1673c73a21a3dfd30212e80945c084a`（主表锁定值；建卡时实测前缀 `3c779c6bc1` 一致） |
 
 ## 结构速览
 

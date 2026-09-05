@@ -16,7 +16,7 @@
 | 复现难度 | 高 — 3D 多模态配准含 BigWarp(Fiji) 与 napari 人工交互标定点环节，数据体量大；README 自述 under active development、API subject to change |
 | 与范式的关系 | "连续切片 ST→3D 重构→区域分割→DEG"是本项目 HE→表达预测支线之外的 3D 高阶范式参考；H&E 蛋白预测（he_channel_prediction.ipynb）与 zoro-spatial 的形态-表达对齐直接相关；候选池 |
 | 坑提示 | ① 953MB：notebooks/ 下混有 examples_old、old、manuscript（submission_v1/v2）多套历史版本，引用前先认版本（LIT-071 材料在 submission_v2，LIT-019 分析在 subclone-resubmission 分支）；② API 不稳定，教程即文档；③ 无 environment.yml，靠 conda+pip 命令行建环境 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `dc3598950f` |
+| 锁定 SHA | `dc3598950fd233f2255a8e53006c915cc425a4a7`（主表锁定值；建卡时实测前缀 `dc3598950f` 一致） |
 
 ## 结构速览
 

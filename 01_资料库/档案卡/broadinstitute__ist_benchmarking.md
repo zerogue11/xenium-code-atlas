@@ -16,7 +16,7 @@
 | 复现难度 | 高 — 分析对象是作者自产的多平台原始数据（需按 00_copy_data.ipynb 灌入自有目录结构），notebook 间强顺序依赖 |
 | 与范式的关系 | P0 平台基准范式：面板重现性、FDR、敏感性/特异性、分割评估的整套指标设计可移植为自建 FFPE 多平台对比的检查单；st_utils 的 geopandas/gis 多边形路线可拆用；候选池 |
 | 坑提示 | ① 无 LICENSE；② st_utils.py 与 depreciated_st_utils.py 并存，引用认准 st_utils.py；③ notebook 内分析绑定作者的 constants.py 平台/面板定义，换数据需逐项改；④ 仓库混有 .DS_Store（macOS 开发痕迹） |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `abb4acc39c` |
+| 锁定 SHA | `abb4acc39c68b16fdaf6909f1639947a55173182`（主表锁定值；建卡时实测前缀 `abb4acc39c` 一致） |
 
 ## 结构速览
 

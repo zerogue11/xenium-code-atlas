@@ -16,7 +16,7 @@
 | 复现难度 | 中-高 — 环境与函数封装完整，但数据须从 10x 官网/三个 Zenodo DOI 自行下载（repo 的 data/ 只是挂载位），notebook 按任务分组需按序执行 |
 | 与范式的关系 | 本项目最高优先 P0 仓之一：预处理参数扫描、分割工具对比、SVF/空间域工具选型结论与 end-to-end pipeline 骨架可直接映射进 zoro-spatial V1/5k 工作流做对照；候选池（核心） |
 | 坑提示 | ① Banksy_py 为 git submodule（.gitmodules），普通 clone 拿不到，需 --recursive；② 1GB 体积来自 data/（formatted_for_R、unprocessed_adata 等），拷贝/备份耗时；③ .ipynb_checkpoints、dist、多套 egg-info 入库，属"论文伴随码"原生杂乱 |
-| 锁定 SHA | 【待补充：主表"锁定SHA"列空】；本地克隆 HEAD 实测 `50249f7d03` |
+| 锁定 SHA | `50249f7d03d9cfc1453c4b81ef3b1053c4d23052`（主表锁定值；建卡时实测前缀 `50249f7d03` 一致） |
 
 ## 结构速览
 
