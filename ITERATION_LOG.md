@@ -11,6 +11,7 @@
 - **CRC 数据核实（计划期→执行期）**：Nat Genet 2025（10.1038/s41588-025-02193-3）配套主线为 Visium HD（=库内 LIT-026），无专设 Xenium 5K CRC 集 → 采用 10x 官方 Xenium_V1_Human_Colorectal_Cancer_Addon_FFPE（cf.10xgenomics.com 直链）保住 T1；三级降级链记录于指南 §5。
 - **ZXM 本地专属关**：预计算产物入 `docs/simulator/assets/ZXM_local/`（.gitignore 排除，课题数据不出本机），公开站入口探测 404 即显示「本地版可用」；教学主线=大样本 onboard 复用（官方线 large_sample_reuse 同构）。
 - **预计算工程**：`scripts/precompute_simulator.py`（--dataset/--step 参数化，tier 缓存，QC 标准档=PATTERN-047 统一核心 50/10/1/10）、`precompute_simulator_zxm.py`（onboard 复用+3 万细胞抽样）、`precompute_lit_redraw.py`（T1-lite 示意）；中间缓存 `F:\xenium数据\ov工作流测试\simulator_precompute\`（不入 git）；scanpy filter_cells 一次只收一个阈值参数、sys.unraisablehook 静音第三方析构刷屏两坑已记入实现。
+- **红线事故与修复（同日）**：首次 `mkdocs gh-deploy` 把 gitignore 掉的 ZXM_local 资产带上了 gh-pages（gh-deploy 从磁盘构建，gitignore 管不住部署）→ 三层修复：mkdocs.yml `exclude_docs` 构建层排除 + `scripts/serve_simulator_local.py`（本地预览才注入 ZXM 资产）+ 孤儿提交强推 gh-pages 清除历史泄露；线上复验 ZXM_local=404。
 - **待办池新增**：见底部。
 
 ## 2026-09-04 · 一期建成（V0）
