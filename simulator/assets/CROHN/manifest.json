@@ -1,0 +1,23 @@
+{
+ "dataset": "CROHN",
+ "generated": "2026-09-05",
+ "seed": 0,
+ "source": "文献结论模式：Teichlab crohns-fibroblast-atlas Xenium 5K 链镜像（LIT-066，MIT，有精读）",
+ "nature": "T1-lite：示意（文献定性结论可视化, 未使用论文数值）",
+ "ref": "Teichlab crohns-fibroblast-atlas（github.com/Teichlab/crohns-fibroblast-atlas）；本库精读 1a→8 逐 notebook 走读",
+ "doc": "01_资料库/精读笔记/Teichlab__crohns-fibroblast-atlas.md",
+ "assets": [
+  {
+   "file": "crohn_route_map.png",
+   "kind": "T3",
+   "node": "6-downstream",
+   "title": "文献路线与结论总览（示意）",
+   "source": "LIT-066 Teichlab crohns-fibroblast-atlas（文献还原）",
+   "nature": "示意（文献定性结论可视化, 未使用论文数值）",
+   "ref": "Teichlab crohns-fibroblast-atlas（MIT）"
+  }
+ ],
+ "flags": {
+  "mode": "T1-lite"
+ }
+}

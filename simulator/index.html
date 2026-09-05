@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xenium 决策剧场 · 模拟器</title>
+<style>
+/* ============ Xenium 决策剧场 · 液态玻璃设计系统（仅模拟器使用） ============ */
+:root{
+  --ink:#EAF0FF; --ink-dim:#A8B4D4; --ink-faint:#6E7BA0;
+  --glass:rgba(255,255,255,.07); --glass-hi:rgba(255,255,255,.14);
+  --line:rgba(255,255,255,.14); --line-hi:rgba(255,255,255,.28);
+  --accent:#5B8DEF; --accent-soft:rgba(91,141,239,.18);
+  --warn:#E8B44C; --bad:#E06C6C; --good:#63C78A;
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  color:var(--ink); background:#0B1026; overflow-x:hidden;
+  background-image:
+    radial-gradient(1200px 700px at 12% -8%, rgba(91,141,239,.28), transparent 60%),
+    radial-gradient(1000px 640px at 96% 12%, rgba(190,92,211,.20), transparent 60%),
+    radial-gradient(900px 700px at 40% 118%, rgba(83,201,179,.16), transparent 62%);
+  background-attachment:fixed;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+.glass{
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  backdrop-filter:blur(18px) saturate(1.35);
+  -webkit-backdrop-filter:blur(18px) saturate(1.35);
+  box-shadow:0 10px 34px rgba(3,8,28,.45), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.glass-strong{background:rgba(255,255,255,.10)}
+.pad{padding:22px 24px}
+h1{font-size:26px;font-weight:650;letter-spacing:.5px}
+h2{font-size:19px;font-weight:620}
+h3{font-size:15.5px;font-weight:600}
+.dim{color:var(--ink-dim)} .faint{color:var(--ink-faint);font-size:12px}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11.5px;border:1px solid var(--line-hi);background:rgba(255,255,255,.06);color:var(--ink-dim);margin-right:6px}
+.tag.acc{color:#fff;background:var(--accent-soft);border-color:rgba(91,141,239,.5)}
+.tag.warn{color:var(--warn);border-color:rgba(232,180,76,.45)}
+.tag.bad{color:var(--bad);border-color:rgba(224,108,108,.45)}
+.tag.good{color:var(--good);border-color:rgba(99,199,138,.45)}
+button{font-family:inherit}
+.btn{
+  display:inline-block;padding:10px 20px;border-radius:14px;cursor:pointer;font-size:14px;
+  color:var(--ink);background:var(--glass-hi);border:1px solid var(--line-hi);
+  backdrop-filter:blur(10px);transition:.15s;
+}
+.btn:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,rgba(91,141,239,.55),rgba(140,98,238,.5));border-color:rgba(140,170,255,.6)}
+.btn.small{padding:5px 12px;font-size:12px;border-radius:10px}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none}
+/* 顶部进度轨 */
+.rail{display:flex;gap:6px;margin:14px 0 22px;flex-wrap:wrap}
+.rail .stop{flex:1;min-width:86px;padding:7px 10px;border-radius:12px;font-size:11.5px;color:var(--ink-faint);
+  border:1px solid var(--line);background:rgba(255,255,255,.04);text-align:center;white-space:nowrap}
+.rail .stop.on{color:#fff;background:var(--accent-soft);border-color:rgba(91,141,239,.55)}
+.rail .stop.done{color:var(--ink-dim);background:rgba(99,199,138,.12);border-color:rgba(99,199,138,.35)}
+/* 场景卡 */
+.scen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.scen{padding:20px;cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+.scen:hover{transform:translateY(-3px);background:rgba(255,255,255,.11)}
+.scen .emoji{font-size:26px}
+.scen .name{font-size:17px;font-weight:650;margin:8px 0 4px}
+.scen .mode{position:absolute;top:14px;right:14px}
+/* 选项 */
+.opts{display:grid;gap:12px;margin-top:14px}
+.opt{padding:15px 18px;cursor:pointer;transition:.15s;border-radius:16px}
+.opt:hover{background:rgba(255,255,255,.12);transform:translateX(3px)}
+.opt .lab{font-weight:620;font-size:14.5px}
+.opt .desc{color:var(--ink-dim);font-size:12.8px;margin-top:4px;line-height:1.55}
+/* 结果面板 */
+.result{margin-top:16px;padding:18px 20px;border-left:3px solid var(--accent);border-radius:12px;
+  background:rgba(255,255,255,.05)}
+.result .consequence{margin-top:8px;font-size:13px;color:var(--ink-dim)}
+.result .consequence b{color:var(--ink)}
+/* 图与标注 */
+figure{margin:16px 0}
+figure img{max-width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;display:block;margin:0 auto}
+figcaption{margin-top:8px;font-size:11.8px;color:var(--ink-faint);line-height:1.65;border-left:2px solid var(--line);padding-left:10px}
+figcaption b{color:var(--ink-dim);font-weight:600}
+/* 事件卡 */
+.evcard{border-left:3px solid var(--bad);background:rgba(224,108,108,.10);border-radius:12px;padding:14px 16px;margin-top:12px}
+.evcard h4{font-size:13.5px;color:#F0A5A5;margin-bottom:6px}
+.evcard p{font-size:12.8px;color:var(--ink-dim);line-height:1.6}
+.evcard .ev-ref{font-size:11.5px;color:var(--ink-faint);margin-top:6px}
+/* 知识卡 */
+.kcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px}
+.kcard{padding:13px 15px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.kcard .kind{font-size:10.5px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+.kcard .name{font-size:13px;margin-top:5px;line-height:1.5}
+/* 表格 */
+table{border-collapse:collapse;width:100%;font-size:12.8px;margin-top:12px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:rgba(255,255,255,.07);font-weight:600;color:var(--ink-dim)}
+/* T2 播放器 */
+.player{margin-top:14px}
+.player .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.player canvas{width:100%;max-width:660px;border-radius:14px;border:1px solid var(--line);background:#fff;display:block;margin:0 auto;cursor:grab}
+.legend{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-dim);
+  background:rgba(255,255,255,.05);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+select{background:rgba(255,255,255,.1);color:var(--ink);border:1px solid var(--line-hi);border-radius:9px;padding:5px 8px;font-size:12px}
+/* 揭示页脚 */
+.foot{margin-top:34px;text-align:center;font-size:11.5px;color:var(--ink-faint);line-height:1.8}
+.badge3{position:relative}
+.badge3::after{content:"模拟示意";position:absolute;right:8px;bottom:6px;font-size:10px;color:#888;
+  border:1px solid #bbb;border-radius:6px;padding:1px 6px;background:rgba(255,255,255,.85);letter-spacing:1px}
+.spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.2);border-top-color:var(--accent);border-radius:50%;
+  animation:sp 1s linear infinite;display:inline-block;vertical-align:middle}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="app"></div>
+  <div class="foot">
+    Xenium 决策剧场 · 教学模拟器 ｜ 所有图均按「来源 / 性质 / 参考文献」三行式标注 ｜ 文献图一律重绘不搬运 ｜
+    <a href="../06-决策剧场指南/">指南与教学地图</a> · <a href="../">返回知识站首页</a>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   Xenium 决策剧场 · 引擎（vanilla JS, 无构建链, 全部相对路径）
+   数据契约:
+     ./data/scenarios/<ID>.json        剧本（schema 见 ./data/schema.json）
+     ./data/events.json                坑事件池 P-001~
+     ./assets/<场景>/manifest.json     资产三行式标注
+     ./assets/<场景>/coords/*.json.gz  T2 交互坐标（gzip, DecompressionStream 解压）
+   ===================================================================== */
+const GH = "https://github.com/zerogue11/xenium-code-atlas/blob/main/";
+const SCENARIOS = [
+  {id:"HCC",   emoji:"❤️", name:"肝细胞癌 HCC",  tagline:"V1 全量重算 · 肿瘤 vs 健康肝对照", mode:"T1 全量", accent:"#E06C6C"},
+  {id:"BRCA",  emoji:"🌸", name:"乳腺癌 BRCA",   tagline:"10x 官方 FFPE 乳腺 Rep1 · TME 分型", mode:"T1", accent:"#E58BB4"},
+  {id:"CRC",   emoji:"🧬", name:"结直肠癌 CRC",  tagline:"10x FFPE 结直肠 · 免疫微环境", mode:"T1 / 降级链", accent:"#63C78A"},
+  {id:"UC",    emoji:"🔥", name:"溃疡性结肠炎 UC", tagline:"UCSF DSCOLAB · 文献结论模式", mode:"T1-lite", accent:"#E8B44C"},
+  {id:"CROHN", emoji:"🌀", name:"克罗恩病",       tagline:"Teichlab 5K 链镜像 · 文献结论模式", mode:"T1-lite", accent:"#5BC0BE"},
+  {id:"ZXM",   emoji:"🔒", name:"ZXM 本地专属关",  tagline:"你的课题 · 大样本 onboard 复用策略", mode:"T1 仅本地", accent:"#B58BE5", local:true},
+];
+const STEPS = ["0 样本/panel","1 装载","2 QC","3 归一化","4 聚类","5 注释","6 下游","7 结算"];
+const app = document.getElementById("app");
+
+let S = {scen:null, node:null, events:[], choices:[], unlocked:[], manifest:null, assetBase:"./assets/"};
+let EVENTS = [];   // 坑事件池, startScenario 时装载
+
+async function fetchJSON(url){ const r = await fetch(url); if(!r.ok) throw new Error(url+" → HTTP "+r.status); return r.json(); }
+async function fetchGzJSON(url){
+  const r = await fetch(url); if(!r.ok) throw new Error(url+" → HTTP "+r.status);
+  const buf = await r.arrayBuffer();
+  const text = await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+  return JSON.parse(text);
+}
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* 文案模板: {qc.standard.n_cells_out} → manifest.qc_stats; {meta.n_cells_all} → manifest.metrics_note (反编造: 数字只来自 manifest) */
+function fillStats(text){
+  return String(text??"").replace(/\{(qc|meta)\.([\w.]+)\}/g, (_,ns,p)=>{
+    let v = S.manifest && (ns==="qc" ? S.manifest.qc_stats : S.manifest.metrics_note);
+    for(const k of p.split(".")){ v = v && v[k]; }
+    return (v===undefined||v===null) ? "【manifest 缺值】" : (typeof v==="number" ? v.toLocaleString("en-US") : v);
+  });
+}
+
+/* ---------------- 首页：场景选择 ---------------- */
+async function renderHome(){
+  document.documentElement.style.setProperty("--accent","#5B8DEF");
+  let zxmState = "checking";
+  let zxmHTML = "";
+  const card = (sc, extra="") => `
+    <div class="glass scen pad" data-scen="${sc.id}" style="--sc:${sc.accent}">
+      <span class="emoji">${sc.emoji}</span>
+      <div class="name">${esc(sc.name)}</div>
+      <div class="dim" style="font-size:12.5px">${esc(sc.tagline)}</div>
+      <div style="margin-top:10px"><span class="tag">${esc(sc.mode)}</span>${extra}</div>
+    </div>`;
+  const pub = SCENARIOS.filter(s=>!s.local).map(s=>card(s)).join("");
+  // ZXM 本地探测
+  try{
+    const m = await fetchJSON("./assets/ZXM_local/manifest.json");
+    zxmState = "ok";
+    zxmHTML = card(SCENARIOS.find(s=>s.id==="ZXM"), `<span class="tag good">本地资产已就绪</span>`);
+    window.__zxmManifest = m;
+  }catch(e){
+    zxmHTML = `<div class="glass pad" style="border-style:dashed;opacity:.75">
+      <span class="emoji">🔒</span><div class="name">ZXM 本地专属关</div>
+      <div class="dim" style="font-size:12.5px">你的课题数据（完整 outs，仅本机运行）</div>
+      <div style="margin-top:10px"><span class="tag warn">本地版可用 · 当前站点未检测到资产</span></div>
+      <div class="faint" style="margin-top:10px;line-height:1.7">开启方法：在本机运行
+      <code>scripts\\precompute_simulator_zxm.py</code> 生成 <code>docs/simulator/assets/ZXM_local/</code> 后刷新本页；
+      教学设计见 <a href="../06-决策剧场指南/">指南</a>「本地专属关」一节。</div></div>`;
+  }
+  app.innerHTML = `
+    <div class="glass pad glass-strong" style="margin-bottom:22px">
+      <span class="tag acc">教学模拟器</span><span class="tag">分支收敛制</span><span class="tag">文献镜像复盘</span><span class="tag">诚实性 T1/T2/T3</span>
+      <h1 style="margin-top:12px">🧭 Xenium 决策剧场</h1>
+      <p class="dim" style="margin-top:8px;line-height:1.75;font-size:13.6px">
+        把 <b>本库 72 仓审计与 27 份精读</b>里沉淀的主干七步工作流，变成一台可以"亲手走一遍"的机器：
+        每一步 ≤3 个选项、全部收敛到主干——你选的是<b>参数、图与代价</b>，不是剧情。
+        结算页会把你的路线与文献结论镜像对照，并结算一路上踩到的「坑事件」（每条都有 文件:行号 审计证据）。
+      </p>
+      <p class="faint" style="margin-top:8px;line-height:1.7">
+        诚实性三级：<b>T1</b> 真实数据预计算重算（seed 冻结）· <b>T2</b> 文献结论参数化重绘（记录 DOI/PMID）·
+        <b>T3</b> 明确标注的示意图（右下角带「模拟示意」角标）。版权红线：文献图一律重绘，绝不搬运。
+      </p>
+    </div>
+    <h2 style="margin:0 0 12px 4px">选择一个场景开始</h2>
+    <div class="scen-grid">${pub}${zxmHTML}</div>`;
+  app.querySelectorAll(".scen").forEach(el=>{
+    el.onclick = ()=>startScenario(el.dataset.scen);
+  });
+}
+
+/* ---------------- 场景装载 ---------------- */
+async function startScenario(id){
+  app.innerHTML = `<div class="glass pad"><span class="spin"></span> <span class="dim">正在装载剧本 ${id} …</span></div>`;
+  try{
+    const zpath = "./assets/ZXM_local/scenario.json";
+    const scen = await fetchJSON(id==="ZXM" ? zpath : `./data/scenarios/${id}.json`);
+    S = {scen, node:"start", events:[], choices:[], unlocked:[], manifest:null};
+    const scmeta = SCENARIOS.find(s=>s.id===id) || {accent:"#5B8DEF"};
+    document.documentElement.style.setProperty("--accent", scmeta.accent);
+    // 资产基路径: 剧本 data.manifest 优先 (ZXM 本地关资产在 assets/ZXM_local/)
+    const mpath = scen.data?.manifest || `./assets/${id}/manifest.json`;
+    S.assetBase = mpath.replace(/manifest\.json.*$/, "");
+    if(!EVENTS.length){
+      try{ EVENTS = (await fetchJSON("./data/events.json")).events || []; }
+      catch(e){ EVENTS = []; }
+    }
+    try{ S.manifest = await fetchJSON(mpath); }catch(e){ S.manifest = null; }
+    renderNode();
+  }catch(e){
+    app.innerHTML = `<div class="glass pad"><span class="tag bad">剧本装载失败</span>
+      <p class="dim" style="margin-top:10px">${esc(e.message)}</p>
+      <p class="faint" style="margin-top:8px">${id==="ZXM" ? "ZXM 场景需要本机预计算资产（assets/ZXM_local/）。" : "请检查 docs/simulator/data/scenarios/ 下剧本文件是否齐全。"}</p>
+      <p style="margin-top:14px"><a class="btn small" href="javascript:renderHome()">← 返回场景选择</a></p></div>`;
+  }
+}
+
+/* ---------------- 节点渲染 ---------------- */
+function railHTML(){
+  const cur = S.scen.nodes[S.node];
+  const stepNo = cur.step ?? 7;
+  return `<div class="rail">` + STEPS.map((t,i)=>{
+    const cls = i===stepNo ? "on" : (i<stepNo ? "done" : "");
+    return `<div class="stop ${cls}">${t}</div>`;
+  }).join("") + `</div>`;
+}
+
+function teachHTML(teach){
+  if(!teach) return "";
+  const items = (teach.links||[]).map(l=>{
+    const href = l.kind==="manual" ? l.href : (l.href.startsWith("http") ? l.href : GH+l.href);
+    const icon = {card:"🗂️",audit:"🔬",pattern:"🧩",manual:"📘",lit:"📄"}[l.kind]||"🔗";
+    return `<a href="${href}" target="_blank" rel="noopener">${icon} ${esc(l.label)}</a>`;
+  });
+  return items.length ? `<div class="faint" style="margin-top:10px;line-height:2">📚 教学锚点：${items.join(" ｜ ")}</div>` : "";
+}
+
+function mediaHTML(media){
+  if(!media || !media.length) return "";
+  return media.map(m=>{
+    if(m.type==="asset"){
+      const a = S.manifest?.assets?.find(x=>x.file===m.asset) || {};
+      const src = `${S.assetBase}${m.asset}`;
+      const note = m.note ? `<br><b>读图要点：</b>${esc(m.note)}` : "";
+      const fallback = m.fallback ? ` onerror="this.closest('figure').outerHTML='<div class=\\'glass pad\\' style=\\'margin:16px 0;font-size:12.8px;color:var(--ink-dim);line-height:1.8\\'>${esc(m.fallback)}</div>'"` : "";
+      return `<figure><img src="${src}" alt="${esc(a.title||m.asset)}" loading="lazy"${fallback}>
+        <figcaption><b>① 来源</b> ${esc(a.source||S.scen.data?.source||"—")}<br>
+        <b>② 性质</b> ${esc(a.nature||"—")}<br><b>③ 参考文献</b> ${esc(a.ref||S.scen.data?.ref||"—")}${note}</figcaption></figure>`;
+    }
+    if(m.type==="coords"){
+      return `<div class="glass player pad" data-coords-src="${S.assetBase}${m.src||"coords/coords_standard.json.gz"}"><div class="dim"><span class="spin"></span> T2 交互散点装载中…</div></div>`;
+    }
+    if(m.type==="svg3"){
+      const fn = SVG_BUILDERS[m.id];
+      return fn ? `<div class="badge3" style="padding:6px">${fn(m)}</div>` : "";
+    }
+    if(m.type==="note"){
+      return `<div class="glass pad" style="margin-top:14px;font-size:13px;color:var(--ink-dim);line-height:1.8">${m.html}</div>`;
+    }
+    return "";
+  }).join("");
+}
+
+function renderNode(){
+  const n = S.scen.nodes[S.node];
+  if(n.type==="settlement"){ renderSettlement(n); return; }
+  app.innerHTML = `
+    ${railHTML()}
+    <div class="glass pad glass-strong">
+      <span class="tag acc">STEP ${n.step} · ${esc(n.name)}</span>
+      ${n.subtitle?`<span class="tag">${esc(n.subtitle)}</span>`:""}
+      <h2 style="margin-top:12px">${esc(n.title)}</h2>
+      <p class="dim" style="margin-top:8px;font-size:13.6px;line-height:1.8">${fillStats(n.brief)}</p>
+      ${teachHTML(n.teach)}
+      <div class="opts">
+        ${n.options.map((o,i)=>`
+          <div class="glass opt" data-i="${i}">
+            <div class="lab">${esc(o.label)} ${o.tag?`<span class="tag ${o.tag_type||""}" style="margin-left:6px">${esc(o.tag)}</span>`:""}</div>
+            <div class="desc">${esc(o.desc)}</div>
+          </div>`).join("")}
+      </div>
+      <div id="result-zone"></div>
+      <div style="margin-top:18px;display:flex;justify-content:space-between">
+        <a class="btn small" href="javascript:renderHome()">← 退出场景</a>
+        <button class="btn primary hidden" id="btn-next">继续 →</button>
+      </div>
+    </div>`;
+  app.querySelectorAll(".opt").forEach(el=>{
+    el.onclick = ()=>chooseOption(parseInt(el.dataset.i,10));
+  });
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function chooseOption(i){
+  const n = S.scen.nodes[S.node];
+  const o = n.options[i];
+  S.choices.push({step:n.step, name:n.name, label:o.label});
+  const zone = document.getElementById("result-zone");
+  const eventsHTML = (o.events||[]).map(eid=>{
+    const ev = EVENTS.find(e=>e.id===eid);
+    if(!ev) return "";
+    if(!S.events.find(x=>x.id===eid)) S.events.push(ev);
+    return `<div class="evcard"><h4>⚠️ ${esc(ev.id)} · ${esc(ev.title)}</h4><p>${esc(ev.story)}</p>
+      <div class="ev-ref">证据：${ev.evidence.map(v=>`<a href="${v.url}" target="_blank" rel="noopener">${esc(v.label)}</a>`).join(" · ")}</div></div>`;
+  }).join("");
+  zone.innerHTML = `
+    <div class="result">
+      <h3>${esc(o.result_title || "你选择了")}: ${esc(o.label)}</h3>
+      <p class="dim" style="margin-top:8px;font-size:13.4px;line-height:1.8">${fillStats(o.result)}</p>
+      ${o.consequence?`<div class="consequence">⚙️ <b>后果</b>：${fillStats(o.consequence)}</div>`:""}
+      ${eventsHTML}
+      ${mediaHTML(o.media)}
+    </div>`;
+  document.getElementById("btn-next").classList.remove("hidden");
+  document.getElementById("btn-next").onclick = ()=>{
+    S.node = o.goto;
+    if(o.unlock) S.unlocked.push(...o.unlock);
+    renderNode();
+  };
+  document.querySelectorAll(".opt").forEach(el=>el.style.pointerEvents="none");
+  // innerHTML 注入的 script 不会执行 → 显式挂载 T2 播放器
+  zone.querySelectorAll("[data-coords-src]").forEach(el=>mountPlayer(el, el.dataset.coordsSrc));
+  zone.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ---------------- 结算 ---------------- */
+function renderSettlement(n){
+  const rows = S.choices.map(c=>{
+    const mirror = (n.mirrors||[]).find(m=>m.step===c.step);
+    return `<tr><td>${c.step} ${esc(c.name)}</td><td>${esc(c.label)}</td>
+      <td>${mirror?esc(mirror.lit):"—"}</td><td>${mirror?esc(mirror.note):"—"}</td></tr>`;
+  }).join("");
+  const evHTML = S.events.length ? S.events.map(ev=>`
+    <div class="evcard"><h4>⚠️ ${esc(ev.id)} · ${esc(ev.title)}</h4><p>${esc(ev.lesson)}</p>
+    <div class="ev-ref">证据：${ev.evidence.map(v=>`<a href="${v.url}" target="_blank" rel="noopener">${esc(v.label)}</a>`).join(" · ")}</div></div>`).join("")
+    : `<p class="dim">本局没有触发坑事件——但真实世界不会总这么客气。</p>`;
+  const unlocked = [...new Set(S.unlocked)];
+  const kHTML = unlocked.map(k=>{
+    const href = k.kind==="manual" ? k.href : (k.href.startsWith("http")?k.href:GH+k.href);
+    const icon = {card:"🗂️ 档案卡",audit:"🔬 精读笔记",pattern:"🧩 范式卡",manual:"📘 手册",lit:"📄 文献"}[k.kind]||"🔗";
+    return `<div class="kcard"><div class="kind">${icon}</div>
+      <div class="name"><a href="${href}" target="_blank" rel="noopener">${esc(k.label)}</a></div></div>`;
+  }).join("");
+  app.innerHTML = `
+    ${railHTML()}
+    <div class="glass pad glass-strong">
+      <span class="tag good">结算</span><span class="tag">STEP 7</span>
+      <h2 style="margin-top:12px">🎬 文献镜像复盘</h2>
+      <p class="dim" style="margin-top:8px;font-size:13.4px;line-height:1.8">${n.brief}</p>
+      <table><thead><tr><th>决策点</th><th>你的选择</th><th>文献/库内路线</th><th>镜像注记</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="4">（无）</td></tr>'}</tbody></table>
+      ${n.verdict?`<div class="result" style="margin-top:16px"><h3>🧾 总评</h3>
+        <p class="dim" style="margin-top:6px;font-size:13.4px;line-height:1.8">${n.verdict}</p></div>`:""}
+      <h3 style="margin-top:26px">🕳️ 坑事件结算（${S.events.length}）</h3>
+      ${evHTML}
+      <h3 style="margin-top:26px">🎁 解锁知识卡（${unlocked.length}）</h3>
+      <div class="kcards">${kHTML || '<p class="dim">本局未解锁。</p>'}</div>
+      <div style="margin-top:24px;display:flex;gap:10px">
+        <a class="btn primary" href="javascript:startScenario('${S.scen.id}')">↻ 重走本关</a>
+        <a class="btn" href="javascript:renderHome()">选择其他场景</a>
+      </div>
+    </div>`;
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* =====================================================================
+   T2 交互散点播放器（canvas, 数据全部来自预计算 JSON.gz）
+   ===================================================================== */
+function mountPlayer(target, url){
+  const mount = typeof target === "string" ? document.querySelector(target) : target;
+  if(!mount) return;
+  fetchGzJSON(url).then(d=>{
+    const W=660,H=560;
+    mount.innerHTML = `
+      <div class="bar">
+        <span class="tag acc">T2 交互</span>
+        <button class="btn small" data-view="spatial">空间坐标</button>
+        ${d.umap?`<button class="btn small" data-view="umap">UMAP</button>`:""}
+        <select data-color="cluster"></select>
+        ${(d.anno_labels&&d.anno_labels.length)?`<select data-color="anno"></select>`:""}
+        ${d.genes&&Object.keys(d.genes).length?`<select data-color="gene"></select>`:""}
+        <span class="faint">${d.n.toLocaleString()} 细胞（抽样）· 滚轮缩放 · 拖拽平移</span>
+      </div>
+      <canvas width="${W}" height="${H}"></canvas>
+      <div class="legend"></div>`;
+    const cv = mount.querySelector("canvas"), ctx = cv.getContext("2d");
+    const selC = mount.querySelector('[data-color="cluster"]');
+    Object.keys(d.clusters||{}).forEach(k=>{
+      const o=document.createElement("option"); o.value="cluster:"+k; o.textContent="cluster "+k.replace("leiden_","res="); selC.appendChild(o);
+    });
+    const selA = mount.querySelector('[data-color="anno"]');
+    (d.anno_labels||[]).forEach((l,i)=>{ const o=document.createElement("option"); o.value="anno:"+i; o.textContent="注释 "+l; selA.appendChild(o); });
+    const selG = mount.querySelector('[data-color="gene"]');
+    Object.keys(d.genes||{}).forEach(g=>{ const o=document.createElement("option"); o.value="gene:"+g; o.textContent="基因 "+g; selG.appendChild(o); });
+    let view="spatial", colorMode="cluster:"+Object.keys(d.clusters)[0];
+    const PAL=["#4C72B0","#DD8452","#55A868","#C44E52","#8172B3","#937860","#DA8BC3","#8C8C8C","#CCB974","#64B5CD","#2F4B7C","#FFA600","#6A51A3","#E6550D"];
+    const VIR = t=>{ // 简化 viridis
+      const r=Math.round(68+t*(254-68)), g=Math.round(1+t*(183-1)+ (1-t)*40), b=Math.round(84+t*(100-84)+(1-t)*120);
+      return `rgb(${r},${Math.min(255,Math.max(0,g))},${b})`; };
+    let tf={x:0,y:0,s:1};
+    function bounds(){
+      const xs=d.x, ys=d.y;
+      let x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
+      if(view==="umap"&&d.umap){ const ux=d.umap[0], uy=d.umap[1]; x0=Math.min(...ux);x1=Math.max(...ux);y0=Math.min(...uy);y1=Math.max(...uy); }
+      return [x0,x1,y0,y1];
+    }
+    function draw(){
+      const [x0,x1,y0,y1]=bounds();
+      const pad=30, w=W-2*pad, h=H-2*pad;
+      const sx=v=>pad+(v-x0)/(x1-x0)*w*tf.s+tf.x;
+      const sy=v=>H-pad-(v-y0)/(y1-y0)*h*tf.s+tf.y;
+      ctx.fillStyle="#fff"; ctx.fillRect(0,0,W,H);
+      const xs=view==="umap"&&d.umap?d.umap[0]:d.x, ys=view==="umap"&&d.umap?d.umap[1]:d.y;
+      const [mode,val]=colorMode.split(":");
+      let colors=null, cats=null;
+      if(mode==="cluster"){ cats=[...new Set(d.clusters[val])]; colors=d.clusters[val].map(v=>PAL[cats.indexOf(v)%PAL.length]); }
+      else if(mode==="anno"){ cats=d.anno_labels; colors=d.anno.map(v=>PAL[v%PAL.length]); }
+      else if(mode==="gene"){ const gv=d.genes[val], mx=Math.max(...gv); colors=gv.map(v=>VIR(v/mx)); }
+      ctx.globalAlpha=.85;
+      for(let i=0;i<xs.length;i++){
+        ctx.fillStyle=colors[i]; ctx.beginPath(); ctx.arc(sx(xs[i]),sy(ys[i]),1.6,0,6.283); ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      const lg=mount.querySelector(".legend");
+      if(mode==="gene"){ lg.innerHTML=`<span><i style="background:linear-gradient(90deg,#441088,#5B8DEF,#63C78A,#FEBB2C)"></i>${esc(val)}（低 → 高, 分桶 ${d.genes[val].length>0?"0-63":"—"}）</span>`; }
+      else if(cats&&cats.length<=14){ lg.innerHTML=cats.map((c,i)=>`<span><i style="background:${PAL[i%PAL.length]}"></i>${esc(String(c))}</span>`).join(""); }
+      else lg.innerHTML=`<span>${cats?cats.length:""} 类（图例省略）</span>`;
+    }
+    mount.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{view=b.dataset.view;tf={x:0,y:0,s:1};draw();});
+    [selC,selA,selG].forEach(s=>{ if(s) s.onchange=()=>{colorMode=s.value; draw();}; });
+    let drag=null;
+    cv.onmousedown=e=>{drag={x:e.offsetX,y:e.offsetY,tx:tf.x,ty:tf.y}; cv.style.cursor="grabbing";};
+    cv.onmousemove=e=>{ if(drag){ tf.x=drag.tx+(e.offsetX-drag.x); tf.y=drag.ty+(e.offsetY-drag.y); draw(); } };
+    cv.onmouseup=()=>{drag=null;cv.style.cursor="grab";};
+    cv.onwheel=e=>{ e.preventDefault(); const f=e.deltaY<0?1.15:.87; tf.s=Math.min(8,Math.max(.5,tf.s*f)); draw(); };
+    draw();
+  }).catch(err=>{
+    mount.innerHTML = `<div class="faint">T2 交互数据装载失败：${esc(err.message)}（线上站点需 assets/coords 资产已发布）</div>`;
+  });
+}
+
+/* =====================================================================
+   T3 示意 SVG 构建器（统一右下角「模拟示意」角标由 .badge3 提供）
+   ===================================================================== */
+const SVG_BUILDERS = {
+  panel_choice: m => `
+    <svg viewBox="0 0 640 200" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        <rect x="20" y="30" width="180" height="120" rx="10" fill="#EAF0FF" stroke="#5B8DEF"/>
+        <text x="110" y="60" text-anchor="middle" font-weight="600">FFPE 存档切片</text>
+        <text x="110" y="85" text-anchor="middle" fill="#666">室温保存 / 回溯性</text>
+        <text x="110" y="105" text-anchor="middle" fill="#666">形态学配对 HE ✔</text>
+        <rect x="250" y="30" width="180" height="120" rx="10" fill="#F4EAF0" stroke="#C44E52"/>
+        <text x="340" y="60" text-anchor="middle" font-weight="600">新鲜冻存 (fresh frozen)</text>
+        <text x="340" y="85" text-anchor="middle" fill="#666">RNA 质量更优</text>
+        <text x="340" y="105" text-anchor="middle" fill="#666">-80℃ 依赖 / 形态弱</text>
+        <rect x="470" y="30" width="150" height="120" rx="10" fill="#EFF7EE" stroke="#55A868"/>
+        <text x="545" y="60" text-anchor="middle" font-weight="600">Panel 选择</text>
+        <text x="545" y="85" text-anchor="middle" fill="#666">V1 (≈313/474 基因)</text>
+        <text x="545" y="105" text-anchor="middle" fill="#666">5K (≈5000+ 基因)</text>
+        <text x="320" y="185" text-anchor="middle" fill="#999" font-size="11">panel 越大 → 单细胞通量与成本变化（示意）</text>
+      </g>
+    </svg>`,
+  onboarding: m => `
+    <svg viewBox="0 0 640 210" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        <rect x="20" y="28" width="260" height="140" rx="10" fill="#EAF0FF" stroke="#5B8DEF"/>
+        <text x="150" y="56" text-anchor="middle" font-weight="600">路线 A · 全量重算</text>
+        <text x="150" y="82" text-anchor="middle" fill="#666">cell_feature_matrix 重新 QC→PCA→聚类</text>
+        <text x="150" y="104" text-anchor="middle" fill="#666">参数自主可控 · 可复现</text>
+        <text x="150" y="126" text-anchor="middle" fill="#C44E52">大样本（>百万细胞）CPU 小时代价</text>
+        <rect x="360" y="28" width="260" height="140" rx="10" fill="#EFF7EE" stroke="#55A868"/>
+        <text x="490" y="56" text-anchor="middle" font-weight="600">路线 B · 复用官方 onboard 结果</text>
+        <text x="490" y="82" text-anchor="middle" fill="#666">analysis/ 内 graphclust·UMAP·diffexp</text>
+        <text x="490" y="104" text-anchor="middle" fill="#666">分钟级装载 · 官方口径</text>
+        <text x="490" y="126" text-anchor="middle" fill="#55A868">大样本规模化首选（教学点）</text>
+        <text x="320" y="196" text-anchor="middle" fill="#999" font-size="11">本库大样本策略：02_工作流开发/候选流程池/官方线_官方教程中文优化</text>
+      </g>
+    </svg>`,
+  norm_pipeline: m => `
+    <svg viewBox="0 0 640 150" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        ${["counts","normalize_total(1e4)","log1p","PCA (20 PCs)","neighbors (k=15)"].map((t,i)=>
+          `<rect x="${20+i*120}" y="45" width="104" height="52" rx="9" fill="#EAF0FF" stroke="#5B8DEF"/>
+           <text x="${72+i*120}" y="75" text-anchor="middle" font-size="11">${t}</text>`).join("")}
+        <text x="320" y="130" text-anchor="middle" fill="#C44E52" font-size="11.5">此处不是决策点：库内固定默认，参数敏感性留给 QC 与聚类两步（教学点）</text>
+      </g>
+    </svg>`,
+  deconv: m => `
+    <svg viewBox="0 0 640 170" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        <rect x="30" y="40" width="170" height="90" rx="10" fill="#F4EAF0" stroke="#C44E52"/>
+        <text x="115" y="78" text-anchor="middle" font-weight="600">低分辨率 bin / spot</text>
+        <text x="115" y="100" text-anchor="middle" fill="#666">多细胞混合信号</text>
+        <text x="240" y="90" text-anchor="middle" fill="#999" font-size="16">→ 去卷积 →</text>
+        <rect x="330" y="40" width="170" height="90" rx="10" fill="#EFF7EE" stroke="#55A868"/>
+        <text x="415" y="78" text-anchor="middle" font-weight="600">细胞类型组成</text>
+        <text x="415" y="100" text-anchor="middle" fill="#666">每 bin 比例向量</text>
+        <text x="320" y="158" text-anchor="middle" fill="#999" font-size="11">Xenium 单细胞分辨率下通常不需要去卷积；它属于 bin/spot 数据的必修课（示意）</text>
+      </g>
+    </svg>`,
+  iaf_schematic: m => `
+    <svg viewBox="0 0 640 190" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        <rect x="30" y="35" width="170" height="90" rx="10" fill="#F4EAF0" stroke="#C44E52"/>
+        <text x="115" y="72" text-anchor="middle" font-weight="600">炎症区 epithelium</text>
+        <text x="115" y="94" text-anchor="middle" fill="#666">上皮损伤 / 修复</text>
+        <rect x="440" y="35" width="170" height="90" rx="10" fill="#EFF7EE" stroke="#55A868"/>
+        <text x="525" y="66" text-anchor="middle" font-weight="600">IAF 成纤维细胞</text>
+        <text x="525" y="88" text-anchor="middle" fill="#666">离散空间聚集</text>
+        <text x="525" y="108" text-anchor="middle" fill="#666">(inflammation-associated)</text>
+        <path d="M200 80 L440 80" stroke="#999" stroke-dasharray="5,4" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="320" y="70" text-anchor="middle" fill="#888" font-size="11">细胞网络互作</text>
+        <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#999"/></marker></defs>
+        <text x="320" y="168" text-anchor="middle" fill="#999" font-size="11">文献结论示意（Mennillo et al., doi:10.1101/2024.11.11.623014 → JCI 2026）</text>
+      </g>
+    </svg>`,
+  iaf_spatial: m => `
+    <svg viewBox="0 0 640 210" style="width:100%;max-width:640px;background:#fff;border-radius:14px">
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#333">
+        <rect x="40" y="30" width="260" height="140" rx="10" fill="#FDF6E9" stroke="#E8B44C"/>
+        <text x="170" y="55" text-anchor="middle" font-weight="600">组成相同 · 空间不同</text>
+        <g fill="#55A868">
+          <circle cx="90" cy="90" r="5"/><circle cx="102" cy="98" r="5"/><circle cx="96" cy="82" r="5"/>
+          <circle cx="230" cy="130" r="5"/><circle cx="243" cy="138" r="5"/><circle cx="236" cy="122" r="5"/>
+        </g>
+        <g fill="#ccc"><circle cx="150" cy="140" r="3"/><circle cx="180" cy="90" r="3"/><circle cx="260" cy="70" r="3"/><circle cx="120" cy="120" r="3"/></g>
+        <text x="170" y="162" text-anchor="middle" fill="#888" font-size="11">IAF 离散聚集（文献模式）</text>
+        <rect x="340" y="30" width="260" height="140" rx="10" fill="#FDF6E9" stroke="#E8B44C"/>
+        <text x="470" y="55" text-anchor="middle" font-weight="600">弥散分布（对照想象）</text>
+        <g fill="#B7D7B2">
+          <circle cx="390" cy="90" r="5"/><circle cx="420" cy="120" r="5"/><circle cx="450" cy="80" r="5"/>
+          <circle cx="480" cy="135" r="5"/><circle cx="510" cy="95" r="5"/><circle cx="540" cy="125" r="5"/>
+          <circle cx="405" cy="150" r="5"/><circle cx="555" cy="70" r="5"/>
+        </g>
+        <text x="470" y="162" text-anchor="middle" fill="#888" font-size="11">同组成 · 无结构 → 结论完全不同</text>
+        <text x="320" y="196" text-anchor="middle" fill="#999" font-size="11">空间信息 ≠ 组成信息（教学示意, 非 data plot）</text>
+      </g>
+    </svg>`,
+};
+
+/* ---------------- 启动 ---------------- */
+window.mountPlayer = mountPlayer;
+renderHome();
+</script>
+</body>
+</html>

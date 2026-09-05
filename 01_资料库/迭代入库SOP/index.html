@@ -244,6 +244,26 @@
   
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06-%E5%86%B3%E7%AD%96%E5%89%A7%E5%9C%BA%E6%8C%87%E5%8D%97/" class="md-tabs__link">
+          
+  
+  
+  决策剧场
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -576,6 +596,93 @@
       
   
   
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    决策剧场
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    决策剧场
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-%E5%86%B3%E7%AD%96%E5%89%A7%E5%9C%BA%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剧场指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -597,10 +704,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -618,8 +725,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -845,6 +952,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互动模块（决策剧场 / 模拟器类新增）
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -881,10 +999,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -902,8 +1020,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1179,6 +1297,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        互动模块（决策剧场 / 模拟器类新增）
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1240,6 +1369,14 @@
 <li>全程【待补充】优于编造；每条修改可追溯（谁/何时/为什么）；</li>
 <li>上游种子库（xenium-knowledge-tree）永远只读。</li>
 </ul>
+<h2 id="_7">互动模块（决策剧场 / 模拟器类新增）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>新场景剧本：在 <code>docs/simulator/data/scenarios/</code> 落 JSON（过 <code>data/schema.json</code>），引用的资产先跑预计算再登记 manifest；</li>
+<li>校验守门：<code>C:/xenium_envs/xenium-cn-py311/Scripts/python.exe scripts/validate_scenario.py --strict</code> 全绿才算收尾；</li>
+<li>每张图必须带三行式标注（来源/性质/参考文献），登记进 <code>docs/simulator/assets/&lt;场景&gt;/manifest.json</code>；文献图一律重绘不搬运；</li>
+<li>诚实性分级：T1 真实重算 / T2 文献结论参数化重绘（须有可溯源数值）/ T3 示意（右下角角标）；论文数值无可溯源来源时禁止伪造 T2，降级 T3 并在剧本内声明；</li>
+<li>课题数据类资产一律放 <code>docs/simulator/assets/ZXM_local/</code>（.gitignore 排除），公开站入口只显示可用性提示。</li>
+</ol>
 
 
 

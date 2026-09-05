@@ -1,0 +1,185 @@
+{
+  "id": "ZXM",
+  "title": "ZXM 本地专属关 · 大样本 onboard 复用",
+  "subtitle": "你的课题数据（仅本机运行）",
+  "mode": "local",
+  "accent": "#B58BE5",
+  "data": {
+    "source": "本机课题数据 ZXM 完整 outs（新版式 Xenium 输出，onboard analysis 结果复用 + 3 万细胞抽样，seed=0）",
+    "ref": "数据：本地课题 run（output-XETG00099__0066171__Region_1，2026-02 onboard 分析）；策略参照本库候选流程池·官方线 large_sample_reuse 模式（1,196,822 细胞先例）",
+    "manifest": "./assets/ZXM_local/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "你的课题切片：百万级的分量",
+      "brief": "本关是你自己的课题数据——大样本、新版式输出（morphology_focus 为多通道目录）。第一课：<b>规模改变决策</b>。QC 不在全量上无脑重演，形态学大图（37GB）按需读取。",
+      "teach": {"links": [
+        {"kind": "other", "label": "官方线 · large_sample_reuse 模式（本关策略原型）", "href": "02_工作流开发/候选流程池/官方线_官方教程中文优化.md"},
+        {"kind": "manual", "label": "手册 · 04 实操测试计划（T3 递进扩样）", "href": "../04-实操测试计划/"}
+      ]},
+      "options": [
+        {
+          "label": "确认规模与版式，按大样本策略走",
+          "desc": "onboard 复用为主线，抽样做交互。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "规模确认",
+          "result": "全样本 {meta.n_cells_all} 细胞（onboard 口径）。大样本三原则：① 复用 onboard analysis 结果（graphclust/UMAP/diffexp）；② 交互与可视化走抽样（3 万细胞，seed=0）；③ 大文件（37GB morphology）永远按需读取。",
+          "consequence": "大样本策略锁定（onboard 复用 + 抽样）。",
+          "goto": "load",
+          "events": ["P-004"],
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：复用官方 onboard 结果",
+      "brief": "analysis/ 目录里 graphclust、UMAP、diffexp 都是现成的。HCC/BRCA/CRC 关你练过「重算 vs 复用」的取舍——这里是复用路线的正式主场。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §1 数据读取与装载（大样本）", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "复用 onboard graphclust + UMAP（真实执行）",
+          "desc": "分钟级装载，官方口径。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "onboard 复用完成",
+          "result": "真实装载：onboard graphclust {meta.n_clusters} 簇 + UMAP 全量坐标，空间质心来自 cells.zarr。复用的代价照例透明：分辨率与阈值已由 onboard 定死，想调参就是下一个 run 的事。",
+          "consequence": "下游全部基于 onboard 产物。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        },
+        {
+          "label": "全量重算（不推荐，教学推演）",
+          "desc": "1.19M × 大 panel 的 CPU 账单。",
+          "result_title": "推演：重算的账单",
+          "result": "CPU 数小时起、内存吃紧、UMAP 全量出图卡顿——而 onboard 结果已经给了同构产物。教学结论：重算留给「参数敏感性实验的子样本」，全量复用（本库官方线已验证）。",
+          "consequence": "回主线选复用。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：抽样重演（诚实标注版）",
+      "brief": "大样本的全量 QC 重算代价高——本关的 QC 三档在 <b>3 万细胞抽样</b>上重演（min_counts 单阈值口径），图与标注均显式声明「抽样」。这是大样本 QC 的现实做法：抽样审计 + onboard metrics 交叉核对。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "抽样三档重演（min_counts 口径）",
+          "desc": "seed=0 抽样，图上注明。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "抽样 QC 完成",
+          "result": "真实抽样重算：宽松 {qc.loose.n_cells_out} / 标准 {qc.standard.n_cells_out} / 严格 {qc.strict.n_cells_out}（各档含义同前面关卡）。注意这是 3 万细胞上的数字，外推到全量时引用要带「抽样」限定词。",
+          "consequence": "QC 数字（抽样口径）入结算。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers_subsample.png"}]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化：onboard 已定",
+      "brief": "onboard 口径已含归一化/降维（graphclust 基于 onboard 处理链）。本节点为纯教学占位：复用者的归一化决策 = 「接受 onboard 口径」。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "接受 onboard 口径，继续", "desc": "唯一选项。",
+         "result_title": "口径确认",
+         "result": "复用者的归一化 = 接受官方处理链并记录版本（run_metadata 纪律）。",
+         "goto": "cluster", "media": [{"type": "svg3", "id": "norm_pipeline"}]}
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：graphclust 单口径的现实",
+      "brief": "onboard 只给一个 graphclust 结果（无多分辨率并行）。这正是大样本复用的边界：多候选纪律需要重算才能实现——留给子样本或下一 run。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §4 聚类", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "采用 onboard graphclust（真实执行）",
+          "desc": "单口径，交互可切。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "graphclust 就位",
+          "result": "真实数据：onboard graphclust 标签已在 T2 交互散点中可切换上色（空间 + UMAP 双视图）。教学备忘：多分辨率候选（HCC 关的 0.4/0.6/1.0）在复用路线下不可得——这是「复用」换来的代价之一。",
+          "consequence": "graphclust 标签入 T2 交互。",
+          "goto": "annotate",
+          "media": [{"type": "coords", "src": "coords/coords_onboard.json.gz"}]
+        }
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：复用产物没有注释列",
+      "brief": "onboard analysis 不产细胞类型注释——注释必须自己来。大样本路线：抽样注释（3 万细胞 marker/celltypist）→ 标签外推（kNN 或模型）。本关提供交互底座，注释列留给你的真实课题流程。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释", "href": "../01-基础范式主干/"},
+        {"kind": "other", "label": "zxm_explorer.py（本机已有探索脚本）", "href": "02_工作流开发/候选流程池/官方线_官方教程中文优化.md"}
+      ]},
+      "options": [
+        {
+          "label": "规划抽样注释 → 外推（课题下一步）",
+          "desc": "把决策剧场练的路线接到真实课题。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "注释规划完成",
+          "result": "真实路线图：3 万细胞抽样 → marker/celltypist 注释（HCC/BRCA 关管线同构）→ 全量 kNN 外推 → 空间质心回填。这一步做完，课题的注释列就齐了。",
+          "consequence": "注释路线已规划（执行属课题工作流，不在本关内假装完成）。",
+          "goto": "downstream",
+          "events": ["P-006"],
+          "media": [{"type": "note", "html": "<b>诚实声明</b>：本关不呈现未执行的注释结果图——规划即产出。注释执行后本 manifest 可增补 anno 列。"}]
+        }
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：T2 交互底座已就绪",
+      "brief": "onboard UMAP + 空间质心 + graphclust + 焦点基因表达，全部在 T2 交互散点里——这是你课题数据的第一块可视化底座。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析", "href": "../01-基础范式主干/"}
+      ]},
+      "options": [
+        {
+          "label": "T2 交互探索（真实执行）",
+          "desc": "空间/UMAP 双视图，graphclust 与基因表达切换。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "T2 交互就绪",
+          "result": "下方散点：3 万细胞抽样、seed=0、滚轮缩放 + 拖拽平移、graphclust/基因表达切换上色。空间视图能直接看到组织结构——这就是你的切片。",
+          "consequence": "T2 底座交付。",
+          "goto": "settle",
+          "media": [{"type": "coords", "src": "coords/coords_onboard.json.gz"}]
+        }
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 课题衔接清单",
+      "brief": "本关的结算不是复盘文献——是把模拟器练的纪律落到你课题的下一步。",
+      "mirrors": [
+        {"step": 0, "lit": "大样本三原则：复用 / 抽样 / 大文件按需读", "note": "37GB 形态学图不无脑读"},
+        {"step": 1, "lit": "onboard graphclust/UMAP 复用（官方线先例同构）", "note": "复用是规模问题"},
+        {"step": 2, "lit": "抽样三档 QC（min_counts 口径，显式标注）", "note": "外推引用带「抽样」限定"},
+        {"step": 3, "lit": "接受 onboard 口径 + 版本登记", "note": "run_metadata 纪律"},
+        {"step": 4, "lit": "graphclust 单口径 = 复用的边界", "note": "多候选需子样本重算"},
+        {"step": 5, "lit": "抽样注释 → kNN 外推（课题下一步）", "note": "管线与 HCC/BRCA 关同构"},
+        {"step": 6, "lit": "T2 交互底座（本机资产）", "note": "课题可视化起点"}
+      ],
+      "verdict": "本关全部资产仅存于本机（assets/ZXM_local/ 已 .gitignore），公开站只见入口提示——课题数据不出本机，教学价值照常入账。下一步真实动作：抽样注释外推（决策剧场 HCC 关的管线可以直接搬）。"
+    }
+  }
+}

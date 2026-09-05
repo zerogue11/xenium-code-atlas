@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "xenium-decision-theater/scenario",
+  "title": "Xenium 决策剧场 · 剧本 Schema",
+  "type": "object",
+  "required": ["id", "title", "mode", "data", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"enum": ["HCC", "BRCA", "CRC", "UC", "CROHN", "ZXM"]},
+    "title": {"type": "string", "minLength": 2},
+    "subtitle": {"type": "string"},
+    "mode": {"enum": ["T1", "T1-lite", "local"]},
+    "accent": {"type": "string"},
+    "data": {
+      "type": "object",
+      "required": ["source", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {"type": "string", "minLength": 8},
+        "ref": {"type": "string", "minLength": 8},
+        "manifest": {"type": "string"}
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "minProperties": 8,
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
+      "additionalProperties": {"$ref": "#/definitions/node"}
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["type", "step", "name", "title", "brief"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["decision", "fixed", "settlement"]},
+        "step": {"type": "integer", "minimum": 0, "maximum": 7},
+        "name": {"type": "string"},
+        "subtitle": {"type": "string"},
+        "title": {"type": "string"},
+        "brief": {"type": "string", "minLength": 10},
+        "teach": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "links": {"type": "array", "items": {"$ref": "#/definitions/link"}}
+          }
+        },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {"$ref": "#/definitions/option"}
+        },
+        "mirrors": {"type": "array", "items": {"$ref": "#/definitions/mirror"}},
+        "verdict": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"const": "settlement"}}},
+          "then": {"required": ["mirrors"], "not": {"required": ["options"]}}
+        },
+        {
+          "if": {"properties": {"type": {"enum": ["decision", "fixed"]}}},
+          "then": {"required": ["options"]}
+        }
+      ]
+    },
+    "option": {
+      "type": "object",
+      "required": ["label", "desc", "result", "goto"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {"type": "string", "minLength": 2},
+        "desc": {"type": "string"},
+        "tag": {"type": "string"},
+        "tag_type": {"enum": ["acc", "warn", "bad", "good", ""]},
+        "result_title": {"type": "string"},
+        "result": {"type": "string", "minLength": 10},
+        "consequence": {"type": "string"},
+        "goto": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "events": {"type": "array", "items": {"pattern": "^P-\\d{3}$"}, "maxItems": 2},
+        "media": {"type": "array", "maxItems": 4, "items": {"$ref": "#/definitions/media"}},
+        "unlock": {"type": "array", "items": {"$ref": "#/definitions/link"}}
+      }
+    },
+    "mirror": {
+      "type": "object",
+      "required": ["step", "lit", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "step": {"type": "integer", "minimum": 0, "maximum": 6},
+        "lit": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "link": {
+      "type": "object",
+      "required": ["kind", "label", "href"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum": ["card", "audit", "pattern", "manual", "lit", "other"]},
+        "label": {"type": "string"},
+        "href": {"type": "string"}
+      }
+    },
+    "media": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["asset", "coords", "svg3", "note"]},
+        "asset": {"type": "string"},
+        "src": {"type": "string"},
+        "id": {"type": "string"},
+        "note": {"type": "string"},
+        "fallback": {"type": "string"},
+        "html": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"const": "asset"}}}, "then": {"required": ["asset"]}},
+        {"if": {"properties": {"type": {"const": "coords"}}}, "then": {"required": ["src"]}},
+        {"if": {"properties": {"type": {"const": "svg3"}}}, "then": {"required": ["id"]}},
+        {"if": {"properties": {"type": {"const": "note"}}}, "then": {"required": ["html"]}}
+      ]
+    }
+  }
+}

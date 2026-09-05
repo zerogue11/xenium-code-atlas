@@ -1,0 +1,203 @@
+{
+  "id": "UC",
+  "title": "溃疡性结肠炎 UC · UCSF DSCOLAB 文献线",
+  "subtitle": "T1-lite 结论模式（数据未放出）",
+  "mode": "T1-lite",
+  "accent": "#E8B44C",
+  "data": {
+    "source": "文献结论模式：UCSF DSCOLAB 结肠炎 Xenium 研究（LIT-053，bioRxiv 2024.11.11.623014，已正式发表 JCI 2026，jci.org/articles/view/202488）；本关无本地原始数据，图均为文献结论参数化重绘或标注示意",
+    "ref": "Mennillo E, et al. Single-cell spatial transcriptomics of FFPE biopsies reveals colitis-associated cell networks. bioRxiv doi:10.1101/2024.11.11.623014 → JCI 2026（正式版）；方法参照本库 LIT-053 档案卡与 PATTERN-047",
+    "manifest": "./assets/UC/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "第一刀切在哪：样本与设计",
+      "brief": "溃疡性结肠炎（UC）的空间研究：FFPE 活检、炎症分级、多组学对照。本关是 <b>T1-lite 结论模式</b>：数据尚未公开（LIT-053 卡记录「GEO/FigShare 发表后放出」，执行期核实仍无 accession），所以每一步给的是<b>文献路线 + 结论重绘</b>——图右下角带「模拟示意」或标注「文献结论重绘」，绝不冒充本机重算。这种诚实降级本身就是工作流的一部分。",
+      "teach": {"links": [
+        {"kind": "card", "label": "LIT-053 UCSF-DSCOLAB · 档案卡（S 级/有精读）", "href": "01_资料库/档案卡/UCSF-DSCOLAB__spatial_transcriptomics_colitis_analysis_2024.md"},
+        {"kind": "audit", "label": "精读 · 统一 QC 核心 + 补丁层全文细节", "href": "01_资料库/精读笔记/UCSF-DSCOLAB__spatial_transcriptomics_colitis_analysis_2024.md"}
+      ]},
+      "options": [
+        {
+          "label": "FFPE 活检队列：炎症 vs 非炎症配对设计",
+          "desc": "文献真实设计：同一患者炎症/非炎症区域配对活检。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "设计定型",
+          "result": "文献设计：FFPE 活检 + 配对对照 + 细胞网络分析（IAF，inflammation-associated fibroblasts 是主结论）。配对设计让「炎症效应」从患者间变异里剥离——这是临床试验级别的统计思路，单切片的肿瘤研究里经常缺席。",
+          "consequence": "T1-lite 模式锁定：全程文献结论重绘。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        },
+        {
+          "label": "等数据放出再做真实数据版",
+          "desc": "把本关当作「数据追踪任务」的预案读一遍。",
+          "result_title": "预案模式",
+          "result": "合理选择！本库纪律：accession 未放出前，先用文献结论模式建教学关卡，数据放出后无缝升级 T1（管线与 HCC/BRCA 关完全同构——这就是为什么三条关共用一个引擎）。档案卡/ HANDOFF 会持续登记 accession 状态。",
+          "consequence": "T1-lite 模式锁定。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：文献路线还原",
+      "brief": "LIT-053 精读还原：从 GEO 原始文件起步（read_10x_h5 + cells.csv）→ 统一 AnnData。这个仓的真正贡献不是装载，是它沉淀的 <b>QC 统一核心 + 平台补丁层</b>——本库 PATTERN-047 的直接来源。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §1 数据读取与装载", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心（本仓直接来源）", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
+      ]},
+      "options": [
+        {
+          "label": "走文献装载路线（read_10x_h5 起步）",
+          "desc": "标准 10x 输入路径。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "文献路线还原完成",
+          "result": "与 HCC/BRCA 关的装载完全同构——学一遍到处能用。装载环节的真正考点在下一步：这个仓把 QC 做成了可跨平台复用的统一核心。",
+          "consequence": "进入本关的重头戏：QC。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：统一核心的诞生地",
+      "brief": "本关没有本机重算数字，但有更值钱的东西：<b>PATTERN-047 统一核心的原文出处</b>。UCSF 仓的 QC 设计 = 平台无关核心（min_counts 50 / min_genes 10 / 基因 min_counts 1 / min_cells 10）+ 平台补丁层（Xenium 特定阈值）。你在 HCC/BRCA 关用的「标准档」就是从这里来的。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一核心 + 补丁层", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
+      ]},
+      "options": [
+        {
+          "label": "统一核心 + 平台补丁层（文献路线）",
+          "desc": "分层设计：核心阈值跨平台共享，平台差异进补丁。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "统一核心执行（文献口径）",
+          "result": "分层思想的价值：换平台只改补丁层，核心审计逻辑不动——这就是 27 份精读里工程分最高的 QC 设计之一。对比 HCC/BRCA 关的三档数字：统一核心在不同组织上的「存活率手感」不同，但口径一致，跨研究可比。",
+          "consequence": "理解统一核心的设计动机。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [
+            {"type": "note", "html": "<b>T1-lite 诚实声明</b>：本关 QC 节点无本机重算图（数据未放出）。统一核心阈值的真实数字见 PATTERN-047 卡；HCC/BRCA 关有同口径的真实重算对比图（qc_tiers.png）。"}
+          ]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化 + HVG + PCA：这里不是决策点",
+      "brief": "文献路线与库内固定默认一致：normalize_total → log1p → PCA。决策留给 QC 与聚类。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "采用固定默认，继续", "desc": "唯一选项。",
+         "result_title": "固定默认执行",
+         "result": "归一化→log1p→PCA 完成（文献同构）。",
+         "goto": "cluster", "media": [{"type": "svg3", "id": "norm_pipeline"}]}
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：文献的多分辨率策略",
+      "brief": "UCSF 仓的聚类策略：多分辨率并行后按注释需要选择。这与本库多候选纪律一致——参数敏感的分析出多候选、终审冻结。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §4 聚类", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "宽/中/细三档并行（文献路线）", "desc": "同本库纪律。",
+         "tag": "推荐主线", "tag_type": "good",
+         "result_title": "多候选并行（文献口径）",
+         "result": "文献结论：炎症相关成纤维细胞（IAF）亚群在<b>更细分辨率</b>下才分离出来——「先区室后亚群」的教科书案例。想看真实重算的多分辨率对比？回 HCC 关的 UMAP 三连。",
+         "consequence": "理解分辨率与亚群发现的耦合。",
+         "goto": "annotate",
+         "media": [
+           {"type": "note", "html": "<b>T1-lite 诚实声明</b>：本关无本机 UMAP。多分辨率并行纪律的真实重算演示见 HCC 关（umap_res04/06/10.png）。"}
+         ]}
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：文献结论重绘",
+      "brief": "文献主结论：<b>炎症相关成纤维细胞（IAF）定位于离散空间位置</b>，与上皮损伤区互作。注释路线选择的教学点不变，但本关的图是结论重绘（标注 DOI）。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释", "href": "../01-基础范式主干/"},
+        {"kind": "other", "label": "高级模块 A2 · 注释与去卷积", "href": "../02-高级模块地图/"}
+      ]},
+      "options": [
+        {"label": "marker 人工注释（文献路线还原）", "desc": "成纤维/上皮/免疫区室 → 亚群。",
+         "tag": "推荐主线", "tag_type": "good",
+         "result_title": "文献注释路线还原",
+         "result": "文献路线：区室级 marker 注释 → 成纤维亚群细分 → IAF 识别。IAF 的空间定位（离散聚集而非弥散分布）是全文最漂亮的结论——它把「炎症细胞网络」从组成描述升级成了空间结构。",
+         "consequence": "IAF 空间定位结论入结算。",
+         "goto": "downstream",
+         "media": [{"type": "svg3", "id": "iaf_schematic"}]},
+        {"label": "迁移注释（文献对照）", "desc": "文献用参考数据集辅助注释。",
+         "result_title": "迁移路线（文献口径）",
+         "result": "迁移注释的老三样前提：参考覆盖（肠道参考好于肿瘤）、基因交集、可复现性（P-006）。",
+         "goto": "downstream",
+         "events": ["P-005", "P-006"],
+         "media": [{"type": "note", "html": "<b>T1-lite 诚实声明</b>：无本机注释图。真实重算的注释路线对比见 HCC/BRCA 关。"}]}
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：文献镜像的组成与空间网络",
+      "brief": "文献结论：① 炎症区 IAF 富集；② 细胞网络（cell networks）在炎症/非炎症间重组。本关以 T2 结论重绘图 + T3 示意呈现。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-051 · ROI 组成 niche assay（组成对比先例）", "href": "02_工作流开发/范式登记册/PATTERN-051_ROI组成niche-assay.md"}
+      ]},
+      "options": [
+        {"label": "A · 文献路线与结论总览（示意）", "desc": "T3：路线还原 + 定性结论，零编造数值。",
+         "result_title": "路线还原完成",
+         "result": "本关无本机重算、论文定量数值也无可靠可溯源来源——按反编造红线，组成对比不做伪定量图，以「路线+定性结论」示意呈现（右下角标注性质）。读图纪律不变：组间比较要看配对设计，别把描述性差异说成显著性。",
+         "consequence": "路线镜像入结算。",
+         "goto": "settle",
+         "media": [{"type": "asset", "asset": "uc_route_map.png",
+                    "fallback": "本示意资产尚未生成——运行 scripts/precompute_lit_redraw.py。"}]},
+        {"label": "B · IAF 空间定位（结论重绘 + 示意）", "desc": "IAF 离散空间聚集的结论重绘。",
+         "result_title": "空间结论重绘完成",
+         "result": "IAF 的离散定位是「空间信息 ≠ 组成信息」的最好教材：两块组织组成相同、空间结构不同，生物学结论就不同。",
+         "consequence": "空间镜像结论入结算。",
+         "goto": "settle",
+         "media": [{"type": "svg3", "id": "iaf_spatial"}]},
+        {"label": "C · 细胞网络重组（示意）", "desc": "T3：细胞-细胞网络示意。",
+         "result_title": "示意呈现",
+         "result": "网络重组是文献的下游叙事——示意级呈现，教学价值在「读懂这类图要看什么」：边代表什么、节点大小是什么、网络差异是否配对检验。",
+         "consequence": "示意入结算（T3 已标注）。",
+         "goto": "settle",
+         "media": [{"type": "svg3", "id": "iaf_schematic"}]}
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 文献镜像复盘",
+      "brief": "T1-lite 关的结算 = 你的选择 vs 文献路线 vs 诚实性标注的三重对照。",
+      "mirrors": [
+        {"step": 0, "lit": "FFPE 活检 + 炎症/非炎症配对（文献真实设计）", "note": "配对设计是统计纪律的一部分"},
+        {"step": 1, "lit": "GEO 原始文件 → AnnData 标准路径", "note": "与 T1 关同构"},
+        {"step": 2, "lit": "PATTERN-047 统一核心 + 平台补丁层（本仓贡献）", "note": "你在 HCC/BRCA 关用的标准档源头"},
+        {"step": 3, "lit": "文献同构固定默认", "note": "非决策点"},
+        {"step": 4, "lit": "多分辨率并行 → IAF 在细分辨率分离", "note": "分辨率与亚群发现耦合"},
+        {"step": 5, "lit": "IAF 识别：区室注释 → 亚群细分", "note": "marker 路线的教科书应用"},
+        {"step": 6, "lit": "IAF 离散空间定位 + 炎症网络重组（JCI 2026 正式版）", "note": "空间结构 > 组成描述"}
+      ],
+      "verdict": "本关全程 T1-lite：图均为文献结论参数化重绘（T2，标 DOI）或标注示意（T3），零本机重算、零文献原图搬运。数据放出后本关一键升级 T1——引擎、剧本、管线都是现成的。诚实性不是负担，是这类教学产品的地基。"
+    }
+  }
+}

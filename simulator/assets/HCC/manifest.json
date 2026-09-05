@@ -1,0 +1,235 @@
+{
+ "dataset": "HCC",
+ "generated": "2026-09-05",
+ "seed": 0,
+ "doc": "01_资料库/精读笔记/Moldia__Xenium_benchmarking.md",
+ "assets": [
+  {
+   "file": "qc_tiers.png",
+   "kind": "T1",
+   "node": "2-qc",
+   "title": "QC 三档后果对比（细胞/基因存活数）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（预计算管线, seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "umap_res04.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=0.4（standard QC 档）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "umap_res06.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=0.6（standard QC 档）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "umap_res10.png",
+   "kind": "T1",
+   "node": "4-cluster",
+   "title": "UMAP leiden res=1.0（standard QC 档）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（leiden/UMAP, seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "anno_marker_spatial.png",
+   "kind": "T1",
+   "node": "5-annotate",
+   "title": "注释路线（marker）· 空间分布",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（score_genes argmax, seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "anno_marker_umap.png",
+   "kind": "T1",
+   "node": "5-annotate",
+   "title": "注释路线（marker）· UMAP",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "ds_a_proportions.png",
+   "kind": "T1",
+   "node": "6-downstream-a",
+   "title": "下游 A · 细胞类型比例",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（注释列汇总）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "ds_b_niche_spatial.png",
+   "kind": "T1",
+   "node": "6-downstream-b",
+   "title": "下游 B · 空间域 niche（PATTERN-049 教学实现）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算（KMeans seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "ds_c_gene_GPC3.png",
+   "kind": "T1",
+   "node": "6-downstream-c",
+   "title": "下游 C · 单基因空间图（GPC3）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "ds_c_gene_CYP3A4.png",
+   "kind": "T1",
+   "node": "6-downstream-c",
+   "title": "下游 C · 单基因空间图（CYP3A4）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "ds_a_tumor_vs_healthy.png",
+   "kind": "T1",
+   "node": "6-downstream-a",
+   "title": "下游 A · 肿瘤 vs 健康肝组成对比",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）；健康对照 resource-肝脏健康V1（zarr 读入）",
+   "nature": "真实重算（同管线同 seed）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  },
+  {
+   "file": "coords/coords_standard.json.gz",
+   "kind": "T2",
+   "node": "6-downstream",
+   "title": "T2 交互散点（空间/UMAP/表达切换）",
+   "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+   "nature": "真实重算抽样 30000 细胞（seed=0）",
+   "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）"
+  }
+ ],
+ "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌，run 信息见 experiment.xenium）",
+ "nature": "T1 真实数据预计算",
+ "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（LIT-053）",
+ "flags": {
+  "marker_sets": {
+   "Hepatocyte": [
+    "CYP2A7",
+    "CYP2B6",
+    "CYP3A4",
+    "HAMP",
+    "HPX",
+    "TAT",
+    "APOA5",
+    "GLYATL1"
+   ],
+   "Cholangiocyte": [
+    "KRT7",
+    "CFTR"
+   ],
+   "Tumor_GPC3": [
+    "GPC3"
+   ],
+   "Macrophage_Kupffer": [
+    "CD68",
+    "CD163",
+    "MRC1",
+    "MPEG1",
+    "AIF1"
+   ],
+   "DC": [
+    "CD1C",
+    "CD1E",
+    "FCER1A",
+    "CLEC10A"
+   ],
+   "LSEC_Endothelial": [
+    "LYVE1",
+    "MMRN1",
+    "PECAM1",
+    "VWF"
+   ],
+   "T_NK_cell": [
+    "CD3D",
+    "CD3E",
+    "CD8A",
+    "CD4",
+    "TRAC",
+    "NKG7"
+   ],
+   "B_cell": [
+    "CD79A",
+    "MS4A1",
+    "CD19",
+    "BANK1"
+   ],
+   "Plasma": [
+    "MZB1",
+    "DERL3",
+    "TNFRSF13B"
+   ],
+   "Mast": [
+    "CPA3",
+    "KIT",
+    "MS4A2"
+   ],
+   "Fibroblast_Stellate": [
+    "PDGFRB",
+    "PDGFRA",
+    "MFAP5",
+    "COCH",
+    "OGN"
+   ],
+   "Erythroid": [
+    "ALAS2",
+    "AHSP",
+    "GYPA"
+   ]
+  },
+  "celltypist": "T3",
+  "healthy_control": "ok"
+ },
+ "qc_stats": {
+  "loose": {
+   "gene_min_cells": 5,
+   "gene_min_counts": 1,
+   "min_counts": 25,
+   "min_genes": 5,
+   "n_cells_in": 162628,
+   "n_cells_out": 157899,
+   "n_genes_in": 474,
+   "n_genes_out": 474,
+   "tier": "loose"
+  },
+  "standard": {
+   "gene_min_cells": 10,
+   "gene_min_counts": 1,
+   "min_counts": 50,
+   "min_genes": 10,
+   "n_cells_in": 162628,
+   "n_cells_out": 141410,
+   "n_genes_in": 474,
+   "n_genes_out": 474,
+   "tier": "standard"
+  },
+  "strict": {
+   "gene_min_cells": 20,
+   "gene_min_counts": 1,
+   "min_counts": 100,
+   "min_genes": 20,
+   "n_cells_in": 162628,
+   "n_cells_out": 94513,
+   "n_genes_in": 474,
+   "n_genes_out": 474,
+   "tier": "strict"
+  }
+ },
+ "metrics_note": {
+  "Human Liver Cancer (FFPE)": "XC096_S2"
+ }
+}

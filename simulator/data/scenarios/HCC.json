@@ -1,0 +1,308 @@
+{
+  "id": "HCC",
+  "title": "肝细胞癌 HCC · V1 全量重算",
+  "subtitle": "肿瘤 vs 健康肝对照",
+  "mode": "T1",
+  "accent": "#E06C6C",
+  "data": {
+    "source": "本地官方 Xenium V1 人肝细胞癌 FFPE 输出（resource-full_Xenium_V1_肝癌）；健康对照 resource-肝脏健康V1（zarr 读入）",
+    "ref": "数据：10x Genomics 官方 Xenium V1 输出；方法参照本库 LIT-088 Moldia/Xenium_benchmarking（Nat Methods 基准仓）与 PATTERN-047 统一 QC 核心（源 LIT-053）",
+    "manifest": "./assets/HCC/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "第一刀切在哪：样本与 panel",
+      "brief": "你接到一例肝细胞癌（HCC）切除标本。第一个决定不是参数，是<b>材料本身</b>：FFPE 存档还是新鲜冻存？panel 用 V1 精准panel（474 基因）还是 5K？这个决定决定了后面的每一步。要不要顺手设计一个<b>健康肝对照</b>？——对照不是装饰，它让「肿瘤改变了什么」这句话有主语。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · 主干七步", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心 + 平台补丁", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
+      ]},
+      "options": [
+        {
+          "label": "FFPE 手术标本 + V1 474 基因 panel + 健康肝对照",
+          "desc": "回溯性队列主流配置：室温切片、HE 形态配对、可直接对接临床病理。本关数据即此配置。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "样本定型",
+          "result": "装载本关真实数据：官方 Xenium V1 输出，{qc.loose.n_cells_in} 细胞 × 474 基因（五万级——全量重算完全在个人电脑射程内）。同时登记健康肝对照数据（zarr 打包，同管线可比）。FFPE 的代价也要记住：RNA 质量低于新鲜组织，QC 阈值要按 FFPE 口径设。",
+          "consequence": "对照设计已入队 → 结算前你会拿到「肿瘤 vs 健康」组成对比图（T1 同管线重算）。",
+          "goto": "load",
+          "events": ["P-004"],
+          "media": [{"type": "svg3", "id": "panel_choice"}],
+          "unlock": [
+            {"kind": "manual", "label": "手册 · 主干七步（装载→导出）", "href": "../01-基础范式主干/"},
+            {"kind": "card", "label": "LIT-088 Moldia/Xenium_benchmarking · 档案卡", "href": "01_资料库/档案卡/Moldia__Xenium_benchmarking.md"}
+          ]
+        },
+        {
+          "label": "新鲜冻存 + 5K panel",
+          "desc": "RNA 质量更优、基因覆盖 10 倍，但样本要 -80℃、成本翻数倍、本关数据不可用。",
+          "result_title": "换材料 = 换关卡",
+          "result": "教学判断：5K panel 适合「发现型」问题（新亚型、新标志物）；V1 panel 适合「验证型」问题（已知 marker 的空间定位）。本关数据是 V1 474 基因——选 5K 意味着换数据集，这里我们尊重主线：按 FFPE + V1 走，把 5K 的取舍记进你的决策账本。",
+          "consequence": "参数账本记录：panel 取舍已理解，数据仍为本关 V1。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice", "note": "两种材料与两代 panel 的取舍全景。"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：全量重算，还是复用官方结果？",
+      "brief": "Xenium 官方输出自带 analysis/ 目录（onboard 已算好 graphclust、UMAP、diffexp）。第一个工程决策：<b>全量重算</b>（参数自主、可复现、可教学）还是<b>复用官方结果</b>（分钟级、大样本救命稻草）？本库大样本策略教过：这个选择是规模问题，不是品味问题。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §1 数据读取与装载（大样本复用）", "href": "../01-基础范式主干/"},
+        {"kind": "other", "label": "官方线 · 大样本 onboard 复用模式（ZXM 119 万细胞先例）", "href": "02_工作流开发/候选流程池/官方线_官方教程中文优化.md"}
+      ]},
+      "options": [
+        {
+          "label": "全量重算（16 万细胞，可承受）",
+          "desc": "从 cell_feature_matrix.h5 开始，QC→PCA→聚类全部自己走。教学主线。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "全量重算启动",
+          "result": "个人电脑 CPU 数分钟级即可走完——这个量级根本不需要复用官方结果。重算的价值：每个阈值都可见、可改、可复现（seed 冻结），下面三档 QC 才有实验意义。参考代码时注意：LIT-088 基准仓的包入口和主流程函数都有工程坑（见右）。",
+          "consequence": "后续 QC 三档 × 聚类三分辨率全部解锁。",
+          "goto": "qc",
+          "events": ["P-002", "P-003"],
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        },
+        {
+          "label": "复用官方 onboard 结果",
+          "desc": "直接读 analysis/ 里现成的 graphclust/UMAP。百万细胞级才真正的必需品。",
+          "result_title": "复用官方结果",
+          "result": "装载只要几分钟——这是本库大样本策略的看家本领（ZXM 1,196,822 细胞先例）。但代价：官方 graphclust 的分辨率/阈值不可调，QC 三档对比在本关失去意义（onboard 已按官方口径定死）。教学判断：16 万细胞选复用属于「用大炮打蚊子，还锁死了自己调节器的手」。主线仍走全量重算，复用思想留到 ZXM 本地关实践。",
+          "consequence": "理解了取舍，主线回到全量重算（教学关卡设计：两条路都试过才算走过）。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：三档阈值的真实后果",
+      "brief": "库内统一核心（PATTERN-047，源自 LIT-053）：<b>min_counts=50 / min_genes=10 / 基因 min_counts=1 / min_cells=10</b>。教学设计把它作为「标准档」，上下各设一档：宽松（≈½）与严格（≈2×）。右边三张真实重算数字（seed=0），看清楚每档的真实代价再选——这不是玄学，是算术。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"},
+        {"kind": "pattern", "label": "PATTERN-001 · QC 指标库单函数化", "href": "02_工作流开发/范式登记册/PATTERN-001_QC指标库单函数化.md"}
+      ]},
+      "options": [
+        {
+          "label": "宽松档（min_counts 25 / min_genes 5）",
+          "desc": "留更多细胞，换取统计功效；风险：低质量细胞与游离核混入聚类。",
+          "result_title": "宽松过滤执行",
+          "result": "真实后果（本关数据）：{qc.loose.n_cells_in} 细胞 → 存活 {qc.loose.n_cells_out}（{qc.loose.n_cells_out} 细胞、{qc.loose.n_genes_out} 基因）。低质量细胞会「自成一簇」干扰下游——下一个聚类节点你会亲眼看到它们。",
+          "consequence": "QC 档位锁定 loose。聚类将基于该细胞集。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png", "note": "三档存活细胞/基因数对比——无论选哪档，先看全三档再决定。"}]
+        },
+        {
+          "label": "标准档（PATTERN-047 统一核心 50/10/1/10）",
+          "desc": "库内默认口径。文献仓一致采用的统一核心阈值。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "统一核心执行",
+          "result": "真实后果：{qc.standard.n_cells_in} 细胞 → 存活 {qc.standard.n_cells_out}（基因 {qc.standard.n_genes_out}）。这就是 PATTERN-047 的口径——「标准档」不是我们发明的教学数字，是库内 27 份精读里沉淀的统一核心（源 LIT-053 UCSF 仓）。",
+          "consequence": "QC 档位锁定 standard（PATTERN-047）。后续 UMAP 三档对比、注释、niche、coords 全部基于本档。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        },
+        {
+          "label": "严格档（min_counts 100 / min_genes 20）",
+          "desc": "宁缺毋滥：丢掉约更多细胞，换取更干净的聚类。",
+          "result_title": "严格过滤执行",
+          "result": "真实后果：{qc.strict.n_cells_in} 细胞 → 存活 {qc.strict.n_cells_out}（基因 {qc.strict.n_genes_out}）。稀有细胞类型（如浆细胞）可能被过度清除——「干净」与「完整」是一对永久张力，结算页文献镜像会回到这一点。",
+          "consequence": "QC 档位锁定 strict。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化 + HVG + PCA：这里不是决策点",
+      "brief": "教学刻意安排：这一步<b>不给你选择</b>。库内固定默认 = normalize_total(target_sum=1e4) → log1p → 小 panel 全基因进 PCA（20 PCs，参照 ist_benchmarking：面板基因少，HVG 反而丢信息）→ neighbors(k=15)。参数敏感性留给 QC（上一步）与聚类（下一步）两个真正的决策点。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "采用库内固定默认，继续",
+          "desc": "唯一选项——体会「流程中哪些是决策、哪些是惯例」本身就是教学。",
+          "result_title": "固定默认执行",
+          "result": "归一化→log1p→PCA(20)→neighbors(15) 链式完成。记住这个「非决策点」的设计：把注意力留给真正影响结果的两个旋钮（QC 阈值、聚类分辨率），是本库工作流的核心纪律。",
+          "goto": "cluster",
+          "media": [{"type": "svg3", "id": "norm_pipeline"}]
+        }
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：多候选并行，你选主线",
+      "brief": "leiden 三分辨率并行（0.4 / 0.6 / 1.0，seed 冻结）——这正是本库的<b>多候选纪律</b>：参数敏感的分析出多候选、附简评、终审后冻结。三张 UMAP 都是真实重算（standard 档）。注意：没有「正确答案」，只有与你问题匹配的分辨率。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §4 聚类（多候选分辨率并行纪律）", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-025 · 多分辨率 leiden key 并存先例", "href": "02_工作流开发/范式登记册/PATTERN-025_Xenium5K三段式注释迁移链.md"}
+      ]},
+      "options": [
+        {
+          "label": "res=0.4 · 宽聚类",
+          "desc": "少而稳的大簇。适合「先看骨架」：主要细胞区室是否分离。",
+          "result_title": "宽聚类主线",
+          "result": "实际簇数见图题。宽簇的代价：稀有亚群（浆细胞、NDP 基质亚型）会被并进大簇——如果你关心稀有细胞，这不是你的分辨率。",
+          "consequence": "res=0.4 冻结为主线候选。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res04.png"}]
+        },
+        {
+          "label": "res=0.6 · 中间档",
+          "desc": "区室与亚型的平衡点。本关推荐主线。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "中间档主线",
+          "result": "实际簇数见图题。中间档通常让主要区室（肝细胞/胆管/免疫/基质/内皮）各自成形、又不至于碎裂——这是「先能用，再细化」的稳健起点。",
+          "consequence": "res=0.6 冻结为主线候选（后续注释与 coords 交互默认用本档）。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res06.png"}]
+        },
+        {
+          "label": "res=1.0 · 细聚类",
+          "desc": "多而碎的细簇。适合「再分群」前的过度分割素材。",
+          "result_title": "细聚类主线",
+          "result": "实际簇数见图题。细簇是「亚型发现」的原料，但直接注释会碎成一地——本库范式是先粗后细（三段式注释迁移链，PATTERN-025 先例：leiden 1/2/4/5/10 五个 key 并存）。",
+          "consequence": "res=1.0 冻结为主线候选。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res10.png"}]
+        }
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：三条路线，三种代价",
+      "brief": "给每个 cluster 一个生物学名字。三条路：<b>marker 人工注释</b>（透明、快、依赖知识）、<b>celltypist 迁移</b>（自动、依赖参考数据与基因覆盖）、<b>去卷积</b>（属于 bin/spot 数据的必修课——Xenium 单细胞分辨率下通常不需要）。三条路在本关都有真实呈现或诚实降级。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释（含去卷积）", "href": "../01-基础范式主干/"},
+        {"kind": "other", "label": "高级模块 A2 · 注释与去卷积学习路径", "href": "../02-高级模块地图/"},
+        {"kind": "audit", "label": "精读 · QuKunLab 十种去卷积方法基准", "href": "01_资料库/精读笔记/QuKunLab__SpatialBenchmarking.md"}
+      ]},
+      "options": [
+        {
+          "label": "marker 人工注释（本关真实计算）",
+          "desc": "对每个细胞类型打 marker 基因集分数（score_genes），argmax + 分数边际检查。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "marker 注释完成",
+          "result": "本关真实执行：12 组细胞类型 marker 集已<b>逐一对照本 panel 实际基因清单</b>核对（肝细胞用 CYP2A7/CYP2B6/CYP3A4/HAMP/HPX 功能基因组合——这个 474 基因 panel 刻意不含 ALB 等代谢主导基因，正是「marker 依赖 panel」的活教材）。逐细胞打分 + z-score 边际判据。空间图里你会直接看到肿瘤灶与肝小叶结构——这是空间转录组最原始的浪漫。",
+          "consequence": "注释列已生成 → 下游比例/niche/coords 交互均可用。",
+          "goto": "downstream",
+          "media": [
+            {"type": "asset", "asset": "anno_marker_spatial.png", "note": "注意 GPC3+ 肿瘤灶的空间聚集——它就是单基因空间图（下游 C）的主角。"},
+            {"type": "asset", "asset": "anno_marker_umap.png"}
+          ],
+          "unlock": [{"kind": "pattern", "label": "PATTERN-049 · 邻居计数矩阵 KMeans 生态位链（下游 B 用）", "href": "02_工作流开发/范式登记册/PATTERN-049_邻居计数矩阵KMeans生态位发现链.md"}]
+        },
+        {
+          "label": "celltypist 迁移注释",
+          "desc": "用训练好的参考模型打标签。自动，但看参考数据脸色。",
+          "result_title": "迁移注释执行",
+          "result": "celltypist 的前提：panel 基因与模型特征有足够交集、参考数据覆盖你的组织。本关若模型不可用/交集不足，会诚实降级为示意说明（不假装算过）。迁移路线的另一个隐性问题见右侧坑事件——「标签不是硬件无关的量」。",
+          "consequence": "理解迁移路线的两个前提：参考覆盖 × 可复现性。",
+          "goto": "downstream",
+          "events": ["P-005", "P-006"],
+          "media": [
+            {"type": "asset", "asset": "anno_celltypist_spatial.png",
+             "fallback": "本关预计算时 celltypist 模型不可用（或基因交集不足）——该路线以教学说明呈现：迁移注释 = 参考图谱 + 基因交集 + 概率打分。本库真实先例见 PATTERN-025（megagut 模型迁移 Xenium 5K）。"}
+          ],
+          "unlock": [
+            {"kind": "pattern", "label": "PATTERN-025 · Xenium 5K 三段式注释迁移链", "href": "02_工作流开发/范式登记册/PATTERN-025_Xenium5K三段式注释迁移链.md"},
+            {"kind": "card", "label": "LIT-072 crc-atlas · 档案卡（scVI→scANVI 迁移先例）", "href": "01_资料库/档案卡/icbi-lab__crc-atlas.md"}
+          ]
+        },
+        {
+          "label": "去卷积",
+          "desc": "把混合信号拆成细胞类型组成——那是 bin/spot 数据的必修课。",
+          "result_title": "去卷积：诚实地说不适用",
+          "result": "Xenium 是单细胞分辨率：每个细胞已有表达谱，直接注释即可；去卷积解决的是 Visium spot / bin 级「一格多细胞」问题（QuKunLab 基准仓对照过 10 种方法）。在本关选它，教学价值在于认清「哪一步该用哪个工具」——这正是决策剧场想练的肌肉。该路线以示意图呈现（T3）。",
+          "consequence": "注释仍需一条可执行路线 → 建议回主线选 marker 注释。",
+          "goto": "annotate",
+          "media": [{"type": "svg3", "id": "deconv"}]
+        }
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：三个问题，三条路",
+      "brief": "注释完成，现在回答你的生物学问题。A：<b>肿瘤改变了细胞组成吗？</b>（比例对比，含健康肝对照）B：<b>细胞在空间上如何组织成微环境？</b>（niche）C：<b>某个基因在哪表达？</b>（单基因空间图 + T2 交互散点）。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-051 · ROI 组成 niche assay（比例对比先例）", "href": "02_工作流开发/范式登记册/PATTERN-051_ROI组成niche-assay.md"},
+        {"kind": "pattern", "label": "PATTERN-026 · CellCharter niche 发现契约（生产级 niche）", "href": "02_工作流开发/范式登记册/PATTERN-026_CellCharter_niche发现契约.md"}
+      ]},
+      "options": [
+        {
+          "label": "A · 细胞比例对比（肿瘤 vs 健康肝）",
+          "desc": "注释列汇总成组成条形图，与同管线重算的健康肝对照并排。",
+          "result_title": "组成对比完成",
+          "result": "两张真实重算图：本关样品的细胞类型占比，以及肿瘤 vs 健康肝的同管线对比（若对照数据在本机装载成功）。读法提醒：比例差异是描述性结论，单切片无生物学重复，不做显著性话术（本库统计硬纪律）。",
+          "consequence": "组成层面的镜像结论已入结算。",
+          "goto": "settle",
+          "media": [
+            {"type": "asset", "asset": "ds_a_proportions.png"},
+            {"type": "asset", "asset": "ds_a_tumor_vs_healthy.png",
+             "fallback": "健康肝对照（zarr 打包格式）在本机装载未成功——对照节点按预案降级为文案说明。这不影响其余资产：诚实降级也是本关的教学内容之一。"}
+          ]
+        },
+        {
+          "label": "B · 空间域 niche 发现",
+          "desc": "kNN 邻居注释构成矩阵 + KMeans（PATTERN-049 教学实现），微环境分区上色。",
+          "result_title": "niche 发现完成",
+          "result": "真实重算：每个细胞取 15 个最近邻的注释构成向量 → KMeans 聚成 4 个微环境分区。空间图上你会看到「肿瘤灶 niche」「肝实质 niche」「免疫富集 niche」等结构——这就是细胞比例之外的第二层信息：<b>组织架构</b>。",
+          "consequence": "niche 标签已入 T2 交互散点（可切换上色）。",
+          "goto": "settle",
+          "media": [{"type": "asset", "asset": "ds_b_niche_spatial.png"}]
+        },
+        {
+          "label": "C · 单基因空间图 + T2 交互散点",
+          "desc": "焦点基因空间定位 + 可缩放交互散点（cluster/注释/niche/表达切换）。",
+          "result_title": "单基因空间图完成",
+          "result": "下方两张是真实重算的焦点基因空间图；再往下是本关的 T2 交互散点（3 万细胞抽样，seed=0）：滚轮缩放、拖拽平移、按 cluster res/注释/niche/基因表达切换上色——所有数据都来自预计算 JSON，浏览器本地渲染。",
+          "consequence": "T2 交互资产已验证可用。",
+          "goto": "settle",
+          "media": [
+            {"type": "asset", "asset": "ds_c_gene_GPC3.png", "fallback": "GPC3 不在本 panel 交集内——见另一张焦点基因图与 T2 交互。"},
+            {"type": "asset", "asset": "ds_c_gene_CYP3A4.png", "fallback": "CYP3A4 不在本 panel 交集内。"},
+            {"type": "coords", "src": "coords/coords_standard.json.gz"}
+          ]
+        }
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 文献镜像复盘",
+      "brief": "把你的路线与本库沉淀的文献/工程结论镜像对照。模拟不是游戏通关——是让你带着「每一步的代价清单」回到真实数据。",
+      "mirrors": [
+        {"step": 0, "lit": "FFPE + V1 panel 是 10x 官方与 Janesick 2023 等主线的标准配置", "note": "panel 取舍 = 发现型 vs 验证型问题"},
+        {"step": 1, "lit": "官方线大样本策略：百万细胞级才必须复用 onboard 结果", "note": "16 万细胞全量重算分钟级——规模决定策略"},
+        {"step": 2, "lit": "PATTERN-047 统一核心 50/10/1/10（源 LIT-053 UCSF 仓）", "note": "标准档 = 库内沉淀口径，非本模拟器发明"},
+        {"step": 3, "lit": "ist_benchmarking：小 panel 全基因进 PCA 是文献惯例", "note": "非决策点，固定默认"},
+        {"step": 4, "lit": "PATTERN-025 先例：leiden 1/2/4/5/10 五 key 并存", "note": "多候选并行 → 终审冻结"},
+        {"step": 5, "lit": "marker 人工注释（透明）vs 迁移注释（PATTERN-025 megagut 先例）vs 去卷积（bin 数据专用）", "note": "三条路的适用边界比优劣更重要"},
+        {"step": 6, "lit": "LIT-049 HCC 结论（PubMed 补齐）：肿瘤组成与空间结构改变是 HCC 空间研究的一致发现", "note": "单切片描述性对比，不涉显著性"}
+      ],
+      "verdict": "本关 T1 全量重算的每一张图都来自本机真实数据（seed 冻结、三行式标注可溯源）。如果你在 QC/聚类两处感受过「参数→后果」的直接因果，这场模拟就值回票价。下一步：把这套肌肉用回你自己的课题（ZXM 本地关见指南）。"
+    }
+  }
+}

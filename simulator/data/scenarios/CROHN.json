@@ -1,0 +1,212 @@
+{
+  "id": "CROHN",
+  "title": "克罗恩病 · Teichlab 5K 链镜像线",
+  "subtitle": "T1-lite 结论模式（scVI→celltypist 教学镜像）",
+  "mode": "T1-lite",
+  "accent": "#5BC0BE",
+  "data": {
+    "source": "文献结论模式：Teichlab crohns-fibroblast-atlas（LIT-066，Nat Immunology 线）Xenium 5K 链镜像；本关无本地原始数据，图均为文献结论参数化重绘或标注示意",
+    "ref": "Teichlab crohns-fibroblast-atlas（MIT，S 级，有精读）：Xenium 5K → scVI → celltypist megagut 迁移 → cellcharter niche 链；本库精读 1a→8 逐 notebook 走读",
+    "manifest": "./assets/CROHN/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "第一刀切在哪：样本与规模",
+      "brief": "克罗恩病的空间研究有个天然分岔：局限性活检 vs 大规模队列。Teichlab 路线选了后者——<b>646,121 细胞 × 5001 基因的 Xenium 5K h5ad</b>（仓内相对路径 h5ad/xenium5k_scVI.h5ad）。这直接决定装载策略：这个量级，<b>复用预处理产物不是偷懒，是唯一理性选择</b>。",
+      "teach": {"links": [
+        {"kind": "card", "label": "LIT-066 Teichlab crohns · 档案卡（S 级/MIT/有精读）", "href": "01_资料库/档案卡/Teichlab__crohns-fibroblast-atlas.md"},
+        {"kind": "audit", "label": "精读 · 1a→8 xenium 链逐 notebook 走读", "href": "01_资料库/精读笔记/Teichlab__crohns-fibroblast-atlas.md"}
+      ]},
+      "options": [
+        {
+          "label": "大规模队列路线（64.6 万细胞 5K panel）",
+          "desc": "文献真实规模：scVI 整合 + celltypist 迁移。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "规模定型",
+          "result": "64.6 万细胞 × 5001 基因——比 HCC 关大 4 倍、基因数多 10 倍。教学核心问题随之改变：不是「跑不跑得动」，是「GPU/整合方法怎么选」。这就是为什么本关的装载节点是全模拟器最值得细读的一站。",
+          "consequence": "T1-lite 模式 + 大样本叙事锁定。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        },
+        {
+          "label": "单活检小队列路线",
+          "desc": "小数据走标准管线（HCC 关同构）。",
+          "result_title": "规模定型",
+          "result": "小数据用 HCC 关同款管线即可。本关价值在于镜像大规模路线——继续主线。",
+          "consequence": "T1-lite 模式锁定。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：预整合 h5ad 的复用哲学",
+      "brief": "Teichlab 仓直接提供 xenium5k_scVI.h5ad——scVI 潜空间已经算好。你的选择：从头复算（GPU 数小时 + 方法调参）还是站在预处理产物上做下游。本库大样本策略在此重演：复用是规模问题。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §1 装载（大样本复用）", "href": "../01-基础范式主干/"},
+        {"kind": "other", "label": "官方线 · 大样本 onboard 复用先例", "href": "02_工作流开发/候选流程池/官方线_官方教程中文优化.md"}
+      ]},
+      "options": [
+        {
+          "label": "复用预整合 h5ad（文献路线）",
+          "desc": "scVI 潜空间直接用。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "复用执行（文献口径）",
+          "result": "文献路线即复用路线：notebook 链 1a→8 全部以 h5ad 产物为起点。复用的代价要想清楚：潜空间参数（scVI 超参、HVG 数）不再可见——引用时只能声明「按原作者参数」。",
+          "consequence": "下游全部基于预整合产物（文献同构）。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        },
+        {
+          "label": "从头复算（GPU 路线，教学推演）",
+          "desc": "scVI 重训。本关只能推演——数据未在本机。",
+          "result_title": "推演：从头复算的账单",
+          "result": "64.6 万 × 5001 的 scVI 训练：GPU 数小时 + scVI/scANVI 调参 + celltypist 模型准备。本库 WSL OV-GPU 环境可以接这个活（05_运行环境已部署）——但那是 ZXM 关之后的实战课题。教学结论：先想清楚「复算解决什么问题」，再付算力账单。",
+          "consequence": "理解复算成本，主线回复用。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：文献路线（已完成时态）",
+      "brief": "复用产物意味着 QC 已经被原作者做过（统一核心 + 5K panel 补丁口径）。本节点教学点：拿到预整合产物时，<b>先查 QC 元数据再往下走</b>——obs 里的 QC 列、uns 里的参数记录是复用者的尽职调查。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "尽职调查：查 QC 元数据（推荐）",
+          "desc": "obs/uns 里的 QC 列与参数记录。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "尽职调查完成",
+          "result": "复用产物的 QC 元数据审计 = 「别人的 QC 我能不能信」。查什么：过滤阈值是否记录、neg control 占比、双联体分数是否残留。这步在文献链里被 notebook 1a 的元数据检查覆盖。",
+          "consequence": "复用产物审计通过（教学叙事）。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "note", "html": "<b>T1-lite 诚实声明</b>：本关无本机 QC 数字。统一核心真实重算对比见 HCC/BRCA 关 qc_tiers.png。"}]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化 + 潜空间：这里不是决策点",
+      "brief": "复用路线下这一步已由原作者完成（scVI 潜空间）。教学点：scVI 的「归一化」在模型内部（library size 先验）——与常规 normalize_total+log1p 是两套哲学，都合法，但不能混着比。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {"label": "使用预计算潜空间，继续", "desc": "唯一选项。",
+         "result_title": "潜空间就位",
+         "result": "scVI 潜空间（文献产物）作为下游 neighbors/聚类/UMAP 的输入——这就是「整合方法替代 HVG+PCA」的现代路线。",
+         "goto": "cluster", "media": [{"type": "svg3", "id": "norm_pipeline"}]}
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：文献的多分辨率 key 并存",
+      "brief": "PATTERN-025 的直接来源：Teichlab 链在 AnnData 里<b>同时保留 leiden res=1/2/4/5/10 五个 key</b>，注释时按需取用。这是多候选纪律的工业级实现。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §4 聚类", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-025 · 五分辨率 key 并存（本仓直接来源）", "href": "02_工作流开发/范式登记册/PATTERN-025_Xenium5K三段式注释迁移链.md"}
+      ]},
+      "options": [
+        {"label": "五分辨率 key 并存，按需取用（文献路线）", "desc": "res=1/2/4/5/10 全保留。",
+         "tag": "推荐主线", "tag_type": "good",
+         "result_title": "多 key 并存执行（文献口径）",
+         "result": "不选「一个分辨率」而是「全都要」——存储成本低（每 key 一列），灵活性高（区室用粗、亚群用细）。代价：cluster→标签映射字典要维护（范式卡里那个 cluster36 级别的人工映射就是这么来的）。",
+         "consequence": "理解多 key 并存 ↔ 维护成本的交换。",
+         "goto": "annotate",
+         "media": [{"type": "note", "html": "<b>T1-lite 诚实声明</b>：无本机 UMAP。真实重算多分辨率对比见 HCC 关。"}]}
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：scVI → celltypist megagut 迁移（本关主角）",
+      "brief": "本关的招牌教学点：<b>三段式注释迁移链</b>（PATTERN-025）——scVI 潜空间对齐 → celltypist megagut 肠道参考模型打分 → cluster 级人工映射兜底。克罗恩是肠道组织，megagut 参考覆盖好——迁移路线在这里最理直气壮。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-025 · 三段式注释迁移链", "href": "02_工作流开发/范式登记册/PATTERN-025_Xenium5K三段式注释迁移链.md"},
+        {"kind": "pattern", "label": "PATTERN-024 · scVI→scANVI 种子注释迁移链", "href": "02_工作流开发/范式登记册/PATTERN-024_scVI_scANVI种子注释迁移链.md"}
+      ]},
+      "options": [
+        {
+          "label": "三段式迁移链（scVI→celltypist→人工映射）",
+          "desc": "文献真实路线。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "三段式迁移链还原",
+          "result": "链路：① scVI 潜空间消除批次 → ② celltypist 用 megagut（肠道参考）逐细胞打分 → ③ 低置信/未覆盖 cluster 用人工 marker 映射兜底。三段的分工：统计对齐、参考迁移、专家裁决——谁也替代不了谁。",
+          "consequence": "迁移链三段分工入结算。",
+          "goto": "downstream",
+          "events": ["P-005", "P-006"],
+          "media": [{"type": "note", "html": "<b>T1-lite 诚实声明</b>：本关无本机注释图。真实重算的 marker 注释空间图见 HCC 关（anno_marker_spatial.png）；迁移链先例细节见 PATTERN-025 卡。"}]
+        },
+        {
+          "label": "纯人工 marker 注释",
+          "desc": "5001 基因、64.6 万细胞——人工到天荒地老。",
+          "result_title": "规模不匹配",
+          "result": "教学推演：这个规模纯人工不现实。marker 注释的甜区是单切片/中等细胞数（HCC/BRCA 关的量级）。路线选择永远要与规模匹配。",
+          "consequence": "回主线选迁移链。",
+          "goto": "annotate",
+          "media": [{"type": "svg3", "id": "deconv"}]
+        }
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：niche 发现的工业级路线",
+      "brief": "文献链 6-8 号 notebook：cellcharter <b>niche 发现</b>（PATTERN-026 契约）→ 纤维化相关生态型分析。克罗恩的空间生物学主戏：炎症/纤维化生态型的空间组织。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析 + 高级模块 A3", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-026 · CellCharter niche 发现契约", "href": "02_工作流开发/范式登记册/PATTERN-026_CellCharter_niche发现契约.md"},
+        {"kind": "pattern", "label": "PATTERN-049 · 邻居计数 KMeans（教学实现）", "href": "02_工作流开发/范式登记册/PATTERN-049_邻居计数矩阵KMeans生态位发现链.md"}
+      ]},
+      "options": [
+        {"label": "A · 文献路线与结论总览（示意）", "desc": "T3：1a→8 链还原 + 定性结论。",
+         "tag": "推荐主线", "tag_type": "good",
+         "result_title": "路线还原完成",
+         "result": "本关无本机重算、论文定量数值无可靠可溯源来源——按反编造红线以「路线+定性结论」示意呈现。与 HCC 关的 KMeans 教学实现对比：工业级 cellcharter 用潜空间而非注释构成向量——两个层级，同一思想。",
+         "consequence": "niche 路线层级对比入结算。",
+         "goto": "settle",
+         "media": [{"type": "asset", "asset": "crohn_route_map.png",
+                    "fallback": "本示意资产尚未生成——运行 scripts/precompute_lit_redraw.py。"}]},
+        {"label": "B · 纤维化生态型叙事（结论重绘）", "desc": "克罗恩主结论：基质重塑生态型。",
+         "result_title": "生态型结论重绘",
+         "result": "文献主结论：纤维化区基质细胞生态型扩张。T2 重绘 + DOI 溯源。",
+         "consequence": "生态型镜像入结算。",
+         "goto": "settle",
+         "media": [{"type": "svg3", "id": "iaf_spatial"}]}
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 文献镜像复盘",
+      "brief": "T1-lite 关结算：你的选择 vs Teichlab 路线 vs 诚实性标注。",
+      "mirrors": [
+        {"step": 0, "lit": "64.6 万细胞 × 5001 基因 5K panel 队列", "note": "规模决定一切下游决策"},
+        {"step": 1, "lit": "复用预整合 h5ad（notebook 1a→8 全链起点）", "note": "复用是规模问题不是品味问题"},
+        {"step": 2, "lit": "原作者 QC 完成；复用者做元数据尽职调查", "note": "复用 ≠ 免审"},
+        {"step": 3, "lit": "scVI 潜空间替代 HVG+PCA", "note": "两套归一化哲学"},
+        {"step": 4, "lit": "leiden 1/2/4/5/10 五 key 并存（PATTERN-025 原型）", "note": "多候选纪律工业级实现"},
+        {"step": 5, "lit": "scVI → celltypist megagut → 人工映射 三段式", "note": "统计对齐/参考迁移/专家裁决三分工"},
+        {"step": 6, "lit": "cellcharter niche 契约（PATTERN-026）", "note": "工业级 vs 教学实现的两层对比"}
+      ],
+      "verdict": "本关镜像了大规模空间蛋白质组时代的真实工作方式：复用产物 + 元数据审计 + 迁移注释 + 工业级 niche。四关连起来看：HCC 练「参数直觉」，BRCA 练「TME 结构」，UC 练「配对设计与诚实降级」，CROHN 练「大规模策略」——主干七步是同一套，规模与组织变了，决策就变了。"
+    }
+  }
+}

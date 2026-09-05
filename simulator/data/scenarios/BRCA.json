@@ -1,0 +1,286 @@
+{
+  "id": "BRCA",
+  "title": "乳腺癌 BRCA · 10x 官方 FFPE Rep1",
+  "subtitle": "TME 分型与配准警示",
+  "mode": "T1",
+  "accent": "#E58BB4",
+  "data": {
+    "source": "10x Genomics 公开数据集 Xenium FFPE Human Breast Cancer Rep1（cf.10xgenomics.com 单文件直链下载，本库 LIT-002 janesick 伴随仓官方 curl 源）",
+    "ref": "数据：Xenium FFPE Human Breast Cancer Rep1（Janesick et al. 2023 配套，bioRxiv doi:10.1101/2022.10.06.510405，GEO GSE243275）；方法参照本库 LIT-002/LIT-088",
+    "manifest": "./assets/BRCA/manifest.json"
+  },
+  "nodes": {
+    "start": {
+      "type": "decision",
+      "step": 0,
+      "name": "样本/panel",
+      "title": "第一刀切在哪：样本与 panel",
+      "brief": "乳腺癌是 Xenium 的旗舰数据集：Janesick 2023（Nat Commun，本库 LIT-002）用 FFPE 乳腺切片做了 Xenium↔Visium↔scRNA 三模态整合。你手上的真实数据是官方 Rep1 输出。材料选择的老问题照旧，但这次多一层：<b>panel 是免疫肿瘤向的</b>——TME 分型是它的主场。",
+      "teach": {"links": [
+        {"kind": "card", "label": "LIT-002 janesick companion · 档案卡", "href": "01_资料库/档案卡/10XGenomics__janesick_nature_comms_2023_companion.md"},
+        {"kind": "audit", "label": "精读 · 配准链路逐 cell 走读", "href": "01_资料库/精读笔记/10XGenomics__janesick_nature_comms_2023_companion.md"}
+      ]},
+      "options": [
+        {
+          "label": "FFPE 乳腺切片 + 官方 Rep1 数据（真实数据）",
+          "desc": "本关主线：10x 官方 Rep1 输出，TME（肿瘤微环境）分型教学。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "样本定型",
+          "result": "装载真实数据：{qc.standard.n_cells_in} 细胞 × 官方 panel 基因。乳腺 TME 的看点：肿瘤上皮（浸润性癌 vs DCIS）、肌上皮、基质、免疫点缀其中——比例与空间组织都是可考题。附加教学：Janesick 仓最值钱的其实是 Xenium↔Visium <b>配准链路</b>（结算页展开）。",
+          "consequence": "单切片教学关：无对照设计（BRCA 关不做肿瘤 vs 正常对比）。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}],
+          "unlock": [{"kind": "card", "label": "LIT-002 · 档案卡（S 级/MIT/有精读）", "href": "01_资料库/档案卡/10XGenomics__janesick_nature_comms_2023_companion.md"}]
+        },
+        {
+          "label": "TNBC 化疗队列路线",
+          "desc": "LIT-046 navinlabcode/tnbc-chemo：化疗空间生态型（Nature 2026 线）。",
+          "result_title": "换数据集 = 换关卡",
+          "result": "教学判断：tnbc-chemo 是多队列、多时间点的生态型研究（外部队列对象随仓内置 343MB），数据规模与本关完全不同——适合作为「读完档案卡再决定」的进阶阅读，不在本关展开。本关继续官方 Rep1。",
+          "consequence": "参数账本记录：TNBC 生态型研究路线已了解。",
+          "goto": "load",
+          "media": [{"type": "svg3", "id": "panel_choice"}],
+          "unlock": [{"kind": "card", "label": "LIT-046 tnbc-chemo · 档案卡", "href": "01_资料库/档案卡/navinlabcode__tnbc-chemo.md"}]
+        }
+      ]
+    },
+    "load": {
+      "type": "decision",
+      "step": 1,
+      "name": "装载",
+      "title": "装载：全量重算，还是复用官方结果？",
+      "brief": "同一道工程题，换个数据集再问一遍。官方 Rep1 是十万级细胞——全量重算在个人电脑上是分钟级；复用 onboard 结果则把参数锁死在官方口径。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §1 数据读取与装载", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "全量重算",
+          "desc": "教学主线：QC→PCA→聚类自主可控。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "全量重算启动",
+          "result": "十万级细胞全量重算——分钟级，参数全部可见。参考基准仓代码时的两个工程坑（包入口坏 / 分析写盘耦合）本关默认你已学会绕开（HCC 关实战过）。",
+          "consequence": "QC 三档 × 聚类三分辨率解锁。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        },
+        {
+          "label": "复用官方 onboard 结果",
+          "desc": "读 analysis/ 现成结果。教学判断：这一档的真正主场是百万细胞。",
+          "result_title": "复用官方结果",
+          "result": "可行，但教学价值打折：onboard 口径锁死后，QC 三档与聚类三分辨率的「参数→后果」实验都没法做。主线仍走全量重算。",
+          "consequence": "理解取舍，主线回到全量重算。",
+          "goto": "qc",
+          "media": [{"type": "svg3", "id": "onboarding"}]
+        }
+      ]
+    },
+    "qc": {
+      "type": "decision",
+      "step": 2,
+      "name": "QC",
+      "title": "QC：三档阈值的真实后果",
+      "brief": "同一套教学设计换数据集重跑：统一核心（PATTERN-047：50/10/1/10）为标准档，上下各一档。数字全部来自本关数据的真实重算（seed=0）——不同组织的「存活率手感」不一样，这正是多场景设计的用意。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §2 质控 QC", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
+      ]},
+      "options": [
+        {
+          "label": "宽松档（min_counts 25 / min_genes 5）",
+          "desc": "留更多细胞换统计功效，赌低质量细胞不捣乱。",
+          "result_title": "宽松过滤执行",
+          "result": "真实后果：{qc.loose.n_cells_in} → 存活 {qc.loose.n_cells_out}（基因 {qc.loose.n_genes_out}）。FFPE 乳腺的 RNA 质量分布与肝脏不同——对比两个场景的存活率，就是「阈值不可跨组织盲抄」的直观课。",
+          "consequence": "QC 档位锁定 loose。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        },
+        {
+          "label": "标准档（PATTERN-047 统一核心）",
+          "desc": "库内默认口径 50/10/1/10。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "统一核心执行",
+          "result": "真实后果：{qc.standard.n_cells_in} → 存活 {qc.standard.n_cells_out}（基因 {qc.standard.n_genes_out}）。后续全部下游基于本档。",
+          "consequence": "QC 档位锁定 standard（PATTERN-047）。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        },
+        {
+          "label": "严格档（min_counts 100 / min_genes 20）",
+          "desc": "宁缺毋滥。",
+          "result_title": "严格过滤执行",
+          "result": "真实后果：{qc.strict.n_cells_in} → 存活 {qc.strict.n_cells_out}（基因 {qc.strict.n_genes_out}）。免疫细胞计数天然偏低——严格档会优先牺牲它们，TME 研究里这笔账要算清楚。",
+          "consequence": "QC 档位锁定 strict。",
+          "goto": "norm",
+          "events": ["P-001"],
+          "media": [{"type": "asset", "asset": "qc_tiers.png"}]
+        }
+      ]
+    },
+    "norm": {
+      "type": "fixed",
+      "step": 3,
+      "name": "归一化",
+      "title": "归一化 + HVG + PCA：这里不是决策点",
+      "brief": "与 HCC 关同款固定默认：normalize_total(1e4) → log1p → 全基因 PCA(20) → neighbors(15)。决策留给 QC 与聚类。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §3 归一化·HVG·降维", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "采用库内固定默认，继续",
+          "desc": "唯一选项。",
+          "result_title": "固定默认执行",
+          "result": "归一化→log1p→PCA→neighbors 完成。",
+          "goto": "cluster",
+          "media": [{"type": "svg3", "id": "norm_pipeline"}]
+        }
+      ]
+    },
+    "cluster": {
+      "type": "decision",
+      "step": 4,
+      "name": "聚类",
+      "title": "聚类：多候选并行，你选主线",
+      "brief": "leiden 0.4 / 0.6 / 1.0 三候选并行（seed 冻结）。乳腺 TME 的看点：肿瘤上皮、肌上皮、基质、免疫各区室是否分离，免疫亚群是否被细分出来。",
+      "teach": {"links": [{"kind": "manual", "label": "手册 · §4 聚类", "href": "../01-基础范式主干/"}]},
+      "options": [
+        {
+          "label": "res=0.4 · 宽聚类",
+          "desc": "区室级分辨率。",
+          "result_title": "宽聚类主线",
+          "result": "实际簇数见图题。宽簇下 T 细胞/B 细胞可能合为一团「免疫」——TME 研究通常要更细。",
+          "consequence": "res=0.4 冻结为候选。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res04.png"}]
+        },
+        {
+          "label": "res=0.6 · 中间档",
+          "desc": "区室 + 主要亚型。本关推荐主线。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "中间档主线",
+          "result": "实际簇数见图题。中间档通常能把肿瘤上皮/基质/髓系/淋巴分开，同时不至于碎裂。",
+          "consequence": "res=0.6 冻结为主线候选。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res06.png"}]
+        },
+        {
+          "label": "res=1.0 · 细聚类",
+          "desc": "亚型发现素材。",
+          "result_title": "细聚类主线",
+          "result": "实际簇数见图题。细簇适合下一步再分群或亚型注释（PATTERN-025 三段式）。",
+          "consequence": "res=1.0 冻结为候选。",
+          "goto": "annotate",
+          "media": [{"type": "asset", "asset": "umap_res10.png"}]
+        }
+      ]
+    },
+    "annotate": {
+      "type": "decision",
+      "step": 5,
+      "name": "注释",
+      "title": "注释：三条路线，三种代价",
+      "brief": "乳腺 TME 注释三路线。官方 Rep1 还附赠一个独特教学点：Janesick 伴随仓自带的监督标签（Cell_Barcode_Type_Matrices → cell_groups.csv）本身就是「迁移注释」的产物——引用它时要知道它怎么来的。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §5 注释（含去卷积）", "href": "../01-基础范式主干/"},
+        {"kind": "audit", "label": "精读 · janesick 伴随仓（「MLE」名不符实案例）", "href": "01_资料库/精读笔记/10XGenomics__janesick_nature_comms_2023_companion.md"}
+      ]},
+      "options": [
+        {
+          "label": "marker 人工注释（本关真实计算）",
+          "desc": "9 组乳腺 canonical marker 集打分 argmax。",
+          "tag": "推荐主线", "tag_type": "good",
+          "result_title": "marker 注释完成",
+          "result": "本关真实执行：10 组乳腺 marker 集已<b>逐一对照本 panel 313 基因实际清单</b>核对（Invasive_Tumor=EPCAM/KRT8、DCIS=ERBB2/ESR1/PGR、Myoepi=ACTA2/MYH11/KRT14、成纤维=LUM/PDGFRA、髓系=CD68/CD163…）。逐细胞打分 + z-score 边际判据。空间图上应能看到肿瘤上皮岛被基质与免疫包绕的典型 TME 结构。",
+          "consequence": "注释列生成 → 下游可用。",
+          "goto": "downstream",
+          "media": [
+            {"type": "asset", "asset": "anno_marker_spatial.png"},
+            {"type": "asset", "asset": "anno_marker_umap.png"}
+          ]
+        },
+        {
+          "label": "celltypist 迁移注释",
+          "desc": "参考模型打标签。本关按可用性真实执行或诚实降级。",
+          "result_title": "迁移注释执行",
+          "result": "迁移注释的两个前提（参考覆盖 × 可复现性）在 TME 场景尤其重要：肿瘤组织的细胞类型在通用参考里往往欠采样。右侧坑事件是本库精读沉淀的真实教训。",
+          "consequence": "理解迁移路线前提。",
+          "goto": "downstream",
+          "events": ["P-005", "P-006"],
+          "media": [
+            {"type": "asset", "asset": "anno_celltypist_spatial.png",
+             "fallback": "本关预计算时 celltypist 模型不可用（或基因交集不足）——该路线以教学说明呈现。真实先例：PATTERN-025（megagut 模型迁移 Xenium 5K）。"}
+          ]
+        },
+        {
+          "label": "去卷积",
+          "desc": "bin/spot 数据的必修课——Xenium 单细胞分辨率下通常不需要。",
+          "result_title": "去卷积：诚实地说不适用",
+          "result": "同 HCC 关：认清适用边界本身就是收获。Visium HD 配套的乳腺癌数据（LIT-026 同类）才是它的主场。以示意图呈现（T3）。",
+          "consequence": "注释仍需可执行路线 → 回主线选 marker。",
+          "goto": "annotate",
+          "media": [{"type": "svg3", "id": "deconv"}]
+        }
+      ]
+    },
+    "downstream": {
+      "type": "decision",
+      "step": 6,
+      "name": "下游",
+      "title": "下游：三个问题，三条路",
+      "brief": "A：TME 组成比例；B：肿瘤岛-基质-免疫的空间组织（niche）；C：受体/标志基因的空间定位（ERBB2/ESR1…）+ T2 交互散点。",
+      "teach": {"links": [
+        {"kind": "manual", "label": "手册 · §6 空间基础分析", "href": "../01-基础范式主干/"},
+        {"kind": "pattern", "label": "PATTERN-051 · ROI 组成 niche assay", "href": "02_工作流开发/范式登记册/PATTERN-051_ROI组成niche-assay.md"}
+      ]},
+      "options": [
+        {
+          "label": "A · TME 细胞比例",
+          "desc": "注释列汇总。",
+          "result_title": "组成完成",
+          "result": "真实重算比例图。读法提醒：单切片描述性结论，不做显著性话术（本库统计纪律）。",
+          "consequence": "组成结论入结算。",
+          "goto": "settle",
+          "media": [{"type": "asset", "asset": "ds_a_proportions.png"}]
+        },
+        {
+          "label": "B · 空间域 niche 发现",
+          "desc": "kNN 构成 + KMeans（教学实现）。",
+          "result_title": "niche 发现完成",
+          "result": "真实重算：微环境分区上色——肿瘤岛 niche、基质 niche、免疫富集 niche 的空间嵌套一目了然。",
+          "consequence": "niche 标签入 T2 交互。",
+          "goto": "settle",
+          "media": [{"type": "asset", "asset": "ds_b_niche_spatial.png"}]
+        },
+        {
+          "label": "C · 单基因空间图 + T2 交互散点",
+          "desc": "受体基因空间定位 + 交互散点。",
+          "result_title": "单基因空间图完成",
+          "result": "下方真实重算图 + T2 交互散点（3 万细胞抽样）：缩放、平移、按 cluster/注释/niche/表达切换。",
+          "consequence": "T2 交互资产已验证。",
+          "goto": "settle",
+          "media": [
+            {"type": "asset", "asset": "ds_c_gene_ERBB2.png", "fallback": "ERBB2 不在本 panel 交集内——见另一张焦点基因图与 T2 交互。"},
+            {"type": "asset", "asset": "ds_c_gene_EPCAM.png", "fallback": "EPCAM 不在本 panel 交集内。"},
+            {"type": "coords", "src": "coords/coords_standard.json.gz"}
+          ]
+        }
+      ]
+    },
+    "settle": {
+      "type": "settlement",
+      "step": 7,
+      "name": "结算",
+      "title": "结算 · 文献镜像复盘",
+      "brief": "你的路线对照本库沉淀。BRCA 关的特别彩蛋：配准链路。",
+      "mirrors": [
+        {"step": 0, "lit": "Janesick 2023：FFPE 乳腺 Xenium 是平台旗舰数据集（GSE243275）", "note": "panel 为免疫肿瘤向"},
+        {"step": 1, "lit": "十万级全量重算分钟级", "note": "规模决定策略"},
+        {"step": 2, "lit": "PATTERN-047 统一核心", "note": "不同组织存活率手感不同"},
+        {"step": 3, "lit": "小 panel 全基因 PCA 惯例", "note": "固定默认"},
+        {"step": 4, "lit": "多候选并行纪律", "note": "终审冻结"},
+        {"step": 5, "lit": "官方监督标签（cell_groups.csv）= 迁移注释产物；精读发现「MLE celltype inference」名不符实（实为经验比例）", "note": "引用官方标注也要知道它怎么来的"},
+        {"step": 6, "lit": "TME 比例与 niche 空间组织是乳腺空间研究主线", "note": "描述性结论"}
+      ],
+      "verdict": "本关 T1 真实重算全链完成。彩蛋教学：Janesick 伴随仓的核心资产是 Xenium↔Visium 配准链路（Explorer 人工配准矩阵 + OME 元数据级联）——配准矩阵是数据集专属硬编码，换切片必须重配，这是本库精读标注的最大隐性工作量。想练配准？直接读 LIT-002 精读笔记。"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "note": "坑事件池：全部提炼自本库 27 份精读笔记的「坑与限制（实读发现）」节，每条带双证据链（本库精读笔记正本 + 被审计仓 文件:行号 GitHub blob 锚点，行号已于 2026-09-05 逐一复核）。",
+  "events": [
+    {
+      "id": "P-001",
+      "title": "基因过滤阈值错用了细胞阈值",
+      "story": "你正在写三行式 QC。翻参考仓 ist_benchmarking（LIT-086，五平台基准）想抄一段 gene 过滤，结果看到 filter_genes 的参数里塞的是细胞级的 min_counts——基因过滤阈值错用了细胞 counts 阈值（10 而非 5），docstring 对此只字未提。搬运不查语义，阈值就静默错位。",
+      "lesson": "filter_cells 的 min_counts 是「每个细胞至少多少 counts」，filter_genes 的 min_cells 是「至少多少个细胞表达该基因」——两组语义绝不能互串。库内统一核心（PATTERN-047）的 50/10/1/10 四个数字各归其位。",
+      "node_hint": "2-qc",
+      "source_repo": "broadinstitute/ist_benchmarking（LIT-086）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制 §1", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/broadinstitute__ist_benchmarking.md"},
+        {"label": "st_utils.py:70（锁定 SHA abb4acc）", "url": "https://github.com/broadinstitute/ist_benchmarking/blob/abb4acc39c68b16fdaf6909f1639947a55173182/st_utils.py#L70"}
+      ]
+    },
+    {
+      "id": "P-002",
+      "title": "包入口是坏的：pip 装完 import 即炸",
+      "story": "装载环节你决定复用基准仓 Moldia/Xenium_benchmarking（LIT-088，Nat Methods）的格式化代码。pip install -e . 一气呵成，import xb 的瞬间 SyntaxError——xb/__init__.py 里躺着非法语法 `import .`。所有 notebook 靠绕过 __init__ 的子模块导入才存活，包级入口从没被验证过。",
+      "lesson": "「能跑通 notebook」不等于「包安装可用」。引入第三方装载/格式化代码前，先跑最小 import 冒烟；本库 03_开源项目 镜像 + 精读笔记就是为把这类坑挡在复用之前。",
+      "node_hint": "1-装载",
+      "source_repo": "Moldia/Xenium_benchmarking（LIT-088）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制 §1", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/Moldia__Xenium_benchmarking.md"},
+        {"label": "xb/__init__.py:1-12（锁定 SHA 50249f7）", "url": "https://github.com/Moldia/Xenium_benchmarking/blob/50249f7d03d9cfc1453c4b81ef3b1053c4d23052/xb/__init__.py#L1-L12"}
+      ]
+    },
+    {
+      "id": "P-003",
+      "title": "分析、绘图、写盘耦合一锅炖",
+      "story": "你继续读同一仓库的主流程 preprocess_adata：过滤→归一→PCA→聚类→UMAP→DE→批量画几十张 pdf→写 h5ad 全在一个函数里，输出路径默认值还是占位字符串 'output_path'。只想改一个 QC 阈值，就得整锅重跑；只想拿矩阵，却被迫生成一堆图。",
+      "lesson": "复用文献代码时优先「取思想、不搬耦合」：库内范式（PATTERN-001 QC 指标单函数化）把计算与 IO 拆开。自己写管线时，分析/绘图/写盘三职责分离，重跑代价才可控。",
+      "node_hint": "1-装载",
+      "source_repo": "Moldia/Xenium_benchmarking（LIT-088）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制 §2", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/Moldia__Xenium_benchmarking.md"},
+        {"label": "xb/preprocessing.py:98-166（锁定 SHA 50249f7）", "url": "https://github.com/Moldia/Xenium_benchmarking/blob/50249f7d03d9cfc1453c4b81ef3b1053c4d23052/xb/preprocessing.py#L98-L166"}
+      ]
+    },
+    {
+      "id": "P-004",
+      "title": "样本名里藏着硬编码年份分支",
+      "story": "多样本装载时你注意到数据加载器里一行 `if '2024' not in SAMPLE`——ist_benchmarking 用样本名字符串判断年度分支来处理 parquet 解码差异。样本命名一变（或跨年混合），分支静默走错，错位的数据特征不会报任何错。",
+      "lesson": "用文件名/样本名猜测数据特征是脆弱契约。样本元数据应显式声明（样本表驱动，见 PATTERN-002），装载前做 schema 校验，而不是靠字符串模糊匹配。",
+      "node_hint": "0-样本",
+      "source_repo": "broadinstitute/ist_benchmarking（LIT-086）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制 §3", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/broadinstitute__ist_benchmarking.md"},
+        {"label": "st_utils.py:217（锁定 SHA abb4acc）", "url": "https://github.com/broadinstitute/ist_benchmarking/blob/abb4acc39c68b16fdaf6909f1639947a55173182/st_utils.py#L217"}
+      ]
+    },
+    {
+      "id": "P-005",
+      "title": "流程选型的隐性环境税",
+      "story": "你想给注释环节上一个现成管线，翻到 hisplan/sharp（LIT-078，工程审计 13/14 的标杆）：配置-容器-校验四分离堪称教科书——但 SCING_HOME、cromwell-tools、AWS secrets 全是外部前提，语义正确性靠 run-tests.sh 提交真云烧真钱验证，本地没有 tiny-data 回归。脱离它的集群，submit 层要整个重写。",
+      "lesson": "工程分高 ≠ 落地成本低。选型先数「隐性环境前提」（环境变量、云端凭据、专用调度器），再数能本地跑通的最小冒烟。教学模拟器里每条路线都标注了这一代价。",
+      "node_hint": "5-注释",
+      "source_repo": "hisplan/sharp（LIT-078）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/hisplan__sharp.md"},
+        {"label": "validate.sh:4-7（锁定 SHA 68e7268）", "url": "https://github.com/hisplan/sharp/blob/68e7268744f886b1df4cd4ce5c76355d913fb581/validate.sh#L4-L7"}
+      ]
+    },
+    {
+      "id": "P-006",
+      "title": "换硬件重跑，细胞标签可能变",
+      "story": "你把注释结果当「确定的结论」记进项目。翻 crc-atlas（LIT-072，427 万细胞 CRC 图谱）的 README：作者自己明示——换硬件重跑 build_atlas 可能改变细胞标签；scVI 进程还专门把 cpus 固定为 12 求可复现。注释不是硬件无关的量。",
+      "lesson": "迁移/整合类注释（scVI→scANVI、celltypist 等）的输出对硬件与随机状态敏感。引用任何注释标签时记录 seed、硬件与软件版本（run_metadata 纪律），并把「标签=参数化产物」写进结果解读。",
+      "node_hint": "5-注释",
+      "source_repo": "icbi-lab/crc-atlas（LIT-072）",
+      "evidence": [
+        {"label": "本库精读笔记 · 坑与限制 §5", "url": "https://github.com/zerogue11/xenium-code-atlas/blob/main/01_资料库/精读笔记/icbi-lab__crc-atlas.md"},
+        {"label": "conf/base.config:35（锁定 SHA 82c15ec）", "url": "https://github.com/icbi-lab/crc-atlas/blob/82c15ecc2ea36baa0c4cffe8818bf58e21dcfc48/conf/base.config#L35"}
+      ]
+    }
+  ]
+}
