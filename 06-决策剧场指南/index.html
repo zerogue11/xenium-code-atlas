@@ -1460,11 +1460,14 @@
 </ol>
 <h2 id="zxm">六、ZXM 本地专属关（仅本机）<a class="headerlink" href="#zxm" title="Permanent link">&para;</a></h2>
 <ul>
-<li>数据：你课题的完整 outs（新版式，约 60GB，onboard <code>analysis/</code> 含 graphclust/UMAP/diffexp）。</li>
-<li>教学：<strong>大样本策略</strong>——百万级细胞不复算，复用 onboard 结果（先例：官方线 large_sample_reuse 模式，1,196,822 细胞）。</li>
-<li>资产：<code>docs/simulator/assets/ZXM_local/</code>（<strong>.gitignore 排除，不入公开仓</strong>）；公开站入口自动探测 manifest，404 即显示"本地版可用"提示。</li>
-<li>开启方法：本机运行预计算脚本生成资产后刷新模拟器首页。</li>
+<li>数据：你课题的完整 outs（新版式输出，1,196,822 细胞，onboard <code>analysis/</code> 含 graphclust/UMAP/diffexp）。</li>
+<li>教学：<strong>大样本策略</strong>——复用 onboard 结果（先例：官方线 large_sample_reuse 模式），QC 三档在 3 万细胞抽样上重演（显式标注抽样口径）。</li>
+<li>资产：<code>docs/simulator/assets/ZXM_local/</code>——<strong>双保险不入公开</strong>：<code>.gitignore</code> 排除（main 分支）+ <code>mkdocs.yml</code> <code>exclude_docs</code> 构建层排除（gh-pages 分支）。公开站入口探测 404 即显示"本地版可用"提示。</li>
+<li>本地开启方法：<code>C:\xenium_envs\xenium-cn-py311\Scripts\python.exe scripts\precompute_simulator_zxm.py</code> 生成资产后，用 <code>scripts\serve_simulator_local.py</code> 起本地服务（build + 注入 ZXM 资产 + http.server），刷新模拟器首页即见"本地资产已就绪"。</li>
 </ul>
+<blockquote>
+<p><strong>部署红线教训（2026-09-05）</strong>：<code>mkdocs gh-deploy</code> 从磁盘 docs_dir 构建，<strong>.gitignore 管不住部署</strong>——ZXM 资产曾被带上 gh-pages，已用孤儿提交强推清除。守门是 <code>mkdocs.yml</code> 的 <code>exclude_docs</code>，任何重新部署前确认该配置仍在。</p>
+</blockquote>
 <h2 id="_3">七、怎么跑的（复跑与校验）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 环境: xenium-cn-py311 (venv, C:\xenium_envs\xenium-cn-py311)</span>
 <span class="c1"># 1) 预计算 T1 资产（HCC/BRCA/CRC; seed=0 冻结）</span>
@@ -1474,9 +1477,14 @@ C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<s
 C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\p</span>recompute_lit_redraw.py
 <span class="c1"># 3) 剧本校验（schema/事件/资产/相对路径/三行式标注 五类检查）</span>
 C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\v</span>alidate_scenario.py<span class="w"> </span>--strict
-<span class="c1"># 4) 本地预览</span>
+<span class="c1"># 4) 本地预览（含 ZXM 本地关）</span>
 cmd<span class="w"> </span>/c<span class="w"> </span>scripts<span class="se">\s</span>etup_docs_links.cmd
-uvx<span class="w"> </span>--from<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs<span class="w"> </span>serve<span class="w">   </span><span class="c1"># → http://127.0.0.1:8000/06-决策剧场指南/</span>
+uvx<span class="w"> </span>--from<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs<span class="w"> </span>serve<span class="w">        </span><span class="c1"># 站点预览（ZXM 资产被 exclude_docs 排除）</span>
+C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\s</span>erve_simulator_local.py
+<span class="c1">#   ↑ 玩 ZXM 关用这个：build + 注入 ZXM 资产 + http.server → http://127.0.0.1:8765/simulator/</span>
+
+<span class="c1"># 5) 发布（exclude_docs 确保 ZXM 不上线；首次已孤儿强推清除历史泄露）</span>
+uvx<span class="w"> </span>--from<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
 </code></pre></div>
 <p>中间缓存与原始数据在 <code>F:\xenium数据\ov工作流测试\simulator_precompute\</code>（不入 git）。</p>
 <h2 id="_4">八、已知边界（诚实声明）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
