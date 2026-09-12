@@ -33,6 +33,7 @@ ASSETS = ROOT / "docs" / "simulator" / "assets"
 
 
 def route_map(out: Path, title, steps, conclusion, note, colors):
+    "生成一张流程路线示意 SVG/PNG（标题+步骤框+结论条），纯示意零数值。"
     fig, ax = plt.subplots(figsize=(9.6, 4.4))
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 4.6)
@@ -62,6 +63,7 @@ def route_map(out: Path, title, steps, conclusion, note, colors):
 
 
 def main():
+    "生成 UC/Crohn T1-lite 资产：因文献无可靠定量来源，全部输出为示意路由图并注明'示意，零编造数值'。"
     # ---- UC (LIT-053 UCSF DSCOLAB) ----
     uc_out = ASSETS / "UC" / "uc_route_map.png"
     route_map(

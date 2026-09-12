@@ -55,6 +55,7 @@ CLASS_RULES = [
 
 
 def classify(name: str) -> str:
+    "按资源名关键词归类到固定分类（pipeline/figure/database 等 9 类之一），未命中归 other。"
     low = name.lower()
     for cls, kws in CLASS_RULES:
         if not kws:
@@ -79,6 +80,7 @@ def clean_repo(url: str):
 
 
 def main():
+    "主流程：读 v2 核验表 → 派生代码资源主表/附属表/文献速查表三张 CSV；缺失字段留空不编造。"
     os.makedirs(OUT_DIR, exist_ok=True)
 
     with open(SEED_CSV, encoding="utf-8-sig", newline="") as fh:

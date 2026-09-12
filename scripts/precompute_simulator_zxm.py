@@ -39,6 +39,7 @@ REF = "数据：本地课题 run（output-XETG00099__0066171__Region_1，2026-02
 
 
 def log(msg):
+    "带时间戳进度日志（stdout flush）。"
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
@@ -50,6 +51,7 @@ def read_zarr_zip(path, max_bytes=200_000_000):
     found = {}
 
     def walk(g, prefix=""):
+        "递归遍历 zarr/目录树收集条目（g=当前节点，prefix=相对路径前缀）。"
         for k, v in g.arrays():
             try:
                 if v.nbytes > max_bytes:
@@ -67,6 +69,7 @@ def read_zarr_zip(path, max_bytes=200_000_000):
 
 
 def main():
+    "ZXM 本地专属关预计算：百万级样本不复算——复用 onboard analysis/ 结果 + 抽样导出 coords，遵循官方线 large_sample_reuse 先例。"
     import pandas as pd
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "coords").mkdir(exist_ok=True)

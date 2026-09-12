@@ -273,8 +273,8 @@ function mediaHTML(media){
       const a = S.manifest?.assets?.find(x=>x.file===m.asset) || {};
       const src = `${S.assetBase}${m.asset}`;
       const note = m.note ? `<br><b>读图要点：</b>${esc(m.note)}` : "";
-      const fallback = m.fallback ? ` onerror="this.closest('figure').outerHTML='<div class=\\'glass pad\\' style=\\'margin:16px 0;font-size:12.8px;color:var(--ink-dim);line-height:1.8\\'>${esc(m.fallback)}</div>'"` : "";
-      return `<figure><img src="${src}" alt="${esc(a.title||m.asset)}" loading="lazy"${fallback}>
+      const fb = m.fallback ? ` data-fallback="${esc(m.fallback)}"` : "";
+      return `<figure><img src="${src}" alt="${esc(a.title||m.asset)}" loading="lazy"${fb}>
         <figcaption><b>① 来源</b> ${esc(a.source||S.scen.data?.source||"—")}<br>
         <b>② 性质</b> ${esc(a.nature||"—")}<br><b>③ 参考文献</b> ${esc(a.ref||S.scen.data?.ref||"—")}${note}</figcaption></figure>`;
     }
@@ -349,8 +349,17 @@ function chooseOption(i){
     renderNode();
   };
   document.querySelectorAll(".opt").forEach(el=>el.style.pointerEvents="none");
-  // innerHTML 注入的 script 不会执行 → 显式挂载 T2 播放器
+  // innerHTML 注入的 script 不会执行 → 显式挂载 T2 播放器; 资产缺失图走 fallback 提示
   zone.querySelectorAll("[data-coords-src]").forEach(el=>mountPlayer(el, el.dataset.coordsSrc));
+  zone.querySelectorAll("img[data-fallback]").forEach(img=>{
+    img.addEventListener("error", ()=>{
+      const div = document.createElement("div");
+      div.className = "glass pad";
+      div.style.cssText = "margin:16px 0;font-size:12.8px;color:var(--ink-dim);line-height:1.8";
+      div.textContent = img.dataset.fallback;
+      img.closest("figure").replaceWith(div);
+    });
+  });
   zone.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
@@ -430,9 +439,9 @@ function mountPlayer(target, url){
       return `rgb(${r},${Math.min(255,Math.max(0,g))},${b})`; };
     let tf={x:0,y:0,s:1};
     function bounds(){
-      const xs=d.x, ys=d.y;
-      let x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
-      if(view==="umap"&&d.umap){ const ux=d.umap[0], uy=d.umap[1]; x0=Math.min(...ux);x1=Math.max(...ux);y0=Math.min(...uy);y1=Math.max(...uy); }
+      const src = (view==="umap"&&d.umap) ? d.umap : [d.x, d.y];
+      const mm = a => { let lo=Infinity, hi=-Infinity; for(let i=0;i<a.length;i++){ if(a[i]<lo)lo=a[i]; if(a[i]>hi)hi=a[i]; } return [lo,hi]; };
+      const [x0,x1] = mm(src[0]); const [y0,y1] = mm(src[1]);
       return [x0,x1,y0,y1];
     }
     function draw(){
@@ -453,7 +462,7 @@ function mountPlayer(target, url){
       }
       ctx.globalAlpha=1;
       const lg=mount.querySelector(".legend");
-      if(mode==="gene"){ lg.innerHTML=`<span><i style="background:linear-gradient(90deg,#441088,#5B8DEF,#63C78A,#FEBB2C)"></i>${esc(val)}（低 → 高, 分桶 ${d.genes[val].length>0?"0-63":"—"}）</span>`; }
+      if(mode==="gene"){ lg.innerHTML=`<span><i style="background:linear-gradient(90deg,#441088,#5B8DEF,#63C78A,#FEBB2C)"></i>${esc(val)}（低 → 高, 64 桶）</span>`; }
       else if(cats&&cats.length<=14){ lg.innerHTML=cats.map((c,i)=>`<span><i style="background:${PAL[i%PAL.length]}"></i>${esc(String(c))}</span>`).join(""); }
       else lg.innerHTML=`<span>${cats?cats.length:""} 类（图例省略）</span>`;
     }

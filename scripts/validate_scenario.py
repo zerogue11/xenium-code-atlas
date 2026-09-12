@@ -30,14 +30,17 @@ errors, warnings = [], []
 
 
 def err(msg):
+    "记录一类错误（schema/引用/资产缺失等），累计后以非零码退出。"
     errors.append(msg)
 
 
 def warn(msg):
+    "记录警告（不阻断），如媒体文件缺 alt 文本等。"
     warnings.append(msg)
 
 
 def check_schema(scen, path):
+    "校验单个剧本 JSON 的必填字段/枚举值/结构；不符写 err 并标明剧本文件名。"
     try:
         import jsonschema
         validator = jsonschema.Draft7Validator(SCHEMA)
@@ -60,11 +63,13 @@ def check_schema(scen, path):
 
 
 def collect_media(node):
+    "递归收集剧本中引用的全部媒体资产路径（图片/音频），供存在性检查。"
     for o in node.get("options", []):
         yield from o.get("media", [])
 
 
 def main():
+    "校验主流程：遍历决策剧场全部剧本 → 五类检查（schema/资产/引用/数值来源/分支完整）→ 汇总 err/warn 报告。"
     strict = "--strict" in sys.argv
     scen_dir = SIM / "data" / "scenarios"
     for path in sorted(scen_dir.glob("*.json")):
@@ -81,6 +86,17 @@ def main():
                 for eid in o.get("events", []):
                     if eid not in EVENT_IDS:
                         err(f"[events] {path.name}: {nk} 引用不存在的事件 {eid}")
+        # goto 目标交叉校验 (不依赖 jsonschema, 无条件执行)
+        nodes = scen["nodes"]
+        if scen.get("id") and scen["id"] != path.stem:
+            err(f"[schema] {path.name}: id={scen['id']} 与文件名不一致")
+        for nk, node in nodes.items():
+            if node.get("type") == "settlement" and node.get("options"):
+                err(f"[schema] {path.name}: settlement 节点 {nk} 不应有 options")
+            for o in node.get("options", []):
+                g = o.get("goto")
+                if g and g not in nodes:
+                    err(f"[schema] {path.name}: 节点 {nk} 选项 goto={g} 不存在")
         # assets + relpaths
         manifest_path = SIM / "assets" / sid / "manifest.json"
         manifest = None
@@ -99,10 +115,11 @@ def main():
                         continue
                     p = SIM / "assets" / sid / f
                     declared = m.get("fallback")
-                    if not p.exists() and not declared and not strict:
-                        err(f"[assets] {path.name}: {nk} 资产缺失且无 fallback: {f}")
-                    elif not p.exists() and declared:
-                        warn(f"[assets] {sid}: {f} 缺失但有 fallback (允许)")
+                    if not p.exists():
+                        if declared and not strict:
+                            warn(f"[assets] {sid}: {f} 缺失但有 fallback (允许)")
+                        else:
+                            err(f"[assets] {path.name}: {nk} 资产缺失{(' (有 fallback, strict 不豁免)' if declared else '')}: {f}")
                 elif m.get("type") == "coords":
                     f = m.get("src", "")
                     if f.startswith("/"):
@@ -155,8 +172,4 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        import jsonschema  # noqa
-    except ImportError:
-        pass
     main()

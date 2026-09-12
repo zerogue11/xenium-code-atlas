@@ -30,6 +30,7 @@ import json
 import os
 import sys
 import time
+from datetime import date
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -39,6 +40,7 @@ sys.stderr.reconfigure(encoding="utf-8")
 # 只计数不打印, 结果不受影响
 _UNRAISED = [0]
 def _quiet_unraisable(hook):
+    "安装 sys.unraisablehook 静默钩子，吞掉绘图后端在退出阶段的 unraisable 异常噪音。"
     _UNRAISED[0] += 1
 sys.unraisablehook = _quiet_unraisable
 
@@ -163,10 +165,12 @@ LIT_DOCS = {  # 三行式标注：精读笔记正本相对路径（用于跳转�
 
 
 def log(msg):
+    "带时间戳的进度日志（stdout 直写 flush，供长任务观察）。"
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def setup_mpl():
+    "matplotlib 无头初始化：Agg 后端 + 中文字体回退，避免缺字体方块。"
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -185,12 +189,14 @@ def save_fig(fig, out: Path, target_kb=160):
 
 
 def cluster_color(i):
+    "按 cluster 序号取固定调色板颜色，保证跨图颜色一致（教学图颜色语义稳定）。"
     return CLUSTER_PALETTE[i % len(CLUSTER_PALETTE)]
 
 
 # ---------------- 数据读取 ----------------
 
 def load_xenium_h5(cfg):
+    "读取 Xenium cell_feature_matrix.h5 为 AnnData，并做最小列规范化（坐标/total_counts）。"
     import scanpy as sc
     import pandas as pd
     log(f"读取 {cfg['matrix']}")
@@ -220,8 +226,6 @@ def load_xenium_h5(cfg):
         import pandas as pd
         try:
             m = pd.read_csv(mpath)
-            for c in ("Metrics", "Value"):
-                pass
             metrics_note = {str(r.iloc[0]): str(r.iloc[1]) for _, r in m.iterrows()}
         except Exception as e:  # metrics 仅作记录, 失败不致命
             log(f"  metrics_summary 读取失败(忽略): {e}")
@@ -229,8 +233,9 @@ def load_xenium_h5(cfg):
     return adata, metrics_note
 
 
-def read_zarr_zip_group(path):
-    """通用读取 Xenium zarr.zip（运行时自省结构）。数组在校验存储关闭前物化为 numpy。"""
+def read_zarr_zip_group(path, max_bytes=200_000_000):
+    """通用读取 Xenium zarr.zip（运行时自省结构）。数组在校验存储关闭前物化为 numpy;
+    超大数组(polygon_vertices/masks 级)只占位不物化, 防 OOM。"""
     import zarr
     import numpy as np
     store = zarr.ZipStore(str(path), mode="r")
@@ -238,7 +243,14 @@ def read_zarr_zip_group(path):
     found = {}
 
     def walk(g, prefix=""):
+        "递归遍历节点树收集目标文件（g=当前节点，prefix=相对路径前缀）。"
         for k, v in g.arrays():
+            try:
+                if v.nbytes > max_bytes:
+                    found[prefix + k] = None
+                    continue
+            except Exception:
+                pass
             found[prefix + k] = np.asarray(v)  # 必须在 store.close() 前物化
         for k, v in g.groups():
             walk(v, prefix + k + "/")
@@ -303,6 +315,7 @@ def load_control_zarr(cfg):
 # ---------------- 主链（每 QC 档独立运行） ----------------
 
 def run_tier(cfg, adata_full, tier):
+    "运行单个 tier（5k/50k/全量）的端到端预计算：QC→归一化→PCA→邻居→UMAP→聚类，计时入 manifest。"
     import scanpy as sc
     params = QC_TIERS[tier]
     cache_dir = CACHE / cfg["key"] / f"tier_{tier}"
@@ -343,6 +356,7 @@ def run_tier(cfg, adata_full, tier):
 # ---------------- 绘图 ----------------
 
 def plot_qc_tiers(cfg, tier_stats, manifest):
+    "按 tier 汇总绘制 QC 对比图（细胞数/基因数/线粒体比例分布），写入 manifest。"
     plt = setup_mpl()
     tiers = ["loose", "standard", "strict"]
     fig, axes = plt.subplots(1, 3, figsize=(10, 3.6))
@@ -371,6 +385,7 @@ def plot_qc_tiers(cfg, tier_stats, manifest):
 
 
 def plot_umap_trio(cfg, tier_data, manifest):
+    "绘制三联 UMAP（cluster / 总计数 / 分组），统一配色与图幅。"
     plt = setup_mpl()
     tier = "standard"
     adata = tier_data[tier]
@@ -427,6 +442,7 @@ def annotate_markers(adata, markers):
 
 
 def plot_annotation(cfg, adata, labels, anno_colors, route, manifest, note=""):
+    "绘制注释结果 UMAP（marker 顶替标签 + 调色板），note 追加到图题来源说明。"
     plt = setup_mpl()
     order = [c for c in anno_colors if c in set(labels)]
     cmap = {c: anno_colors[c] for c in order}
@@ -467,6 +483,7 @@ def plot_annotation(cfg, adata, labels, anno_colors, route, manifest, note=""):
 
 
 def plot_downstream(cfg, adata, labels, anno_colors, niche_labels, manifest, healthy_labels=None):
+    "绘制下游教学图：niche 共聚、信号展示等（healthy_labels 用于对照叠加）。"
     plt = setup_mpl()
     key = cfg["key"]
     order = [c for c in anno_colors if c in set(labels)]
@@ -583,6 +600,7 @@ def compute_niche(adata, labels, k=15, n_niches=4):
 # ---------------- coords JSON.gz (T2 交互) ----------------
 
 def write_coords(cfg, adata, labels, niche_labels, manifest):
+    "导出抽样细胞的坐标+标签 CSV，供前端决策剧场轻量展示（避免前端载 h5ad）。"
     import numpy as np
     rng = np.random.default_rng(SEED)
     n = adata.n_obs
@@ -631,6 +649,7 @@ def write_coords(cfg, adata, labels, niche_labels, manifest):
 # ---------------- celltypist 路线（可用则算, 失败降 T3 并登记） ----------------
 
 def try_celltypist(cfg, adata, manifest):
+    "尝试 CellTypist 参考映射注释；环境缺失或模型缺失时如实记 manifest 跳过，不降级编造。"
     flags = {}
     try:
         import celltypist  # noqa
@@ -652,7 +671,6 @@ def try_celltypist(cfg, adata, manifest):
                                [cluster_color(i) for i in range(len(set(labels)))]))
             plot_annotation(cfg, adata, labels, palette, "celltypist", manifest,
                             note=" (Immune_All_Low transfer)")
-            manifest["assets"][-1]["title"] = "注释路线（celltypist 迁移）· 空间分布"
             flags["celltypist"] = "ok"
         except Exception as e:
             log(f"celltypist 模型/注释失败 → 该路线降级 T3: {type(e).__name__}: {e}")
@@ -666,6 +684,7 @@ def try_celltypist(cfg, adata, manifest):
 # ---------------- 健康对照对照线 ----------------
 
 def run_control(cfg, manifest):
+    "运行健康对照数据支线（control zarr），产出与主样本同口径的图与坐标。"
     ctrl = load_control_zarr(cfg)
     if ctrl is None:
         return None
@@ -684,9 +703,10 @@ def run_control(cfg, manifest):
 # ---------------- 主流程 ----------------
 
 def pipeline_dataset(ds):
+    "单个数据集的完整流水线：load→各 tier→注释→下游→导出，异常即停并写 manifest 失败记录。"
     cfg = DATASETS[ds]
     key = cfg["key"]
-    manifest = dict(dataset=key, generated=__import__("datetime").date.today().isoformat(), seed=SEED,
+    manifest = dict(dataset=key, generated=date.today().isoformat(), seed=SEED,
                     doc=LIT_DOCS.get(ds, ""), assets=[],
                     source=cfg["source"], nature="T1 真实数据预计算", ref=cfg["ref"],
                     flags={})
@@ -727,6 +747,7 @@ def pipeline_dataset(ds):
 
 
 def main():
+    "T1/T2 资产生产总入口：按配置依次跑各数据集流水线，产出全部教学图与 manifest。"
     ap = argparse.ArgumentParser(description="Xenium 决策剧场预计算")
     ap.add_argument("--dataset", required=True, choices=["hcc", "brca", "crc", "zxm", "uc", "crohn"])
     ap.add_argument("--step", default="all",

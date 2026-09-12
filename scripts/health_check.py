@@ -30,6 +30,7 @@ ENV_NAMES = ("requirements", "environment", "pyproject", "setup.py", "setup.cfg"
 
 
 def walk_stats(dest):
+    "遍历仓库目录统计体积 MB 与文件数（跳过 .git），并按扩展名推断主语言。"
     total = nfiles = n_ipynb = 0
     langs, envs = {}, set()
     for base, dirs, files in os.walk(dest):
@@ -53,6 +54,7 @@ def walk_stats(dest):
 
 
 def detect_license(dest, files):
+    "在仓库根查找 LICENSE*/COPYING* 文件并识别类型；无 license 时按约定标'仅可学习不可转载'。"
     for f in files:
         low = f.lower()
         if low.startswith(LICENSE_NAMES) and os.path.isfile(os.path.join(dest, f)):
@@ -67,6 +69,7 @@ def detect_license(dest, files):
 
 
 def read_readme(dest):
+    "读取 README 首段文字用于主表回填（大小写变体 README.md/readme.md 都尝试）。"
     for f in os.listdir(dest):
         if f.lower().startswith("readme"):
             try:
@@ -83,12 +86,14 @@ def read_readme(dest):
 
 
 def git_log(dest):
+    "取最近一次 commit 的时间与信息，作为仓库活跃度证据。"
     r = subprocess.run(["git", "-C", dest, "log", "-1", "--format=%ci"],
                        capture_output=True, text=True, timeout=30)
     return (r.stdout or "").strip()[:19]
 
 
 def main():
+    "体检主流程：遍历已克隆仓库逐项体检 → 写 仓库体检表.csv → 回填主表对应列。"
     with open(MASTER, encoding="utf-8-sig", newline="") as fh:
         rows = list(csv.DictReader(fh))
     out_rows = []

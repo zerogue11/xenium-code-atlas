@@ -29,6 +29,7 @@ GIT_OVERRIDE = ["-c", "http.proxy=", "-c", "https.proxy="]
 
 
 def run(args, timeout=900, override=True):
+    "带超时执行外部命令（git），override=True 时打印命令行；超时/非零返回都记录不中断。"
     cmd = ["git", *(GIT_OVERRIDE if override else []), *args]
     return subprocess.run(cmd, env=GIT_ENV, timeout=timeout,
                           capture_output=True, text=True, encoding="utf-8",
@@ -36,6 +37,7 @@ def run(args, timeout=900, override=True):
 
 
 def clone_one(row):
+    "克隆单个仓库：已有 .git 的目录只校验补记 SHA/分支；否则 git clone --depth 1 后记录锁定信息。"
     url, owner, repo = row["URL"], row["owner"], row["repo"]
     dest = os.path.join(CLONE_DIR, f"{owner}__{repo}")
     t0 = time.time()
@@ -66,6 +68,7 @@ def clone_one(row):
 
 
 def main():
+    "全量克隆主流程：读主表 72 仓 → 逐个 clone_one（断点续跑）→ 汇总成功/失败清单写盘。"
     workers = 6
     if "--workers" in sys.argv:
         workers = int(sys.argv[sys.argv.index("--workers") + 1])

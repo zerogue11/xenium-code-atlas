@@ -29,6 +29,7 @@ SITE_ZXM = ROOT / "site" / "simulator" / "assets" / "ZXM_local"
 
 
 def main():
+    "本地预览服务器：启动 http 服务前把 ZXM 本地关资产注入预览目录（mkdocs 构建层已 exclude，仅本地可见，不上线）。"
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-build", action="store_true", help="跳过 mkdocs build (站点已构建时)")
@@ -39,8 +40,14 @@ def main():
         r = subprocess.run(["uvx", "--from", "mkdocs-material", "mkdocs", "build"],
                            cwd=str(ROOT), capture_output=True, text=True)
         if r.returncode != 0:
-            print(r.stdout[-2000:]); print(r.stderr[-2000:])
-            sys.exit(1)
+            # uvx 在部分子进程环境下解析失败(SRE mismatch 等); site/ 已存在则降级继续
+            if (ROOT / "site" / "index.html").exists():
+                print(">> mkdocs build 失败, 但 site/ 已存在 → 用现有站点继续(如需最新内容请手动:"
+                      " uvx --from mkdocs-material mkdocs build)", flush=True)
+                print(r.stderr[-800:], flush=True)
+            else:
+                print(r.stdout[-2000:]); print(r.stderr[-2000:])
+                sys.exit(1)
 
     if DOCS_ZXM.exists():
         if SITE_ZXM.exists():
