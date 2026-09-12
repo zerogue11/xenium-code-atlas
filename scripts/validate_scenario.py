@@ -116,10 +116,11 @@ def main():
                     p = SIM / "assets" / sid / f
                     declared = m.get("fallback")
                     if not p.exists():
-                        if declared and not strict:
-                            warn(f"[assets] {sid}: {f} 缺失但有 fallback (允许)")
+                        # 声明了 fallback 的缺失 = 作者签署的"诚实降级"路径: 两档模式都只 warn
+                        if declared:
+                            warn(f"[assets] {sid}: {f} 缺失但有 fallback (设计内降级, SPA 将呈现声明文案)")
                         else:
-                            err(f"[assets] {path.name}: {nk} 资产缺失{(' (有 fallback, strict 不豁免)' if declared else '')}: {f}")
+                            err(f"[assets] {path.name}: {nk} 资产缺失且无 fallback: {f}")
                 elif m.get("type") == "coords":
                     f = m.get("src", "")
                     if f.startswith("/"):
@@ -135,13 +136,14 @@ def main():
                 for k in ("source", "nature", "ref"):
                     if not str(a.get(k, "")).strip():
                         err(f"[labels] {sid}: 资产 {a.get('file')} 缺 {k} 标注")
-            # 剧本引用但 manifest 未登记的资产 → 性质标注无从谈起
+            # 剧本引用但 manifest 未登记的资产 → 性质标注无从谈起 (strict 下直接判错)
             for nk, node in scen["nodes"].items():
                 for m in collect_media(node):
                     if m.get("type") == "asset":
                         f = m.get("asset", "")
                         if f and f not in seen and (SIM / "assets" / sid / f).exists():
-                            warn(f"[labels] {sid}: {f} 存在但未登记进 manifest.json")
+                            msg = f"[labels] {sid}: {f} 存在但未登记进 manifest.json (三行式标注缺失)"
+                            (err if strict else warn)(msg)
     # SPA 数据文件相对路径抽查
     spa = (SIM / "index.html").read_text(encoding="utf-8")
     for m in re.finditer(r"""fetch\(\s*[`"']([^`"']+)[`"']""", spa):

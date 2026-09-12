@@ -37,8 +37,11 @@ def main():
 
     if not args.no_build:
         print(">> mkdocs build …", flush=True)
+        # 环境消毒: 剥离 venv/python 相关变量, 防 uv 托管解释器与 venv 混载导致 SRE module mismatch
+        env = {k: v for k, v in os.environ.items()
+               if not k.startswith(("PYTHON", "__PYVENV", "VIRTUAL_"))}
         r = subprocess.run(["uvx", "--from", "mkdocs-material", "mkdocs", "build"],
-                           cwd=str(ROOT), capture_output=True, text=True)
+                           cwd=str(ROOT), capture_output=True, text=True, env=env)
         if r.returncode != 0:
             # uvx 在部分子进程环境下解析失败(SRE mismatch 等); site/ 已存在则降级继续
             if (ROOT / "site" / "index.html").exists():

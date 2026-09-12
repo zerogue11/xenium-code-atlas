@@ -68,4 +68,4 @@
 - [ ] 范式登记册每卡有来源仓与搬运条件
 - [ ] `git status` / 推送内容不含任何 `03_开源项目` 内容
 - [ ] GitHub 推送前 `git log --stat` 抽查确认无第三方代码
-- [ ] 决策剧场：`validate_scenario.py --strict` 全绿；assets/ZXM_local 未入 git；每张图三行式标注齐全
+- [ ] 决策剧场：`validate_scenario.py --strict` 全绿 + `test_qc_tiers.py` 通过；assets/ZXM_local 未入 git；每张图三行式标注齐全

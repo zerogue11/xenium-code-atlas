@@ -66,7 +66,7 @@ CLUSTER_PALETTE = [
     "#4C72B0", "#DD8452", "#55A868", "#C44E52", "#8172B3", "#937860",
     "#DA8BC3", "#8C8C8C", "#CCB974", "#64B5CD", "#2F4B7C", "#FFA600",
     "#6A51A3", "#31A354", "#E6550D", "#3182BD", "#756BB1", "#636363",
-    "#D6616B", "#9E9AC8", "#31A354", "#FDB462", "#80B1D3", "#B3DE69",
+    "#D6616B", "#9E9AC8", "#17BECF", "#FDB462", "#80B1D3", "#B3DE69",
 ]
 
 # ---------------- 场景注册表 ----------------
@@ -314,6 +314,24 @@ def load_control_zarr(cfg):
 
 # ---------------- 主链（每 QC 档独立运行） ----------------
 
+def apply_qc_filters(adata, params):
+    """按教学档位参数做细胞/基因两级过滤（原地修改 AnnData）。
+
+    四参数语义（P-001 教学点：两套语义绝不可错位，详见 events.json P-001）:
+      min_counts       每个细胞的最少 UMI 总数
+      min_genes        每个细胞最少表达的基因数
+      gene_min_cells   每个基因最少被多少个细胞表达
+      gene_min_counts  每个基因的最少计数总量
+    scanpy 限制: 每次 sc.pp.filter_* 调用只允许一个阈值参数, 故逐项拆开;
+    细胞过滤先于基因过滤, 基因的 min_cells 按过滤后的当前细胞集计数。
+    """
+    import scanpy as sc
+    sc.pp.filter_cells(adata, min_counts=params["min_counts"])
+    sc.pp.filter_cells(adata, min_genes=params["min_genes"])
+    sc.pp.filter_genes(adata, min_cells=params["gene_min_cells"])
+    sc.pp.filter_genes(adata, min_counts=params["gene_min_counts"])
+
+
 def run_tier(cfg, adata_full, tier):
     "运行单个 tier（5k/50k/全量）的端到端预计算：QC→归一化→PCA→邻居→UMAP→聚类，计时入 manifest。"
     import scanpy as sc
@@ -325,12 +343,7 @@ def run_tier(cfg, adata_full, tier):
         return sc.read_h5ad(h5ad)
     adata = adata_full.copy()
     n0, g0 = adata.n_obs, adata.n_vars
-    # scanpy 限制: 每次 filter 调用只允许一个阈值参数, 逐项拆开
-    sc.pp.filter_cells(adata, min_counts=params["min_counts"])
-    sc.pp.filter_cells(adata, min_genes=params["min_genes"])
-    # 注意参数语义: min_cells=表达该基因的细胞数下限; min_counts=该基因计数下限 (P-001 教学点: 阈值不可错位)
-    sc.pp.filter_genes(adata, min_cells=params["gene_min_cells"])
-    sc.pp.filter_genes(adata, min_counts=params["gene_min_counts"])
+    apply_qc_filters(adata, params)
     log(f"[{tier}] 过滤: {n0}->{adata.n_obs} 细胞, {g0}->{adata.n_vars} 基因")
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
@@ -629,6 +642,8 @@ def write_coords(cfg, adata, labels, niche_labels, manifest):
         y=np.round(sub.obs["y_centroid"].values, 1).tolist(),
         clusters=clusters,
         anno=anno_idx.tolist(), anno_labels=cats_json,
+        # 注释色随 coords 下发: 播放器 anno 模式与 anno PNG 同色(教学图颜色语义一致)
+        anno_colors={lab: cfg["anno_colors"].get(lab, "#D0D0D0") for lab in cats_json},
         niche=sub_niche.astype(int).tolist(),
         genes=gene_vals,
         gene_order=list(gene_vals),
@@ -690,10 +705,7 @@ def run_control(cfg, manifest):
         return None
     import scanpy as sc
     p = QC_TIERS["standard"]
-    sc.pp.filter_cells(ctrl, min_counts=p["min_counts"])
-    sc.pp.filter_cells(ctrl, min_genes=p["min_genes"])
-    sc.pp.filter_genes(ctrl, min_cells=p["gene_min_cells"])
-    sc.pp.filter_genes(ctrl, min_counts=p["gene_min_counts"])
+    apply_qc_filters(ctrl, p)
     sc.pp.normalize_total(ctrl, target_sum=1e4)
     sc.pp.log1p(ctrl)
     labels, _, _ = annotate_markers(ctrl, cfg["markers"])

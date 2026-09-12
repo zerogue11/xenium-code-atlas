@@ -44,7 +44,8 @@ uvx --from mkdocs-material mkdocs gh-deploy    # 发布
 #  预计算: python scripts/precompute_simulator.py --dataset hcc|brca|crc
 #          python scripts/precompute_lit_redraw.py        (UC/CROHN 示意)
 #          python scripts/precompute_simulator_zxm.py     (本地关, 课题数据)
-#  校验:   python scripts/validate_scenario.py --strict
+#  校验:   python scripts/validate_scenario.py --strict   (strict 下未登记 manifest 的资产判错; fallback 缺失两档均警告)
+#  单测:   python scripts/test_qc_tiers.py                  (QC tier 语义锁死, P-001 防回归)
 #  本地玩 ZXM 关: python scripts/serve_simulator_local.py  (build+注入ZXM资产+http.server)
 #  部署红线: mkdocs.yml exclude_docs 已排除 ZXM_local; 重新部署前确认该配置仍在(2026-09-05 泄露事故已孤儿强推清除)
 ```

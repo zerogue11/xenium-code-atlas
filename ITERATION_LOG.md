@@ -2,6 +2,14 @@
 
 > 记录：结构性决策、分类修订、模式升级、pipeline 版本事件。新条目加在最上面。
 
+## 2026-09-12 · 决策剧场审查 P2 缺陷修复（四项 + 一行文档）
+
+- **QC tier 语义单测落地**：`scripts/test_qc_tiers.py`（零依赖纯断言, venv 无 pytest 不新增依赖）——40×30 合成矩阵四细胞群, 三档期望全手算字面量锁死; P-001 回归用例（高深度低广度基因必须被 min_cells 滤掉、高广度低深度必须存活、min_counts=25 边界含等号）共 9 项断言。配套 DRY：run_tier/run_control 重复的 filter 块提取为 `apply_qc_filters()`（docstring 写明四参数语义）。有趣记录：三轮失败全是测试作者手算期望值错（B 群抬广度/C 群双段表达/基因广度塌缩未重算）, 实现每次都对——恰证此类测试价值在锁语义而非验直觉。
+- **调色板统一**：python `CLUSTER_PALETTE` 索引 20 重复色 `#31A354` → `#17BECF`; SPA `PAL` 由 14 色扩为与 Python 逐色一致的 24 色（修复 BRCA res=1.0 十五簇在播放器中撞色+图例省略）; 图例逐类阈值 14→16; coords 新增 `anno_colors` 下发, 播放器 anno 模式与 anno PNG 同色。已出货 PNG 不重算（最大 15 簇仅用索引 0-14, 视觉零变化）。
+- **spread 修复收尾**：mountPlayer 内 `mm()` 大数组安全 min/max 提升为公共辅助, gene 上色分支残留的 `Math.max(...gv)` 改用之（3 万+元素 spread 爆栈风险清除）。
+- **结算表改答语义**：`chooseOption` 按 step 替换而非追加, 改答在结算镜像表标注"（改选，原选：X）", 一节点一行。
+- **文档**：指南 §七补 `--strict` 语义说明与单测命令; AGENT.md §9 审查项扩为"validate 全绿 + 单测通过"; HANDOFF 复跑段同步。
+
 ## 2026-09-05 · 决策剧场模拟器一期建成（二期模块 1）
 
 - **新增互动模块**：`docs/simulator/`（单文件 SPA 引擎 + 液态玻璃设计系统，vanilla JS 零依赖零构建链），mkdocs nav 新增顶级 tab「决策剧场」，配套 `docs/06-决策剧场指南.md`（玩法 + 教学地图 + 诚实性三级说明）。
