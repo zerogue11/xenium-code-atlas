@@ -1,6 +1,6 @@
 {
  "dataset": "BRCA",
- "generated": "2026-09-05",
+ "generated": "2026-09-12",
  "seed": 0,
  "doc": "01_资料库/精读笔记/10XGenomics__janesick_nature_comms_2023_companion.md",
  "assets": [
@@ -157,37 +157,37 @@
  },
  "qc_stats": {
   "loose": {
-   "tier": "loose",
-   "n_cells_in": 167780,
-   "n_genes_in": 313,
-   "n_cells_out": 160827,
-   "n_genes_out": 313,
+   "gene_min_cells": 5,
+   "gene_min_counts": 1,
    "min_counts": 25,
    "min_genes": 5,
-   "gene_min_counts": 1,
-   "gene_min_cells": 5
+   "n_cells_in": 167780,
+   "n_cells_out": 160827,
+   "n_genes_in": 313,
+   "n_genes_out": 313,
+   "tier": "loose"
   },
   "standard": {
-   "tier": "standard",
-   "n_cells_in": 167780,
-   "n_genes_in": 313,
-   "n_cells_out": 152431,
-   "n_genes_out": 313,
+   "gene_min_cells": 10,
+   "gene_min_counts": 1,
    "min_counts": 50,
    "min_genes": 10,
-   "gene_min_counts": 1,
-   "gene_min_cells": 10
+   "n_cells_in": 167780,
+   "n_cells_out": 152431,
+   "n_genes_in": 313,
+   "n_genes_out": 313,
+   "tier": "standard"
   },
   "strict": {
-   "tier": "strict",
-   "n_cells_in": 167780,
-   "n_genes_in": 313,
-   "n_cells_out": 123273,
-   "n_genes_out": 313,
+   "gene_min_cells": 20,
+   "gene_min_counts": 1,
    "min_counts": 100,
    "min_genes": 20,
-   "gene_min_counts": 1,
-   "gene_min_cells": 20
+   "n_cells_in": 167780,
+   "n_cells_out": 123273,
+   "n_genes_in": 313,
+   "n_genes_out": 313,
+   "tier": "strict"
   }
  },
  "metrics_note": {

@@ -1476,7 +1476,11 @@ C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<s
 <span class="c1"># 2) T1-lite 文献结论重绘（UC/CROHN）</span>
 C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\p</span>recompute_lit_redraw.py
 <span class="c1"># 3) 剧本校验（schema/事件/资产/相对路径/三行式标注 五类检查）</span>
+<span class="c1">#   --strict: 存在但未登记 manifest(三行式标注缺失)的资产判错(发布前守门);</span>
+<span class="c1">#             已声明 fallback 的缺失属设计内诚实降级, 两档模式均只警告</span>
 C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\v</span>alidate_scenario.py<span class="w"> </span>--strict
+<span class="c1"># 3b) QC tier 语义单测（P-001 防回归: 锁死 filter_cells/filter_genes 四参数语义）</span>
+C:<span class="se">\x</span>enium_envs<span class="se">\x</span>enium-cn-py311<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts<span class="se">\t</span>est_qc_tiers.py
 <span class="c1"># 4) 本地预览（含 ZXM 本地关）</span>
 cmd<span class="w"> </span>/c<span class="w"> </span>scripts<span class="se">\s</span>etup_docs_links.cmd
 uvx<span class="w"> </span>--from<span class="w"> </span>mkdocs-material<span class="w"> </span>mkdocs<span class="w"> </span>serve<span class="w">        </span><span class="c1"># 站点预览（ZXM 资产被 exclude_docs 排除）</span>
