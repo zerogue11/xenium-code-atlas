@@ -909,6 +909,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        绘图模板库（图型卡的候选实现来源，2026-09-27 登记）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1266,6 +1277,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        绘图模板库（图型卡的候选实现来源，2026-09-27 登记）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1341,6 +1363,38 @@
 <li>Single 模块：纯 Python Monocle 2 重建（免 rpy2/R 环境，对应拟时序模块）。</li>
 </ul>
 <p><strong>结论</strong>：用户本地 OV 2.2.1rc1 已覆盖 2.1.x 空间更新；升级 OV 或迁移脚本时注意 <code>cellseg()</code> 更名与 RAPIDS 补丁重验（readiness 必跑）。</p>
+<h2 id="2026-09-27">绘图模板库（图型卡的候选实现来源，2026-09-27 登记）<a class="headerlink" href="#2026-09-27" title="Permanent link">&para;</a></h2>
+<p>与"生态基础设施"并列的<strong>模板源</strong>：图型卡（<code>02_工作流开发/绘图呈现/V-XX</code>）的现成代码入口，实际用图时按铁律 13 落地（复制到 scripts/ 微调并注明来源）。</p>
+<table>
+<thead>
+<tr>
+<th>模板库</th>
+<th>地址</th>
+<th>定位与状态</th>
+<th>与本库的接入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FigureYa</td>
+<td>https://ying-ge.github.io/FigureYa/ （<a href="https://github.com/ying-ge/FigureYa">仓库</a>）</td>
+<td>标准化可视化框架（iMetaM 2025），R 为主；目录 319 模板可检索；<strong>Source Pack 未配置（0 可 materialize）</strong></td>
+<td>11/22 图族有候选模板 ID，检索走 figure-library MCP（preview 打分 8/10 门槛）</td>
+</tr>
+<tr>
+<td>Bizard</td>
+<td>https://openbiox.github.io/Bizard/ （<a href="https://github.com/openbiox/Bizard">仓库</a>）</td>
+<td>Openbiox 社区驱动的生信可视化代码库（2025-03 预印本），集成 R Graph Gallery 等来源；教程五段式：①绘图介绍/演示 ②环境配置 ③示例数据 ④绘图代码 ⑤参考解读；含 Hiplot 镜像分类（BASICS/OMICS/CLINICS/MAP）与 AI skill 包（bizard-skill.zip）</td>
+<td>2026-09-27 全量索引实查，为 10 个 FigureYa 待检索图族补 R 候选（Hiplot QC/ROC/GSEA/3D scatter 等）；无匹配图族（多模态叠加/排版类）如实标注</td>
+</tr>
+<tr>
+<td>R Graph Gallery</td>
+<td>https://r-graph-gallery.com/</td>
+<td>Bizard 集成来源之一，基础图型</td>
+<td>经 Bizard 间接引用</td>
+</tr>
+</tbody>
+</table>
 <h2 id="_1">其他生态（本轮未深查，登记待办）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>squidpy / spatialdata / scanpy：用户实测环境 scanpy 1.12.1、spatialdata 0.7.3、squidpy 1.8.1（2026-08 测试记录），上游最新版【待补充】。</li>
