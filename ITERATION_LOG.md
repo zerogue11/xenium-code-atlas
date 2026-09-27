@@ -2,6 +2,14 @@
 
 > 记录：结构性决策、分类修订、模式升级、pipeline 版本事件。新条目加在最上面。
 
+## 2026-09-27（晚）· Bizard 模板源接入 + 站点评论与周检
+
+- **Bizard 登记**：生态与官方资源.md 新增"绘图模板库"小节（FigureYa/Bizard/R Graph Gallery 并列；Bizard=Openbiox 社区库，五段式教程，2026-09-27 Gallery 全量索引实查）。
+- **10 卡补 R 候选**：V-01/02/12/13/14/15/16/20/21/22 的模板节改"模板候选（FigureYa / Bizard）"；V-22 最富（DIY GSEA/GO×3/KEGG）；V-15/20/21 无匹配如实标注；V-17 顺手加 CellChatCirclePlot（专属圈图优于通用 circos）。范围外 11 卡未动。
+- **giscus**：repo Discussions 已启用（gh PATCH）；**2026 版 material 主题系统重写致 custom_dir 失效**（Unrecognised configuration name），改客户端 JS 注入 `docs/assets/giscus.js`（document$ 订阅兼容 instant navigation）——经验：uvx 解析到的 mkdocs 是 1.6.1 但 material 2026 版不再走 override partial。
+- **周检**：`.github/workflows/weekly-check.yml`（周一 03:00 UTC + 手动）+ `scripts/url_check.py`（标准库；403/429 记疑似反爬不计失败——沿用 v2 核验经验）。**脚本首版有元组索引错位 bug（r[2] 取到 URL）本地试跑即抓出修复**；本地+Actions 双端实测 ok=72/0 失败；`weekly-check` label 预创建；README 加 badge。
+- **挂起**：giscus App 若未安装到仓库，页面评论区将不出现——首次验证需用户在 https://github.com/apps/giscus 安装到 xenium-code-atlas。
+
 ## 2026-09-27 · 绘图呈现层建成（横向层）
 
 - **决策**：绘图呈现不设 A10 串行模块，建为横向呈现层 `02_工作流开发/绘图呈现/`（与范式登记册同构）——绘图消费所有模块产出，排在 A9 之后语义不对。
