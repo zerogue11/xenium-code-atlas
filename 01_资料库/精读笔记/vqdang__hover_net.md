@@ -48,7 +48,7 @@
 | 最简化 | 1 | infer/tile.py:1-42 import 冗余（multiprocessing Lock/Pool 重复导入 L3/L20、argparse/glob 等未用）；少量注释死代码 |
 | 逻辑健壮性 | 2 | assert 内存比例（tile.py:156）与文件非空（tile.py:162）；并行 future 异常轮询（tile.py:373-386）；轮廓 <3 点/异常形状跳过（post_proc.py:140-143）；模型 mode 断言（net_desc.py:24-25） |
 | 可复现性 | 2 | check_manual_seed + worker 种子链注释（run_train.py:74-89, run_utils/utils.py:33-42）；requirements.txt 全 == 锁定；CHANGELOG 记录版本；输入顺序强制 sort（tile.py:161） |
-| 验证纪律 | 1 | 无 CI/测试目录；有 debug 开关（config.py:23）与完整 metrics 脚本做离线验证，但无自动化回归 |
+| 验证要求 | 1 | 无 CI/测试目录；有 debug 开关（config.py:23）与完整 metrics 脚本做离线验证，但无自动化回归 |
 
 总分：12/14
 

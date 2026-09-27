@@ -51,7 +51,7 @@
 | 最简化 | 0 | annotated_objects.py:1-41 import 块 numpy/scanpy/pandas/matplotlib 各重复 3-6 次；重复函数定义；死代码 cells[0].astype(int)-1 结果弃置（L132）、np.sum 未用（L247） |
 | 逻辑健壮性 | 0 | 三处一调用即炸的 NameError：pciseq.py:8（iss_spots）、annotated_objects.py:350（add_fov_number 中 x/y 未定义）、segmentation.py:278（mpl 未导入）；裸 except 大量 |
 | 可复现性 | 1 | postprocessing.yml 锁 cellpose==0.6.1/scanpy==1.9.0/squidpy==1.2.0 是亮点；但 import 即实例化模型的环境副作用 + requires.txt 无锁抵消部分 |
-| 验证纪律 | 0 | 无测试/CI；多个 NameError 级 bug 长期存在，证明导出函数从未被整体运行过 |
+| 验证要求 | 0 | 无测试/CI；多个 NameError 级 bug 长期存在，证明导出函数从未被整体运行过 |
 
 总分：4/14
 

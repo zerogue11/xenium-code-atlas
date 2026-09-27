@@ -48,7 +48,7 @@
 | ④最简化 | 0 | 未用 import 一排（ET/re/sys/time/random 等，segmentation_functions.py:20-26）；GradePrediction.py:100-119 `if mask is None` 死分支（mask 早已必然赋值）；phikon 抽取器全局+MyModel 内部双份加载（:36,:52） |
 | ⑤逻辑健壮性 | 0 | 整函数 `except Exception as e: print(e)` 吞掉全部错误（GradePrediction.py:147-148），单张片失败静默跳过；`args.model` 默认是目录路径传 torch.load 必失败（:166）；speed 除零未防（Fitness.py:24） |
 | ⑥可复现性 | 1 | requirement.txt 锁版本（但锁出冲突）；leiden 依赖 scanpy 默认 random_state 未显式；PAGA 根节点 `start_class=4` 硬编码（Pseudotime.py:23-24），换数据集语义即漂移 |
-| ⑦验证纪律 | 1 | example_result/ 提供完整示例输入输出对照（最低限验证痕迹）；无测试无 CI |
+| ⑦验证要求 | 1 | example_result/ 提供完整示例输入输出对照（最低限验证痕迹）；无测试无 CI |
 
 ## 可搬运模式
 

@@ -42,7 +42,7 @@
 | ④最简化 | 1 | train.py:107 **每个 epoch 重建 Adam**（动量清零、adjust_learning_rate 失效）；train.py:132-140 注释死代码；EarlyStopping.loss_min 存而不判（train.py:41,72） |
 | ⑤健壮性 | 1 | NaN 即停（train.py:46-47）；但 latent_dim=10（layer.py:21）、特征损失×10（train.py:119-121）、heads 默认 6 全硬编码 |
 | ⑥可复现性 | 2 | 全套 seed：function.py:72-82（np/torch/random/cudnn.deterministic）、train.py:78-86、model.py:15,20 |
-| ⑦验证纪律 | 0 | 无测试无 CI；scripts/ notebook 即手工验证 |
+| ⑦验证要求 | 0 | 无测试无 CI；scripts/ notebook 即手工验证 |
 
 **总分 9/14**
 

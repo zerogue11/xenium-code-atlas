@@ -1,9 +1,9 @@
 # 绘图呈现层（Figure Grammar Layer）
 
-> **定位：横向呈现层**——绘图不是排在 A9 之后的串行步骤，而是消费所有模块产出的输出层。与范式登记册同构：范式卡管"代码怎么写"，图型卡管"图回答什么问题、跟谁学、怎么画合规"。
+> **定位：横向呈现层**。绘图不是排在 A9 之后的串行步骤，它使用所有模块的产出来出图。组织方式和做法登记册一样：做法卡管"代码怎么写"，图型卡管"图回答什么问题、跟谁学、怎么画合规"。
 > 数据基础：[图形类型书目.csv](../../01_资料库/图形类型书目.csv)（91 篇文献 269 条"绘图借鉴"派生，`scripts/build_figure_catalog.py` 可复跑）。
 
-## 图语法总表（22 类 × 论证链）
+## 图型总表（22 类 × 论证链）
 
 | 卡 | 图型 | 频次 | 回答什么问题 | 主工具 | 最佳参考仓 | FigureYa / Bizard |
 |---|---|---|---|---|---|---|
@@ -34,15 +34,15 @@
 
 1. **出图前**：找到对应图型卡 → 读"回答什么问题"确认这张图在你的论证链里的位置 → 按数据前提核对输入 → 按工具选型+参考仓动手。
 2. **画完自检**：对照卡内"zoro-figure 铁律适用条目"编号逐条过（完整规则见 zoro-figure 技能，卡内只列适用条目，单一来源）。
-3. **组织纪律**：逐图产出走 PATTERN-045（产数/出图双层）+ PATTERN-050（图号反查手册）+ PATTERN-028（locked 命名）+ PATTERN-006（figures/<图号>/ 落盘）+ 铁律 #9（PNG+PDF+同名 CSV 三件套）。
+3. **组织要求**：逐图产出按 PATTERN-045（产数/出图两层）+ PATTERN-050（图号反查手册）+ PATTERN-028（locked 命名）+ PATTERN-006（存到 figures/<图号>/）+ 铁律 #9（PNG+PDF+同名 CSV 三件套）执行。
 
 ## FigureYa 模板说明
 
-- 双模板源：11 个图族有 FigureYa 候选 ID（表内"Ya"前缀），10 个 FigureYa 待检索图族已补 Bizard（R，openbiox）R 候选（2026-09-27 Gallery 全量索引实查）；V-17 加 CellChat 专属圈图。
-- **Source Pack 未配置**（目录 319 模板可检索、0 可落地）：materialize 前需先配置 Source Pack；落地时按铁律 13——复制到 scripts/ 微调并注明来源，不自动跑 install_dependencies。
-- 检索纪律：figure_library_search 只是排序信号，用前必须 preview 实看打分（8/10 门槛）。
+- 候选模板有两个来源：11 个图族有 FigureYa 候选 ID（表内"Ya"前缀）；另外 10 个暂未找到 FigureYa 的图族补了 Bizard（R，openbiox）候选（2026-09-27 逐条实查过 Gallery 全部索引）；V-17 另有 CellChat 专属圈图。
+- **Source Pack 未配置**（目录里 319 个模板可检索、0 个可实际取用）：materialize 前需先配置 Source Pack；取用时按铁律 13，复制到 scripts/ 微调并注明来源，不自动跑 install_dependencies。
+- 检索要求：figure_library_search 的结果只是排序参考，用前必须 preview 实看打分（8/10 分才可用）。
 
 ## 迭代
 
 - 新图形类型入库：[迭代入库SOP](../../01_资料库/迭代入库SOP.md) §新图形类型。
-- 卡内【待补充】项与参考仓路径以实测为准；修订记 ITERATION_LOG。
+- 卡内【待补充】项与参考仓路径以实测为准；修订写入 ITERATION_LOG。

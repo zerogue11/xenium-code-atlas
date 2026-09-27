@@ -43,7 +43,7 @@
 | ④最简化 | 1 | base.config:21-29 注释掉的 RMARKDOWN 块；scVI.nf:21-24 `OMP_NUM_cpus` 等无效环境变量拼写（OMP_NUM_cpus≠OMP_NUM_THREADS） |
 | ⑤健壮性 | 1 | checkIfExists（Integrate_datasets.nf:63）、errorStrategy finish、cache lenient；无断言式 channel 校验 |
 | ⑥可复现性 | 2 | NXF_VER=23.04.0 锁定（run_build_atlas.sh:3）；容器 def+yaml 双轨（envs/）；base.config:35 "cpus=12 For scVI reproducibility"；README 专节讨论 GPU 硬件敏感性 |
-| ⑦验证纪律 | 1 | 每 process 产 versions.yml（jupyternotebook/main.nf:70-75）；无 CI/测试 |
+| ⑦验证要求 | 1 | 每 process 产 versions.yml（jupyternotebook/main.nf:70-75）；无 CI/测试 |
 
 **总分 9/14**
 

@@ -54,7 +54,7 @@ FigureData/                       论文各图的指标 txt/csv 结果快照（4
 | ④最简化 | 0 | SpaOTsc doc/_build 全套 HTML/LaTeX 入库、__pycache__ ×3 代入库、113MB 大半是 vendor+结果；notebook 内联重复实现包函数（BLAST notebook 单元4 重写 SpaGE_impute） |
 | ⑤逻辑健壮性 | 1 | outdir 拼接漏 "/"（SpatialGenes.py:293,317，gimVI/stPlus 结果写到 outdir 同级目录外）；加分项：impute_count.fillna(1e-20)（GenesMetrics.py:151）、cal_ssim 断言（:21-22）、指标除零由 scipy 兜底 |
 | ⑥可复现性 | 1 | README 逐方法给精确版本号（Cell2location 0.6a0、scvi-tools 0.11.0 等）+ Benchmarkingenvironment.yml ✓；但 KFold 无 seed、novoSpaRc/Tangram 随机初始化无 seed，fold 划分不可复现 ✗ |
-| ⑦验证纪律 | 1 | 无 CI 无测试；FigureData/ 保留 45 数据集全量指标 txt 作为可对照的验证快照，间接可校验重跑结果 |
+| ⑦验证要求 | 1 | 无 CI 无测试；FigureData/ 保留 45 数据集全量指标 txt 作为可对照的验证快照，间接可校验重跑结果 |
 
 **总分 7/14**
 
@@ -74,4 +74,4 @@ FigureData/                       论文各图的指标 txt/csv 结果快照（4
 
 ## 一句总评
 
-"每方法一包装 + 类调度 + 指标类 + 结果快照"的四层基准骨架是本计划整合 pipeline 基准模块最直接的模板，工程粗糙点集中在路径拼接与拼写，均可在搬运时一次性修掉。
+"每方法一包装 + 类调度 + 指标类 + 结果快照"的四层基准骨架是本计划整合流程 基准模块最直接的模板，工程粗糙点集中在路径拼接与拼写，均可在搬运时一次性修掉。

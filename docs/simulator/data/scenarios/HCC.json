@@ -17,7 +17,7 @@
       "title": "第一刀切在哪：样本与 panel",
       "brief": "你接到一例肝细胞癌（HCC）切除标本。第一个决定不是参数，是<b>材料本身</b>：FFPE 存档还是新鲜冻存？panel 用 V1 精准panel（474 基因）还是 5K？这个决定决定了后面的每一步。要不要顺手设计一个<b>健康肝对照</b>？——对照不是装饰，它让「肿瘤改变了什么」这句话有主语。",
       "teach": {"links": [
-        {"kind": "manual", "label": "手册 · 主干七步", "href": "../01-基础范式主干/"},
+        {"kind": "manual", "label": "手册 · 主流程七步", "href": "../01-基础范式主干/"},
         {"kind": "pattern", "label": "PATTERN-047 · 统一 QC 核心 + 平台补丁", "href": "02_工作流开发/范式登记册/PATTERN-047_跨平台统一QC核心加平台补丁层.md"}
       ]},
       "options": [
@@ -32,7 +32,7 @@
           "events": ["P-004"],
           "media": [{"type": "svg3", "id": "panel_choice"}],
           "unlock": [
-            {"kind": "manual", "label": "手册 · 主干七步（装载→导出）", "href": "../01-基础范式主干/"},
+            {"kind": "manual", "label": "手册 · 主流程七步（装载→导出）", "href": "../01-基础范式主干/"},
             {"kind": "card", "label": "LIT-088 Moldia/Xenium_benchmarking · 档案卡", "href": "01_资料库/档案卡/Moldia__Xenium_benchmarking.md"}
           ]
         },

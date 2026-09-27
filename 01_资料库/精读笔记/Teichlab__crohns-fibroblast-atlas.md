@@ -43,7 +43,7 @@
 | ④最简化 | 1 | .ipynb_checkpoints 已提交（7a1 与 checkpoint 双份同 783 行）；3a1/4d 等碎篇多 |
 | ⑤健壮性 | 0 | notebook 无断言/参数校验；3a cell36 硬编码 leiden 簇号→标签映射，重跑即失效 |
 | ⑥可复现性 | 1 | random_state=42（4a cell17 model_params）；4a cell1 import print_versions 但 xenium/ 内 grep 0 次调用【待补充：其余 notebook 是否调用】 |
-| ⑦验证纪律 | 0 | 无 env 锁文件/CI/测试；LICENSE 有 |
+| ⑦验证要求 | 0 | 无 env 锁文件/CI/测试；LICENSE 有 |
 
 **总分 7/14**
 

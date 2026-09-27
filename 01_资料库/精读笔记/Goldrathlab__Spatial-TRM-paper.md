@@ -41,7 +41,7 @@
 | ④最简化 | 1 | core_functions 在 4 条管线近重复复制（processing_and_filtering.py 106/107/107 行三份）；unrolling.py:126 注释掉的 D:\Alex 路径残留 |
 | ⑤逻辑健壮性 | 1 | initial_neighborhoods.py:45-48 网格越界 `except: None` 静默吞错；processing_and_filtering.py:53-56 裸 except；QC 阈值集中参数化是加分项 |
 | ⑥可复现性 | 2 | pixi.toml:12 `scanpy=="1.9.5"` 精确 pin + pixi.lock 全锁 + devcontainer GPU runArgs + postCreateCommand pixi install；notebook 层无 seed【待补充：scVI 训练未设 seed 语句】 |
-| ⑦验证纪律 | 2 | 每管线内嵌 02_Evaluating_Baysor_Segmentation.ipynb 专评分割；人工标注 labels/ json + 注释 xlsx/csv 全留痕；pre-commit 强制格式 |
+| ⑦验证要求 | 2 | 每管线内嵌 02_Evaluating_Baysor_Segmentation.ipynb 专评分割；人工标注 labels/ json + 注释 xlsx/csv 全留痕；pre-commit 强制格式 |
 
 ## 可搬运模式
 

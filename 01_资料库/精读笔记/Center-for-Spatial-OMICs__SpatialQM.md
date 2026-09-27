@@ -54,7 +54,7 @@ docs/ + .github/workflows/  pkgdown 站点；CI: R-CMD-check(matrix) + coverage 
 | ④最简化 | 0 | 双版本冗余 3400 行；update_final 内 Sparsity 算两遍（R/utils_update_final.R:202,228）、PanelSize 误调 getSparsity（:239） |
 | ⑤逻辑健壮性 | 1 | utils.R 有 .validate_sample_metrics_df 列校验（tests/testthat/test-inputs.R:2-6 证明）+ getPanelSize stop 校验（R/utils.R:2412）；但 tryCatch 吞错误仅 cat（R/utils_update_final.R:57-59），失败留 NA 不上报 |
 | ⑥可复现性 | 1 | DESCRIPTION 声明 Imports 但无版本锁；R/DependencyPackages.R:1-9 运行时自动 install.packages 破坏环境确定性；CI matrix 多版本（.github/workflows/R-CMD-check.yaml:24） |
-| ⑦验证纪律 | 1 | 4 个 CI workflow 齐备，但测试仅 33 行 5 个 test_that（tests/testthat/），test-utils.R 是 2*2=4 占位测试 |
+| ⑦验证要求 | 1 | 4 个 CI workflow 齐备，但测试仅 33 行 5 个 test_that（tests/testthat/），test-utils.R 是 2*2=4 占位测试 |
 
 **总分 8/14**
 

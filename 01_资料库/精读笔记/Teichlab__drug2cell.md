@@ -43,7 +43,7 @@
 | ④最简化 | 2 | 845 行无死代码；借 scanpy 的函数注明出处（__init__.py:16） |
 | ⑤逻辑健壮性 | 1 | 有 `layer`+`use_raw` 互斥 ValueError（__init__.py:117）、chembl.py:60-65 类型校验；但 `score(method=...)` 无枚举校验，传错值静默按 mean 走（__init__.py:158-205 仅判断 =="seurat"） |
 | ⑥可复现性 | 1 | seurat 分支 `np.random.shuffle` 无 seed 控制（__init__.py:176）；setup.py:12-18 依赖全不锁版本 |
-| ⑦验证纪律 | 0 | 无 tests/、无 CI、无回归记录（CHANGELOG.md 仅版本流水账） |
+| ⑦验证要求 | 0 | 无 tests/、无 CI、无回归记录（CHANGELOG.md 仅版本流水账） |
 
 ## 可搬运模式
 

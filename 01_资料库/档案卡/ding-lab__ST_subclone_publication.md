@@ -13,7 +13,7 @@
 | 语言与规模 | Shell x11 / Python x2（主表口径；另有多个 .R 脚本未计）；1.5MB |
 | 运行入口 | 各 Figure 目录内 R 脚本与 shell；CalicoST 步骤是 md 说明需手动执行；无 env 文件、无 renv |
 | 复现难度 | 高 — 数据须经 GDC（CPTAC snRNA-seq，按 Case ID）与 HTAN DCC（WUSTL Atlas）门户下载，仓内提供样本→库对应表 |
-| 与范式的关系 | P8 肿瘤进化场景候选池：图版→脚本 README 映射模式 + 完整克隆演化路线，可映射到整合 pipeline 的克隆演化支线 |
+| 与范式的关系 | P8 肿瘤进化场景候选池：图版→脚本 README 映射模式 + 完整克隆演化路线，可映射到整合流程 的克隆演化支线 |
 | 坑提示 | ① 无 LICENSE；② R 包版本未声明【待补充】；③ Figure6 只有 README（复用 Figure5 产物）；④ gencode 注释文件需按 README 命令自行生成 |
 | 锁定 SHA | 主表未登记（空）；本地克隆 HEAD `7067cd16f06ec4aa2500aa1e5c9a6eb1e6e42cfa` |
 

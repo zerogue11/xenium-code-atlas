@@ -47,7 +47,7 @@
 | ④最简化 | 2 | 未发现死代码；长 docstring 属刻意 API 文档化 |
 | ⑤逻辑健壮性 | 2 | `_check_init` 前置断言（:333）、raw counts 检查抛 ValueError（:910-914）、全零 score 跳过告警（:608-610）、多 score 无 perturb_key 报错（:666） |
 | ⑥可复现性 | 1 | seed 纪律好：`RANDOM_SEED=42`（:28）、`__init__` 播种（:60-63）、`rand_sim(reset_seed=)`（:653-656）；但 setup.py:36 声称 `python_requires=">=3.5"`，而 util.py 无 future import 且有 13 处 PEP585 泛型（如 :639 `dict[str, float]`），py<3.9 直接 import 失败——声明失真 |
-| ⑦验证纪律 | 2 | tests/ 三件套 + CI tests.yml + 玩具链路数值断言（test_toy_example.py:63-67）+ 绘图非空断言（conftest.py:9-22） |
+| ⑦验证要求 | 2 | tests/ 三件套 + CI tests.yml + 玩具链路数值断言（test_toy_example.py:63-67）+ 绘图非空断言（conftest.py:9-22） |
 
 ## 可搬运模式
 

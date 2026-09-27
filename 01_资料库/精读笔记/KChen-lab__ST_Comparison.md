@@ -52,7 +52,7 @@ Annotations/*.rds + READ.me                   各平台各样本的细胞类型�
 | ④最简化 | 1 | 851 行 28 文件已很精瘦；但 11a-11d 四个补充图脚本 16 行同构复制、Figure_2b.R:6-8 levels 里 Xenium_UM_Meso1 写了两遍 |
 | ⑤逻辑健壮性 | 0 | **语法错误两处**：Xenium_MESO.R:13 多余右括号、:17 缺右括号（脚本不可运行）；**复制粘贴错误两处**：Xenium_MESO.R:36 `AddMetaData(MESO1,...)` 应为 MESO2、CosMx_ICON.R:33 `subset(Icon1,...)` 赋给 Icon2；零断言零校验 |
 | ⑥可复现性 | 1 | 图脚本有 set.seed(2023)（Figure_2b.R:1）但 Figure_4a.R:2 写成 20203；README 给出三个 GEO 登录号；无 renv/版本锁、无环境文件 |
-| ⑦验证纪律 | 0 | 无 CI 无测试；语法错误证明脚本提交前从未执行过 |
+| ⑦验证要求 | 0 | 无 CI 无测试；语法错误证明脚本提交前从未执行过 |
 
 **总分 6/14**
 

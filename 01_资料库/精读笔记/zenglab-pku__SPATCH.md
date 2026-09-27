@@ -47,7 +47,7 @@
 | ④最简化 | 1 | 每文件头部 VSCode 插件残留 `FilePath: /undefined/Users/morsouron/Desktop/...`（1_load_data.py:6 等 8 处）；7_cluster.py:29 silhouette_score 引用不存在的 'cluster' 列 |
 | ⑤健壮性 | 0 | 脚本不可独立运行：9_st_annotation.py 引用未定义的 tissues/ref/device/params_train/vote；无断言无 try/except |
 | ⑥可复现性 | 1 | seed 12345 全局一致（10_spatial_cluster.py:33,41,56,77）；无 requirements/env 锁、无 LICENSE |
-| ⑦验证纪律 | 1 | 9_st_annotation_consistency.r 跨工具一致性评估=基准设计自含验证；无 CI/测试 |
+| ⑦验证要求 | 1 | 9_st_annotation_consistency.r 跨工具一致性评估=基准设计自含验证；无 CI/测试 |
 
 **总分 5/14**
 

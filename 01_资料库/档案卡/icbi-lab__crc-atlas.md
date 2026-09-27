@@ -39,6 +39,6 @@
 
 ## 借鉴与风险
 
-- 可移植点：Nextflow DSL2 + conda yaml + Singularity + "可复现性/硬件声明"四件套是本项目整合 pipeline 的工程对标；analyses 编号目录法（01→70 主题分组）可直接借用。
+- 可移植点：Nextflow DSL2 + conda yaml + Singularity + "可复现性/硬件声明"四件套是本项目整合流程 的工程对标；analyses 编号目录法（01→70 主题分组）可直接借用。
 - 风险：zenodo 预计算"coming soon"若未上线则轻量路线断粮；GPU 漂移导致注释不可比是方法论固有坑。S 级合理；不建议再升格。
 

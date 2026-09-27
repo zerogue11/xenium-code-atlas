@@ -65,7 +65,7 @@ end-to-end_pipeline_optimized.ipynb   官方推荐入口：format→Baysor→pre
 | ④最简化 | 0 | dist/、3 个 egg-info、.ipynb_checkpoints、__pycache__、95MB notebook 带输出全部入库；formatting.py 存 4 个代际读入变体共存；QC 指标在 xb/_quality_metrics.py 与 notebooks/5/metrics.py 两处重复 |
 | ⑤逻辑健壮性 | 0 | main_preprocessing 的 louvain 自适应循环里误调 sc.tl.leiden（xb/preprocessing.py:88，louvain 块写 leiden 的复制粘贴 bug）；无 seed；错误处理靠 print 无断言 |
 | ⑥可复现性 | 1 | xenium_benchmarking.yml 完整 conda+pip 版本锁（python 3.7.13，pip 段逐包==）✓；Zenodo DOI 数据三件 ✓；但 xb/*.py 全文无 random_state/seed（grep 证实），leiden/UMAP 不可复现 ✗ |
-| ⑦验证纪律 | 1 | readthedocs 文档站 + 端到端示例数据 DOI 是验证友好设计；无测试无 CI；notebook 即"计划-验证痕迹" |
+| ⑦验证要求 | 1 | readthedocs 文档站 + 端到端示例数据 DOI 是验证友好设计；无测试无 CI；notebook 即"计划-验证痕迹" |
 
 **总分 6/14**
 

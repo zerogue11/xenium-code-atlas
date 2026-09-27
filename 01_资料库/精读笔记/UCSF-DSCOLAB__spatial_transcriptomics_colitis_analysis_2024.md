@@ -41,7 +41,7 @@
 | ④最简化 | 1 | Sept/Nov 双对象代码块成对复制（cell50/54/55/57），教学性 markdown 重复多 |
 | ⑤逻辑健壮性 | 1 | 无 assert；有 print 自检（cell61 保留细胞比例复算）；autok pickle 持久化容错好（cell17） |
 | ⑥可复现性 | 2 | 3 个 conda yaml 全 pin（default_env.yaml:156 python=3.7.7, :263 scanpy==1.9.3, harmony yaml:238 harmonypy==0.0.9）；CellCharter notebook cell1 `seed_everything(12345)`+`scvi.settings.seed=12345`；autok 多 k(8,9,10) 并存支持终审 |
-| ⑦验证纪律 | 1 | QCComparisons/BlockAge/MECR 三个专项 QC notebook 即验证件；无 CI/测试；无验证计划文档 |
+| ⑦验证要求 | 1 | QCComparisons/BlockAge/MECR 三个专项 QC notebook 即验证件；无 CI/测试；无验证计划文档 |
 
 ## 可搬运模式
 

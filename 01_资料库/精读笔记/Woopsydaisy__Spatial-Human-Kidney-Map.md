@@ -41,7 +41,7 @@
 | ④最简化 | 0 | Script1 把 20/40/60/80/200µm 五尺度×两平台写成 10 段展开代码（29-340 行）未函数化；COVET_Script4 4363 行线性 clustermap 重复块（266 处 def/import） |
 | ⑤逻辑健壮性 | 1 | Script3_Kmeans.py:38 `assert all(adata_subset.obs_names == new_adata.obs_names)` 细胞对齐断言是亮点；其余脚本无校验 |
 | ⑥可复现性 | 1 | 容器版本标注（version2/version4）可追但 tag 不透明；KMeans random_state=42（Script3:94）；`seed=10` 定义后从未使用（Script2:16，唯一 seed 引用） |
-| ⑦验证纪律 | 1 | C/SCIB 四脚本显式多方法基准+silhouette 选 k；无 CI/测试；邻域直方图自检图是好习惯 |
+| ⑦验证要求 | 1 | C/SCIB 四脚本显式多方法基准+silhouette 选 k；无 CI/测试；邻域直方图自检图是好习惯 |
 
 ## 可搬运模式
 

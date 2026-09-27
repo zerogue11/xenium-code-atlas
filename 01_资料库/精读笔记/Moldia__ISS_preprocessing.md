@@ -45,7 +45,7 @@
 | 最简化 | 1 | 死代码 `tile_size = tile_size`（L347-349）；`np.sum(np.sum(...))` 类无效语句；注释掉的旧写法成片 |
 | 逻辑健壮性 | 0 | `zen_OME_tiff` L86 调 `join()` 但函数内未 import（全文件仅 L118/219 函数内导入 join）——该函数一跑必 NameError；裸 except 吞损坏图像（L203-205）；positions 在 meta 循环中被覆盖只留最后一个（L58-74） |
 | 可复现性 | 2 | conda yml 全 == 锁（含 ashlar==1.13.1、scikit-image==0.16.2），installation.sh 固化三环境 |
-| 验证纪律 | 0 | 无测试/CI；NameError 级 bug 未被发现说明无冒烟验证；dist/egg/pyc 混入版本库 |
+| 验证要求 | 0 | 无测试/CI；NameError 级 bug 未被发现说明无冒烟验证；dist/egg/pyc 混入版本库 |
 
 总分：6/14
 

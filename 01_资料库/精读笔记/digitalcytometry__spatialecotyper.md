@@ -48,7 +48,7 @@
 | ④最简化 | 1 | SNF2.R:88-94 注释掉的 sum_matrix 死代码；SNF2.R:26,118 冗余 require；RecoverSE.R:45 deprecated 参数残留 |
 | ⑤健壮性 | 2 | stop() 校验遍布（SpatialEcoTyper.R:93-104、GetSpatialMetacells.R:62-73）；NaN/Inf 清洗（SNF2.R:110-111）；>1e8 稀疏矩阵降级循环防 NA（GetSpatialMetacells.R:139-155） |
 | ⑥可复现性 | 2 | seed 参数化（NMFGenerateW.R:97,110；nmfClustering.R:61）；Seurat v4/v5 分支（SpatialEcoTyper.R:171-174）；project.name 编码全部超参（SpatialEcoTyper.R:181-185） |
-| ⑦验证纪律 | 0 | 无 tests/、无 CI（ls 证实）；验证=8 篇 vignette 手工跑通 |
+| ⑦验证要求 | 0 | 无 tests/、无 CI（ls 证实）；验证=8 篇 vignette 手工跑通 |
 
 **总分 11/14**
 

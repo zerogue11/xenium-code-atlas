@@ -51,7 +51,7 @@
 | ④最简化 | 1 | region_classification.py 已写但 CLI 未挂接（choices 缺失）；主入口注释掉的参数块（:60-63）；README 自述两个 feature 模式 "may not work as intended" |
 | ⑤逻辑健壮性 | 1 | deepcell 缺失时优雅跳过导入（:16-17）；extract_ome_tiff 有 strict/flexible 模式（utils.py:139）；但 make-ome 无输入存在性校验，gate 阈值通道缺失静默 NaN |
 | ⑥可复现性 | 1 | CWL+template yaml 输入契约是亮点；但 docker/Dockerfile:11-12 pip 裸装不锁版本、setup.py 依赖不锁，镜像重建漂移风险大 |
-| ⑦验证纪律 | 1 | examples/ + template 提供样例输入；无测试无 CI；README 明示两模式不可靠 |
+| ⑦验证要求 | 1 | examples/ + template 提供样例输入；无测试无 CI；README 明示两模式不可靠 |
 
 ## 可搬运模式
 

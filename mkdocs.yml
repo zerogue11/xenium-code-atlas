@@ -1,5 +1,5 @@
 site_name: xenium-code-atlas · Xenium 文献公开代码整合提炼库
-site_description: 91 篇文献 72 仓公开代码的档案、精读、范式蒸馏与可迭代整合 pipeline
+site_description: 91 篇文献 72 仓公开代码的档案、精读、范式蒸馏与可迭代整合流程
 repo_url: https://github.com/zerogue11/xenium-code-atlas
 repo_name: zerogue11/xenium-code-atlas
 docs_dir: docs
@@ -43,7 +43,7 @@ nav:
   - 首页: index.md
   - 学习手册:
       - 开始这里: 00-开始这里.md
-      - 基础范式主干: 01-基础范式主干.md
+      - 基础流程: 01-基础流程.md
       - 高级模块地图: 02-高级模块地图.md
       - 绘图与呈现: 07-绘图与呈现.md
       - 精读方法论: 03-精读方法论.md
@@ -56,10 +56,10 @@ nav:
       - 生态与官方资源: 01_资料库/生态与官方资源.md
       - 迭代入库 SOP: 01_资料库/迭代入库SOP.md
   - 工作流开发:
-      - 候选流程池: 02_工作流开发/候选流程池/README.md
-      - 范式登记册: 02_工作流开发/范式登记册/README.md
+      - 候选流程对比: 02_工作流开发/候选流程对比/README.md
+      - 做法登记册: 02_工作流开发/做法登记册/README.md
       - 高级模块骨架: 02_工作流开发/高级模块/README.md
       - 绘图呈现（图型卡）: 02_工作流开发/绘图呈现/README.md
       - 场景路线: 02_工作流开发/场景路线/README.md
-      - 整合 pipeline: 02_工作流开发/整合pipeline/README.md
+      - 整合流程: 02_工作流开发/整合流程/README.md
   - 关于: 05-项目治理.md

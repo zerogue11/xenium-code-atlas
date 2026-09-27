@@ -47,7 +47,7 @@
 | ④最简化 | 2 | 815 行 shell 总量零死代码；4 个 submit-*.sh 是刻意并列的薄包装而非复制粘贴逻辑 |
 | ⑤逻辑健壮性 | 2 | command 内 `set -euo pipefail`（HtoDemuxKMeans.wdl:20）；memory=-1 触发自动估算（Preprocess.wdl:54）；validate.sh 环境变量缺失即退出（:4-7）；options maxRetries=3 |
 | ⑥可复现性 | 2 | docker 镜像版本钉死 `:0.5.0`（:17）；三文件配置全外置；make-deployable.sh 版本号化部署（:4）；options.json 缓存策略显式 |
-| ⑦验证纪律 | 1 | 校验矩阵+真云 devtest+13 个模块包装测试+QC notebook 痕迹俱在；但全为手动脚本、无 CI 接线，pytest.ini 仅覆盖 1/7 容器 |
+| ⑦验证要求 | 1 | 校验矩阵+真云 devtest+13 个模块包装测试+QC notebook 痕迹俱在；但全为手动脚本、无 CI 接线，pytest.ini 仅覆盖 1/7 容器 |
 
 ## 可搬运模式
 

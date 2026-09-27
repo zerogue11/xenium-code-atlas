@@ -41,7 +41,7 @@
 | ④最简化 | 1 | 手册与脚本少量重复描述；脚本内注释掉的死代码块（xenium.init.R:61,132-137 的旧 parquet 分支） |
 | ⑤逻辑健壮性 | 1 | step2a:35-46 commandArgs 带默认值双分支；:71-77 行名不一致时 intersect 对齐兜底；但 stopifnot 多被注释（xenium.init.R:61） |
 | ⑥可复现性 | 1 | ecotype_1:31 `set.seed(42)`；snk.py K 扫描参数化；但 R 包无版本锁、环境声明缺失【待补充：未发现 renv/conda 文件】 |
-| ⑦验证纪律 | 2 | 手册 Synopsis=执行计划、Output 预期图=验收标准，构成完整"计划-验证痕迹"；`.winner` 终版命名=选择留痕；README 分析-图号映射=审查清单 |
+| ⑦验证要求 | 2 | 手册 Synopsis=执行计划、Output 预期图=验收标准，构成完整"计划-验证痕迹"；`.winner` 终版命名=选择留痕；README 分析-图号映射=审查清单 |
 
 ## 可搬运模式
 

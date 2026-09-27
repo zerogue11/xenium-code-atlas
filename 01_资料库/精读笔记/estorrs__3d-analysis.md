@@ -53,7 +53,7 @@
 | ④最简化 | 1 | notebook 内嵌输出未清（2/3/4 号共 14MB），草稿 notebook 未归档 |
 | ⑤逻辑健壮性 | 1 | 好的一面：count_genes_in_regions 列缺失 raise ValueError（3_2d_degs）、summarize 脚本分块+列名 fallback；坏的一面：样本循环靠 try/except 包裹、多数 cell 无校验 |
 | ⑥可复现性 | 1 | docker/Dockerfile 双语环境可重建；config.example.json 提供；但 notebook 无 seed、依赖 compute1 集群路径、无版本锁（pip 直装） |
-| ⑦验证纪律 | 1 | 5 号 notebook 是功能验证痕迹、6/7 号有定版表格与图；无 CI/测试/断言矩阵 |
+| ⑦验证要求 | 1 | 5 号 notebook 是功能验证痕迹、6/7 号有定版表格与图；无 CI/测试/断言矩阵 |
 
 ## 可搬运模式
 

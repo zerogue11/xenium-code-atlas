@@ -1,6 +1,6 @@
-# 迭代入库 SOP（新文献 / 新仓怎么进来）
+# 资料库迭代更新 SOP（新文献 / 新仓怎么进来）
 
-> 目标：这个库是**活的**——新论文、新工具、新版本随到随进，且不破坏已有结构。全程遵守 AGENT.md 红线。
+> 目标：这个库是**活的**，新论文、新工具、新版本随到随进，且不破坏已有结构。全程遵守 AGENT.md 红线。
 
 ## 新文献（论文有公开代码）
 
@@ -20,8 +20,8 @@
 ## 模式卡（新发现的工程做法）
 
 1. 按「精读方法论」（站点页 `03-精读方法论` / 本地 `docs/03-精读方法论.md`）提取 PATTERN 卡，编号接当前最大号续排（一期到 053）；
-2. 更新范式登记册 README 索引；
-3. 若该模式影响整合 pipeline 设计 → ITERATION_LOG 记"待二期评审"。
+2. 更新做法登记册 README 索引；
+3. 若该模式影响整合流程设计，ITERATION_LOG 记"待二期评审"。
 
 ## 分类修订
 
@@ -30,7 +30,7 @@
 
 ## 新图形类型（2026-09-27 增）
 
-1. 新读论文有未覆盖的图型：在 v2 提取 JSON"绘图借鉴"补条目 → 重跑 `scripts/build_figure_catalog.py`（书目唯一事实源）；
+1. 新读论文有未覆盖的图型：在 v2 提取 JSON"绘图借鉴"里补条目，然后重跑 `scripts/build_figure_catalog.py`（书目唯一事实源）；
 2. 若属新规范类型：在脚本 RULES 加关键词（内容类先于形式类），或在 MANUAL_OVERRIDES 加人工判定（注明依据）；
 3. 新建 V-XX 卡（编号续接，模板见 `02_工作流开发/绘图呈现/` 现有卡）：字段含"这张图回答什么问题/数据前提/工具选型/最佳参考仓（实证）/书目摘录/FigureYa 候选/铁律编号/常见坑"；
 4. FigureYa 无候选：卡内写建议 query，用图时再检索+preview 打分（8/10 门槛）；
@@ -38,20 +38,19 @@
 
 ## 季度体检（建议节奏）
 
-1. 72+ 仓 URL 存活复验（附属表/主表 HTTP 列）；
-2. 失效仓：Zenodo 归档兜底（附属表 Z 类）；
+1. 72+ 个仓的 URL 存活重新核验一遍（附属表/主表 HTTP 列）；
+2. 失效仓：在 Zenodo 归档一份作备用（附属表 Z 类）；
 3. 新出现的高频工具（生态类 E/F）评估是否单独立档。
 
-## 纪律提醒
+## 几条固定要求
 
-- 全程【待补充】优于编造；每条修改可追溯（谁/何时/为什么）；
+- 全程宁写【待补充】，不编造；每条修改可追溯（谁/何时/为什么）；
 - 上游种子库（xenium-knowledge-tree）永远只读。
 
 ## 互动模块（决策剧场 / 模拟器类新增）
 
-1. 新场景剧本：在 `docs/simulator/data/scenarios/` 落 JSON（过 `data/schema.json`），引用的资产先跑预计算再登记 manifest；
-2. 校验守门：`C:/xenium_envs/xenium-cn-py311/Scripts/python.exe scripts/validate_scenario.py --strict` 全绿才算收尾；
-3. 每张图必须带三行式标注（来源/性质/参考文献），登记进 `docs/simulator/assets/<场景>/manifest.json`；文献图一律重绘不搬运；
+1. 新场景剧本：把场景写成 JSON 文件放进 `docs/simulator/data/scenarios/`（要通过 `data/schema.json` 校验），引用的资产先跑预计算再登记 manifest；
+2. 校验必须全过：`C:/xenium_envs/xenium-cn-py311/Scripts/python.exe scripts/validate_scenario.py --strict` 全绿才算收尾；
+3. 每张图必须带三行式标注（来源/性质/参考文献），登记进 `docs/simulator/assets/<场景>/manifest.json`；文献图一律重绘，不照搬原图；
 4. 诚实性分级：T1 真实重算 / T2 文献结论参数化重绘（须有可溯源数值）/ T3 示意（右下角角标）；论文数值无可溯源来源时禁止伪造 T2，降级 T3 并在剧本内声明；
 5. 课题数据类资产一律放 `docs/simulator/assets/ZXM_local/`（.gitignore 排除），公开站入口只显示可用性提示。
-

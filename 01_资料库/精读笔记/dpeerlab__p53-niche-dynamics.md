@@ -40,7 +40,7 @@
 | ④最简化 | 1 | step03 cell4 原样复制 utils/neighborhood_utils.py:27-53 的 create_diagonal_matrix/get_average_neighborhood_expression（notebook 本地重定义） |
 | ⑤健壮性 | 1 | process_pca_var_explained/inflection 有 try/except 回退 50 PC（preprocessing_utils.py:98-103,110-115）；add_obs_names 校验失败 return None 隐患（preprocessing_utils.py:178-180） |
 | ⑥可复现性 | 1 | locked 日期冻结纪律是亮点；但 step01 grep 不到 random_state/seed（0 hits）【待补充：seed 可能经 scvi.settings 隐式固定】 |
-| ⑦验证纪律 | 1 | locked 后缀即"改版冻结"痕迹+SBATCH 脚本+figure 级 notebook 对应；无 CI/测试 |
+| ⑦验证要求 | 1 | locked 后缀即"改版冻结"痕迹+SBATCH 脚本+figure 级 notebook 对应；无 CI/测试 |
 
 **总分 9/14**
 

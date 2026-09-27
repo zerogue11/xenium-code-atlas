@@ -46,7 +46,7 @@
 | 最简化 | 0 | decoding.py:1-39 头部 import 三次重复（ApplyTransform/Filter/FindSpots 等），`test = os.getenv("TESTING")` 定义两次且未用（L24,38）；直接 import starfish.core 私有 API（L22-25） |
 | 逻辑健壮性 | 1 | 空结果防护（decoding.py:129-131）；FOV 断点续跑（decoding.py:181-190）；但 QC min() 对全 NaN 行无防护、KeyError 之外无异常设计 |
 | 可复现性 | 2 | decoding.yml 锁 starfish==0.2.2/python==3.7.11 全链版本 |
-| 验证纪律 | 0 | 无测试/CI；build/lib 内代码与 ISS_decoding/ 不同步（diff 确认 differ），包构建产物混入仓库 |
+| 验证要求 | 0 | 无测试/CI；build/lib 内代码与 ISS_decoding/ 不同步（diff 确认 differ），包构建产物混入仓库 |
 
 总分：7/14
 

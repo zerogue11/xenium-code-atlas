@@ -53,7 +53,7 @@
 | 最简化 | 1 | 大量注释掉的旧代码（sae.py:121-142、mushroom.py:444-447）；`VariableTrainingCallback.on_train_epoch_end` 全注释空壳（model.py:74-87） |
 | 逻辑健壮性 | 2 | assert 校验（mushroom.py:282,399,851）；找不到 morphology 图 raise RuntimeError（data/xenium.py:63-68）；单切片自动补 dup 再回退（mushroom.py:491-499） |
 | 可复现性 | 1 | config.yaml+outputs.pkl 快照协议 + checkpoint 保存（mushroom.py:210-278,578-584）是亮点；但全仓无任何 seed 控制（grep manual_seed/random.seed 为空），训练不可精确复现 |
-| 验证纪律 | 1 | 无测试/CI；靠 tutorials + manuscript submission_v1/v2 notebook 链接做人工复现（README.md:31-40） |
+| 验证要求 | 1 | 无测试/CI；靠 tutorials + manuscript submission_v1/v2 notebook 链接做人工复现（README.md:31-40） |
 
 总分：9/14
 

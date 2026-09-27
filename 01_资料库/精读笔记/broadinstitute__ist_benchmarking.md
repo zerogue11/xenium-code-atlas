@@ -60,7 +60,7 @@ depreciated_st_utils.py(121行) 显式归档的弃用函数
 | ④最简化 | 1 | 弃用代码显式隔离进 depreciated_st_utils.py 而非删除（可辩护的取舍）；.DS_Store 入库多处；部分图保留 "plot with plotly (depreciated)" 双实现痕迹 |
 | ⑤逻辑健壮性 | 1 | seg_eval 指标全带除零守卫（seg_eval.py:69-79）；但 calculate_qc_metric 把 min_counts 误传给 filter_genes 的 min_cells（st_utils.py:69-70）；name_parser 靠 split 下标（st_utils.py:619-628）样本名一变即错位 |
 | ⑥可复现性 | 2 | requirements.txt 精确锁版（geopandas==0.13.0/scanpy==1.9.3/squidpy==1.3.1）；leiden resolution 显式 1.0；幂等检查点保证中间层可重建；无随机重步骤，seed 缺失影响小 |
-| ⑦验证纪律 | 1 | 无 CI/测试；但 if-not-exists 幂等块 + data/ 中间产物留痕 + save_html 每步归档构成"执行即验证"痕迹链 |
+| ⑦验证要求 | 1 | 无 CI/测试；但 if-not-exists 幂等块 + data/ 中间产物留痕 + save_html 每步归档构成"执行即验证"痕迹链 |
 
 **总分 9/14**
 
@@ -80,4 +80,4 @@ depreciated_st_utils.py(121行) 显式归档的弃用函数
 
 ## 一句总评
 
-五仓中工程最规范的一仓：步骤化 notebook + 幂等落盘 + 常量中心 + 精确版本锁可直接映射为整合 pipeline 的"基准步骤手册"，两处小 bug（filter_genes 传参、name_parser 脆弱）搬运时修即可。
+五仓中工程最规范的一仓：步骤化 notebook + 幂等落盘 + 常量中心 + 精确版本锁可直接映射为整合流程 的"基准步骤手册"，两处小 bug（filter_genes 传参、name_parser 脆弱）搬运时修即可。
