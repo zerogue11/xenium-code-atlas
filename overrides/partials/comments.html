@@ -1,0 +1,21 @@
+{# 评论系统（giscus）——mkdocs-material 官方 comments 机制。
+   全站启用；个别页面可在 front matter 设 `comments: false` 关闭。 #}
+{% if page.meta.comments is not defined or page.meta.comments %}
+<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+<script src="https://giscus.app/client.js"
+        data-repo="zerogue11/xenium-code-atlas"
+        data-repo-id="R_kgDOUOnIUA"
+        data-category="General"
+        data-category-id="DIC_kwDOUOnIUM4DGf0F"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endif %}

@@ -1,5 +1,7 @@
 # xenium-code-atlas — Xenium 文献公开代码整合提炼库
 
+[![weekly-check](https://github.com/zerogue11/xenium-code-atlas/actions/workflows/weekly-check.yml/badge.svg)](https://github.com/zerogue11/xenium-code-atlas/actions/workflows/weekly-check.yml)
+
 > 从 91 篇 Xenium/空间转录组文献的**公开代码资源**中蒸馏可复现、可迭代的教科书级分析范式。
 > 种子数据：v2 知识工程资源核验表（634 条资源全量联网核验，2026-09-04 冻结），其中代码类 114 条 → **72 个 GitHub 仓库**（全部可访问）+ 17 条 Zenodo 归档 + 21 个工具网页。
 

@@ -1,0 +1,47 @@
+# 每周一 03:00 UTC 周检：72 仓 URL 存活核验（报告入 step summary + artifact，失败自动开 issue）
+# 手动触发：Actions 页 weekly-check → Run workflow
+name: weekly-check
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  url-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 脚本失败(有仓不可达)时此步 fail，后续 issue 步骤据 if: failure() 触发
+      - name: Run URL check
+        run: python scripts/url_check.py --report report.md
+
+      - name: Write summary (always)
+        if: always()
+        run: cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report artifact (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-check-report
+          path: report.md
+
+      - name: Open issue on failures
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "周检失败 ${{ github.run_id }}：$(grep -oP '❌ 失败: \K\d+' report.md) 仓不可达" \
+            --body-file report.md \
+            --label "weekly-check" || echo "issue 创建失败（可能标签不存在），内容见 Actions 日志"

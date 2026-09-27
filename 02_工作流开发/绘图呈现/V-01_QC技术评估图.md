@@ -40,8 +40,9 @@
 - LIT-090 Fig.2b,e,f：NegProbe/NegCode 计数加 Moran's I 聚合度量化背景，组织外 bin 距离-计数曲线量化转录本扩散。
   点评：Moran's I 用于背景量化是少见而漂亮的用法。
 
-## FigureYa 候选模板
-figure-library 待检索，建议 query="quality control metrics QC"（Source Pack 未配置，落地需先配置后 materialize）。
+## 模板候选（FigureYa / Bizard）
+- Bizard（R，openbiox，2026-09-27 实查）：[Visdat](https://openbiox.github.io/Bizard/Hiplot/182-visdat.html)（数据质量/类型/缺失概览）、[QQ Plot](https://openbiox.github.io/Bizard/Hiplot/148-qqplot.html)（分布检验）。**无空间 QC 指标专页**——空间 QC 出图仍以参考仓 SpatialQM plot 家族为主。
+- FigureYa：待检索，建议 query="quality control metrics QC"（Source Pack 未配置，落地需先配置后 materialize）。
 
 ## zoro-figure 铁律适用条目
 - 铁律 3：多样本 QC 箱线图 x 轴样本名易挤，零重叠+45° 硬要求。
