@@ -4,8 +4,10 @@ repo_url: https://github.com/zerogue11/xenium-code-atlas
 repo_name: zerogue11/xenium-code-atlas
 docs_dir: docs
 site_dir: site
-# giscus 评论：mkdocs-material 官方 comments 机制（overrides/partials/comments.html）
-custom_dir: overrides
+# giscus 评论：客户端 JS 注入（docs/assets/giscus.js）——2026 版 material 主题系统重写后
+# custom_dir override 机制不可用，故不走 partial；对 instant navigation 兼容
+extra_javascript:
+  - assets/giscus.js
 # 决策剧场 ZXM 本地专属关资产 = 课题数据, 构建层强制排除(gitignore 管不住 gh-deploy, 此处才是红线守门)
 exclude_docs: |
   simulator/assets/ZXM_local/
