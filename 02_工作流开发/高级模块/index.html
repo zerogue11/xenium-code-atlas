@@ -14,7 +14,7 @@
         <link rel="prev" href="../%E8%8C%83%E5%BC%8F%E7%99%BB%E8%AE%B0%E5%86%8C/">
       
       
-        <link rel="next" href="../%E5%9C%BA%E6%99%AF%E8%B7%AF%E7%BA%BF/">
+        <link rel="next" href="../%E7%BB%98%E5%9B%BE%E5%91%88%E7%8E%B0/">
       
       
         
@@ -536,6 +536,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../07-%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%91%88%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    绘图与呈现
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../03-%E7%B2%BE%E8%AF%BB%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
         
   
@@ -979,6 +1007,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高级模块骨架
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -996,6 +1042,64 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        横向层：绘图呈现（2026-09-27 增）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BB%98%E5%9B%BE%E5%91%88%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    绘图呈现（图型卡）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1111,6 +1215,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        横向层：绘图呈现（2026-09-27 增）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1200,6 +1323,55 @@
 </tbody>
 </table>
 <p>基础流程（读取→QC→归一化→降维聚类→注释→marker→基础空间图）由"候选流程池"承载，定版后移入 <code>整合pipeline/</code>。</p>
+<h2 id="2026-09-27">横向层：绘图呈现（2026-09-27 增）<a class="headerlink" href="#2026-09-27" title="Permanent link">&para;</a></h2>
+<p>各模块的产出最终由<strong>横向呈现层</strong>消费——绘图不是 A10 串行模块，而是与范式登记册同构的横切层：</p>
+<table>
+<thead>
+<tr>
+<th>模块产出</th>
+<th>主要图型卡</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1 分割</td>
+<td>V-15 多模态对齐（分割质量对照）</td>
+</tr>
+<tr>
+<td>A2 注释</td>
+<td>V-03 UMAP、V-04 比例、V-05 dotplot、V-11 空间定位</td>
+</tr>
+<tr>
+<td>A3 空间域</td>
+<td>V-12 生态位、V-13 邻域</td>
+</tr>
+<tr>
+<td>A4 通讯</td>
+<td>V-17 通讯（图常见但 A4 代码缺位——迭代机会）</td>
+</tr>
+<tr>
+<td>A5 亚细胞</td>
+<td>V-10 空间基因表达（转录本级）</td>
+</tr>
+<tr>
+<td>A6 空间统计</td>
+<td>V-01 QC、V-13 邻域</td>
+</tr>
+<tr>
+<td>A7 配准/3D/多样本</td>
+<td>V-15 对齐、V-16 3D</td>
+</tr>
+<tr>
+<td>A8 图像组学</td>
+<td>V-15 对齐、V-21 组合</td>
+</tr>
+<tr>
+<td>A9 场景应用</td>
+<td>V-14 距离梯度、V-19 谱系、V-20 示意图</td>
+</tr>
+</tbody>
+</table>
+<p>完整图语法见 <a href="../%E7%BB%98%E5%9B%BE%E5%91%88%E7%8E%B0/">绘图呈现 README</a>（22 张图型卡，书目 269 条实证）。</p>
 
 
 

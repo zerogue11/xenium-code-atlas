@@ -536,6 +536,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../07-%E7%BB%98%E5%9B%BE%E4%B8%8E%E5%91%88%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    绘图与呈现
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../03-%E7%B2%BE%E8%AF%BB%E6%96%B9%E6%B3%95%E8%AE%BA/" class="md-nav__link">
         
   
@@ -931,6 +959,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新图形类型（2026-09-27 增）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1122,6 +1161,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E7%BB%98%E5%9B%BE%E5%91%88%E7%8E%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    绘图呈现（图型卡）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../02_%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BC%80%E5%8F%91/%E5%9C%BA%E6%99%AF%E8%B7%AF%E7%BA%BF/" class="md-nav__link">
         
   
@@ -1276,6 +1343,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-09-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新图形类型（2026-09-27 增）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1358,6 +1436,14 @@
 <li>单仓改判：直接改主表 + 档案卡，ITERATION_LOG 记原因；</li>
 <li>分类体系本身变更（增删 P 类）：属实质变更，升分类体系版本号，全库复核受影响仓。</li>
 </ul>
+<h2 id="2026-09-27">新图形类型（2026-09-27 增）<a class="headerlink" href="#2026-09-27" title="Permanent link">&para;</a></h2>
+<ol>
+<li>新读论文有未覆盖的图型：在 v2 提取 JSON"绘图借鉴"补条目 → 重跑 <code>scripts/build_figure_catalog.py</code>（书目唯一事实源）；</li>
+<li>若属新规范类型：在脚本 RULES 加关键词（内容类先于形式类），或在 MANUAL_OVERRIDES 加人工判定（注明依据）；</li>
+<li>新建 V-XX 卡（编号续接，模板见 <code>02_工作流开发/绘图呈现/</code> 现有卡）：字段含"这张图回答什么问题/数据前提/工具选型/最佳参考仓（实证）/书目摘录/FigureYa 候选/铁律编号/常见坑"；</li>
+<li>FigureYa 无候选：卡内写建议 query，用图时再检索+preview 打分（8/10 门槛）；</li>
+<li>更新绘图呈现 README 总表与 docs/07 速查表；ITERATION_LOG 记一行。</li>
+</ol>
 <h2 id="_5">季度体检（建议节奏）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ol>
 <li>72+ 仓 URL 存活复验（附属表/主表 HTTP 列）；</li>

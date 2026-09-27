@@ -1,0 +1,270 @@
+﻿文献ID,题名,期刊,年份,图号,原始图形类型,规范类型,借鉴,对应repo
+LIT-001,全基因组测序揭示肺腺癌逐步进展的分子机制,Nature Communications,2023,Fig.6,空间signature富集图+Xenium空间散点图/UMAP,富集/通路分析图,"Visium各分型signature基因PAGE富集分数叠加病理注释区域(e,f)；Xenium空间聚类图与UMAP并排，边注给出细胞数/每细胞基因数/转录本数统计(i)",asuzuki-asuzuki/Early-Ad_2023
+LIT-001,全基因组测序揭示肺腺癌逐步进展的分子机制,Nature Communications,2023,Fig.8,多组学进展总览示意图,机制/流程示意图,以Noguchi分型为时间轴，分层罗列基因组/表观组/转录组/微环境事件与克隆结构的里程碑式总结图(e),asuzuki-asuzuki/Early-Ad_2023
+LIT-002,利用单细胞空间和原位分析的整合对肿瘤微环境进行高分辨率图谱,Nature Communications,2023,Fig.5,受体基因空间表达图+Visium spot插值图,细胞通讯图,Xenium解码ERBB2/ESR1/PGR三受体转录本空间图定位三阳性稀有区域，再用spot interpolation把Xenium细胞映射回Visium spot做全转录组差异表达(a-j),10XGenomics/janesick_nature_comms_2023_companion(S)
+LIT-002,利用单细胞空间和原位分析的整合对肿瘤微环境进行高分辨率图谱,Nature Communications,2023,Fig.6,UMAP亚群图+高倍空间共定位验证图,细胞邻域/共定位分析图,UMAP上标出肿瘤/肌上皮双标志边界细胞亚群，高倍ROI空间图证实共表达，并以正常导管共定位为阴性对照(d'),10XGenomics/janesick_nature_comms_2023_companion(S)
+LIT-002,利用单细胞空间和原位分析的整合对肿瘤微环境进行高分辨率图谱,Nature Communications,2023,Fig.3,Xenium细胞类型空间散点图,空间细胞定位图,标签转移后的Xenium全切片细胞类型空间图，与同切片post-Xenium H&E配准对照(l),10XGenomics/janesick_nature_comms_2023_companion(S)
+LIT-003,围产期小鼠皮肤真皮成纤维细胞发育的单细胞和空间转录组分析：动,Journal of Investigative Dermatology,2024,Fig.3,转录本点图+空间聚类图+分箱密度热图,空间域/生态位分区图,Xenium转录本点图与graph-based聚类图展示真皮三层水平分层，再以10×10 μm分箱的marker转录本密度热图呈现上下层成纤维细胞梯度,
+LIT-003,围产期小鼠皮肤真皮成纤维细胞发育的单细胞和空间转录组分析：动,Journal of Investigative Dermatology,2024,Fig.5,多基因叠加空间点图+验证总结图,空间基因表达图,DAPI白显核、虚线圈标注dermal condensate/papilla，多driver基因彩色点叠加，配(f)scRNA预测与空间验证逐区室对照总结表,
+LIT-003,围产期小鼠皮肤真皮成纤维细胞发育的单细胞和空间转录组分析：动,Journal of Investigative Dermatology,2024,Fig.6,配体-受体弦图+空间共定位点图,细胞邻域/共定位分析图,各时间点Wnt5a-Fzd2通信弦图标红强sender，再以Wnt5a/Fzd2/Foxc1空间点图验证自分泌/旁分泌信号空间关系,
+LIT-004,特发性肺纤维化病理生态位的空间转录组学表征,Science Advances,2024,Fig.2,生态位组成热图+生态位空间注释图,细胞比例/构成图,NMF生态位的细胞型归一化分布热图(A)与全部切片生态位空间注释拼图(C)并列，跨对照/IPF比较生态位频率(B),christophhmayr/2023_Mayr
+LIT-004,特发性肺纤维化病理生态位的空间转录组学表征,Science Advances,2024,Fig.3,生态位空间图+相邻切片Xenium/COMET验证+通信热图,空间域/生态位分区图,"纤维化生态位丰度空间图配H&E放大框，相邻切片Xenium smFISH(G)与COMET蛋白(H)双模态验证共定位，再用scRNA重建生态位做CellChat气泡图/配体-受体热图(I,K)",christophhmayr/2023_Mayr
+LIT-004,特发性肺纤维化病理生态位的空间转录组学表征,Science Advances,2024,Fig.5,免疫灶空间图+多模态验证图,组织学/多模态对齐图,免疫生态位富集空间图与H&E灰染色灶对应，Xenium(C)与COMET(D)显示CD20/CD3/CLEC9A灶周VWF+内皮包绕,christophhmayr/2023_Mayr
+LIT-005,鉴定X连锁视网膜劈裂视网膜类器官和患者特异性突变小鼠的多组学,Advanced Science,2025,Fig.3,Xenium marker空间图+通路富集空间图,富集/通路分析图,marker基因空间点图界定视网膜各细胞类型并叠原H&E角标(A)，eIF2α/mTOR/eIF4-p70S6K通路基因空间富集图配transcripts per area定量副图(B-D),
+LIT-005,鉴定X连锁视网膜劈裂视网膜类器官和患者特异性突变小鼠的多组学,Advanced Science,2025,Fig.3E,Visium spot分层注释图,空间域/生态位分区图,CytAssist捕获点匹配H&E后按视网膜解剖层配色（神经节细胞层/内层/外层/RPE）做分区功能分析,
+LIT-005,鉴定X连锁视网膜劈裂视网膜类器官和患者特异性突变小鼠的多组学,Advanced Science,2025,Fig.6,治疗前后Xenium通路定量对比图,富集/通路分析图,salubrinal vs PBS处理组的通路基因与Gnb3/Edn2 Xenium空间表达及每面积转录本定量并排，把空间转录组用作疗效空间读出,
+LIT-006,富铁巨噬细胞亚群通过Bach1-Ednrb轴促进肿瘤生长,J. Exp. Med.,2024,Fig.5,Xenium空间表达定位图,空间细胞定位图,人黑色素瘤TMA上H&E面板（标注出血区）与6个iTAM标记基因荧光面板并排，锚定pviTAM血管周/stiTAM出血区的空间定位叙事,
+LIT-006,富铁巨噬细胞亚群通过Bach1-Ednrb轴促进肿瘤生长,J. Exp. Med.,2024,Fig.5,配体-受体通讯点图,细胞通讯图,CytoTalk网络图以y轴列配体-受体互作、上方标配体细胞、下方标受体细胞，点大小示特异性、颜色示强度，版式清晰可借鉴,
+LIT-006,富铁巨噬细胞亚群通过Bach1-Ednrb轴促进肿瘤生长,J. Exp. Med.,2024,Fig.1,UMAP+标记基因表达图,空间基因表达图,UMAP细胞类型注释圈出目标TAM簇后，并排多基因UMAP表达小图并用圈注高表达簇，直观锁定亚群标记,
+LIT-007,人类脊柱发育中的HOX基因表达,Nature Communications,2024,Fig.1,空间细胞丰度热图,空间细胞定位图,scRNA-seq细胞类型经cell2location映射到Visium切片，空间丰度热图与marker基因热图并排互证，构成单细胞-空间验证版式,
+LIT-007,人类脊柱发育中的HOX基因表达,Nature Communications,2024,Fig.4,dotplot+空间热图联动,点图/气泡图,颈/胸/腰/骶分段HOX基因dotplot用彩框标出基因，空间热图中点色与之一一对应，跨技术(ST/ISS)模块着色统一,
+LIT-007,人类脊柱发育中的HOX基因表达,Nature Communications,2024,Fig.8,全脊柱矢状ISS表达图,空间基因表达图,单张矢状全脊柱ISS图上以椎体解剖标记(C1/T1/L1/S1)定位HOX基因背腹表达与共表达细胞（橙色高亮），一图讲清轴向模式,
+LIT-008,早期人类胎儿肺图谱揭示上皮细胞可塑性的时间动态,Nature Communications,2024,Fig.4,Xenium空间多基因表达图,空间细胞定位图,GW15（上排）与GW18（下排）同版式并排展示CFTR/NKX2-1/SOX9/SOX2/SCGB3A2/SFTPB空间表达，直接呈现发育时间动态对比,spencerfar/fetal_lung_analysis;The-HQQ/Human_fetal_lung_atlas
+LIT-008,早期人类胎儿肺图谱揭示上皮细胞可塑性的时间动态,Nature Communications,2024,Fig.5,共定位/邻域富集双层热图,细胞邻域/共定位分析图,A图Visium spot内RCTD权重共定位相关+层次聚类，B图Xenium-informed邻域富集z-score+层次聚类，低高分辨率双平台互证细胞邻域关系,spencerfar/fetal_lung_analysis;The-HQQ/Human_fetal_lung_atlas
+LIT-008,早期人类胎儿肺图谱揭示上皮细胞可塑性的时间动态,Nature Communications,2024,Fig.6,分期轨迹PAGA图,轨迹/拟时序图,按早(GW10-13)/中(GW14-16)/晚(GW17-19)三个孕期vignette拆分LatentVelo-PAGA，箭头粗细示转化强度，展示PNEC轨迹减弱与纤毛细胞轨迹出现的时间规律,spencerfar/fetal_lung_analysis;The-HQQ/Human_fetal_lung_atlas
+LIT-009,清除p21高表达衰老细胞可加速皮肤伤口愈合,Nature Aging,2024,Fig.1,Xenium空间细胞分布图,空间细胞定位图,在Xenium H&E叠底图上以黄点标tdT+细胞、黑虚线标伤口边缘，直观呈现p21high细胞富集于伤口边缘与肉芽组织的解剖定位,
+LIT-009,清除p21高表达衰老细胞可加速皮肤伤口愈合,Nature Aging,2024,Fig.1,跨细胞类型DEG气泡图,空间细胞定位图,四种主要细胞类型并行展示tdT+与tdT-差异基因气泡图，log2FC着色、按Padj筛选，一图呈现亚群特异SASP特征的细胞类型一致性,
+LIT-009,清除p21高表达衰老细胞可加速皮肤伤口愈合,Nature Aging,2024,Fig.2,分时间点GSEA条形图,富集/通路分析图,PT versus PTD的GSEA富集分数(NES)条形图按day2/4/12分面，呈现清除衰老细胞后炎症与代谢通路的时间动态变化,
+LIT-010,利用深度单体RNA测序探索人类躯体感觉的神经基础,Nature Neuroscience,2024,Fig.4,双平台dotplot,点图/气泡图,single-soma(蓝)与Xenium(红)各16型marker基因dotplot并排同色标度，直观验证两种测序平台的细胞类型分类一致性,taimeimiaole/NN_hDRG-neuron-sequencing
+LIT-010,利用深度单体RNA测序探索人类躯体感觉的神经基础,Nature Neuroscience,2024,Fig.5,空间散点+聚类概率直方图,空间细胞定位图,16型神经元以颜色映射回DRG切片展示空间分布(500μm标尺)，配各型P值分布直方图定量证明同型神经元空间成簇,taimeimiaole/NN_hDRG-neuron-sequencing
+LIT-010,利用深度单体RNA测序探索人类躯体感觉的神经基础,Nature Neuroscience,2024,Fig.7,分子-功能并列验证图,多面板组合图,左侧分子表达小提琴图(TRPM8/TRPV1/PIEZO2)给出预测性质，右侧在体单纤维电生理响应轨迹逐一对应，构成预测-验证版式,taimeimiaole/NN_hDRG-neuron-sequencing
+LIT-011,通过再现间质流动构建多层小肠样组织,Cell Stem Cell,2024,Fig.1,数值模拟流场图,其他,二维CFD模拟以红色示踪注入流体并配速度矢量云图，量化跨膜孔渗流速度比入口低5个数量级，为'间质流已再现'提供工程学证据的图式,
+LIT-011,通过再现间质流动构建多层小肠样组织,Cell Stem Cell,2024,Fig.2,UMAP+cluster比例对比条形图,细胞比例/构成图,自测scRNA的UMAP与人胎儿小肠公开参考并排，下接各cluster百分比条形图对比组成相似性，适合自建模型vs体内参考的一致性展示,
+LIT-011,通过再现间质流动构建多层小肠样组织,Cell Stem Cell,2024,Fig.4,Xenium单细胞原位表达空间图,空间基因表达图,以SLC26A2/BEST4（顶端侧）与SOX9/LGR5（基底侧）marker的Xenium单细胞点图直接呈现上皮顶-底极性空间分层，是靶向panel验证组织极性的简洁范式,
+LIT-012,衰竭样小胶质细胞群在老年和APOE4基因型阿尔茨海默病大脑中,Immunity,2024,Fig.1,UMAP叠加2D密度图,降维嵌入图,在微胶质细胞UMAP上叠加10/20/96周龄三组细胞的2D核密度等高线，直观展示TIM状态随年龄的分布迁移，适合跨时间点细胞状态动态展示,alonmillet/apoe-ad-age-atlas
+LIT-012,衰竭样小胶质细胞群在老年和APOE4基因型阿尔茨海默病大脑中,Immunity,2024,Fig.5,Xenium空间散点图+邻域富集趋势线,组织学/多模态对齐图,全切片细胞注释空间散点图配局部放大inset（TIM以更大点标注），并以'以TIM为圆心给定半径内细胞类型出现概率超基线'的平滑趋势线量化邻域富集,alonmillet/apoe-ad-age-atlas
+LIT-012,衰竭样小胶质细胞群在老年和APOE4基因型阿尔茨海默病大脑中,Immunity,2024,Fig.5,荧光显微图+Xenium注释叠加,组织学/多模态对齐图,Xenium运行后同切片做methoxy-X04 Aβ斑块荧光染色，与Xenium细胞注释叠加并以圆圈标出TIM-斑块高重叠区域，展示原位转录组+病理染色共定位范式,alonmillet/apoe-ad-age-atlas
+LIT-013,使用异位掌侧成纤维细胞改变皮肤身份,Science,2024,Fig.3,pseudotime轨迹图,轨迹/拟时序图,角质形成细胞Monocle3拟时序上叠加两组处理（volar FB实线vs vehicle虚线）的KRT1/10与KRT5/14表达动力学曲线，展示细胞治疗对分化轨迹的偏移,
+LIT-013,使用异位掌侧成纤维细胞改变皮肤身份,Science,2024,Fig.4,Xenium密度空间图+计数标注,空间细胞定位图,Xenium原位图上直接以成纤维细胞密度着色并在图顶标注每张切片的细胞计数，定量展示乳头层异位成纤维细胞富集,
+LIT-013,使用异位掌侧成纤维细胞改变皮肤身份,Science,2024,Fig.1,细胞迁移轨迹+位移直方图,轨迹/拟时序图,活细胞成像轨迹trace叠加位移距离直方图，用非连续轨迹形态直观呈现volar成纤维细胞的'slingshot'间歇快速迁移表型,
+LIT-014,肠道中免疫和微生物群驱动的空间限制性适应,Nature,2024,Fig.1,swiss roll展开轴基因表达热图,空间基因表达图,近远轴（X）×浆膜-上皮轴（Y）双轴展开的分区富集基因热图，左缘配serosa-epithelium平均表达缩略条，是swiss roll二维展开展示的标杆范式,
+LIT-014,肠道中免疫和微生物群驱动的空间限制性适应,Nature,2024,Fig.3,UMAP+swiss roll空间图+H&E三联图,组织学/多模态对齐图,同一聚类结果同时投到UMAP、swiss roll原位和对应H&E三栏并排，橙色箭头标注溃疡区，适合炎症时空恢复的时空对照展示,
+LIT-014,肠道中免疫和微生物群驱动的空间限制性适应,Nature,2024,Fig.4,Xenium细胞类型空间分布+轴向bins计数,空间细胞定位图,Xenium单细胞类型空间散点图右侧接20 bins近远轴细胞计数条形图，并排SPF/GF两种条件直观呈现结构细胞亚群的区域依赖性,
+LIT-015,抗CSF-1R治疗的纤维化反应促进胶质母细胞瘤复发,Cancer Cell,2024,Fig.3,细胞类型距离网络图(Fruchterman-Reingold),距离分箱/空间梯度定量图,节点大小编码细胞占比、边长编码近邻平均距离、边宽编码共定位稳定性(1/SD)，把HIFI空间关系压缩为网络图，适合TME重构的全局概览,
+LIT-015,抗CSF-1R治疗的纤维化反应促进胶质母细胞瘤复发,Cancer Cell,2024,Fig.4,Xenium休眠细胞-纤维化共定位分布图,细胞邻域/共定位分析图,Xenium分布图上休眠肿瘤细胞(红点)叠加纤维化区(绿边)，并配DEG火山图与dormancy/stemness基因热图，三联证明'纤维化保护性生态位',
+LIT-015,抗CSF-1R治疗的纤维化反应促进胶质母细胞瘤复发,Cancer Cell,2024,Fig.5,Xenium距离分区图,空间域/生态位分区图,将rebound肿瘤细胞按距纤维化生态位距离四分位分为同心4区(zone1-4)，各 zone 基因表达热图与休眠细胞对比，量化肿瘤逃逸生态位的转录梯度,
+LIT-016,通过细胞间相互作用感知嵌入在单细胞分辨率空间转录组数据中发现,Cell Systems,2024,Fig.1,深度学习架构图,机制/流程示意图,编码器(3层GAT)+双解码器(表达/邻近图)的自监督架构图，清晰呈现'交互感知嵌入'的重建双任务设计,zhangqf-lab/SPACE(S)
+LIT-016,通过细胞间相互作用感知嵌入在单细胞分辨率空间转录组数据中发现,Cell Systems,2024,Fig.2,空间散点+Sankey对应图,桑基/冲积图,空间亚型在组织切片上的分布散点图配Sankey图展示与原注释的对应关系，直观证明'空间亚型'不是过度聚类,zhangqf-lab/SPACE(S)
+LIT-016,通过细胞间相互作用感知嵌入在单细胞分辨率空间转录组数据中发现,Cell Systems,2024,Fig.3,细胞群落边界空间图+层对齐,组织学/多模态对齐图,SPACE发现的cell communities与皮层6层结构一一对齐的空间图，展示以近邻互作(而非共表达)定义组织模块的新范式,zhangqf-lab/SPACE(S)
+LIT-017,演变中神经炎症病变和多发性硬化症病理的细胞结构,Cell,2024,Fig.2,力导向图+核扩展多边形空间图,空间细胞定位图,邻域组成矩阵聚类的 force-directed graph 配核扩展多边形按 compartment 着色，把无监督病理分区同时落在'聚类空间'与'切片坐标'两个视角,Moldia/ISS_preprocessing(S);Moldia/ISS_decoding(S);Moldia/ISS_postprocessing(S);Moldia/cellular-architecture-of-evolving-neuroinflammatory-lesions-and-multiple-sclerosis-pathology
+LIT-017,演变中神经炎症病变和多发性硬化症病理的细胞结构,Cell,2024,Fig.3,PAGA compartment 转化图,轨迹/拟时序图,PAGA 图展示病变 compartment 间转化路径，节点大小=细胞数、边粗细=连接强度，把'病变向心演化'假设变成可读的网络图,Moldia/ISS_preprocessing(S);Moldia/ISS_decoding(S);Moldia/ISS_postprocessing(S);Moldia/cellular-architecture-of-evolving-neuroinflammatory-lesions-and-multiple-sclerosis-pathology
+LIT-017,演变中神经炎症病变和多发性硬化症病理的细胞结构,Cell,2024,Fig.5,和弦图+网络图并排,细胞通讯图,和弦图(连接计数)与网络图(neighborhood enrichment 分数)并排，区分'常见互作'与'超随机富集互作'，空间互作枢纽一目了然,Moldia/ISS_preprocessing(S);Moldia/ISS_decoding(S);Moldia/ISS_postprocessing(S);Moldia/cellular-architecture-of-evolving-neuroinflammatory-lesions-and-multiple-sclerosis-pathology
+LIT-018,人类胚胎骨骼发育多组学图谱,Nature,2024,Fig.2c,工具工作流示意图,机制/流程示意图,ISS-Patcher 工作流图：高维 snRNA 参考+低维 155-plex ISS 经共享基因空间 KNN 对齐后 cell-type calling，把跨模态标签推算画成一目了然的管线,natsuhiko/PHM;Teichlab/iss_patcher;Teichlab/snp2cell(S);Teichlab/skeletal_dev_atlas;Teichlab/drug2cell(S)
+LIT-018,人类胚胎骨骼发育多组学图谱,Nature,2024,Fig.3d,空间轴分箱四联面板,距离分箱/空间梯度定量图,OrganAxis 沿'冠状缝→额骨'连续轴将 Visium 切片分箱，H&E、Cell2location 细胞态富集、轴值(rainbow)、手工分区四面板并排对齐，展示成熟梯度,natsuhiko/PHM;Teichlab/iss_patcher;Teichlab/snp2cell(S);Teichlab/skeletal_dev_atlas;Teichlab/drug2cell(S)
+LIT-018,人类胚胎骨骼发育多组学图谱,Nature,2024,Fig.2h,ATAC coverage+eGRN loop 图,其他,HHIP/RUNX2 位点 ATAC coverage 堆叠图下挂 SCENIC+ 预测的 TSS-增强子 loop 与上游抑制性 TF，把'抗成骨 TF 维持缝开放'的调控逻辑画在基因组坐标上,natsuhiko/PHM;Teichlab/iss_patcher;Teichlab/snp2cell(S);Teichlab/skeletal_dev_atlas;Teichlab/drug2cell(S)
+LIT-019,肿瘤在二维和三维空间中的进化与微环境相互作用,Nature,2024,Fig.2j,等位基因特异原位探针密度空间图,QC/技术评估图,Xenium 等位基因特异探针密度图把 LDHB 突变原位锁定在亚克隆 c2、WT 遍布两克隆——空间亚克隆突变验证的金标准展示方式,ding-lab/ST_subclone_publication;ding-lab/mushroom(S);ding-lab/morph;ding-lab/10Xmapping;estorrs/multiplex-imaging-pipeline(S)
+LIT-019,肿瘤在二维和三维空间中的进化与微环境相互作用,Nature,2024,Fig.4d,Sankey 跨切片连接图+3D volume,桑基/冲积图,Sankey 图连接相邻切片的 microregion 并标注每区 connectivity，右侧同步给出 3D 体积着色，把'切片→体积'的重建过程可视化,ding-lab/ST_subclone_publication;ding-lab/mushroom(S);ding-lab/morph;ding-lab/10Xmapping;estorrs/multiplex-imaging-pipeline(S)
+LIT-019,肿瘤在二维和三维空间中的进化与微环境相互作用,Nature,2024,Fig.5d,3D 表面网格+转录本密度着色,3D/跨切片连续图,肿瘤 3D 表面网格按 50μm 半径内 TYMP1/IGLC2 转录密度着色，把基因表达直接画在体积表面上,ding-lab/ST_subclone_publication;ding-lab/mushroom(S);ding-lab/morph;ding-lab/10Xmapping;estorrs/multiplex-imaging-pipeline(S)
+LIT-020,癌相关成纤维细胞维持胰腺癌细胞在肿瘤微环境中的关键脂质稳态,Cell Reports,2024,Fig.3A,多标记 IHC 并排对照,组织学/多模态对齐图,pimonidazole(缺氧探针)+HIF1α+α-SMA+PDPN 四标记 IHC 并排，'癌细胞区缺氧、CAF 富集区不缺氧'的空间反差一图定案,
+LIT-020,癌相关成纤维细胞维持胰腺癌细胞在肿瘤微环境中的关键脂质稳态,Cell Reports,2024,Fig.3F-3H,Xenium UMAP+空间细胞图+距离分布图,距离分箱/空间梯度定量图,Xenium 细胞类型 UMAP、空间散点图与'到最近内皮细胞距离(log)分布'三联，用几何距离分布直接证明 myCAF 比恶性细胞更靠近血管,
+LIT-020,癌相关成纤维细胞维持胰腺癌细胞在肿瘤微环境中的关键脂质稳态,Cell Reports,2024,Fig.5D,LC-MS 脂质热图,热图/矩阵图,CAF 条件培养基 pre/post 与 PDAC 细胞培养后脂质丰度热图对比，直接呈现 LPC 被癌细胞选择性消耗,
+LIT-021,乳腺癌空间单细胞转录组分析揭示PD-1阻断治疗的潜在生物标志,Research Square (预印本),2024,Fig.4B-4C,细胞邻域(CN)空间地图+频率聚类热图,细胞邻域/共定位分析图,k=10 递归识别 10 个细胞邻域，代表 ROI 空间图+CN 组成条形+响应组/非响应组频率对比三联，把邻域组成直接画回切片坐标,
+LIT-021,乳腺癌空间单细胞转录组分析揭示PD-1阻断治疗的潜在生物标志,Research Square (预印本),2024,Fig.5C,空间细胞散点图,空间细胞定位图,PD-L1+ 巨噬细胞与 CTLA4+ 效应 T 细胞仅在响应组与肿瘤细胞直接接触的空间散点图，把配体受体结论落到原位相邻证据,
+LIT-021,乳腺癌空间单细胞转录组分析揭示PD-1阻断治疗的潜在生物标志,Research Square (预印本),2024,Fig.6B,推断基因 vs 实测基因 ROI 对照图,基准/性能对比图,SpaGE 推断与 Xenium 实测的同一 ROI 基因表达上下对照(低/中/高表达三档)，直观展示基因推断的保真度与适用边界,
+LIT-022,免疫细胞与肾脏细胞的时空相互作用调控自身免疫性肾病中的肾小球,Nat. Immunol.,2025,Fig.1f,多面板空间细胞类型图,空间细胞定位图,H&E与分割细胞按注释类型着色并排展示对照/病变的肾小球与小管间质区，旁证细胞组成差异,imsb-uke/xenium-cgn
+LIT-022,免疫细胞与肾脏细胞的时空相互作用调控自身免疫性肾病中的肾小球,Nat. Immunol.,2025,Fig.4c,轨迹-通路评分曲线图,轨迹/拟时序图,PDGF/TGFβ通路评分沿PC1轨迹二次回归拟合（95%CI），直观呈现早PDGF晚TGFβ的信号时序,imsb-uke/xenium-cgn
+LIT-022,免疫细胞与肾脏细胞的时空相互作用调控自身免疫性肾病中的肾小球,Nat. Immunol.,2025,Fig.4e-f,空间蛋白-转录配准图,组织学/多模态对齐图,VALIS配准使PhenoCycler蛋白与Xenium同片对齐，Ki-67强度与阳性率双轴沿轨迹展示增殖动力学,imsb-uke/xenium-cgn
+LIT-023,基于图像的肿瘤细胞轨迹推断使大规模癌症进展分析成为可能,Sci. Adv.,2025,Fig.2,模型流程图+混淆矩阵/AUROC,机制/流程示意图,ROI标注→patch训练→patch级混淆矩阵与WSI级AUROC的完整验证展示链，含5种主干模型对比表,kateyliu/ImagePseudo(S)
+LIT-023,基于图像的肿瘤细胞轨迹推断使大规模癌症进展分析成为可能,Sci. Adv.,2025,Fig.3,全片伪彩空间热图,热图/矩阵图,H&E全片逐patch伪彩叠加分化状态与图像伪时序，可区分坏死区与正常/肿瘤区,kateyliu/ImagePseudo(S)
+LIT-023,基于图像的肿瘤细胞轨迹推断使大规模癌症进展分析成为可能,Sci. Adv.,2025,Fig.6,H&E-Xenium多面板整合图,组织学/多模态对齐图,图像预测的G2肿瘤/正常区域与Xenium细胞类型空间图、UMAP、成分对比条形图联动，展示跨模态互证布局,kateyliu/ImagePseudo(S)
+LIT-024,利用空间转录组学分析骨髓穿刺活检中多发性骨髓瘤的空间结构,Blood,2025,Figure 1F,像素级无分割因子图,空间域/生态位分区图,FICTURE以0.5μm像素+scRNA参考上色解析骨髓内膜/血管/造血龛，配白框P1/P2局部放大,
+LIT-024,利用空间转录组学分析骨髓穿刺活检中多发性骨髓瘤的空间结构,Blood,2025,Figure 3E,样本阵列UMAP+空间图,降维嵌入图,每样本'UMAP-空间图'成对小卡阵列排布21例，一眼比对PC亚群的空间分布模式,
+LIT-024,利用空间转录组学分析骨髓穿刺活检中多发性骨髓瘤的空间结构,Blood,2025,Figure 6A,邻域密度热图,细胞邻域/共定位分析图,scider六边形邻域聚类后按细胞类型画期望密度热图，将转录邻域解卷积为细胞组成,
+LIT-025,空间转录组学揭示肺纤维化远端肺重塑中的分子微环境失调,Nat. Genet.,2025,Fig.3a,双联niche空间图,空间域/生态位分区图,转录本hexbin niche图与细胞散点niche图左右并排、健康/病变对照展示，两种分辨率互证,Banovich-Lab/Spatial_PF
+LIT-025,空间转录组学揭示肺纤维化远端肺重塑中的分子微环境失调,Nat. Genet.,2025,Fig.4,H&E-转录本叠加图,组织学/多模态对齐图,临床标注+niche引导发现新epithelial detachment位点，T3/C3 niche上色叠加转录本，展示'niche反找病理'的验证布局,Banovich-Lab/Spatial_PF
+LIT-025,空间转录组学揭示肺纤维化远端肺重塑中的分子微环境失调,Nat. Genet.,2025,Fig.6b,pseudotime-基因热图,轨迹/拟时序图,基因×pseudotime热图顶部叠disease severity/cell type/niche多条注释带，重塑事件排序一目了然,Banovich-Lab/Spatial_PF
+LIT-026,结直肠癌免疫细胞群的高清晰度空间转录组学分析,Nat. Genet.,2025,Fig.4a,肿瘤边界四联列图,距离分箱/空间梯度定量图,每样本按'全片-放大-巨噬标记C1QC-成纤维标记COL1A1'四联列布局，红=肿瘤bin/蓝=50μm外周bin直观呈现边界分析,10XGenomics/HumanColonCancer_VisiumHD
+LIT-026,结直肠癌免疫细胞群的高清晰度空间转录组学分析,Nat. Genet.,2025,Fig.4d,亚群核密度空间图,空间细胞定位图,SELENOP+与SPP1+巨噬细胞kernel density图并排，显示两亚群占据互斥的肿瘤空间niche,10XGenomics/HumanColonCancer_VisiumHD
+LIT-026,结直肠癌免疫细胞群的高清晰度空间转录组学分析,Nat. Genet.,2025,Fig.7g-h,克隆型转录本定位图,克隆/谱系追踪图,以定制CDR3探针在Xenium上直接原位定位克隆扩增T细胞，并叠加CXCL9/10/11表达foci展示招募生态位,10XGenomics/HumanColonCancer_VisiumHD
+LIT-027,使用Xenium平台对人类骨骼肌进行原位空间转录组分析,Cell Tissue Res,2025,Fig.1,研究工作流程图,机制/流程示意图,从取样、Xenium运行、手动分割到连续切片IHC共注册的全流程示意，适合作为技术路线总览模板,
+LIT-027,使用Xenium平台对人类骨骼肌进行原位空间转录组分析,Cell Tissue Res,2025,Fig.4,空间转录密度图+共注册IHC,组织学/多模态对齐图,Xenium转录密度热图与相邻切片MyHC-1/MyHC-2免疫组化图并排对齐，星号标注同一肌纤维跨切片对应，展示影像共注册验证思路,
+LIT-027,使用Xenium平台对人类骨骼肌进行原位空间转录组分析,Cell Tissue Res,2025,Fig.5,火山图,火山/差异统计图,log2FC×-log10(校正p)火山图标注显著上下调基因，并对超出坐标轴的极端倍数基因（PVALB）在图注中显式说明,
+LIT-028,基于成像的空间转录组学数据集的评估和可重复性标准化度量,Nat Biotechnol,2025,Fig.1,工作流示意图+分组箱线图,机制/流程示意图,多站点取样-切片-双平台运行 schematic 与按平台/组织分面的技术指标箱线图组合，一图讲清基准测试设计,Center-for-Spatial-OMICs/SpatialQM(S)
+LIT-028,基于成像的空间转录组学数据集的评估和可重复性标准化度量,Nat Biotechnol,2025,Fig.3,Moran's I散点图+多站点细胞类型空间图,空间细胞定位图,ST与PUB乳腺癌样本Moran's I散点对比可重复性，并用(i)-(viii)编号版式并排展示同一前列腺样本跨站点/跨平台的H&E与细胞类型图,Center-for-Spatial-OMICs/SpatialQM(S)
+LIT-028,基于成像的空间转录组学数据集的评估和可重复性标准化度量,Nat Biotechnol,2025,Fig.5,RNA-蛋白多组学对齐UMAP三联图,组织学/多模态对齐图,同一视野H&E(左)、Xenium RNA聚类(中)、CosMx蛋白聚类(右)三联版式直读RNA-蛋白空间一致性，UMAP并置暴露批次效应,Center-for-Spatial-OMICs/SpatialQM(S)
+LIT-029,抗原呈递癌症相关成纤维细胞微环境的单细胞分辨率空间分析,bioRxiv,2024,Fig.4,空间生态位组成堆叠图,细胞比例/构成图,kNN细胞邻域组成+k-means生态位聚类后按生态位展示细胞类型百分比，直接量化F-apCAF在淋巴细胞富集生态位占29.2%,
+LIT-029,抗原呈递癌症相关成纤维细胞微环境的单细胞分辨率空间分析,bioRxiv,2024,Fig.4,细胞-结构距离核密度图,距离分箱/空间梯度定量图,以到TLS的最短欧氏距离定义细胞距离并做核密度估计，量化F-apCAF(37.86 μm)与myCAF(66.06 μm)同TLS的邻近差异,
+LIT-029,抗原呈递癌症相关成纤维细胞微环境的单细胞分辨率空间分析,bioRxiv,2024,Fig.6,组织分区+分区细胞构成图,细胞比例/构成图,按空间生态位与SPP1表达把组织切分为stroma/TLS/SPP1-/SPP1+四区，再比较两个apCAF谱系在各区的分布占比,
+LIT-030,不同滤泡T细胞亚群调控淋巴瘤进展和预后,Cancer Cell,2025,Fig.3,多样本整合UMAP+空间细胞分布图,空间细胞定位图,12例Xenium整合细胞UMAP与对应组织空间散点图上下并置，一张图同时给出转录聚类与空间分布证据,
+LIT-030,不同滤泡T细胞亚群调控淋巴瘤进展和预后,Cancer Cell,2025,Fig.3,配体空间密度热图+密度箱线图,细胞通讯图,核判别分析计算CXCL13与CCL19/21空间平滑密度及二者乘积joint density，按细胞类型坐标汇总为箱线图，量化趋化因子梯度与亚型定位的对应,
+LIT-030,不同滤泡T细胞亚群调控淋巴瘤进展和预后,Cancer Cell,2025,Fig.4,细胞互作矩阵+定位相关网络+邻域组成图,细胞比例/构成图,imcRtools互作/回避sigval热图、CytoMAP定位相关Spearman网络与aggregateNeighbors邻域组成堆叠图三联版式，系统展示niche结构,
+LIT-031,人鼠肺腺癌前体的空间多组学分析揭示TIM-3是癌前干预的潜在,Cancer Cell,2025,Fig.2,空间特征四联可视化,多面板组合图,同一ROI并列展示细胞组成、细胞-细胞互作连线图、标记亮度状态图与形态参数图，直观解释818参数数字TME atlas的四类特征构成,WuLabMDA/LungIMC
+LIT-031,人鼠肺腺癌前体的空间多组学分析揭示TIM-3是癌前干预的潜在,Cancer Cell,2025,Fig.3,ROI伪时序轨迹UMAP,轨迹/拟时序图,以ROI为单元做Monocle3伪时序，UMAP上用箭头标注normal→AAH→AIS→MIA→IAC演化路径，配合各阶段特征模块热图,WuLabMDA/LungIMC
+LIT-031,人鼠肺腺癌前体的空间多组学分析揭示TIM-3是癌前干预的潜在,Cancer Cell,2025,Fig.4,病变区分割掩膜+分区高亮图,空间域/生态位分区图,用分割掩膜区分病灶与非病灶，再以浅绿/浅蓝/浅红高亮normal、lesion interface、lesion三区，展示细胞类型空间定位的区域划分方式,WuLabMDA/LungIMC
+LIT-032,多模态空间组学揭示肺前体病变进展中肺泡祖细胞与促炎微环境的共,Cancer Cell,2026,Fig.1E,超像素空间表达图,空间域/生态位分区图,H&E组织学图像与super-pixel分辨率marker基因表达并列展示，形态与分子同框互证,FuduanPeng/LungPCA_Code
+LIT-032,多模态空间组学揭示肺前体病变进展中肺泡祖细胞与促炎微环境的共,Cancer Cell,2026,Fig.2C,克隆演化空间图谱,克隆/谱系追踪图,H&E病理注释+原位克隆着色+pseudotime+CytoTRACE多层对齐，将克隆进化模式空间化呈现,FuduanPeng/LungPCA_Code
+LIT-032,多模态空间组学揭示肺前体病变进展中肺泡祖细胞与促炎微环境的共,Cancer Cell,2026,Fig.5F,嵌套zoom空间转录本定位图,空间基因表达图,从H&E全景到RPII微环境逐级zoom-in，IL1B/IL1R1转录本与细胞类型边界叠加展示niche,FuduanPeng/LungPCA_Code
+LIT-033,食管癌多阶段癌变的单细胞空间进化图谱,Cancer Cell,2025,Fig.2C,空间核密度分布图,距离分箱/空间梯度定量图,上皮细胞相对距离核密度图+上皮厚度量化，按NOR/LGIN/HGIN/ESCC阶段对比细胞亚群的空间扩张与压缩,PansccSpat/SpatialMapESCC
+LIT-033,食管癌多阶段癌变的单细胞空间进化图谱,Cancer Cell,2025,Fig.4E,距离分组堆叠条形图,细胞比例/构成图,按距上皮细胞每10μm距离分组展示NF/CAF比例随距离的趋势(Mann-Kendall检验)，量化CAF招募,PansccSpat/SpatialMapESCC
+LIT-033,食管癌多阶段癌变的单细胞空间进化图谱,Cancer Cell,2025,Fig.6B,距离-密度热图,距离分箱/空间梯度定量图,CAF/SPP1+巨噬细胞/T细胞密度随距上皮-间质界面或肿瘤边缘距离的热图，揭示250μm免疫空洞区,PansccSpat/SpatialMapESCC
+LIT-034,HER2阳性乳腺癌新辅助治疗中ADC药物SHR-A1811疗,Cancer Cell,2025,Fig.2B,空间特征热图,热图/矩阵图,计算病理提取的比例/edge/subgraph/degree拓扑特征标准化评分热图，按HR分层对比pCR vs non-pCR，一张图穷举空间特征,fuscc-deep-path/sc_MTOP
+LIT-034,HER2阳性乳腺癌新辅助治疗中ADC药物SHR-A1811疗,Cancer Cell,2025,Fig.3H,配体-受体弦图,细胞通讯图,弦图汇总细胞类型间显著L-R对数目，箭头方向区分配体/受体细胞，宽度编码对数,fuscc-deep-path/sc_MTOP
+LIT-034,HER2阳性乳腺癌新辅助治疗中ADC药物SHR-A1811疗,Cancer Cell,2025,Fig.4F,单细胞空间表达对比图,空间细胞定位图,ESR1/PGR/CCDN1在癌细胞(品红高亮)上的原位表达按pCR分组对比，直接可视化空间表达-疗效关联,fuscc-deep-path/sc_MTOP
+LIT-035,组织驻留记忆CD8 T细胞多样性的时空印记,Nature,2025,Fig.1a/2d,IMAP免疫分配密度图,距离分箱/空间梯度定量图,以crypt-villus轴与最近上皮细胞距离双坐标将细胞定位转化为二维密度图(IMAP)，可门控分区并按基因表达加权着色,Goldrathlab/Spatial-TRM-paper(S)
+LIT-035,组织驻留记忆CD8 T细胞多样性的时空印记,Nature,2025,Fig.3b,细胞互作connectome网络图,细胞通讯图,Kamada-Kawai布局的细胞亚群connectome，边编码Squidpy互作强度阈值化后的连接，全网级互作一览,Goldrathlab/Spatial-TRM-paper(S)
+LIT-035,组织驻留记忆CD8 T细胞多样性的时空印记,Nature,2025,Fig.3d,沿轴梯度趋势图,距离分箱/空间梯度定量图,细胞因子表达沿crypt-villus轴卷积趋势(scVelo式排序显示)，直观展示上游信号的轴向梯度极化,Goldrathlab/Spatial-TRM-paper(S)
+LIT-036,小鼠胚胎腭单细胞空间转录组学揭示Pax9与细胞外基质模式和组,Research Square(预印本),2025,Fig.1e,基因空间分布对比图,空间细胞定位图,WT vs KO腭突关键基因(Sfrp2/Col1a1)空间分布图并排对比，直观呈现突变导致的空间表达缺失,LabOnoM/GSE284271
+LIT-036,小鼠胚胎腭单细胞空间转录组学揭示Pax9与细胞外基质模式和组,Research Square(预印本),2025,Fig.2b,marker共表达亚区划分图,空间基因表达图,Shh(口腔侧上皮)/Ptch1(邻近间充质)共表达密度图定义oronasal轴，划分oral/nasal亚区做差异化分析,LabOnoM/GSE284271
+LIT-036,小鼠胚胎腭单细胞空间转录组学揭示Pax9与细胞外基质模式和组,Research Square(预印本),2025,Fig.4a-d,转录本密度图,空间基因表达图,空间转录本定位图与对应密度图上下对照，展示homeobox/Wnt/ECM基因在腭突中的异常定位,LabOnoM/GSE284271
+LIT-037,单细胞TCR作图揭示头颈癌中空间协同的T细胞状态,Science Immunology,2026,Fig.6E,DBSCAN免疫集群图,空间域/生态位分区图,DBSCAN(80μm半径内≥35细胞)定义CD45+免疫聚集区并叠加组织图像，未聚类细胞以黑色区分，量化免疫组织结构,
+LIT-037,单细胞TCR作图揭示头颈癌中空间协同的T细胞状态,Science Immunology,2026,Fig.7B,克隆空间分布图,克隆/谱系追踪图,选定TCR克隆细胞按颜色高亮、其余细胞灰色，直观展示单个克隆在TME中的空间铺布,
+LIT-037,单细胞TCR作图揭示头颈癌中空间协同的T细胞状态,Science Immunology,2026,Fig.4L,基因-距离相关性热图,距离分箱/空间梯度定量图,T细胞基因表达与距各细胞类型距离的Fisher's z相关性热图，红=靠近时高表达，一张图读出微环境对状态的印记,
+LIT-038,肌层浸润性膀胱癌的空间图谱揭示谱系特异性脆弱性与免疫架构,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,Fig.2a-c,空间亚克隆演化多面板图,克隆/谱系追踪图,Visium spots 按 Seurat 聚类/CNV 状态/CNV burden/拟时序/CytoTRACE/基底-管腔评分分层空间着色，右侧配 inferCNV 相似性树+增益缺失频率+bulk WES 染色体剖面三方对照，可借鉴为'空间转录组锚定克隆演化'标准版式,VividKai/SpatialBC
+LIT-038,肌层浸润性膀胱癌的空间图谱揭示谱系特异性脆弱性与免疫架构,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,Fig.3j-k,双基因空间互斥表达图,空间基因表达图,Visium 空间图与 Xenium 单细胞空间图（含 zoom-in）并列展示 FGFR3 管腔限制性与 EGFR 基底富集的互斥表达，双平台同构印证,VividKai/SpatialBC
+LIT-038,肌层浸润性膀胱癌的空间图谱揭示谱系特异性脆弱性与免疫架构,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,Fig.6a-g,TLS 亚型空间分析流水线图,机制/流程示意图,iSTAR-TLS 评分提取 TLS-high 区域→按距肿瘤边界 6 spots 分 P-TLS/D-TLS→H&E 镜下确认→成熟度热图与应答分组 Sankey 图，构成 TLS 空间药效学完整链路,VividKai/SpatialBC
+LIT-039,空间生物学揭示免疫抑制性非黑色素瘤皮肤癌中巨噬细胞状态的改变,Cell,2026,Fig.5B-C,Xenium 单细胞空间图+H&E 对齐图,组织学/多模态对齐图,Xenium Explorer 细胞群着色空间图与 post-Xenium H&E 并排验证组织学-分子一致性，并以 scRNA 标签整合后的代表性 IC/IS 样本展示 TME 细胞空间分布，TMA 核心级版式可复用,atlasxomics/ATX_epigenomics
+LIT-039,空间生物学揭示免疫抑制性非黑色素瘤皮肤癌中巨噬细胞状态的改变,Cell,2026,Fig.5D-E,肿瘤内 niche 组成排序图+箱线图,细胞比例/构成图,按细胞型频率降序列出每个样本的肿瘤内 niche 组成，再对巨噬细胞亚型在肿瘤富集 niche 中的占比做 IC vs IS 箱线比较，niche 组成量化版式清晰,atlasxomics/ATX_epigenomics
+LIT-039,空间生物学揭示免疫抑制性非黑色素瘤皮肤癌中巨噬细胞状态的改变,Cell,2026,Fig.7F-G,TF motif 偏差评分空间映射图,空间基因表达图,将空间 ATAC 的转录因子 motif deviation score（ATF3）与基因活性评分映射回组织切片并以 KRT14 高可及性确认肿瘤区，展示空间表观调控的可视化方案,atlasxomics/ATX_epigenomics
+LIT-040,绘制人小肠与类器官中的间充质多样性图谱,Nature Cell Biology,2026,Fig.3b-f,marker 转录本时空空间点图,空间基因表达图,同一发育阶段面板内以细胞类型 mask 为底、白色点标注 marker 转录本（F3/ADAMDEC1/SHISA3/CXCL13），按 DPC 列推进展示间充质亚群 marker 的时空定位，适合发育类 marker 空间验证版式,jason-spence-lab/Johnson_et_al_2025
+LIT-040,绘制人小肠与类器官中的间充质多样性图谱,Nature Cell Biology,2026,Fig.4b-d,空间 CellChat 信号弦图+组织叠加图,细胞通讯图,CytoSPACE 插补后 CellChat v2 弦图（左）与信号来源细胞在 Xenium cell mask 上的空间映射（右）并排，配受体通讯既有全局网络又有空间落位,jason-spence-lab/Johnson_et_al_2025
+LIT-040,绘制人小肠与类器官中的间充质多样性图谱,Nature Cell Biology,2026,Fig.8,分区结构示意图+marker 热图,机制/流程示意图,以隐窝-绒毛-黏膜下层-肌层解剖分区示意图（配 marker 基因条带）总结五群间充质细胞的身份与位置，可作为图谱类论文总结图的模板,jason-spence-lab/Johnson_et_al_2025
+LIT-041,小鼠胚胎从 2 细胞阶段到出生的发育年表,Nature Cell Biology,2026,Fig.1d,谱系层级树+哑铃图,克隆/谱系追踪图,以基因表达层级树展示细胞类型关系，并用 dumbbell plot 标注每个器官/组织的胚胎时间点覆盖范围，时间覆盖可视化形式直观,JiekaiLab/mdCLA
+LIT-041,小鼠胚胎从 2 细胞阶段到出生的发育年表,Nature Cell Biology,2026,Fig.3g-j,Xenium 空间验证四联图,多面板组合图,平台示意→细胞类型注释空间图（白框放大）→LIANA+ 配体-受体差异热图→marker 转录本空间点图，构成'单细胞发现→空间佐证→微环境通讯'的验证链版式,JiekaiLab/mdCLA
+LIT-041,小鼠胚胎从 2 细胞阶段到出生的发育年表,Nature Cell Biology,2026,Fig.4a-b,累积亚型数曲线+新增亚型柱图,折线/趋势/排序图,以各谱系累积 level-4 亚型数随胚胎日曲线（斜率=分化速率）配双时段新增亚型柱图，量化并对比谱系间分化加速节律,JiekaiLab/mdCLA
+LIT-042,空间多组学揭示新辅助治疗后三级淋巴结构中 Tpex 与 B ,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,Fig.1D,病理注释-空间聚类三层对齐图,空间域/生态位分区图,H&E TLS 病理注释（上）与 TLS cluster 空间映射（中）、全部 12 个空间 cluster 映射（下）三层对齐，直接展示分子聚类与病理标注的空间一致性,
+LIT-042,空间多组学揭示新辅助治疗后三级淋巴结构中 Tpex 与 B ,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,Fig.5A-B,空间 TCR 克隆分布图,克隆/谱系追踪图,spatial ST+TCR-seq 中每个 spot 按所属 CD8 克隆着色（top20 克隆分色），并单独映射 TLS 内外共享克隆的空间分布，实现克隆命运的空间追踪版式,
+LIT-042,空间多组学揭示新辅助治疗后三级淋巴结构中 Tpex 与 B ,Cancer Discovery (AACR，accepted manuscript，每页页脚水印 aacrjournals.org/cancerdiscovery),2026,"Fig.7E,G",配体-受体共表达空间图,细胞通讯图,Visium spot 上以红点标 ICOS/ICOSLG（或 CD28/CD86）双基因共表达、蓝点标单基因表达，TLS 区域标注叠加，直观呈现空间共表达互作证据,
+LIT-043,心脏结节病炎症和自身免疫信号的综合分子分析,Circulation,2026,Fig.2A-I,空间邻域划分与组成比较图,细胞比例/构成图,Xenium marker 推断细胞类型空间图→划定心肌细胞/免疫/成纤维细胞三类 neighborhood→饼图汇总组成→跨 control/CS 分组比较 neighborhood 丰度与内部组成（BH 校正 t 检验），邻域定量版式完整,mneyazi/cardiac_sarcoidosis
+LIT-043,心脏结节病炎症和自身免疫信号的综合分子分析,Circulation,2026,Fig.4D,空间转录组+H&E 形态对齐验证图,组织学/多模态对齐图,在 H&E 上以虚线圈出多核巨细胞，叠加 CHI3L1（绿三角）与 GPNMB（蓝点）空间转录本，证明 MP_GPNMB_CHI3L1 状态对应多核巨细胞而 GPNMB 单阳性为单个核巨噬细胞，分子状态-形态学锚定范例,mneyazi/cardiac_sarcoidosis
+LIT-043,心脏结节病炎症和自身免疫信号的综合分子分析,Circulation,2026,Fig.6A-G,TLS 空间鉴定组合图,空间域/生态位分区图,B/T/髓系 neighborhood 精细化空间图+组成 circle plot→肉芽肿与纤维化区 H&E 对齐→CD20/CD23 免疫荧光确认 TLS→CCL19/CCR7 dot plot 与 B 克隆大小相关散点，从空间结构到体液自身免疫的叙事链,mneyazi/cardiac_sarcoidosis
+LIT-044,CD4+ T 细胞通过 IL-3 和 TNF 依赖性血管损伤,Science,2026,Fig.2J,空间散点图,空间细胞定位图,"Xenium单细胞按cluster着色的空间散点图+虚线框高倍放大显示推断细胞分割,直观呈现髓系群13与Smarta T细胞、血管细胞的空间邻接",
+LIT-044,CD4+ T 细胞通过 IL-3 和 TNF 依赖性血管损伤,Science,2026,Fig.1K-L,空间散点图+距离分布曲线,距离分箱/空间梯度定量图,"IBEX数据上以炎性/调节型巨噬细胞相对血管周cluster边界的距离分布(观测vs随机化)做空间吸引分析,量化空间偏好",
+LIT-044,CD4+ T 细胞通过 IL-3 和 TNF 依赖性血管损伤,Science,2026,Fig.8F,多群体空间散点图,空间细胞定位图,"人卵巢癌Xenium:H&E与Mono_Mac_1/血管/低氧肿瘤细胞/CD4 T细胞多群体空间分布并列展示,用公开数据复现小鼠空间结构",
+LIT-045,三维度解析幕上室管膜瘤异质性全景图谱,Nature,2026,Fig.3c,堆叠条形图+空间散点图,细胞比例/构成图,"56张切片细胞态比例堆叠条图按空间连贯性得分排序,下配structured/disorganized两张代表性Xenium空间散点图,一图并陈组成与全局组织度",FilbinLab/Multidimensional_STEPN
+LIT-045,三维度解析幕上室管膜瘤异质性全景图谱,Nature,2026,Fig.4d,热图,热图/矩阵图,"26个空间cluster×56张切片存在比例热图,按香农熵排序分sample-restricted/shared两段,顶栏标注样本ID,展示跨样本共享性",FilbinLab/Multidimensional_STEPN
+LIT-045,三维度解析幕上室管膜瘤异质性全景图谱,Nature,2026,Fig.2e,细胞态散点图,点图/气泡图,"以未成熟态(神经上皮样/胚胎样)与成熟态(神经元样/室管膜样)评分差定义x/y轴的cell-state plot,单图总览各亚群分化取向与互斥性",FilbinLab/Multidimensional_STEPN
+LIT-046,三阴性乳腺癌在化疗反应中的空间生态型,Nature,2026,Fig.5a,网络图,细胞通讯图,"细胞态共现网络:节点为metaprogram/细胞态、边宽为Spearman相关、按8个ecotype分块着色,跨样本生态型结构一目了然",navinlabcode/tnbc-chemo(S)
+LIT-046,三阴性乳腺癌在化疗反应中的空间生态型,Nature,2026,Fig.5g-k,空间散点图+局部放大窗,空间细胞定位图,"H&E上标注10个niche的空间散点图,另选W1-W4放大窗同时展示niche着色、细胞态点图与niche内细胞计数条形图",navinlabcode/tnbc-chemo(S)
+LIT-046,三阴性乳腺癌在化疗反应中的空间生态型,Nature,2026,Fig.2g,空间散点图,空间细胞定位图,"4个代表患者H&E+癌细胞红点定位+原型基因签名AUCell分数叠加,展示archetype的原位空间验证方式",navinlabcode/tnbc-chemo(S)
+LIT-047,利用空间生态型对肿瘤微环境进行无创分析,Nature,2026,Fig.2e,空间散点图,空间细胞定位图,"黑色素瘤/乳腺癌MERSCOPE切片上SE、地理特征、细胞类型三层并排的空间散点图(全局+1 mm²放大),单细胞按SE着色绘出微环境生态位地图",digitalcytometry/spatialecotyper(S)
+LIT-047,利用空间生态型对肿瘤微环境进行无创分析,Nature,2026,Fig.2b,UMAP嵌入图,降维嵌入图,"空间邻域嵌入UMAP按'距肿瘤边界距离'着色呈现肿瘤核心→邻近间质的连续梯度,把物理空间位置编码进嵌入空间",digitalcytometry/spatialecotyper(S)
+LIT-047,利用空间生态型对肿瘤微环境进行无创分析,Nature,2026,Fig.3g,生存关联热图,热图/矩阵图,"9个SE×17个TCGA癌种的生存关联热图,蓝/红标注有利/不利预后,泛癌汇总与癌种特异两层并列",digitalcytometry/spatialecotyper(S)
+LIT-048,糖尿病肾病的空间图谱揭示了一个B细胞丰富的亚群,Nature,2026,Fig.1f,UMAP,降维嵌入图,"CosMx 1k+Xenium 5k+snRNA-seq三平台经scANVI整合的>500万细胞统一UMAP,跨平台单细胞图谱整合样板",Woopsydaisy/Spatial-Human-Kidney-Map(S)
+LIT-048,糖尿病肾病的空间图谱揭示了一个B细胞丰富的亚群,Nature,2026,Fig.2f-m,空间散点图,空间细胞定位图,"niche标签叠加分割掩膜并与相邻PAS染色切片并排,配100 μm高倍视图逐个呈现PT/iPT/CD/LOH等niche的空间构成",Woopsydaisy/Spatial-Human-Kidney-Map(S)
+LIT-048,糖尿病肾病的空间图谱揭示了一个B细胞丰富的亚群,Nature,2026,Fig.5o,转录本点图,空间基因表达图,"H&E上叠加CXCL13-CXCR5与TNFSF13B-TNFRSF13C转录本点图(一点=一个转录本),直接可视化TLS样信号轴的空间共表达",Woopsydaisy/Spatial-Human-Kidney-Map(S)
+LIT-049,肝细胞癌中GPC3特异性dnTGFβRII装甲CAR T细胞,Nature,2026,Fig.3m,邻域组成聚类+空间图像,细胞比例/构成图,"以每个肿瘤细胞最近100个邻居的细胞类型组成聚类定义肿瘤细胞邻域(tumour C0等),热图配代表性Xenium图像展示PR与非PR的不同空间细胞构架",
+LIT-049,肝细胞癌中GPC3特异性dnTGFβRII装甲CAR T细胞,Nature,2026,Fig.3n,亚细胞转录本点图,空间基因表达图,"PR与非PR组GPC3/TGFB/CCR5/IFNG的亚细胞空间转录本映射(一点=一个转录本,50 μm标尺),直观对比疗效组间原位信号",
+LIT-049,肝细胞癌中GPC3特异性dnTGFβRII装甲CAR T细胞,Nature,2026,Fig.3h-i,UMAP+堆叠条形图,细胞比例/构成图,"Xenium鉴定的15种主要细胞类型UMAP与pre/PR/non-PR三组细胞比例堆叠条图并列,展示T细胞与肝星状细胞比例的应答关联",
+LIT-050,阿尔茨海默氏病的细胞类型特征在不同人群中共有,Nature,2026,Fig.4b,点图(dot plot),点图/气泡图,"RCTD标签转移后在36张Xenium DLPFC切片细胞上展示snRNA参考簇标记基因检出率,以marker特异性核验注释质量,并标注少数少突/星形亚簇marker弱检出",
+LIT-050,阿尔茨海默氏病的细胞类型特征在不同人群中共有,Nature,2026,Fig.4c,组织空间图(tissue plot),空间细胞定位图,"谷氨酸能簇在Xenium组织图上重现皮层预期分层位置(scale bar 2mm),把'注释正确'转化为直观空间证据",
+LIT-050,阿尔茨海默氏病的细胞类型特征在不同人群中共有,Nature,2026,Fig.4e,跨平台重复对比矩阵,热图/矩阵图,"红/蓝色编码关联方向、实/空心圆编码FDR显著性、黑/灰框标注强重复与部分重复,一图汇总snRNA vs Xenium vs两项外部研究的细胞比例-表型关联重复情况",
+LIT-051,胰腺导管腺癌的单细胞空间转录谱揭示了关键的免疫调节和促转移机,Cancer Letters,2026,Fig.4E,距离分箱差异基因热图,距离分箱/空间梯度定量图,"按巨噬细胞到最近肿瘤细胞距离分四档(<20/20-50/50-100/>100μm)做DE基因热图,近肿瘤者富集MMP8/COL17A1/TREM2等促瘤基因,直接量化空间邻近对细胞表型的塑造",
+LIT-051,胰腺导管腺癌的单细胞空间转录谱揭示了关键的免疫调节和促转移机,Cancer Letters,2026,Fig.7A-B,空间分区图+分区构成条形图,细胞比例/构成图,"肝转移灶按解剖-组织学切成A-E五区(正常肝→浸润边界→瘤芯→纤维坏死芯),配16个FOV×30种亚型构成条形图,呈现免疫-基质生态位随转移进展的空间轨迹",
+LIT-051,胰腺导管腺癌的单细胞空间转录谱揭示了关键的免疫调节和促转移机,Cancer Letters,2026,Fig.5A,血管ROI细胞-基因叠加空间图,空间基因表达图,"肿瘤未侵血管(TFV)与受侵血管(TIV)上以圆点标细胞类型、方块标基因表达(TREM2/LPL品红、CXCL10/11绿),直观对比血管niche的免疫-代谢状态反转",
+LIT-052,心室辅助装置减负荷可逆转单心室疾病中的微血管衰老,Nature Cardiovascular Research,2026,Fig.4d/f,共定位概率矩阵+niche中心空间热图,空间域/生态位分区图,"32种细胞状态两两共定位概率热图(VAD敏感衰老状态标红),再以FB5/EC4/PC2/MP3四重共定位spot(P<0.01)定义衰老niche中心并统计占比(对照0%、stageI-III 4.5%、post-VAD 1.6%)",XL-Genomics/2024_Senescent_Niche_in_HLHS
+LIT-052,心室辅助装置减负荷可逆转单心室疾病中的微血管衰老,Nature Cardiovascular Research,2026,Fig.4i/k,中心-外周衰减曲线,折线/趋势/排序图,"以niche中心spot为0、按~100μm层邻域分层到>400μm远端,画衰老签名表达的距离衰减曲线,Xenium单细胞尺度(10μm分箱)复现post-VAD梯度变平",XL-Genomics/2024_Senescent_Niche_in_HLHS
+LIT-052,心室辅助装置减负荷可逆转单心室疾病中的微血管衰老,Nature Cardiovascular Research,2026,Fig.8g,niche细胞着色+转录物密度分箱图,空间域/生态位分区图,"Xenium视野内EC4/PC2/FB5/MP3着色叠加POSTN RNA信号点(品红),下方配10μm分箱POSTN信号密度图,单细胞分辨率证明SASP配体富集于niche内EC4",XL-Genomics/2024_Senescent_Niche_in_HLHS
+LIT-053,福尔马林固定石蜡包埋活检组织的单细胞空间转录组学揭示结肠炎相,JCI(据文件名标注;正文未印期刊名),2026,Fig.2F-G,邻域富集z值全矩阵热图,细胞邻域/共定位分析图,"以细注释细胞对的邻近富集z值矩阵并列HC与UC,直接显示UC中单核细胞-IAF/中性粒/B细胞空间关联增强、上皮主导架构被免疫-基质邻域取代",UCSF-DSCOLAB/spatial_transcriptomics_colitis_analysis_2024(S)
+LIT-053,福尔马林固定石蜡包埋活检组织的单细胞空间转录组学揭示结肠炎相,JCI(据文件名标注;正文未印期刊名),2026,Fig.4E,签名得分伪着色空间散点图,空间细胞定位图,"对代表性核心按每细胞IEC_R、IAF-单核-中性粒_NR、GALT_NR三签名均值伪着色,响应者上皮程序限于隐窝、两类无响应原型各归其位,一图讲清空间原型",UCSF-DSCOLAB/spatial_transcriptomics_colitis_analysis_2024(S)
+LIT-053,福尔马林固定石蜡包埋活检组织的单细胞空间转录组学揭示结肠炎相,JCI(据文件名标注;正文未印期刊名),2026,Fig.5B,CellCharter簇空间图+分组占比,细胞比例/构成图,"代表性核心按CellCharter空间簇注释着色,下配UC PRE R与NR各簇占比,把无监督邻域与治疗响应原型衔接并做定量对比",UCSF-DSCOLAB/spatial_transcriptomics_colitis_analysis_2024(S)
+LIT-054,空间架构导致膀胱癌整体生物标志物指导的新辅助免疫疗法选择失败,Cell Reports Medicine,2026,Fig.3A-B,邻域社区分析流程示意图,机制/流程示意图,"25μm半径邻域计数矩阵→肘部法定k→k-means聚类定义社区,再按各细胞型丰度把社区标注为rich/neutral/poor并回贴组织图,流程可复用于任意iSCST邻域建模",cnio-bu/varca
+LIT-054,空间架构导致膀胱癌整体生物标志物指导的新辅助免疫疗法选择失败,Cell Reports Medicine,2026,Fig.5D-G,圆形信号网络图,细胞通讯图,"以Cohen's d编码检查点配体-受体表达在rich vs poor社区的偏置(边宽=|d|、钢蓝/品红=富集方向),对比响应者'空间受限'与无响应者'弥散'的信号拓扑",cnio-bu/varca
+LIT-054,空间架构导致膀胱癌整体生物标志物指导的新辅助免疫疗法选择失败,Cell Reports Medicine,2026,Fig.6D-E,降采样AUC性能曲线,基准/性能对比图,"对CD8-肿瘤距离标志物做基因数(377→17,拐点77)与FOV直径(3/2/1mm,50个随机FOV/例)双向降采样,以AUC(DeLong CI)定量最小panel与采样面积,为空间标志物试验设计提供参数化路线图",cnio-bu/varca
+LIT-055,纤维蛋白生态位中的SPP1高表达巨噬细胞促进类风湿关节炎滑膜,Science Translational Medicine,2026,Fig.1B,空间生态位着色图,空间域/生态位分区图,"按局部邻域细胞组成聚类出5个生态位(niche)后,在组织切片上以生态位配色渲染每个细胞,直观对应 plasma cell/血管/衬里层/衬里下层/T-B聚集五种空间结构",
+LIT-055,纤维蛋白生态位中的SPP1高表达巨噬细胞促进类风湿关节炎滑膜,Science Translational Medicine,2026,Fig.1F,CLQ矩阵热图,细胞邻域/共定位分析图,"以50μm半径的共定位商(colocation quotient)矩阵展示各细胞亚群间非对称空间富集,查询细胞置于y轴,BH校正显著性阈值<0.05",
+LIT-055,纤维蛋白生态位中的SPP1高表达巨噬细胞促进类风湿关节炎滑膜,Science Translational Medicine,2026,Fig.1I,空间散点图+ROI放大,空间细胞定位图,"SPP1hi巨噬细胞(红)与增殖成纤维细胞(黄)双色空间点图,虚线框ROI右侧放大展示两类细胞斑块的直接毗邻",
+LIT-056,胰腺癌的空间解析组织结构与计算病理学,Experimental & Molecular Medicine,2026,Fig.1,机制示意图,机制/流程示意图,"以肿瘤近端(缺氧/EMT/糖酵解/myCAF富集)与远端(iCAF/免疫浸润)分区示意PDAC微环境空间架构,并标注CAF亚型与经典/中间/基底样恶性状态的交互及治疗后重塑",
+LIT-056,胰腺癌的空间解析组织结构与计算病理学,Experimental & Molecular Medicine,2026,Fig.2,进展轴示意图,机制/流程示意图,"PanIN与IPMN两条前体-癌变轴并列展示,CAF样活化、TLS从未成熟到成熟、M2极化与checkpoint T细胞招募随进展递进",
+LIT-056,胰腺癌的空间解析组织结构与计算病理学,Experimental & Molecular Medicine,2026,Fig.3,工作流示意图,机制/流程示意图,"在H&E图上标注肿瘤腺体(红)与促结缔组织增生基质(蓝)两种形态输入,并列三种空间组学×AI整合策略:跨模态验证/组织学-组学翻译/多模态嵌入对齐",
+LIT-057,NK-T细胞淋巴瘤的单细胞分析揭示了分层免疫特征和潜在的治疗,Nature Communications,2026,Fig.6j,亚细胞转录本点图,空间基因表达图,"MP4样本P28的Xenium TLS边界图,每个点代表一个mRNA分子,直观呈现B/T细胞共定位的三级淋巴结构边界",cy358/Single-cell-profiling-of-NKTCL
+LIT-057,NK-T细胞淋巴瘤的单细胞分析揭示了分层免疫特征和潜在的治疗,Nature Communications,2026,Fig.6k,邻域富集热图,细胞邻域/共定位分析图,"用squidpy邻域富集分析展示Leiden聚类间的空间临近性,定量证明TLS内B细胞-T细胞协作",cy358/Single-cell-profiling-of-NKTCL
+LIT-057,NK-T细胞淋巴瘤的单细胞分析揭示了分层免疫特征和潜在的治疗,Nature Communications,2026,Fig.3c,空间散点图,空间细胞定位图,"MP1(P42)与MP3(P9)两例样本并排Xenium空间点图,直接对比不同分型的CD8+T细胞浸润差异",cy358/Single-cell-profiling-of-NKTCL
+LIT-058,空间细胞秩序是口咽癌局部免疫抵抗机制的基础,Nature Communications,2026,Fig.3a-c,空间散点图,空间细胞定位图,"以CXCL10/CXCL8表达着色的组织空间点图加化学因子foci分类图,展示CXCL9/10/11与CXCL8两类富焦在肿瘤实质内的空间互斥分布",
+LIT-058,空间细胞秩序是口咽癌局部免疫抵抗机制的基础,Nature Communications,2026,Fig.3h,冲积图(alluvial),桑基/冲积图,"以k=5最近邻图连接配体表达细胞与 cognate 受体表达邻近细胞,轴间流量宽度编码互作数量,可视化foci内配体-受体近程信号",
+LIT-058,空间细胞秩序是口咽癌局部免疫抵抗机制的基础,Nature Communications,2026,Fig.1c,词云图,其他,以字号编码基因数的词云展示custom 297基因panel的构成及其功能类别(细胞类型/缺氧/IFN-γ/HPV基因等),
+LIT-059,空间转录组学鉴定与成人皮肌炎癌症相关的免疫基质生态位,Nature Communications,2026,Fig.3G,生态位边界空间图,空间域/生态位分区图,"代表性别中黑色轮廓勾画HDBSCAN定义的免疫生态位边界,内部以细胞状态着色,直观对比非癌DM与癌相关DM的免疫聚集构型",
+LIT-059,空间转录组学鉴定与成人皮肌炎癌症相关的免疫基质生态位,Nature Communications,2026,Fig.3A,Bray-Curtis UMAP分型图,降维嵌入图,"351个免疫生态位按细胞组成Bray-Curtis相异度投影UMAP,分别按疾病条件与生态位类型双色标注,展示健康/DM/CLE的生态位原型分型",
+LIT-059,空间转录组学鉴定与成人皮肌炎癌症相关的免疫基质生态位,Nature Communications,2026,Fig.5J,多基因空间转录本图,空间基因表达图,"血管相关成纤维细胞签名基因ABCA10/ABCA8/ABCA6/C7四色转录本空间分布图,展示非癌DM中该签名在免疫聚集旁的丢失",
+LIT-060,空间转录组分析突出了小鼠和人类中不同的红细胞生态位,Nat. Genet.,2026,Fig.1i,细胞类型相关性R值矩阵热图,热图/矩阵图,Visium spot级细胞类型z-score两两Pearson相关矩阵热图，正相关/负相关着色、非显著相关标'X'，一张图呈现全部细胞类型对的空间共定位网络,xhNorthwestern/Spatial-biology-of-hematopoiesis
+LIT-060,空间转录组分析突出了小鼠和人类中不同的红细胞生态位,Nat. Genet.,2026,Fig.1g,空间共定位相关散点图,细胞邻域/共定位分析图,每个点代表一个Visium capture spot，两细胞类型的相对表达分数散点+线性回归95%CI阴影带，标注Pearson R与P值,xhNorthwestern/Spatial-biology-of-hematopoiesis
+LIT-061,单细胞+Xenium空间转录组揭示前列腺组织驻留记忆CD8+,Immunity,2026,Fig.6E,细胞互作连接组网络图(connectome),细胞通讯图,基于Squidpy互作矩阵以Kamada-Kawai布局(igraph)绘制上皮/间质区细胞亚型单细胞分辨率连接组，边显示互作值>0.1、两个生物学重复取平均，节点位置反映互作强度,ktakehara/Prostate_TRM
+LIT-061,单细胞+Xenium空间转录组揭示前列腺组织驻留记忆CD8+,Immunity,2026,Fig.7J,细胞-目标距离概率密度图,距离分箱/空间梯度定量图,"CD103+/CD103- CD8 T细胞到最近上皮细胞距离的概率密度曲线(曲线下面积归一,峰值=高密度距离),灰虚线标上皮细胞近似尺寸,n=4活检",ktakehara/Prostate_TRM
+LIT-062,HIF-1α+ CD4+ T细胞在肺部协调组织驻留免疫细胞网,Immunity,2026,Fig.1D-F,TLS距离分箱表达热图,空间域/生态位分区图,"以TLS边缘为0、8μm距离bin的基因/MSigDB基因集评分热图(行按5-bin滚动平均最大值排序,值截断±2,零线=TLS边缘,负值在TLS内),一张图呈现趋化因子/配体受体沿TLS半径的空间排布",
+LIT-062,HIF-1α+ CD4+ T细胞在肺部协调组织驻留免疫细胞网,Immunity,2026,Fig.1A,H&E与空间结构叠加图,组织学/多模态对齐图,"H&E与Xenium按Cd79b高表达邻域密度定义的TLS结构(深色)与外围(淡化)叠加,直观对齐组织学与分子定义的TLS边界",
+LIT-062,HIF-1α+ CD4+ T细胞在肺部协调组织驻留免疫细胞网,Immunity,2026,Fig.2D,TLS边界距离分布图,空间域/生态位分区图,"confocal图像量化Egln3-YFP+与YFP- CD4 T细胞到TLS边界的距离分布(50个TLS汇总),直接证明HIF-1α活性细胞定位于TLS周界",
+LIT-063,NF-κB激活的成纤维细胞调控炎症性衰老及促炎性颗粒酶K+ ,Immunity,2026,Fig.1O-P,邻域分析方法示意图+邻域组成条形图,机制/流程示意图,"以'方法示意(scale bar 100μm)+邻域定量'两联版呈现50μm半径最近邻分析,把GZMK+ T细胞的优势邻接细胞类型(T/B细胞、IM、内皮、成纤维)一图读出,可直接迁移为Xenium邻域分析的标准展示",
+LIT-063,NF-κB激活的成纤维细胞调控炎症性衰老及促炎性颗粒酶K+ ,Immunity,2026,Fig.1E,空间表达热图(组织切片上),空间基因表达图,"在1mm视野组织图上叠加T细胞耗竭基因热图,直观显示Gzmk等耗竭标志集中于BALT内部,是'基因-结构'共定位叙事的最简呈现",
+LIT-063,NF-κB激活的成纤维细胞调控炎症性衰老及促炎性颗粒酶K+ ,Immunity,2026,Fig.7F-J,组织空间图+UMAP feature plot组合,空间细胞定位图,"人COVID ARDS Xenium中GZMK/CD8A组织图共定位(scale bar 1mm/200μm)配UMAP feature plot交叉验证共定位信号,再以邻域分析图(J)接续,构成'组织图-特征图-邻域'三段式验证链",
+LIT-064,失调的hepcidin-铁轴损害抗病毒免疫并诱导新生儿致死性,Immunity,2026,Fig.5B,高分辨空间细胞分布图+局部放大,空间细胞定位图,"整图展示对照与BA肝内TREM2+Mac(BD-LAM)/CX3CR1+Mac(PVM)/KC三种巨噬亚群空间分布,再从同一BA样本选3个zoom-in视图分别突出一种亚群并叠加其marker表达,'全景+分区特写'适合多亚群生态位对比",
+LIT-064,失调的hepcidin-铁轴损害抗病毒免疫并诱导新生儿致死性,Immunity,2026,Fig.5D-E,空间邻近图+核密度相关散点图上下组合,细胞邻域/共定位分析图,"上排组织图显示TREM2+Mac与胆管细胞(及CX3CR1+Mac与PVEC)空间邻近,下排以核密度估计做Pearson相关散点图定量佐证'邻近'不是目测,邻域声明配套统计证据的范式可直接套用",
+LIT-064,失调的hepcidin-铁轴损害抗病毒免疫并诱导新生儿致死性,Immunity,2026,Fig.5F,双基因空间共表达图,空间基因表达图,"HAMP与TREM2在BA肝空间图上共定位,把scRNA里'hepcidin由TREM2+巨噬表达'的推断落到原位空间证据,单图完成'配体-细胞'归位",
+LIT-065,空间解析的转录组与蛋白质组分析揭示预测巴雷特食管进展的细胞互,bioRxiv(预印本),2026,Fig.4A-B,log2OR森林图+代表性空间地图配对,火山/差异统计图,"左侧森林图列出进展/非进展富集的细胞对共现OR,右侧配NP(蓝)与P(红)代表性ROI空间地图,让每个统计显著的互作对都有'看得见'的空间实例,是互作分析结果的标准双联呈现",
+LIT-065,空间解析的转录组与蛋白质组分析揭示预测巴雷特食管进展的细胞互,bioRxiv(预印本),2026,Fig.5A-D,ROC曲线+特征缩减AUC曲线+SHAP重要性图,基准/性能对比图,"一条ROC并列比较组成/密度/邻域富集/共现四种特征集的AUC(0.62/0.68/0.81/0.97),配合迭代特征缩减曲线与SHAP条形图,完整示范'空间特征是否优于丰度特征'的证据链呈现",
+LIT-065,空间解析的转录组与蛋白质组分析揭示预测巴雷特食管进展的细胞互,bioRxiv(预印本),2026,Fig.7C,i-niche局部细胞邻域分析图,空间域/生态位分区图,"以索引细胞周围组成定义局部邻域,锁定邻域8为进展相关增殖性免疫-上皮生态位(Ki67+损伤响应上皮/树突细胞/颗粒酶B+髓系/活化T细胞),把蛋白水平的邻域概念转译为可解释的生态位标签",
+LIT-066,基质细胞状态的表观遗传调控支撑克罗恩病的病理组织生态位（文件,Nat Immunology,2026,Fig.1b,生态位-细胞状态富集热图(niche×cell state fold change),空间域/生态位分区图,"CellCharter 15个空间生态位内细胞状态的显著相对富集倍数热图,每列niche由组成命名(血浆细胞聚集体/淋巴聚集体/生发中心滤泡/溃疡/黏膜下纤维化等),一图完成'无偏生态位→病理结构'的命名翻译",Teichlab/crohns-fibroblast-atlas(S)
+LIT-066,基质细胞状态的表观遗传调控支撑克罗恩病的病理组织生态位（文件,Nat Immunology,2026,Fig.2b,病理区域标注+marker转录密度空间图,空间基因表达图,"串联切片Xenium(MultiTissue&Cancer+custom 100探针)先以整片视野标注溃疡(红)与纤维化(赭)边界,再同一样本zoom-in分别展示marker转录密度与细胞状态环境,'区域边界→marker→细胞邻接'三层递进",Teichlab/crohns-fibroblast-atlas(S)
+LIT-066,基质细胞状态的表观遗传调控支撑克罗恩病的病理组织生态位（文件,Nat Immunology,2026,Fig.5h,距离分箱梯度曲线,距离分箱/空间梯度定量图,"以到溃疡niche的距离分箱,绘制各成纤维细胞亚型频率与IF signature score随距离的变化(LOESS平滑),把'离病灶越近状态越IF化'的单变量梯度做成可直接复用的邻接梯度图式",Teichlab/crohns-fibroblast-atlas(S)
+LIT-067,独特的空间组织结构调控口腔黏膜免疫,Nat Immunology,2026,Fig.4b-e,距离分箱分区计数曲线,空间域/生态位分区图,"以距TAE的距离(px分箱)对每个免疫niche(中性粒细胞结缔组织/T-B-APC/血浆细胞niche)的平均细胞数作图,健康与牙周炎并列,把'免疫分区(zonation)在疾病中守恒但血浆带仅疾病出现'一图读出",dwilliamsLab/gingiva-2025
+LIT-067,独特的空间组织结构调控口腔黏膜免疫,Nat Immunology,2026,Fig.5c,距离分区基因表达热图,空间域/生态位分区图,"基质(成纤维+血管)细胞按距TAE三段距离(0-100/100-500/500-1500μm)取top基因做热图,红蓝框标注健康vs疾病显著差异转录本,是'位置特异性转录组'的标准呈现",dwilliamsLab/gingiva-2025
+LIT-067,独特的空间组织结构调控口腔黏膜免疫,Nat Immunology,2026,Fig.6g-h,跨模态插值空间映射图,组织学/多模态对齐图,"CITE-seq细亚群(TFH/TFreg/非典型B/浆母细胞等)经整合插值到Xenium后,把注释叠加到ST定义的免疫niche与TAE上,示范'单细胞蛋白组→空间锚定'的推断式定位",dwilliamsLab/gingiva-2025
+LIT-068,由趋化因子定义的巨噬细胞生态位确立肿瘤免疫的空间组织结构,Nat Immunology,2026,Fig.3a,多marker分组空间表达组合图,空间基因表达图,"将结构细胞(Acta2/Tubb3/Lyve1/Pecam1/Epcam)、AM与recMacs(Car4/Chil3/Fn1/Vcan/Plac8)、IM亚群(Mafb/C1qc/Mmp12/Mmp9/Cd163)与趋化因子(Cxcl9/Cxcl13/Cxcl14/Cxcl16)四组marker并列铺成空间表达阵列,1mm视野下白箭头标注肿瘤边界活化基质,把'谁在哪里表达什么趋化因子'一图布局",
+LIT-068,由趋化因子定义的巨噬细胞生态位确立肿瘤免疫的空间组织结构,Nat Immunology,2026,Fig.3c(及ED Fig.5b-c),高分辨共定位zoom图,细胞邻域/共定位分析图,"100μm与50μm高分辨成像显示Folr2+CD163+ CD206hi IM共表达Cxcl13且衬贴Epcam+支气管,红箭头直接指认'趋化因子产自哪个细胞',是亚细胞级归位的典范图式",
+LIT-068,由趋化因子定义的巨噬细胞生态位确立肿瘤免疫的空间组织结构,Nat Immunology,2026,ED Fig.4e,最近邻距离小提琴图,距离分箱/空间梯度定量图,"以髓系细胞质心到最近肿瘤细胞质心的二维欧氏距离做log1p变换后按亚群画小提琴图,定量佐证AM被排斥/CD206hi IM贴气道/recMac入瘤芯的空间分层",
+LIT-069,慢性阻塞性肺病中导致疾病异质性的异常细胞群,Nat Genetics,2026,Fig.5d-f,ROI三层对齐组合图(niche地图/细胞叠加/转录本点图),空间域/生态位分区图,"同一ROI上 niche地图(上)+细胞类型空间叠加(中)+关键炎症/重塑/免疫转录本点图(下)三层对齐,把'生态位-细胞-基因'空间对应一图讲清",SaulerLab/COPD_snRNA-seq
+LIT-069,慢性阻塞性肺病中导致疾病异质性的异常细胞群,Nat Genetics,2026,Fig.5b,niche×细胞类型点图,空间域/生态位分区图,"行=空间niche(airway/large artery/LI-parenchyma/inflamed/remodeling/免疫niche等)、列=细胞类型,点大小编码niche内相对比例、点色编码niche身份,汇总全部生态位定义",SaulerLab/COPD_snRNA-seq
+LIT-069,慢性阻塞性肺病中导致疾病异质性的异常细胞群,Nat Genetics,2026,Fig.7e-f,配体-受体热图+空间hotspot差值组合图,细胞通讯图,"左栏为snRNA-seq来源的发送细胞配体表达热图,右栏为Xenium上inflamed vs noninflamed邻域hotspot百分比的归一化差值,把NicheNet推断与bivariate Moran's I空间验证合成一图",SaulerLab/COPD_snRNA-seq
+LIT-070,IN-DEPTH同片空间多组学整合揭示肿瘤病毒相关肿瘤微环境,Cancer Discovery,2026,Fig.5C-D,三元图(ternary plot),其他,"三顶点分别编码CD4T-肿瘤、CD4T-巨噬、巨噬-肿瘤两两SGCC共定位,点位置读出三方空间耦合结构(中心=三者共定位),按EBV状态着色并叠加LMP1/AES等特征,LMP1富集于中心直指免疫抑制轴",SizunJiangLab/IN-DEPTH
+LIT-070,IN-DEPTH同片空间多组学整合揭示肿瘤病毒相关肿瘤微环境,Cancer Discovery,2026,Fig.7G,单细胞配体-受体空间映射图,细胞通讯图,"把Squidpy推断的L-R互作画回FOV单细胞坐标:配体(红)/受体(蓝)表达点图+细胞对连线,下排为累积互作强度面板,直观区分LMP1+与LMP1-肿瘤区的EBI3-IL27RA/IL6ST与CCN1-TLR4信号",SizunJiangLab/IN-DEPTH
+LIT-070,IN-DEPTH同片空间多组学整合揭示肿瘤病毒相关肿瘤微环境,Cancer Discovery,2026,Fig.3C,SGCC排序多轨条带图,折线/趋势/排序图,"按SGCC分数排序ROI,并行展示SGCC值、细胞数、CD4T与BCL6±B细胞比例、空间分布bin及配对基因程序,呈现生发中心DZ/LZ状态随T-B空间耦合的连续转变",SizunJiangLab/IN-DEPTH
+LIT-071,乳腺癌和前列腺癌前期到癌症转变的空间映射,Cancer Discovery,2026,Fig.3c-d(同式Fig.4c-d),跨切片序列3D路径+基因表达斜率图,3D/跨切片连续图,"按Z深度排列Xenium/CODEX/H&E/CosMx/VisiumHD五平台截面(每平台固定配色:蓝/绿/紫/棕/金),同一互联结构上标注DCIS-MI-IDC形态轴,右侧配path-based回归斜率图(正斜率=浸润关联基因,附R2/p,背景色标注该截面形态),把'沿过渡路径的基因动态'一图讲清",ding-lab/mushroom(S);estorrs/3d-analysis(S)
+LIT-071,乳腺癌和前列腺癌前期到癌症转变的空间映射,Cancer Discovery,2026,Fig.3b,3D连通性展示图,3D/跨切片连续图,"3D重建显示2D上相距5.5mm的两个上皮区域经Z轴互联(橙色截面线贯穿),offset视图逐层展示连接切片并按数据类型着色,是'2D盲区由3D补'的核心论证图式",ding-lab/mushroom(S);estorrs/3d-analysis(S)
+LIT-071,乳腺癌和前列腺癌前期到癌症转变的空间映射,Cancer Discovery,2026,Fig.5d,多marker空间转录本zoom图,空间基因表达图,"MS4A6A(青)/SPP1(橙)/CD14(紫)/CD68(绿)/CD163(黄)多TAM marker在DCIS与IDC区域并列铺开,Area1-4分区对比直接显示MS4A6A+ TAM浸润DCIS而SPP1+ TAM富集IDC",ding-lab/mushroom(S);estorrs/3d-analysis(S)
+LIT-072,单细胞整合与多模态分析揭示结直肠癌中性粒细胞的表型与空间组织,bioRxiv(预印本),2025,Fig.5A(及Fig.S5A),多患者多区域Xenium细胞类型图阵列+三联验证,多面板组合图,"15患者×3区域(肿瘤核心/浸润前缘/癌旁)的Xenium细胞类型空间图并排成阵列,下接同片post-Xenium H&E与连续切片CD15 IHC,中性粒细胞簇在三种模态逐一对位,是'空间发现-形态验证'的阵列式图式",icbi-lab/crc-atlas(S);icbi-lab/shears
+LIT-072,单细胞整合与多模态分析揭示结直肠癌中性粒细胞的表型与空间组织,bioRxiv(预印本),2025,Fig.5B-D,niche定量dotplot+簇分布图,空间域/生态位分区图,"NicheCompass量化CN1-CN11细胞niche组成(dotplot),再画各niche内中性粒细胞簇数量与占比,锁定CN9中性粒细胞主导niche并直接衔接其内CXCL1/CXCL3-CXCR4通讯分析",icbi-lab/crc-atlas(S);icbi-lab/shears
+LIT-072,单细胞整合与多模态分析揭示结直肠癌中性粒细胞的表型与空间组织,bioRxiv(预印本),2025,Fig.4I,RNA velocity-PAGA轨迹UMAP,轨迹/拟时序图,"以RNA velocity图为边构建PAGA,投影于中性粒细胞BN/TAN亚群UMAP,边即细胞状态转变方向,清晰呈现BN1→BN3→TAN1→TAN2/3与TAN4的分叉路径",icbi-lab/crc-atlas(S);icbi-lab/shears
+LIT-073,将细胞类型解析的转录组谱映射到胰腺癌患者的生存,Cancer Cell,2026,Fig.4B-C,Xenium单细胞预后分型空间图+距离密度曲线,距离分箱/空间梯度定量图,"在Xenium in situ图上以cr-PRG的SS/LS评分(AUCell,ES=SS-LS)把每种细胞类型原位再分为SS型/LS型并着色铺开,左侧配SS-CAF/LS-CAF随距SS-PDAC细胞距离的密度变化曲线,把'生存分型落到单个细胞坐标'",
+LIT-073,将细胞类型解析的转录组谱映射到胰腺癌患者的生存,Cancer Cell,2026,Fig.4I-K,径向距离带状分析图,距离分箱/空间梯度定量图,"以中心细胞为圆心按10μm步长切10-200μm同心环统计各细胞类型密度(径向距离示意图+配对t检验),发现PR样本中SS型瘤内神经显著更贴近SS-PDAC细胞,提示神经微侵犯与治疗抵抗关联",
+LIT-073,将细胞类型解析的转录组谱映射到胰腺癌患者的生存,Cancer Cell,2026,Fig.3C-G,Hotspot基因模块+血管邻近空间定位+mIHC验证组合,细胞邻域/共定位分析图,"Hotspot识别13个导管细胞基因模块→semla包RadialDistance计算模块得分与血管边界距离的Pearson相关→mIHC(paxillin/ITGB3)验证basal-like模块在血管旁的黏着斑,构成'模块-空间-蛋白'三步论证链",
+LIT-074,结直肠癌宏观与微观转移的空间多组学景观,Cancer Cell,2026,Fig.2A,系统发育树+空间克隆图组合版面,克隆/谱系追踪图,"每患者一栏并置:CNV系统发育树+denoised CNV热图+H&E/病理注释/克隆分布/CytoTRACE-静息-分化-细胞周期评分四层空间图+患者治疗时间轴,把'克隆演化落回组织坐标'的完整证据链排成一页",yliuup/CRC_micromets_ST
+LIT-074,结直肠癌宏观与微观转移的空间多组学景观,Cancer Cell,2026,Fig.5B,MP空间互作网络图,细胞通讯图,"以neighborhood score(邻近spot中同MP比例)与proximity score(到目标MP最短距离倒数)为边权,用ggraph按tumor/tumor stroma/normal三类节点构建MP空间互作网络,线宽即互作强度,可跨器官并排比较",yliuup/CRC_micromets_ST
+LIT-074,结直肠癌宏观与微观转移的空间多组学景观,Cancer Cell,2026,Fig.6J-K,配体-受体空间密度KDE图,细胞通讯图,"macro(紫)/micro(红)区域连同外延3层spots的范围图上,叠加以表达值为权重的核密度估计图(LAMA4、ITGA1+ITGB1、NECTIN3、TIGIT,黄到深紫),直观呈现macro侧LAMA4-Integrin与micro侧NECTIN3-TIGIT的空间极化",yliuup/CRC_micromets_ST
+LIT-075,人体脑血管的空间图谱揭示了特化的细胞群,Cell,2026,Fig.2,空间散点图+Moran's I散点图,空间细胞定位图,两脑区（皮层/海马）代表性冠状切片细胞类型空间分布图，配各亚群Moran's I双区散点图（Spearman R=0.90）证明空间模式跨区可重复,jwangbio/spatial-brain-vasc
+LIT-075,人体脑血管的空间图谱揭示了特化的细胞群,Cell,2026,Fig.5,轨迹图+邻域密度图,细胞邻域/共定位分析图,以Slingshot定义内皮动静脉轴，再画壁细胞各亚型在10μm邻域内沿动静脉评分的频率密度图，把细胞亚型定量映射到血管分段,jwangbio/spatial-brain-vasc
+LIT-075,人体脑血管的空间图谱揭示了特化的细胞群,Cell,2026,Fig.7,富集热图,富集/通路分析图,MAGMA将18种神经系统疾病GWAS风险映射到细胞亚型/动静脉ensembles的热图，联动Drug2Cell药物反应性热图形成图谱-疾病-药物闭环,jwangbio/spatial-brain-vasc
+LIT-076,空间组学前沿综述：新兴技术分析创新与临床应用,Cancer Cell,2026,Fig.1,技术分类总览示意图,机制/流程示意图,以 A-E 分面板一图总览成像式/测序式空转、空间蛋白、空间代谢、同切片多组学与3D/4D技术版图，适合做技术谱系参考图,
+LIT-076,空间组学前沿综述：新兴技术分析创新与临床应用,Cancer Cell,2026,Fig.3,生态位组成示意图,机制/流程示意图,九类 TME 功能生态位（TLS/血管周/干性CD8 T/CAF/浸润前沿/免疫排斥/缺氧/神经免疫/微生物）的细胞组成与空间结构示意拼图,
+LIT-076,空间组学前沿综述：新兴技术分析创新与临床应用,Cancer Cell,2026,Fig.4,层级框架示意图,机制/流程示意图,从单个细胞→多细胞生态位→空间群落→肿瘤生态系统的跨尺度层级示意（与 Box 2 术语表配套），可直接对应本库 L1-L9 框架,
+LIT-077,肺间质巨噬细胞亚群的分子与空间特化：超越趋化因子,Frontiers in Immunology,2026,Fig.4,空间散点图+分区域占比图,细胞比例/构成图,H&E-Xenium对照图上标注三类肺解剖区（支气管血管束/间质/胸膜外周），配各亚群跨区分布百分比条图与多层饼图,XinLi-0419/XeniumSpatialMacrophage
+LIT-077,肺间质巨噬细胞亚群的分子与空间特化：超越趋化因子,Frontiers in Immunology,2026,Fig.5,空间表达图+最近邻距离统计,距离分箱/空间梯度定量图,实线/虚线/浅虚线框分别标注趋化因子表达最高/次高/最低解剖区，配Cxcl9/10+ IM与Cd3e+ T细胞、Cxcl13+ IM与Cd19+ B细胞对随机伪细胞的最近邻距离检验,XinLi-0419/XeniumSpatialMacrophage
+LIT-077,肺间质巨噬细胞亚群的分子与空间特化：超越趋化因子,Frontiers in Immunology,2026,Fig.2,Circos弦图,细胞通讯图,CellPhoneDB预测的IM亚群自分泌配体-受体互作前50对Circos图，外圈为亚群、内圈为分子并按分子类型着色,XinLi-0419/XeniumSpatialMacrophage
+LIT-078,胰腺癌的致癌和肿瘤抑制力量在良性到恶性转变的祖细胞生态位上汇,Cell,2026,Fig.2,空间伪色散点图+分箱形态学曲线,距离分箱/空间梯度定量图,将gastric-progenitor扩散分量连续值直接伪色到每个细胞核的空间位置（Fig.2G），并配lumen评分/上皮占比/病灶尺寸随DC分箱的定量曲线（H-J），把转录连续态与形态学演变绑定呈现,dpeerlab/p53-niche-dynamics(S);hisplan/sharp(S)
+LIT-078,胰腺癌的致癌和肿瘤抑制力量在良性到恶性转变的祖细胞生态位上汇,Cell,2026,Fig.3,生态位伪时间密度等高线+分箱基因趋势热图,空间域/生态位分区图,以锚细胞60μm半径定义生态位并沿G-P生态位伪时间排序，用微环境细胞在UMAP上的密度等高线（E）与各隔室分箱基因趋势（F，通讯基因标红）展示生态位逐级组装,dpeerlab/p53-niche-dynamics(S);hisplan/sharp(S)
+LIT-078,胰腺癌的致癌和肿瘤抑制力量在良性到恶性转变的祖细胞生态位上汇,Cell,2026,Fig.6,Milo差异丰度散点图+状态密度轮廓叠加,火山/差异统计图,将miloR差异丰度logFC散点按'祖细胞空间富集度'着色（D），配合KRAS抑制前后转录态密度轮廓叠加（C），直观呈现扰动使哪些生态位相关邻域塌缩,dpeerlab/p53-niche-dynamics(S);hisplan/sharp(S)
+LIT-079,单次溶瘤病毒治疗后胶质母细胞瘤中持续的T细胞激活与细胞毒性,Cell,2026,Fig.2,空间密度热图+双变量共定位图+距离分箱点图,细胞邻域/共定位分析图,"以CD3ε密度连续热图与T细胞-肿瘤双变量共定位图并行（A），再配T细胞/肿瘤标志物随距离分箱的梯度点图（G,H），并把GZMB高T细胞-肿瘤平均距离做成与PFS及肿瘤生长速率关联的临床可解释空间指标（I）",DFCI-CODEX-group/CODEX-custom-pipeline;maximemeylan/GBM_CAN3110
+LIT-079,单次溶瘤病毒治疗后胶质母细胞瘤中持续的T细胞激活与细胞毒性,Cell,2026,Fig.6,空间TCR克隆追踪图+克隆-细胞态分布图,克隆/谱系追踪图,"用患者特异TCR CDR3探针在Xenium原位定位扩增克隆（G,H），配各克隆细胞态堆叠分布（I）与扩增/非扩增T细胞到肿瘤距离的bootstrap中位数差比较（J），实现克隆水平空间免疫追踪",DFCI-CODEX-group/CODEX-custom-pipeline;maximemeylan/GBM_CAN3110
+LIT-079,单次溶瘤病毒治疗后胶质母细胞瘤中持续的T细胞激活与细胞毒性,Cell,2026,Fig.7,空间信号叠加图+距离-状态占比曲线,细胞比例/构成图,以VEGFA表达圈定缺氧区边界并与T细胞特征信号（CD2/CD3D/CD3E/CD8A/CD8B/GZMA/GZMB）叠加（G），配肿瘤六态占比随T细胞距离的变化（F），直观呈现缺氧间质区T细胞排斥机制,DFCI-CODEX-group/CODEX-custom-pipeline;maximemeylan/GBM_CAN3110
+LIT-080,空间转录组图谱揭示 FoxO3 介导的线粒体动力学失衡驱动小,Aging Cell,2026,Fig.S2C,多基因空间叠加表达图,空间基因表达图,在同一卵巢切片上以DAPI+四色叠加（紫Trp53/红Rb1/蓝Tert/绿Sod2）呈现促衰老与抗衰老基因的空间互斥分布，单图承载多基因空间对比,
+LIT-080,空间转录组图谱揭示 FoxO3 介导的线粒体动力学失衡驱动小,Aging Cell,2026,Fig.2K,空间表达定位图,空间基因表达图,把POI颗粒细胞层内促衰老基因（Tgfb1/Trp53/Rb1）上调、保护基因（Sod2/Tert）下调映射到GC层解剖位置，将亚群衰老程序落到组织结构,
+LIT-080,空间转录组图谱揭示 FoxO3 介导的线粒体动力学失衡驱动小,Aging Cell,2026,Fig.S2A-B,拟时序轨迹图+分化评分条图,轨迹/拟时序图,Monocle3轨迹分支树配三类GC亚型CytoTrace分化评分柱图，量化分化阻滞并可将评分投影回UMAP/空间,
+LIT-081,一种基于空间可解释人工智能的框架，用于为HER2阳性乳腺癌患,Signal Transduction and Targeted Therapy,2026,Fig.6i,空间散点图,空间细胞定位图,单癌细胞PAM50亚型空间映射（Xenium坐标按亚型着色，HER2-LADDER-Low呈HER2富集型统一分布 vs High呈镶嵌混合），展示肿瘤内部异质性的空间可视化范式,fuscc-deep-path/sc_MTOP;Lion-shine/Segment-Membranes-and-Nuclei-from-Histopathological-Images-via-Nuclei-Point-level-Supervision;vqdang/hover_net(S)
+LIT-081,一种基于空间可解释人工智能的框架，用于为HER2阳性乳腺癌患,Signal Transduction and Targeted Therapy,2026,Fig.7h,配体-受体互作热图,细胞通讯图,以APC(中性粒细胞/树突细胞/B细胞)为Source、辅助T细胞为Target分面展示互作计数并按Low/High分组对比，配体受体差异分析分组呈现,fuscc-deep-path/sc_MTOP;Lion-shine/Segment-Membranes-and-Nuclei-from-Histopathological-Images-via-Nuclei-Point-level-Supervision;vqdang/hover_net(S)
+LIT-081,一种基于空间可解释人工智能的框架，用于为HER2阳性乳腺癌患,Signal Transduction and Targeted Therapy,2026,Fig.2j,森林图,火山/差异统计图,模型评分(每0.1单位)与传统临床病理因素(HER2 IHC/HR/TILs)的OR及95%CI同图对比，突出新预测因子优于常规指标,fuscc-deep-path/sc_MTOP;Lion-shine/Segment-Membranes-and-Nuclei-from-Histopathological-Images-via-Nuclei-Point-level-Supervision;vqdang/hover_net(S)
+LIT-082,人类成人口腔内成纤维细胞驱动的免疫调节的整合单细胞与空间蛋白,Cell Press Blue,2026,Fig.3I,网络图,细胞通讯图,TCN邻域架构网络图，节点为8种组织细胞邻域、边为邻域间连接，hub(连接≥3个邻域)高亮，直观呈现腺体vs黏膜的结构免疫枢纽差异,Loci-lab/Oral-Craniofacial-Atlas
+LIT-082,人类成人口腔内成纤维细胞驱动的免疫调节的整合单细胞与空间蛋白,Cell Press Blue,2026,Fig.5B,热图,热图/矩阵图,MCIM(多细胞互作模块)×配体受体对组成热图，按黏膜/腺体组织分列，展示空间互作模块的L-R构成谱,Loci-lab/Oral-Craniofacial-Atlas
+LIT-082,人类成人口腔内成纤维细胞驱动的免疫调节的整合单细胞与空间蛋白,Cell Press Blue,2026,Fig.7K,空间共定位散点图,细胞邻域/共定位分析图,PD-L1+成纤维细胞(sender)与PD-1+CD3+T细胞(target)的空间共定位映射，checkpoint轴互作的空间验证呈现,Loci-lab/Oral-Craniofacial-Atlas
+LIT-084,高吞吐量亚细胞分辨率空间转录组平台的系统基准测试,bioRxiv,2024,Fig.2g-h,跨模态空间对照图,组织学/多模态对齐图,上排ST的CD3E转录本空间分布、下排邻片CODEX的CD3e蛋白染色，50μm bin同标尺并列，并给出多网格尺度Pearson相关，是转录-蛋白空间一致性验证的标准呈现,zenglab-pku/SPATCH(S)
+LIT-084,高吞吐量亚细胞分辨率空间转录组平台的系统基准测试,bioRxiv,2024,Fig.4f,多模态ROI四联图,组织学/多模态对齐图,淋巴细胞富集ROI内H&E+ST细胞注释+CODEX注释+CD8/CD4/CD20蛋白染色四行对照，直观评估各平台免疫细胞识别保真度,zenglab-pku/SPATCH(S)
+LIT-084,高吞吐量亚细胞分辨率空间转录组平台的系统基准测试,bioRxiv,2024,Fig.5d,空间散点图,空间细胞定位图,以与癌细胞共定位定义并展示肿瘤浸润CD8+T与外周CD8+T的空间分布，演示空间聚类区分免疫细胞位置状态的用法,zenglab-pku/SPATCH(S)
+LIT-085,基于测序的空间转录组方法的系统比较,Nature Methods,2024,Fig.4f,多指标性能排名矩阵,基准/性能对比图,按基因检出/扩散/下游聚类/marker检测/可负担性等维度对11平台排名并在右侧附点间距/芯片尺寸/商业化等特性注释表，技术选型一图总览的呈现范式,YOU-k/cadasSTre
+LIT-085,基于测序的空间转录组方法的系统比较,Nature Methods,2024,Fig.3b-d,表达强度剖面+箱线图,小提琴/箱线图,沿已知组织结构对齐的marker基因表达密度曲线(曲线下面积归一)+LWHM半高宽箱线图定量分子侧向扩散，将'分辨率'从点尺寸改为可测量的扩散指标,YOU-k/cadasSTre
+LIT-085,基于测序的空间转录组方法的系统比较,Nature Methods,2024,Fig.2h,双平台基因散点图,点图/气泡图,Visium(polyA) vs Stereo-seq每基因总UMI散点，90分位/10分位双阈值高亮平台特异性漏检基因(如Crybb3)，快速定位基因捕获偏倚,YOU-k/cadasSTre
+LIT-086,FFPE组织中成像式空间转录组平台的系统基准测试,Nature Communications,2025,Fig.4g,共表达2D直方图矩阵,热图/矩阵图,三对互斥marker(CD3E-EPCAM/CD4-CD8A/PPARG-CD68)×三平台网格化2D共表达直方图，以双阳性细胞比例作为分割质量与特异性的生物学度量,broadinstitute/ist_benchmarking(S)
+LIT-086,FFPE组织中成像式空间转录组平台的系统基准测试,Nature Communications,2025,Fig.5a-b,空间聚类图+相关热图组合,空间域/生态位分区图,乳腺癌核心的细胞类型空间聚类图与平台间cluster Spearman相关热图并排，评估各平台细胞类型恢复深度与一致性,broadinstitute/ist_benchmarking(S)
+LIT-086,FFPE组织中成像式空间转录组平台的系统基准测试,Nature Communications,2025,Fig.2d-f,小提琴图,小提琴/箱线图,on-target比例、双口径FDR(负探针/空白条码)按组织类型的小提琴图并附Mann-Whitney U检验，特异性比较的标准化呈现,broadinstitute/ist_benchmarking(S)
+LIT-087,CoCo-ST检测空间转录组学数据集中的全局和局部生物学结构,Nature Cell Biology,2025,Fig.1,方法对比分组条形图,基准/性能对比图,以病理医师标注为金标准，用ARI/NMI双指标条形图横向量化11种空间域检测方法对hotspot区域的识别能力(Fig.1d),WuLabMDA/CoCo-ST
+LIT-087,CoCo-ST检测空间转录组学数据集中的全局和局部生物学结构,Nature Cell Biology,2025,Fig.2,多方法×多样本空间域对比图阵,空间域/生态位分区图,9个样本逐列并排展示各方法空间域结果，直观暴露对比方法漏检/过分割的早期腺瘤等低方差结构,WuLabMDA/CoCo-ST
+LIT-087,CoCo-ST检测空间转录组学数据集中的全局和局部生物学结构,Nature Cell Biology,2025,Fig.4,细胞互作网络角色图,细胞通讯图,用CellChat网络中心性把细胞群标注为sender/receiver/mediator/influencer四种信号角色，WNT通路中TAM被识别为gatekeeper(Fig.4h),WuLabMDA/CoCo-ST
+LIT-088,通过质量评估和最佳实践分析工作流优化Xenium原位数据效用,Nature Methods,2025,Fig.1,数据集质量指标汇总表,QC/技术评估图,把25个数据集的来源/组织/panel/reads per cell/genes per cell/qv>20比例/assign率并排成QC总览表(Fig.1b),Moldia/Xenium_benchmarking(S);QuKunLab/SpatialBenchmarking(S)
+LIT-088,通过质量评估和最佳实践分析工作流优化Xenium原位数据效用,Nature Methods,2025,Fig.4,预处理路径决策图,机制/流程示意图,将归一化-变换-HVF-图构建-聚类各步骤参数选择画成路径图，红色高亮最优工作流便于照搬(Fig.4c),Moldia/Xenium_benchmarking(S);QuKunLab/SpatialBenchmarking(S)
+LIT-088,通过质量评估和最佳实践分析工作流优化Xenium原位数据效用,Nature Methods,2025,Fig.5,方法排名性能条形图,基准/性能对比图,以Allen脑图谱人工标注为参照，用ARI/VI/NMI/FMI四指标在不同domain数下给域识别算法排名(Fig.5h),Moldia/Xenium_benchmarking(S);QuKunLab/SpatialBenchmarking(S)
+LIT-089,基于FFPE肿瘤样本的成像式单细胞分辨率空间转录组平台对比,Nature Communications,2025,Fig.1,实验设计流程图,机制/流程示意图,同一TMA连续切片平行分送CosMx/MERFISH/Xenium-UM/Xenium-MM并配mIF与H&E参照的整体设计图(Fig.1a),KChen-lab/ST_Comparison(S)
+LIT-089,基于FFPE肿瘤样本的成像式单细胞分辨率空间转录组平台对比,Nature Communications,2025,Fig.2,探针计数点图+FDR条形图,QC/技术评估图,"以阴性对照/空白探针计数与目标基因探针同图对照，定量各平台背景噪声与FDR(Fig.2c,d)",KChen-lab/ST_Comparison(S)
+LIT-089,基于FFPE肿瘤样本的成像式单细胞分辨率空间转录组平台对比,Nature Communications,2025,Fig.7,分组箱线图,小提琴/箱线图,以三位病理医师盲评H&E/mIF为金标准，按细胞类型给各平台分割与注释F1分数箱线图(Fig.7b),KChen-lab/ST_Comparison(S)
+LIT-090,跨人肿瘤的高通量亚细胞分辨率空间转录组平台系统基准测试,Nature Communications,2025,Fig.1,多组学基准实验流程图,机制/流程示意图,一例样本三分流(FFPE/冰冻/解离)对齐四平台+相邻CODEX+scRNA的全景实验设计(Fig.1a),zenglab-pku/SPATCH(S)
+LIT-090,跨人肿瘤的高通量亚细胞分辨率空间转录组平台系统基准测试,Nature Communications,2025,Fig.2,背景噪声与扩散定量图,QC/技术评估图,"用NegProbe/NegCode计数加Moran's I聚合度量化背景，组织外bin距离-计数曲线量化转录本扩散(Fig.2b,e,f)",zenglab-pku/SPATCH(S)
+LIT-090,跨人肿瘤的高通量亚细胞分辨率空间转录组平台系统基准测试,Nature Communications,2025,Fig.5,注释一致性堆叠条形图,细胞比例/构成图,5种注释工具多数投票，用'被1-5个工具一致注释的细胞比例'评估平台注释稳健性(Fig.5c),zenglab-pku/SPATCH(S)
+LIT-091,通过单细胞和空间转录组学理解溃疡性结肠炎发病机制与药物反应的,Frontiers in Immunology,2026,Fig.1,细胞类群总览示意图,机制/流程示意图,单页全景汇总人结肠主要细胞类群，作为单细胞/空间注释的参照底图(Fig.1: Main intestinal cell populations in the human colon),
+LIT-091,通过单细胞和空间转录组学理解溃疡性结肠炎发病机制与药物反应的,Frontiers in Immunology,2026,Fig.2,解剖结构示意图,机制/流程示意图,结肠黏膜解剖分层示意，为空间分析区域划分与采样术语提供统一参照(Fig.2: Diagram of the colonic mucosal anatomy),
+LIT-092,利用体内单细胞功能基因组学描绘出生后心脏发育图谱,bioRxiv,2025,Fig.2,空间配受体活性图,细胞通讯图,"将特定L-R对(如Sema3a/Sema3c、Kitl-Kit)的通讯强度直接映射回组织空间并以500μm标尺并排，直观呈现通路的解剖限定性(Fig.2H,J,L)",
+LIT-092,利用体内单细胞功能基因组学描绘出生后心脏发育图谱,bioRxiv,2025,Fig.4,连续值空间映射图,空间基因表达图,把心肌细胞成熟指数逐细胞映射到空间并按p0-p21并排，直接展示成熟的空间异质性与时间推进(Fig.4C),
+LIT-092,利用体内单细胞功能基因组学描绘出生后心脏发育图谱,bioRxiv,2025,Fig.1,半径编码环形图,距离分箱/空间梯度定量图,"环形图半径编码各时间点总细胞量、扇区编码细胞比例，一图同时呈现组成与规模变化(Fig.1I,K)",
